@@ -1,14 +1,24 @@
-const { json, request } = require("express");
+const Stock = require("../models/Stock");
 const compareTime = require("../utils/compareTime");
 const balanceService = require("./balanceService");
+const getPrice = require("../utils/getPrice");
 
 class StockService {
-    buyStock(user, price, quantity) {
-        price = Number(price);
-        if (typeof price === "number" && price > 0) {
+    async buyStock(user, stock, quantity) {
+        const price = Number(await getPrice(stock.symbol));
+        if (price > 0) {
             balanceService.withdraw(user, price * quantity);
-            return json({ message: "Stock was found" });
-        } else return json({ message: "Bad request" });
+            // Уже купленные акции
+            const purchasedStock = await Stock.findOne({ symbol: stock.symbol, user: user.id });
+            if (purchasedStock) {
+                purchasedStock.quantity += stock.quantity;
+                stock = purchasedStock;
+            }
+            return {
+                stock: stock,
+                price: price,
+            };
+        } else return { message: "Bad request" };
     }
 
     sellStock(user, stock, price, quantity) {
