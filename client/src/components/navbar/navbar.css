@@ -1,19 +1,22 @@
 .navbar {
-  display: flex;
+  display: fixed;
   background-color: #394249;
-  height: 152px;
+  height: 14%;
   width: 100%;
   color: aqua;
+  font-size: 20px;
 }
 .navbar__logo {
-  width: 20%;
+  display: block;
+  width: 16.6%;
+  height: 63%;
 }
 .navbar__search {
+  padding-left: 10%;
   width: 50%;
 }
 .navbar__login {
   width: 15%;
-  font-size: 20px;
 }
 .navbar__login__registration {
   width: 15%;
