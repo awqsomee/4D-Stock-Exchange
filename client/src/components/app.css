@@ -1,0 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #010101;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E9EEF2;
+}
+#root {
+  width: 100%;
+}

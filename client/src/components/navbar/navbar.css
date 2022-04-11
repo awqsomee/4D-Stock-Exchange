@@ -1,0 +1,27 @@
+.navbar {
+  display: flex;
+  background-color: #394249;
+  height: 152px;
+  width: 100%;
+  color: aqua;
+}
+.navbar__logo {
+  width: 20%;
+}
+.navbar__search {
+  width: 50%;
+}
+.navbar__login {
+  width: 15%;
+  font-size: 20px;
+}
+.navbar__login__registration {
+  width: 15%;
+}
+.container {
+  width: 66.7%;
+  display: flex;
+  align-items: center;
+  background-color: #394249;
+  margin-left: 16%;
+}
