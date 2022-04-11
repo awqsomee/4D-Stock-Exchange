@@ -1,23 +1,27 @@
 .navbar {
   display: flex;
   background-color: #394249;
-  justify-content: center;
   height: 152px;
   width: 100%;
+  color: aqua;
+}
+.navbar__logo {
+  width: 20%;
+}
+.navbar__search {
+  width: 50%;
+}
+.navbar__login {
+  width: 15%;
+  font-size: 20px;
+}
+.navbar__login__registration {
+  width: 15%;
 }
 .container {
-  width: 1280px;
+  width: 66.7%;
   display: flex;
   align-items: center;
   background-color: #394249;
-}
-.container__login {
-  margin-left: auto;
-  margin-right: 20px;
-  font-size: 20px;
-}
-.container2 {
-  margin-left: 14%;
-  width: 80%;
-  height: 80%;
+  margin-left: 16%;
 }

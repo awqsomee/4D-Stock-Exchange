@@ -1,36 +1,47 @@
 @import "../../utils/colors/colors";
 @import "../../utils/fonts/font.less";
-.navbar{
-    display: flex;
-    background-color: #394249;
-    justify-content: center;
-    height: 152px;
-    width: 100%;
+.navbar {
+  display: flex;
+  background-color: #394249;
+  //   justify-content: center;
+  height: 152px;
+  width: 100%;
+  color: aqua;
 
-    
-}
+  &__logo {
+    // margin-left: 14%;
+    width: 20%;
+    // height: 80%;
+  }
 
-.container{
-    width: 1280px;
-    display: flex;
-    align-items: center;
-    background-color: #394249;
+  &__search {
+    // margin-left: 6.25%;
+    width: 50%;
+    // height: 34.4%;
+  }
 
-    &__login{
-        margin-left: auto;
-        margin-right: 20px;
-        font-size: @font-size;
+  &__login {
+    // margin-left: auto;
+    // margin-right: 20px;
+    width: 15%;
+    font-size: @font-size;
+    // color: rgb(167, 8, 8);
+
+    &__registration {
+      //   margin-left: 14%;
+      width: 15%;
+      //   height: 80%;
     }
-    
-    &2{
-        margin-left: 14%;
-        width: 80%;
-        height: 80%;
-        
-}
+  }
 }
 
-
+.container {
+  width: 66.7%;
+  display: flex;
+  align-items: center;
+  background-color: #394249;
+  margin-left: 16%;
+}
 
 // .container3{
 //     width: 1280px;
@@ -52,4 +63,3 @@
 //     align-items: center;
 //     background-color: #394249;
 // }
-

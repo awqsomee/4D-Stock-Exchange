@@ -7,11 +7,11 @@ const Navbar = () => {
         <div className="navbar">
             <div className="container">
 
-                <div className="container2"><img src={Logo} alt="" className="navbar__logo"/> </div>
+                <img src={Logo} alt="" className="navbar__logo"/> 
                 
-                <div className="container3"> <div className="navbar__search">hello</div ></div>
-                <div className="container4"> <div className="navbar__login">login</div> </div>
-                <div className="container5"> <div className="navbar__registration">reg</div> </div>
+                 <div className="navbar__search">hello</div >
+                 <div className="navbar__login">login</div> 
+                 <div className="navbar__registration">reg</div> 
             </div>
            
         </div>
