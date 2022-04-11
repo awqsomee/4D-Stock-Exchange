@@ -1,4 +1,3 @@
-// const User = require("../models/User");
 const mongoose = require("mongoose");
 const axios = require("axios");
 const config = require("config");
@@ -6,6 +5,7 @@ const Stock = require("../models/Stock");
 const stockService = require("../services/stockService");
 const compareTime = require("../utils/compareTime");
 const User = require("../models/User");
+const getPrice = require("../utils/getPrice");
 
 class StockController {
     async buyStock(req, res) {
@@ -43,12 +43,20 @@ class StockController {
             // Проверяю торги
             if (!compareTime(stock)) return res.status(400).json({ message: "Stock exchange closed" });
             // Проверяю цену
+
+            // let currentPrice = getPrice(stock.symbol);
+            // if (!sessionStorage.getItem(`current${stock.symbol}StockPrice`) && Date(`current${stock.symbol}StockPriceTimestamp`) - Date.now() < 150000) {
             const priceResponse = await axios.get(
                 `${config.get("AV_TIME_SERIES_INTRADAY")}&symbol=${stock.symbol}&interval=5min&${config.get("apiKey")}`
             );
+            console.log(priceResponse.data);
             const dailyStockPrices = priceResponse.data["Time Series (5min)"];
             const dates = Object.keys(dailyStockPrices);
             const currentPrice = dailyStockPrices[dates[0]]["4. close"];
+            // sessionStorage.setItem(`current${stock.symbol}StockPrice`, currentPrice);
+            // sessionStorage.setItem(`current${stock.symbol}StockPriceTimestamp`, Date().now);
+            // }
+            // currentPrice = Number(sessionStorage.getItem(`current${stock.symbol}StockPrice`));
             stockService.buyStock(user, currentPrice, quantity);
             if (purchasedStock) {
                 purchasedStock.quantity += stock.quantity;
@@ -65,6 +73,45 @@ class StockController {
     async getStocks(req, res) {
         try {
             const stocks = await Stock.find({ user: req.user.id });
+            if (req.query.symbol) {
+                const existResponse = await axios.get(
+                    `${config.get("AV_SYMBOL_SEARCH")}${req.query.symbol}&${config.get("apiKey")}`
+                );
+                const stock = existResponse.data.bestMatches[0];
+                if (!stock) return res.status(400).json({ message: "Stock not found" });
+
+                const priceResponse = await axios.get(
+                    `${config.get("AV_TIME_SERIES_INTRADAY")}&symbol=${req.query.symbol}&interval=5min&${config.get(
+                        "apiKey"
+                    )}`
+                );
+                console.log(
+                    `${config.get("AV_TIME_SERIES_INTRADAY")}&symbol=${req.query.symbol}&interval=5min&${config.get(
+                        "apiKey"
+                    )}`
+                );
+
+                const dailyStockPrices = priceResponse.data["Time Series (5min)"];
+                const dates = Object.keys(dailyStockPrices);
+                const currentPrice = dailyStockPrices[dates[0]]["4. close"];
+                console.log("price", currentPrice);
+                return res.json({ ...stock, currentPrice });
+            }
+            return res.json(stocks);
+        } catch (e) {
+            console.log(e);
+            return res.status(500).json("Can not get stocks");
+        }
+    }
+
+    async getStock(req, res) {
+        try {
+            const response = await axios.get(
+                `${config.get("AV_SYMBOL_SEARCH")}${stock.symbol}&${config.get("apiKey")}`
+            );
+            const stock = response.data.bestMatches[0];
+            if (!stock) return res.status(400).json({ message: "Stock not found" });
+            getPrice(stock);
             return res.json(stocks);
         } catch (e) {
             console.log(e);

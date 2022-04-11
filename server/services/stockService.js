@@ -6,8 +6,10 @@ class StockService {
     buyStock(user, price, quantity) {
         price = Number(price);
         if (typeof price === "number" && price > 0) {
+            console.log(price);
+            console.log(user);
             balanceService.withdraw(user, price * quantity);
-            return json({ message: "Stock was found" });
+            return json({ message: "Stock was bought" });
         } else return json({ message: "Bad request" });
     }
 
