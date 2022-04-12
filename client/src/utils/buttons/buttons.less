@@ -1,0 +1,25 @@
+@import "../../utils/colors/colors";
+@import "../../utils/fonts/font.less";
+
+.button {
+  border-radius: 10px;
+  padding: 12px 36px;
+
+  &__normal {
+    background-color: @--main-button-color;
+    color: @--button-text-color;
+  }
+
+  &__hover {
+    background-color: @--hover-button-color;
+    color: @--button-text-color;
+  }
+  &__down {
+    background-color: @--down-button-color;
+    color: @--main-text-color;
+  }
+  &__non {
+    background-color: @--hover-button-color;
+    color: @--main-grey-color;
+  }
+}

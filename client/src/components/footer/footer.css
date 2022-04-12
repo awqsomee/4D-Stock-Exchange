@@ -12,36 +12,32 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-.navbar {
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 11vh;
   display: flex;
   background-color: #394249;
   align-items: center;
-  height: 11vh;
-  width: 100%;
-  font-size: 16px;
+  justify-content: center;
+  font-size: 14px;
   font-family: "Exo 2", "Arial";
 }
-.navbar__logo {
-  width: 17%;
+.footer__name {
+  width: 33%;
+  text-align: left;
 }
-.navbar__search {
-  margin-left: 6.25%;
-  left: 10%;
+.footer__privacy {
   width: 53%;
+  text-align: center;
 }
-.navbar__login {
-  width: 15%;
+.footer__socnet {
+  width: 33%;
+  text-align: right;
 }
-.navbar__registration {
-  width: 15%;
-}
-.container {
-  width: 66%;
-  height: 63%;
+.container_footer {
+  width: 61%;
   display: flex;
-  margin-left: 14%;
-  align-items: center;
-}
-__img {
-  width: 100%;
+  color: #ffffff;
 }
