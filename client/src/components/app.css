@@ -2,13 +2,13 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  color: #010101;
+  color: "white";
 }
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #E9EEF2;
+  background-color: #e9eef2;
 }
 #root {
   width: 100%;
