@@ -5,6 +5,7 @@ import './navbar.css';
 import Logo from '../../assets/image/logo.svg';
 // import Input from '../../utils/input/Input';
 import SearchHeader from '../search/SearchHeader.jsx';
+import "../../utils/buttons/buttons.css"
 
 const Navbar = () => {
   const [search, setSearch] = useState('');
@@ -20,10 +21,10 @@ const Navbar = () => {
           
         </div>
         <div className="navbar__login">
-          <NavLink to="/login">Войти</NavLink>
+          <NavLink className=" button button__normal" to="/login">Войти</NavLink>
         </div>
         <div className="navbar__registration">
-          <button className="button_normal" to="/registration">Регистрация</button>
+          <NavLink className=" button button__normal" to="/registration">Регистрация</NavLink>
         </div>
       </div>
     </div>

@@ -16,22 +16,24 @@
   border-radius: 10px;
   padding: 12px 36px;
   font-size: 'Exo 2', 'Arial';
-  text-decoration: none;
-  outline: none;
+  text-decoration: none ;
+  border: none;
 }
 .button__normal {
   background-color: #2be9d9;
   color: #000000;
+  text-decoration: none ;
 }
 .button__hover {
   background-color: #d0fcff;
   color: #000000;
+  text-decoration: none ;
 }
 .button__down {
   background-color: #47959a;
-  color: #ffffff;
+  color: #ffffff;text-decoration: none ;
 }
 .button__non {
   background-color: #d0fcff;
-  color: #6c7175;
+  color: #6c7175;text-decoration: none ;
 }
