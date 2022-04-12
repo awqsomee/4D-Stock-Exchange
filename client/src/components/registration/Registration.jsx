@@ -4,7 +4,7 @@ import './registration.css';
 import Input from '../../utils/input/Input';
 import { registration } from '../../actions/user';
 
-const Registration = () => {
+const Registration = ({ setVisible }) => {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
@@ -21,7 +21,10 @@ const Registration = () => {
       <button
         className="registration__button"
         onClick={() => {
-          if (password === repeatPassword) registration(name, surname, email, password);
+          if (password === repeatPassword) {
+            registration(name, surname, email, password);
+            setVisible(false);
+          }
         }}
       >
         Зарегистрироваться
