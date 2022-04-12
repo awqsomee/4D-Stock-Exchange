@@ -4,6 +4,7 @@ import Navbar from "./navbar/Navbar.jsx";
 import "./app.css";
 import "./navbar/navbar.css";
 import Registration from "./registration/Registration.jsx";
+import Login from "./login/Login.jsx";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <Navbar />
                 <Routes>
                     <Route path="/registration" element={<Registration />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </div>
         </BrowserRouter>

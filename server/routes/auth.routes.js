@@ -69,6 +69,7 @@ router.post(
                     stocks: user.stocks,
                     avatar: user.avatar,
                 },
+                message: "Login confirmed",
             });
         } catch (e) {
             console.log(e);
