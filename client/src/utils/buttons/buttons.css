@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v18/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
+}
+.button {
+  border-radius: 10px;
+  padding: 12px 36px;
+}
+.button__normal {
+  background-color: #2be9d9;
+  color: #000000;
+}
+.button__hover {
+  background-color: #d0fcff;
+  color: #000000;
+}
+.button__down {
+  background-color: #47959a;
+  color: "white";
+}
+.button__non {
+  background-color: #d0fcff;
+  color: #6c7175;
+}

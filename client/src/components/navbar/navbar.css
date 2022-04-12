@@ -16,7 +16,7 @@
   display: flex;
   background-color: #394249;
   align-items: center;
-  height: 14vh;
+  height: 11vh;
   width: 100%;
   font-size: 16px;
   font-family: "Exo 2", "Arial";
@@ -42,6 +42,6 @@
   margin-left: 14%;
   align-items: center;
 }
-.logo_img {
+__img {
   width: 100%;
 }
