@@ -16,10 +16,10 @@
   display: flex;
   background-color: #394249;
   align-items: center;
-  height: 11vh;
+  height: 14vh;
   width: 100%;
   font-size: 16px;
-  font-family: "Exo 2", "Arial";
+  font-family: 'Exo 2', 'Arial';
 }
 .navbar__logo {
   width: 17%;
@@ -42,6 +42,6 @@
   margin-left: 14%;
   align-items: center;
 }
-__img {
+.logo_img {
   width: 100%;
 }

@@ -12,13 +12,13 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-input {
-  border: 1px;
-  width: 80%;
+.searchHead {
+  border: 0;
+  width: 100%;
   background-color: #e9eef2;
-  font-size: 16px;
+  font-size: 20px;
+  font-family: 'Exo 2', 'Arial';
   color: #000000;
   border-radius: 10px;
-  padding: 2% 5% 2% 10%;
-  outline: none;
+  padding: 10%;
 }

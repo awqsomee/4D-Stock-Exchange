@@ -13,12 +13,10 @@
   src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 input {
-  border: 1px;
+  border: 0;
   width: 80%;
   background-color: #e9eef2;
-  font-size: 16px;
+  font-size: 20px;
   color: #000000;
   border-radius: 10px;
-  padding: 2% 5% 2% 10%;
-  outline: none;
 }
