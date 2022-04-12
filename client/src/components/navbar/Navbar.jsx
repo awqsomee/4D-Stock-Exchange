@@ -23,7 +23,7 @@ const Navbar = () => {
           <NavLink to="/login">Войти</NavLink>
         </div>
         <div className="navbar__registration">
-          <NavLink to="/registration">Регистрация</NavLink>
+          <button className="button_normal" to="/registration">Регистрация</button>
         </div>
       </div>
     </div>
