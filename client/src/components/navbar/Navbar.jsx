@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import './navbar.css';
 import Logo from '../../assets/image/logo.svg';
-import Input from '../../utils/input/Input';
-// import SearchHeader from '../search/SearchHeader.jsx';
+// import Input from '../../utils/input/Input';
+import SearchHeader from '../search/SearchHeader.jsx';
 
 const Navbar = () => {
   const [search, setSearch] = useState('');
@@ -16,15 +16,8 @@ const Navbar = () => {
           <img src={Logo} alt="logo_img" className="logo_img" />{' '}
         </div>
         <div className="navbar__search">
-<<<<<<< Updated upstream
-          <div className="search">
-            {' '}
-            <SearchHeader value={search} setValue={setSearch} type="text" placeholder="Поиск..." />{' '}
-          </div>
-=======
-        <div className='search'> <Input value={search} setValue={setSearch} type="text" placeholder="Поиск..." className="search_input"/> </div>
+        <div className='search'> <SearchHeader value={search} setValue={setSearch} type="text" placeholder="Поиск..." /> </div>
           
->>>>>>> Stashed changes
         </div>
         <div className="navbar__login">
           <NavLink to="/login">Войти</NavLink>
