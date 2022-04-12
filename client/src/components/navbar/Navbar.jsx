@@ -16,7 +16,7 @@ const Navbar = () => {
           <img src={Logo} alt="logo_img" className="logo_img" />{' '}
         </div>
         <div className="navbar__search">
-        <div className='search'> <SearchHeader value={search} setValue={setSearch} type="text" placeholder="Поиск..." /> </div>
+        <div> <SearchHeader value={search} setValue={setSearch} type="text" placeholder="Поиск..." /> </div>
           
         </div>
         <div className="navbar__login">
