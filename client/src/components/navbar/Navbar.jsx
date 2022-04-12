@@ -16,8 +16,10 @@ const Navbar = () => {
           <img src={Logo} alt="logo_img" className="logo_img" />{' '}
         </div>
         <div className="navbar__search">
-        <div className='search'> <SearchHeader value={search} setValue={setSearch} type="text" placeholder="Поиск..." className="navbar__search_input"/> </div>
-          
+          <div className="search">
+            {' '}
+            <SearchHeader value={search} setValue={setSearch} type="text" placeholder="Поиск..." />{' '}
+          </div>
         </div>
         <div className="navbar__login">
           <NavLink to="/login">Войти</NavLink>

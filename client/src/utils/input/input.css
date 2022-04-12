@@ -12,7 +12,7 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-input {
+.search {
   border: 1px;
   width: 80%;
   background-color: #e9eef2;
