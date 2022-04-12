@@ -9,6 +9,7 @@ class StockService {
         if (price > 0) {
             balanceService.withdraw(user, price * quantity);
             // Уже купленные акции
+            console.log(balanceService.withdraw(user, price * quantity));
             const purchasedStock = await Stock.findOne({ symbol: stock.symbol, user: user.id });
             if (purchasedStock) {
                 purchasedStock.quantity += stock.quantity;

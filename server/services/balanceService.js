@@ -7,6 +7,7 @@ class balanceService {
     withdraw(user, withdraw) {
         if (user.balance >= withdraw) {
             user.balance -= withdraw;
+            console.log("user.balance");
         } else {
             throw "Not enough money";
         }

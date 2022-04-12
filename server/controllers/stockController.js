@@ -48,7 +48,7 @@ class StockController {
             await stock.save();
             return res.json(stock);
         } catch (e) {
-            return res.status(500).json("Server error");
+            return res.status(500).json(e);
         }
     }
 
@@ -57,7 +57,7 @@ class StockController {
             const stocks = await Stock.find({ user: req.user.id });
             if (req.query.symbol) {
                 const existResponse = await axios.get(
-                    `${config.get("AV_SYMBOL_SEARCH")}${req.query.symbol}&${config.get("apiKey")}`
+                    `${config.get("AV")}${config.get("AV_SYMBOL_SEARCH")}${req.query.symbol}${config.get("apiKey")}`
                 );
                 const stock = existResponse.data.bestMatches[0];
                 if (!stock) return res.status(400).json({ message: "Stock not found" });
@@ -77,11 +77,14 @@ class StockController {
             const user = await User.findOne({ _id: req.user.id });
             const quantity = Number(req.query.quantity);
             if (quantity <= 0) return res.status(400).json("Bad request");
+            if (quantity > stock.quantity) return res.status(400).json("Not enough stocks");
+            console.log(quantity);
+            console.log(stock.quantity);
             if (!stock) {
                 return res.status(400).json({ message: "Stock not found" });
             }
             const response = await axios.get(
-                `${config.get("AV_TIME_SERIES_INTRADAY")}&symbol=${stock.symbol}&interval=5min&${config.get("apiKey")}`
+                `${config.get("AV")}${config.get("AV_TIME_SERIES_INTRADAY")}${stock.symbol}${config.get("apiKey")}`
             );
             const dailyStockPrices = response.data["Time Series (5min)"];
             const dates = Object.keys(dailyStockPrices);

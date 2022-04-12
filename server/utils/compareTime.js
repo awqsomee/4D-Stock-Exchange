@@ -18,6 +18,8 @@ module.exports = (stock) => {
         )
     );
     //
+    // Если нужно насильно включить торги
+    //
     // currentTime.setTime(
     //     Date.parse(
     //         `${currentTime.getUTCMonth()} ${currentTime.getUTCDate()} ${currentTime.getUTCFullYear()} 14:${Number(
