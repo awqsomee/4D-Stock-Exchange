@@ -7,7 +7,7 @@ const balanceRouter = require('./routes/balance.routes');
 const corsMiddleware = require('./middleware/cors.middleware');
 
 const app = express();
-const PORT = config.get('serverPort');
+const PORT = process.env.PORT || config.get('serverPort');
 const DB_URL = config.get('dbUrl');
 
 app.use(corsMiddleware);

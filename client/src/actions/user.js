@@ -1,10 +1,8 @@
 import axios from 'axios';
-
-const serverAddress = 'http://localhost:5000';
-
+const serverAddress = 'https://gentle-sea-62964.herokuapp.com';
 export const registration = async (name, surname, email, password) => {
   try {
-    const response = await axios.post(`${serverAddress}/api/auth/registration`, {
+    const response = await axios.post(`${config.get(serverAddress)}/api/auth/registration`, {
       email,
       password,
       name,
