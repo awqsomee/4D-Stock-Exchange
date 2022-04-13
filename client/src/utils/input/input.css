@@ -12,7 +12,7 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-input {
+.auth-input {
   border: none;
   background: #e9eef2;
   color: #000000;
@@ -23,7 +23,7 @@ input {
   padding: 12px;
   border-radius: 5px;
 }
-input:focus {
+.auth-input:focus {
   outline: none;
 }
 .search {

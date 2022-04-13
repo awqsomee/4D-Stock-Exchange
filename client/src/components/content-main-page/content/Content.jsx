@@ -18,6 +18,18 @@ const Content = () => {
           <Panel className="panel" />
           <div className="number">1</div>
           <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
+          <Stock className="stoks"></Stock>
         </div>
       </div>
     </div>
