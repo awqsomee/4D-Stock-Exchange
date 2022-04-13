@@ -1,12 +1,12 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
-import './navbar.css';
-import Logo from '../../assets/image/logo.svg';
-import Input from '../../utils/input/Input';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
+import './navbar.css'
+import Logo from '../../assets/image/logo.svg'
+import Input from '../../utils/input/Input'
 
 const Navbar = () => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState('')
   return (
     <div className="navbar">
       <div className="container">
@@ -23,9 +23,12 @@ const Navbar = () => {
         <div className="navbar__registration">
           <NavLink to="/registration">Регистрация</NavLink>
         </div>
+        <div className="navbar__account">
+          <NavLink to="/account">Профиль</NavLink>
+        </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
