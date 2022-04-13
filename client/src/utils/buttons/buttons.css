@@ -15,8 +15,7 @@
 .button {
   border-radius: 10px;
   padding: 12px 36px;
-  font-size: 'Exo 2', 'Arial';
-  font-size: 16px;
+  font-family: 'Exo 2', 'Arial';
   text-decoration: none !important;
   border: none !important;
 }
@@ -35,4 +34,16 @@
 .button__non {
   background-color: #d0fcff;
   color: #6c7175;
+}
+.button__sortPush {
+  background-color: #e9eef2;
+  color: #000000;
+  border-radius: 5px;
+  padding: 4px 10px;
+}
+.button__sortNormal {
+  background-color: #394249;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 4px 10px;
 }

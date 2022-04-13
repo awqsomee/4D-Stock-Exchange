@@ -3,7 +3,7 @@ import Less from '../../../assets/Icons/DashCircle.svg'
 import More from '../../../assets/Icons/PlusCircle.svg'
 import Arrow from '../../../assets/Icons/angle_down.svg'
 import './stock.css'
-// import axios from 'axios'
+import '../../../utils/buttons/buttons.css'
 
 const Stock = () => {
   // const symbol = response.data['1. symbol']
@@ -18,11 +18,13 @@ const Stock = () => {
       <div className="stock__change">+23%</div>
       <div className="stock__counter">
         <div className="stock__counter__less">
-          <img src={Less} alt="less_img" className="less_img"></img>
+          {' '}
+          <img src={Less} alt="less_img" className="less_img"></img>{' '}
         </div>
         <div className="count">1</div>
         <div className="stock__counter__more">
-          <img src={More} alt="more_img" className="more_img"></img>
+          {' '}
+          <img src={More} alt="more_img" className="more_img"></img>{' '}
         </div>
       </div>
       <button className="button button__normal">Купить</button>

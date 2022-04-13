@@ -4,8 +4,7 @@
 .button {
   border-radius: 10px;
   padding: 12px 36px;
-  font-size: @font-family;
-  font-size: @--button-font-size;
+  font-family: @font-family;
   text-decoration: none !important;
   border: none !important;
 
@@ -25,5 +24,17 @@
   &__non {
     background-color: @--hover-button-color;
     color: @--main-grey-color;
+  }
+  &__sortPush {
+    background-color: @--light-grey-color;
+    color: @--button-text-color;
+    border-radius: 5px;
+    padding: 4px 10px;
+  }
+  &__sortNormal {
+    background-color: @--dark-grey-color;
+    color: @--main-text-color;
+    border-radius: 5px;
+    padding: 4px 10px;
   }
 }

@@ -32,9 +32,19 @@
   width: auto;
 }
 .list {
-  margin: 4% 18.5% 0 18.5%;
+  margin: 4% 18.5% 0 12%;
   padding-left: 6%;
 }
 .panel {
   justify-content: center;
+}
+.number {
+  float: left;
+  margin-left: 10%;
+  margin-top: 0.7%;
+  padding-top: 3%;
+  font-size: 16px;
+  font-family: 'Exo 2', 'Arial';
+  color: 'Exo 2', 'Arial';
+  font-weight: 600;
 }
