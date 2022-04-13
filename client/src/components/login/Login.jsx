@@ -5,7 +5,7 @@ import Input from '../../utils/input/Input'
 import { login } from '../../actions/user'
 import { useDispatch } from 'react-redux'
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState('')
   const [password, setpassword] = useState('')
   const dispatch = useDispatch()

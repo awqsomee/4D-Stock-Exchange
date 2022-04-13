@@ -6,7 +6,7 @@ import { registration } from '../../actions/user'
 import close from '../../assets/image/close.svg'
 import '../../utils/input/input.css'
 
-const Registration = () => {
+const Registration = (props) => {
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')

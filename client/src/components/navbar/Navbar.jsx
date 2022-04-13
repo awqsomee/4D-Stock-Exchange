@@ -36,24 +36,15 @@ const Navbar = () => {
           <div>
             <SearchHeader value={search} setValue={setSearch} type="text" placeholder="Поиск..." />
           </div>
-          <div className="navbar__login" onClick={() => setModalBoxLog(true)}>
-          Войти
-        </div>
-        <div className="navbar__registration" onClick={() => setModalBoxReg(true)}>
-          Регистрация
         </div>
         {!isAuth && (
-          <div className="navbar__login">
-            <NavLink className=" button button__normal" to="/login">
-              Войти
-            </NavLink>
+          <div className="navbar__login button button__normal" onClick={() => setModalBoxLog(true)}>
+            Войти
           </div>
         )}
         {!isAuth && (
-          <div className="navbar__registration">
-            <NavLink className=" button button__normal" to="/registration">
-              Регистрация
-            </NavLink>
+          <div className="navbar__registration button button__normal" onClick={() => setModalBoxReg(true)}>
+            Регистрация
           </div>
         )}
         {isAuth && (
