@@ -1,23 +1,24 @@
-import React from 'react';
-import { useState } from 'react';
-import './registration.css';
-import Input from '../../utils/input/Input';
-import { registration } from '../../actions/user';
-import close from '../../assets/image/close.svg';
+import React from 'react'
+import { useState } from 'react'
+import './registration.css'
+import Input from '../../utils/input/Input'
+import { registration } from '../../actions/user'
+import close from '../../assets/image/close.svg'
+import '../../utils/input/input.css'
 
 const Registration = () => {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [repeatPassword, setRepeatPassword] = useState('')
   return (
     <div className="registration">
       <div className="registration__header">Регистрация</div>
       <div className="registration__close">
-          {' '}
-          <img src={close} alt="close_img" className="close_img" />{' '}
-        </div>
+        {' '}
+        <img src={close} alt="close_img" className="close_img" />{' '}
+      </div>
       Имя
       <Input value={name} setValue={setName} type="text" placeholder="Иван" />
       Фамилия
@@ -27,17 +28,23 @@ const Registration = () => {
       Придумайте пароль
       <Input value={password} setValue={setPassword} type="password" placeholder="********" />
       Повторите пароль
-      <Input value={repeatPassword} setValue={setRepeatPassword} type="password" placeholder="********" />
+      <Input
+        className="authInput"
+        value={repeatPassword}
+        setValue={setRepeatPassword}
+        type="password"
+        placeholder="********"
+      />
       <button
         className="registration__button"
         onClick={() => {
-          if (password === repeatPassword) registration(name, surname, email, password);
+          if (password === repeatPassword) registration(name, surname, email, password)
         }}
       >
         Зарегистрироваться
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Registration;
+export default Registration
