@@ -12,22 +12,26 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-.container-panel {
+.sorting {
   display: flex;
-  border-radius: 5px 5px 0 0;
-  background-color: #47959a;
   font-size: 16px;
   font-family: 'Exo 2', 'Arial';
-  color: #ffffff;
-  padding: 1% 2%;
-  margin-left: 12%;
+  align-items: center;
+  justify-content: center;
+  margin-left: 65%;
+  margin-right: 1%;
 }
-.name {
-  width: 26%;
+.increase {
+  margin-right: 3%;
+  width: 42.7%;
+  font-size: 12px;
 }
-.cost {
-  width: 23%;
+.decrease {
+  margin-right: 2%;
+  width: 42.7%;
+  font-size: 12px;
 }
-.change {
-  width: 51%;
+.sorting_img {
+  padding-top: 0.5%;
+  width: 14.6%;
 }

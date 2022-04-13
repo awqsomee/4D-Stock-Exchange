@@ -3,6 +3,7 @@ import React from 'react';
 // import { useState } from 'react';
 // import Logo from '../../assets/image/logo.svg';
 // import Input from '../../../utils/input/Input';
+import Sorting from "../sorting/Sorting"
 import Panel from '../panel/Panel.jsx';
 import Stock from "../stocks/Stock"
 import './content.css';
@@ -14,8 +15,9 @@ const Content = () => {
       <div className="container2">
         
         <div className="list">
-          <div className='sort'> </div>
+          <Sorting className='sort'> </Sorting>
           <Panel className="panel"/>
+          <div className='number'>1</div>
           <Stock className='stoks'></Stock>
         </div>
       </div>

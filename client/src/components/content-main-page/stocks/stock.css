@@ -15,14 +15,15 @@
 .stock {
   display: flex;
   border-radius: 5px;
-  background-color: #394249;
+  background-color: #6c7175;
   font-size: 16px;
   font-family: 'Exo 2', 'Arial';
   color: #ffffff;
-  padding: 3% 2%;
+  padding: 2% 2%;
   margin-top: 0.7%;
   align-items: center;
   justify-content: center;
+  margin-left: 11.9%;
 }
 .stock__index {
   width: 6%;
@@ -37,10 +38,10 @@
 }
 .stock__change {
   color: #a0e28d;
-  width: 20.4%;
+  width: 19%;
 }
 .stock__counter {
-  width: 10.7%;
+  width: 12.1%;
   display: flex;
   justify-content: space-between;
   padding-right: 1%;
@@ -54,4 +55,5 @@
 .stock__arrow {
   width: 5.1%;
   padding-left: 2%;
+  margin-top: 1%;
 }
