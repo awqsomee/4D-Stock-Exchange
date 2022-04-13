@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useState } from 'react'
-import './navbar.css'
-import Logo from '../../assets/image/logo.svg'
-// import Input from '../../utils/input/Input';
-import ModalBox from '../UI/ModalBox/ModalBox'
-import Registration from '../registration/Registration.jsx'
-import Login from '../login/Login'
-import SearchHeader from '../search/SearchHeader.jsx'
-import '../../utils/buttons/buttons.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../../reducers/userReducer'
+import './navbar.css'
+import Logo from '../../../assets//image/logo.svg'
+// import Input from '../../utils/input/Input';
+import ModalBox from '../ModalBox/ModalBox'
+import Registration from '../../authentification/registration/Registration.jsx'
+import Login from '../../authentification/login/Login'
+import SearchHeader from '../search/SearchHeader.jsx'
+import '../buttons/buttons.css'
+import { logout } from '../../../reducers/userReducer'
 
 const Navbar = () => {
   const isAuth = useSelector((state) => state.user.isAuth)

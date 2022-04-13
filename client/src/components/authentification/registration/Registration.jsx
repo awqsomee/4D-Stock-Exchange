@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import './registration.css'
-import Input from '../../utils/input/Input'
-import { registration } from '../../actions/user'
-import close from '../../assets/image/close.svg'
-import '../../utils/input/input.css'
+import Input from '../../UI/input/Input'
+import { registration } from '../../../actions/user'
+import close from '../../../assets/image/close.svg'
+import '../../UI/input/input.css'
 
 const Registration = (props) => {
   const [name, setName] = useState('')

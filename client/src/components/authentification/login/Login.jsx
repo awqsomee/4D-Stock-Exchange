@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import './login.css'
-import Input from '../../utils/input/Input'
-import { login } from '../../actions/user'
+import Input from '../../UI/input/Input'
+import { login } from '../../../actions/user'
 import { useDispatch } from 'react-redux'
 
 const Login = (props) => {

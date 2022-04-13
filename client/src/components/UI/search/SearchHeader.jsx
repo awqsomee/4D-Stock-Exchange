@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 // import classes from "./search_header.module.css";
-import '../../utils/input/input.css';
+import '../input/input.css'
 
 const SearchHeader = (props) => {
   return (
@@ -11,7 +11,7 @@ const SearchHeader = (props) => {
       type={props.type}
       placeholder={props.placeholder}
     />
-  );
-};
+  )
+}
 
-export default SearchHeader;
+export default SearchHeader
