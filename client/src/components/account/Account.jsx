@@ -1,12 +1,16 @@
 import React from 'react'
 import './account.css'
+import User_profile from '../../assets/image/user_profile.svg'
 
 const Account = () => {
   return (
     <div className="account">
       <div className="account__header"> Профиль</div>
       <div className="account_container">
-        <div className="account__name"> Иконка</div>
+        <div className="account__user_profile">
+          {' '}
+          <img src={User_profile} alt="user_profile_img" className="user_profile_img" />{' '}
+        </div>
         <div className="account__nameUser"> Иван Иванов </div>
       </div>
 
@@ -36,6 +40,7 @@ const Account = () => {
         <div className="account__name"> Номер карты: </div>
         <div className="account__nameUser"> **** **** **** 1234 </div>
       </div>
+      <button className="account__button">Редактировать</button>
     </div>
   )
 }

@@ -52,3 +52,19 @@
       margin-left: 354px;
   }
 
+  .account__button {
+    width: 137px;
+    height: 43px;
+    font-size: 16px;
+    font-family: 'Exo 2', 'Arial';
+    color: #000000;
+    background-color: #2be9d9;
+    border-radius: 10px;
+    border: none;
+    margin-top: 56px;
+    margin-left: 471px;
+
+  }
+  .account__user_profile {
+    width: 15%;
+  }
