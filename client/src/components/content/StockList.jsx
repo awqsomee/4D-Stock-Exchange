@@ -7,6 +7,7 @@ import Sorting from '../sorting/Sorting.jsx'
 import Panel from '../panel/Panel.jsx'
 import './stocklist.css'
 import Stock from '../stocks/Stock.jsx'
+import Graph_panel from '../grahp-panel/Graph_panel'
 
 const StockList = (props) => {
   return (
@@ -17,6 +18,7 @@ const StockList = (props) => {
           <Sorting />
           <Panel className="panel" />
           <Stock />
+          <Graph_panel/>
         </div>
       </div>
     </div>
