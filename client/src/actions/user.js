@@ -41,7 +41,6 @@ export const auth = () => {
       dispatch(setUser(response.data.user))
       localStorage.setItem('stonksToken', response.data.token)
     } catch (e) {
-      alert(e.response.data.message)
       localStorage.removeItem('stonksToken')
     }
   }
