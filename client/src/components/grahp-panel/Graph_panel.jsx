@@ -1,5 +1,6 @@
 import React from 'react'
 import "./graph_panel.css"
+import Canvas from "../graph/Canvas"
 
 const Graph_panel = () => {
   return (
@@ -12,9 +13,9 @@ const Graph_panel = () => {
         <button className='slectors__all button button__sortNormal'>все время</button>
       </div>
       <div className='graph'>
-        <canvas id="Canvas_diagram"></canvas>
+        <Canvas/>
       </div>
-      <div className='MMPanel'></div>
+      <div className='MMPanel'> </div>
     </div>
   )
 }
