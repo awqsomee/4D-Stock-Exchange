@@ -23,6 +23,34 @@ const Content = () => {
           <StockForm />
           <StockForm />
           <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
           {/* {<div className="number">1</div>
           <Stock className="stoks"></Stock>} */}
         </div>
