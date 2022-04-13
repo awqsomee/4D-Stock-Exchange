@@ -1,0 +1,35 @@
+@import '../../utils/colors/colors';
+@import '../../utils/fonts/fonts';
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 465px;
+    align-items: left;
+    background-color: @--dark-grey-color;
+    border-radius: 5px;
+    padding: 34px;
+    align-self: center;
+    margin-top: 50px;
+
+    font-size: @--paragraph-font-size;
+    font-family: @font-family;
+    color: @--main-text-color;
+
+    &__header{
+        font-size: @--head-font-size;
+        font-family: @--head-font;
+        color: @--accent-color;
+    }
+
+    &__button {
+        border: none;
+        font-size: @--button-font-size;
+        font-family: @font-family;
+        color: @--button-text-color;
+        background-color: @--accent-color;
+        border-radius: 10px;
+        padding: 12px 36px;
+    }
+
+}

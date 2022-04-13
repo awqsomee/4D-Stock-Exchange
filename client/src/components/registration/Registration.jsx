@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './registration.css';
 import Input from '../../utils/input/Input';
 import { registration } from '../../actions/user';
+import close from '../../assets/image/close.svg';
 
 const Registration = () => {
   const [name, setName] = useState('');
@@ -12,11 +13,20 @@ const Registration = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   return (
     <div className="registration">
-      <div className="registration__header"></div>
+      <div className="registration__header">Регистрация</div>
+      <div className="registration__close">
+          {' '}
+          <img src={close} alt="close_img" className="close_img" />{' '}
+        </div>
+      Имя
       <Input value={name} setValue={setName} type="text" placeholder="Иван" />
+      Фамилия
       <Input value={surname} setValue={setSurname} type="text" placeholder="Иванов" />
+      Электронная почта
       <Input value={email} setValue={setEmail} type="email" placeholder="email@example.com" />
+      Придумайте пароль
       <Input value={password} setValue={setPassword} type="password" placeholder="********" />
+      Повторите пароль
       <Input value={repeatPassword} setValue={setRepeatPassword} type="password" placeholder="********" />
       <button
         className="registration__button"
