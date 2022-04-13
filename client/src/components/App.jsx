@@ -24,6 +24,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/stocks" element={<StockList title="Каталог акций" srch="" />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
         <Footer />
       </div>
