@@ -1,15 +1,16 @@
-import React from 'react';
-import { useState } from 'react';
-import './registration.css';
-import Input from '../../utils/input/Input';
-import { registration } from '../../actions/user';
+import React from 'react'
+import { useState } from 'react'
+import './registration.css'
+import Input from '../../utils/input/Input'
+import { registration } from '../../actions/user'
 
-const Registration = ({ setVisible }) => {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+const Registration = (props) => {
+  console.log(props)
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [repeatPassword, setRepeatPassword] = useState('')
   return (
     <div className="registration">
       <div className="registration__header"></div>
@@ -22,15 +23,15 @@ const Registration = ({ setVisible }) => {
         className="registration__button"
         onClick={() => {
           if (password === repeatPassword) {
-            registration(name, surname, email, password);
-            setVisible(false);
+            registration(name, surname, email, password)
+            props.sVisible(false)
           }
         }}
       >
         Зарегистрироваться
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Registration;
+export default Registration
