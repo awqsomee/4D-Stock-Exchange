@@ -12,9 +12,10 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-.content {
+.stockList {
   width: 100%;
   display: block;
+  min-height: 75vh;
   padding: 0;
   font-family: 'Exo 2', 'Arial';
 }

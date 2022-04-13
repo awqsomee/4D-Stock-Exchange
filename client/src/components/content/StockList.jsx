@@ -50,9 +50,8 @@ const StockList = (props) => {
           // else if (index > 6) apikey = 'AP6O2CY6RJETBYAM'
           // else apikey = '6OBLQLSC72R7ZSW8'
           let price
-          // if (index < 4)
-          price = await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3')
-          // else price = await getOurStockPrice(item.symbol)
+          if (index < 4) price = await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3')
+          else price = await getOurStockPrice(item.symbol)
           console.log(price)
           return {
             ...item,
@@ -78,19 +77,18 @@ const StockList = (props) => {
     }
   }
 
-  // async function getOurStockPrice(symbol) {
-  //   try {
-  //     const response = await axios.get(`https://gentle-sea-62964.herokuapp.com/api/stock?symbol=${symbol}`)
-  //     console.log(response.data)
-  //     return response.data['Global Quote']['05. price']
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // }
+  async function getOurStockPrice(symbol) {
+    try {
+      const response = await axios.get(`https://gentle-sea-62964.herokuapp.com/api/stock?symbol=${symbol}`)
+      console.log(response.data)
+      return response.data['Global Quote']['05. price']
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   return (
-    <div className="content">
-      <button onClick={getStocks}>BTN</button>
+    <div className="stockList">
       <div className="title">{props.title}</div>
       <div className="container2">
         <div className="list">

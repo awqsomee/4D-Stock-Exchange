@@ -23,7 +23,7 @@ function App() {
       <div className="app">
         <Navbar />
         <Routes>
-          <Route path="/stocks" element={<StockList title="Каталог акций" />} />
+          <Route path="/stocks" element={<StockList title="Каталог акций" srch="" />} />
         </Routes>
         <Footer />
       </div>
