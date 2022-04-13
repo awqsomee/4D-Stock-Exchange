@@ -1,22 +1,24 @@
-import React from 'react';
-import { useState } from 'react';
-import './login.css';
-import Input from '../../utils/input/Input';
-import { login } from '../../actions/user';
+import React from 'react'
+import { useState } from 'react'
+import './login.css'
+import Input from '../../utils/input/Input'
+import { login } from '../../actions/user'
+import { useDispatch } from 'react-redux'
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setpassword] = useState('');
+  const [email, setEmail] = useState('')
+  const [password, setpassword] = useState('')
+  const dispatch = useDispatch()
   return (
     <div className="login">
       <div className="login"></div>
       <Input value={email} setValue={setEmail} type="email" placeholder="email@example.com" />
       <Input value={password} setValue={setpassword} type="password" placeholder="********" />
-      <button className="login__button" onClick={() => login(email, password)}>
+      <button className="login__button" onClick={() => dispatch(login(email, password))}>
         Войти
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
