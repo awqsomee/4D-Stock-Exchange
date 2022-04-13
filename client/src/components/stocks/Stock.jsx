@@ -5,18 +5,20 @@ import Arrow from '../../assets/Icons/angle_down.svg'
 import './stock.css'
 import '../UI/buttons/buttons.css'
 
-const Stock = () => {
+const Stock = (props) => {
   // const symbol = response.data['1. symbol']
   // const name = response.data['2. name']
   // const price = response.data[price]
 
   return (
     <div>
-      <div className="number">1</div>
+      <div className="number">{props.stock.number}</div>
       <div className="stock">
-        <div className="stock__index">AAPL</div>
-        <div className="stock__name">Apple</div>
-        <div className="stock__cost">1 243 ₽</div>
+        <div className="stock__index">{props.stock.symbol}</div>
+        <div className="stock__name">{props.stock.name}</div>
+        <div className="stock__cost">
+          {props.stock.price} {props.stock.currency}
+        </div>
         <div className="stock__change">+23%</div>
         <div className="stock__counter">
           <div className="stock__counter__less">
