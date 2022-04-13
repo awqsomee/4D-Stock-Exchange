@@ -5,8 +5,8 @@ import React from 'react'
 // import Input from '../../../utils/input/Input';
 import Sorting from '../sorting/Sorting.jsx'
 import Panel from '../panel/Panel.jsx'
-import Stock from '../stocks/Stock.jsx'
 import './content.css'
+import StockForm from '../stockForm/StockForm.jsx'
 
 const Content = () => {
   return (
@@ -16,20 +16,15 @@ const Content = () => {
         <div className="list">
           <Sorting className="sort"> </Sorting>
           <Panel className="panel" />
-          <div className="number">1</div>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
-          <Stock className="stoks"></Stock>
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          <StockForm />
+          {/* {<div className="number">1</div>
+          <Stock className="stoks"></Stock>} */}
         </div>
       </div>
     </div>

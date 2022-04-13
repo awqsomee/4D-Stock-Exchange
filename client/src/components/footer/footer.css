@@ -17,6 +17,7 @@
   position: relative;
   bottom: 0;
   height: 11vh;
+  z-index: -1;
   display: flex;
   background-color: #394249;
   align-items: center;
