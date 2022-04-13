@@ -6,6 +6,7 @@ import './navbar/navbar.css';
 import Registration from './registration/Registration.jsx';
 import Login from './login/Login.jsx';
 import Footer from './footer/Footer.jsx';
+import Content from "./content-main-page/content/Content"
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-        <Footer />
+          <Content></Content>
+          <Footer />
       </div>
     </BrowserRouter>
   );
