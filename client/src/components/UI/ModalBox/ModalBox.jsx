@@ -1,10 +1,10 @@
-import React from 'react';
-import cl from './ModalBox.module.css';
+import React from 'react'
+import cl from './ModalBox.module.css'
 
 const ModalBox = ({ children, visible, setVisible }) => {
-  const rootClasses = [cl.modalBox];
+  const rootClasses = [cl.modalBox]
   if (visible) {
-    rootClasses.push(cl.active);
+    rootClasses.push(cl.active)
   }
 
   return (
@@ -13,7 +13,7 @@ const ModalBox = ({ children, visible, setVisible }) => {
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ModalBox;
+export default ModalBox
