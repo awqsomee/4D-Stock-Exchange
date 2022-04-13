@@ -9,6 +9,7 @@ import StockList from './content/StockList.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../actions/user.js'
 import { useEffect } from 'react'
+import Account from './account/Account.jsx'
 
 function App() {
   const isAuth = useSelector((state) => state.user.isAuth)

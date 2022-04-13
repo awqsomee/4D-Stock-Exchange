@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './account.css'
-import Account_containerItem from './Account_containerItem'
+import Account_containerItem from './Account_containerItem.jsx'
 
-function Account() {
+const Account = () => {
   const [value, setValue] = useState()
 
   return (

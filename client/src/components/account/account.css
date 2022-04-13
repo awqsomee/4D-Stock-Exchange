@@ -1,71 +1,33 @@
 @font-face {
-    font-family: 'Exo 2';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/exo2/v18/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Play';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
-  }
-
-  .account {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-
-  }
-
-  .account_container {
-    display: flex;
-    flex-direction: column;
-    width: 51%;
-    height: 18,5vh;
-    align-items: left;
-    background-color: #394249;
-    border-radius: 10px;
-    padding: 34px;
-    align-self: center;
-    margin-top: 16px;
-    font-size: 20px;
-    font-family: 'Exo 2', 'Arial';
-    color: #ffffff;
-  }
-
-  .account__header {
-    margin-top: 72px;
-    margin-left: 363px;
-    margin-bottom: 56px;
-    font-size: 40px;
-    font-family: 'Play';
-    color: #000000;
-  }
-
-  .account__name {
-      margin-left: 67px;
-      flex-direction: row;
-  }
-
-  .account__nameUser {
-      margin-left: 354px;
-  }
-
-  .account__button {
-    width: 137px;
-    height: 43px;
-    font-size: 16px;
-    font-family: 'Exo 2', 'Arial';
-    color: #000000;
-    background-color: #2be9d9;
-    border-radius: 10px;
-    border: none;
-    margin-top: 56px;
-    margin-left: 471px;
-
-  }
-  .account__user_profile {
-    width: 15%;
-  }
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v18/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
+}
+.account {
+  display: flex;
+  flex-direction: column;
+  width: 465px;
+  align-items: left;
+  background-color: #394249;
+  border-radius: 10px;
+  padding: 34px;
+  align-self: center;
+  margin-top: 50px;
+  font-size: 20px;
+  font-family: 'Exo 2', 'Arial';
+  color: #ffffff;
+}
+.account__header {
+  font-size: 40px;
+  font-family: 'Play';
+  color: #2be9d9;
+}
