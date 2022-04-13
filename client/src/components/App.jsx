@@ -1,27 +1,27 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Navbar from './navbar/Navbar.jsx';
-import './app.css';
-import './navbar/navbar.css';
-import Registration from './registration/Registration.jsx';
-import Login from './login/Login.jsx';
-import Footer from './footer/Footer.jsx';
-import Content from "./content-main-page/content/Content"
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Navbar from './navbar/Navbar.jsx'
+import './app.css'
+import './navbar/navbar.css'
+import Registration from './registration/Registration.jsx'
+import Login from './login/Login.jsx'
+import Footer from './footer/Footer.jsx'
+import Content from './content-main-page/content/Content'
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        <Navbar /> 
+        <Navbar />
         <Routes>
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/stocks" element={<Content />} />
         </Routes>
-          <Content></Content>
-          <Footer />
+        <Footer />
       </div>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
