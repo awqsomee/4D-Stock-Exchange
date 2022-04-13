@@ -1,5 +1,5 @@
 import React from 'react'
-import Sort from "../../../assets/Icons/убывание.svg"
+import Sort from "../../../assets/Icons/убывание 2.svg"
 import "../../../utils/buttons/buttons.css";
 import "./sorting.css";
 import "../../../assets/image/sorting_img.css"
