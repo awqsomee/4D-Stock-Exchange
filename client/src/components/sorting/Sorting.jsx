@@ -2,7 +2,7 @@ import React from 'react'
 import Sort from '../../assets/Icons/убывание 2.svg'
 import '../UI/buttons/buttons.css'
 import './sorting.css'
-import '../../assets/image/sorting_img.css'
+import '../../assets/Icons/sorting_img.css'
 
 const StockListFilter = () => {
   return (

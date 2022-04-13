@@ -3,7 +3,6 @@ import { useState } from 'react'
 import './registration.css'
 import Input from '../../UI/input/Input'
 import { registration } from '../../../actions/user'
-import close from '../../../assets/image/close.svg'
 import '../../UI/input/input.css'
 
 const Registration = (props) => {
@@ -15,26 +14,27 @@ const Registration = (props) => {
   return (
     <div className="registration">
       <div className="registration__header">Регистрация</div>
-      <div className="registration__close">
-        {' '}
-        <img src={close} alt="close_img" className="close_img" />{' '}
-      </div>
-      Имя
-      <Input value={name} setValue={setName} type="text" placeholder="Иван" />
-      Фамилия
-      <Input value={surname} setValue={setSurname} type="text" placeholder="Иванов" />
-      Электронная почта
-      <Input value={email} setValue={setEmail} type="email" placeholder="email@example.com" />
-      Придумайте пароль
-      <Input value={password} setValue={setPassword} type="password" placeholder="********" />
-      Повторите пароль
+      <div className="registration__input_name">Имя</div>
+      <div className="registration__input">
+      <Input value={name} setValue={setName} type="text" placeholder="Иван" /> </div>
+      <div className="registration__input_name">Фамилия</div>
+      <div className="registration__input">
+      <Input value={surname} setValue={setSurname} type="text" placeholder="Иванов" /> </div>
+      <div className="registration__input_name">Электронная почта</div>
+      <div className="registration__input">
+      <Input value={email} setValue={setEmail} type="email" placeholder="email@example.com" /> </div>
+      <div className="registration__input_name">Придумайте пароль</div>
+      <div className="registration__input">
+      <Input value={password} setValue={setPassword} type="password" placeholder="********" /> </div>
+      <div className="registration__input_name">Повторите пароль</div>
+      <div className="registration__input">
       <Input
         className="authInput"
         value={repeatPassword}
         setValue={setRepeatPassword}
         type="password"
         placeholder="********"
-      />
+      /> </div>
       <button
         className="registration__button"
         onClick={() => {

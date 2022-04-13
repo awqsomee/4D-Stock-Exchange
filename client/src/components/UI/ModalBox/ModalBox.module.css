@@ -9,10 +9,10 @@
 }
 
 .modalBoxContent {
-  padding: 25px;
-  background: white;
+  padding: 50px;
+  background: #394249;
   border-radius: 16px;
-  min-width: 250px;
+  min-width: 600px;
 }
 
 .modalBox.active {
