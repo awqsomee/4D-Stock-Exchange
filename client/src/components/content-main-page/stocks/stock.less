@@ -1,0 +1,53 @@
+@import '../../../utils/colors/colors';
+@import '../../../utils/fonts/font.less';
+
+.stock {
+  display: flex;
+  border-radius: 5px;
+  background-color: @--dark-grey-color;
+  font-size: @--button-font-size;
+  font-family: @font-family;
+  color: @--main-text-color;
+  padding: 3% 2%;
+  margin-top: 0.7%;
+  align-items: center;
+  justify-content: center;
+  //   width: 51%;
+
+  &__index {
+    width: 6%;
+    font-size: 12px;
+    top: 50%;
+  }
+
+  &__name {
+    width: 20%;
+  }
+
+  &__cost {
+    width: 23%;
+  }
+  &__change {
+    color: @--green-color;
+    width: 20.4%;
+  }
+  &__counter {
+    width: 10.7%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 1%;
+
+    // &__less {
+    // }
+    &__more {
+      align-items: flex-end;
+    }
+  }
+  &__button {
+    width: 14.8%;
+  }
+  &__arrow {
+    width: 5.1%;
+    padding-left: 2%;
+  }
+}

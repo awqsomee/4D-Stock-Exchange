@@ -1,9 +1,11 @@
 import React from 'react';
-// import classes from "./input.module.less";
+// import classes from "./search_header.module.css";
+import '../../utils/input/input.css';
 
-const Input = (props) => {
+const SearchHeader = (props) => {
   return (
     <input
+      className="search"
       onChange={(event) => props.setValue(event.target.value)}
       value={props.value}
       type={props.type}
@@ -12,4 +14,4 @@ const Input = (props) => {
   );
 };
 
-export default Input;
+export default SearchHeader;
