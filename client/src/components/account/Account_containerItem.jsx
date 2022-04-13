@@ -4,19 +4,19 @@ const Account_containerItem = (props) => {
   return (
     <div className="account_container">
       <div className="account__name">
-        <div className="account_inf"></div>
-        <div classname="account_userInf">Иван</div>
-      </div>
-      <div className="account__name">
-        <div className="account_inf">Фамилия:</div>
-        <div classname="account_userInf">Иванов</div>
-      </div>
-      <div className="account__name">
-        <div className="account_inf">Дата рождения:</div>
-        <div classname="account_userInf">12.12.1990</div>
+        <div>
+          {props.account_container.name}
+          <div className="account__userInf">{props.account_container.userName}</div>
+        </div>
+        <div>
+          {props.account_container.surname}
+          <div className="account__userInf">{props.account_container.userSurname}</div>
+        </div>
+        {props.account_container.date}
+        <div className="account__userInf">{props.account_container.userDate}</div>
       </div>
     </div>
   )
 }
 
-export default account_containerItem
+export default Account_containerItem

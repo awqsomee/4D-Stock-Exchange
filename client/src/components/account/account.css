@@ -21,7 +21,6 @@
 
   .account_container {
     display: flex;
-    flex-direction: column;
     width: 51%;
     height: 18,5vh;
     align-items: left;
@@ -43,15 +42,12 @@
     font-family: 'Play';
     color: #000000;
   }
+  
 
   .account__name {
       margin-left: 67px;
-      flex-direction: row;
   }
 
-  .account__nameUser {
-      margin-left: 354px;
-  }
 
   .account__button {
     width: 137px;
