@@ -38,7 +38,10 @@ const Registration = () => {
       <button
         className="registration__button"
         onClick={() => {
-          if (password === repeatPassword) registration(name, surname, email, password)
+          if (password === repeatPassword) {
+            registration(name, surname, email, password)
+            props.sVisible(false)
+          }
         }}
       >
         Зарегистрироваться

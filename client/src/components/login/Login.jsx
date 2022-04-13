@@ -17,7 +17,13 @@ const Login = () => {
       <Input value={email} setValue={setEmail} type="email" placeholder="email@example.com" />
       Пароль
       <Input value={password} setValue={setpassword} type="password" placeholder="********" />
-      <button className="login__button" onClick={() => dispatch(login(email, password))}>
+      <button
+        className="login__button"
+        onClick={() => {
+          dispatch(login(email, password))
+          props.sVisible(false)
+        }}
+      >
         Войти
       </button>
     </div>
