@@ -8,6 +8,8 @@ import Panel from '../panel/Panel.jsx'
 import './stocklist.css'
 import Stock from '../stocks/Stock.jsx'
 import axios from 'axios'
+import History from "../history/History"
+import Balance from '../balance/Balance.jsx'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
@@ -97,6 +99,8 @@ const StockList = (props) => {
           {stocks.map((stock) => (
             <Stock stock={stock} key={stock.symbol} />
           ))}
+          <Balance/>
+          <History/>
         </div>
       </div>
     </div>
