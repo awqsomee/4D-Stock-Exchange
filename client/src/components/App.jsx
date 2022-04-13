@@ -23,19 +23,11 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Navbar />
-        <div className="wrap">
-          {!isAuth && (
-            <Routes>
-              <Route path="/registration" element={<Registration />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          )}
-          {isAuth && (
-            <Routes>
-              <Route path="/stocks" element={<Content />} />
-            </Routes>
-          )}
-        </div>
+        <Routes>
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/stocks" element={<Content />} />
+        </Routes>
         <Footer />
       </div>
     </BrowserRouter>
