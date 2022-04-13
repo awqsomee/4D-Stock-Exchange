@@ -9,8 +9,11 @@ const Login = () => {
   const [password, setpassword] = useState('');
   return (
     <div className="login">
+      <div className="login__header">Вход</div>
       <div className="login"></div>
+      Электронная почта
       <Input value={email} setValue={setEmail} type="email" placeholder="email@example.com" />
+      Пароль
       <Input value={password} setValue={setpassword} type="password" placeholder="********" />
       <button className="login__button" onClick={() => login(email, password)}>
         Войти

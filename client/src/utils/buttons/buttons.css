@@ -15,6 +15,8 @@
 .button {
   border-radius: 10px;
   padding: 12px 36px;
+  font-family: 'Exo 2', 'Arial';
+  font-size: 16px;
 }
 .button__normal {
   background-color: #2be9d9;
@@ -26,7 +28,7 @@
 }
 .button__down {
   background-color: #47959a;
-  color: "white";
+  color: #ffffff;
 }
 .button__non {
   background-color: #d0fcff;
