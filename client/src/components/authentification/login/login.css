@@ -15,13 +15,8 @@
 .login {
   display: flex;
   flex-direction: column;
-  width: 465px;
   align-items: left;
-  background-color: #394249;
-  border-radius: 5px;
-  padding: 34px;
   align-self: center;
-  margin-top: 50px;
   font-size: 20px;
   font-family: 'Exo 2', 'Arial';
   color: #ffffff;
@@ -30,6 +25,13 @@
   font-size: 40px;
   font-family: 'Play';
   color: #2be9d9;
+  margin-bottom: 40px;
+}
+.login__input {
+  margin-bottom: 40px;
+}
+.login__input_name {
+  margin-bottom: 8px;
 }
 .login__button {
   border: none;
