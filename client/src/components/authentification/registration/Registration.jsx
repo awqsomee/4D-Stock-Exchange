@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './registration.css'
 import Input from '../../UI/input/Input'
 import { registration } from '../../../actions/user'
-import close from '../../../assets/image/close.svg'
+import close from '../../../assets/Icons/close.svg'
 import '../../UI/input/input.css'
 
 const Registration = (props) => {
