@@ -44,8 +44,9 @@
     color: #000000;
   }
 
-  .account_name {
+  .account__name {
       margin-left: 67px;
+      flex-direction: row;
   }
 
   .account__nameUser {
