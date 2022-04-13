@@ -25,13 +25,11 @@
   font-size: 40px;
   font-family: 'Play';
   color: #2be9d9;
-  margin-bottom: 40px;
 }
-.registration__input {
-  margin-bottom: 40px;
-}
-.registration__input_name {
-  margin-bottom: 8px;
+.registration__header {
+  font-size: 40px;
+  font-family: 'Play';
+  color: #2be9d9;
 }
 .registration__button {
   border: none;
