@@ -12,6 +12,7 @@ import { useEffect } from 'react'
 import Account from './account/Account.jsx'
 import WalletList from './wallet/WalletList'
 import { SearchContext } from '../context/index.js'
+import Portfolio from './portfolio/Portfolio.jsx'
 
 function App() {
   const isAuth = useSelector((state) => state.user.isAuth)
@@ -39,6 +40,7 @@ function App() {
             <Route path="/stocks" element={<StockList title="Каталог акций" srch="" />} />
             <Route path="/account" element={<Account />} />
             <Route path="/wallet" element={<WalletList title1="Ваш баланс" title2="История изменений" />} />
+            <Route path="/portfolio" element={<Portfolio />} />
             <Route
               path="*"
               element={
