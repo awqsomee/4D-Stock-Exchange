@@ -25,13 +25,17 @@
   margin-left: 11.9%;
 }
 .history__type {
-  align-items: flex-start;
+  width: 20%;
+  margin-left: 4%;
+}
+.history__name {
+  width: 50%;
 }
 .history__summ {
   display: inline-block;
+  width: 50%;
 }
 .history__date {
   display: inline-block;
-  justify-items: right;
-  justify-content: end;
+  width: 50%;
 }

@@ -37,7 +37,16 @@
   display: inline-block;
 }
 .navbar__account {
-  width: 15%;
+  width: 10%;
+}
+.navbar__account:hover {
+  cursor: pointer;
+}
+.navbar__wallet {
+  width: 10%;
+}
+.navbar__portfolio {
+  width: 10%;
 }
 .container {
   width: 66%;
@@ -55,4 +64,8 @@
   font-size: 20px;
   color: #000000;
   border-radius: 10px;
+}
+.user {
+  display: block;
+  right: 0;
 }

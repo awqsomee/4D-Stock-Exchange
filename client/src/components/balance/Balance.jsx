@@ -4,14 +4,13 @@ import "./balance.css"
 import "../UI/input/input.css"
 import InputBox from '../UI/ModalBox/inputBox/InputBox'
 import { useState } from 'react'
-import Input from "../UI/input/Input"
+import Input from '../UI/input/Input'
 
 const Balance = (props) => {
   // const symbol = response.data['1. symbol']
   // const name = response.data['2. name']
   // const price = response.data[price]
-  const [modalBox ,setModalBox]=useState(false)
- 
+  const [modalBox, setModalBox] = useState(false)
 
   // const [modalBoxInput, setModalBoxReg] = useState(false)
 

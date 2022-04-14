@@ -97,7 +97,9 @@ const WalletList = (props) => {
   return (
     <div className="stockList">
       <div className="title">{props.title1}</div>
-      <Balance>{"1000 P"}</Balance>
+      <div className="list">
+        <Balance />
+      </div>
       <div className="title">{props.title2}</div>
       <div className="container2">
         <div className="list">
