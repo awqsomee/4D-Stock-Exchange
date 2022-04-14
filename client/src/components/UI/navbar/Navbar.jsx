@@ -9,6 +9,9 @@ import Login from '../../authentification/login/Login'
 import SearchHeader from '../search/SearchHeader.jsx'
 import '../buttons/buttons.css'
 import { logout } from '../../../reducers/userReducer'
+import UserProfile from '../../../assets/Icons/user.svg'
+import Wallet from '../../../assets/Icons/wallet.svg'
+import Portfolio from '../../../assets/Icons/portfolio.svg'
 
 const Navbar = (props) => {
   const isAuth = useSelector((state) => state.user.isAuth)
@@ -16,6 +19,7 @@ const Navbar = (props) => {
   // const [search, setSearch] = useState('')
   const [modalBoxReg, setModalBoxReg] = useState(false)
   const [modalBoxLog, setModalBoxLog] = useState(false)
+  const [modalBoxAcc, setModalBoxAcc] = useState(false)
   return (
     <div className="navbar">
       <ModalBox visible={modalBoxLog} setVisible={setModalBoxLog}>
@@ -24,10 +28,21 @@ const Navbar = (props) => {
       <ModalBox visible={modalBoxReg} setVisible={setModalBoxReg}>
         <Registration sVisible={setModalBoxReg} />
       </ModalBox>
+      <ModalBox visible={modalBoxAcc} setVisible={setModalBoxAcc}>
+        <NavLink to="/account">Аккаунт</NavLink>
+        <div
+          onClick={() => {
+            dispatch(logout())
+            setModalBoxAcc(false)
+          }}
+        >
+          Выйти
+        </div>
+      </ModalBox>
       <div className="container">
         <div className="navbar__logo">
           <NavLink to="/stocks">
-            <img src={Logo} alt="logo_img" className="logo_img" />
+            <img src={Logo} alt="logo_img" className="logo_img" width={100} />
           </NavLink>
         </div>
         <div className="navbar__search">
@@ -46,11 +61,25 @@ const Navbar = (props) => {
           </div>
         )}
         {isAuth && (
-          <div className="navbar__login button button__normal">
-            <NavLink to="/account">Личный</NavLink>
+          <div className="navbar__wallet">
+            <NavLink to="/wallet">
+              <img src={Wallet} alt="Кошелек" width={45} />
+            </NavLink>
           </div>
         )}
         {isAuth && (
+          <div className="navbar__portfolio">
+            <NavLink to="/balance">
+              <img src={Portfolio} alt="Портфель" width={45} />
+            </NavLink>
+          </div>
+        )}
+        {isAuth && (
+          <div className="navbar__account " onClick={() => setModalBoxAcc(true)}>
+            <img src={UserProfile} alt="Аккаунт" width={70} />
+          </div>
+        )}
+        {/* {isAuth && (
           <div className="navbar__login button button__normal">
             <NavLink to="/wallet">Личный</NavLink>
           </div>
@@ -59,7 +88,7 @@ const Navbar = (props) => {
           <div className="navbar__registration button button__normal" onClick={() => dispatch(logout())}>
             Личный
           </div>
-        )}
+        )} */}
       </div>
     </div>
   )

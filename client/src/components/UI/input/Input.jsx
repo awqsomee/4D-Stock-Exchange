@@ -5,7 +5,7 @@ import './input.css'
 const Input = (props) => {
   return (
     <input
-      className="auth"
+      className={props.className}
       onChange={(event) => props.setValue(event.target.value)}
       value={props.value}
       type={props.type}
