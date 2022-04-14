@@ -15,7 +15,6 @@ const StockList = (props) => {
   const [stocks, setStocks] = useState([])
   const [isStocksLoading, setIsStocksLoading] = useState(false)
   const { search, setSearch } = useContext(SearchContext)
-  console.log(search)
 
   // useEffect(() => {
   //   getStocks()
@@ -34,10 +33,7 @@ const StockList = (props) => {
     try {
       setIsStocksLoading(true)
       const response = await axios.get(GET_POSTS_LINK)
-      console.log(GET_POSTS_LINK)
-      console.log(response.data)
       const stocksInfo = response.data['bestMatches'].map((item, index) => {
-        console.log(response.data)
         return {
           number: index + 1,
           symbol: item['1. symbol'],
@@ -46,7 +42,6 @@ const StockList = (props) => {
         }
       })
       while (stocksInfo.length > 4) stocksInfo.pop()
-      console.log(stocksInfo)
       // const cockInfo = [
       //   { number: 0, symbol: 'AAPL', name: 'Apple Inc', currency: 'USD' },
       //   { number: 1, symbol: 'AAPL34.SAO', name: 'Apple Inc', currency: 'BRL' },
@@ -64,7 +59,6 @@ const StockList = (props) => {
           let price
           if (index < 4) price = await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3')
           else price = await getOurStockPrice(item.symbol)
-          console.log(price)
           return {
             ...item,
             price: price,
@@ -83,17 +77,15 @@ const StockList = (props) => {
       const response = await axios.get(
         `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apikey}`
       )
-      console.log(response.data)
       return response.data['Global Quote']['05. price']
     } catch (e) {
-      console.log(e)
+      console.log(e.message)
     }
   }
 
   async function getOurStockPrice(symbol) {
     try {
       const response = await axios.get(`https://gentle-sea-62964.herokuapp.com/api/stock?symbol=${symbol}`)
-      console.log(response.data)
       return response.data['Global Quote']['05. price']
     } catch (e) {
       console.log(e)

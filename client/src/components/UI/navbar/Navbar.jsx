@@ -75,7 +75,7 @@ const Navbar = (props) => {
           </div>
         )}
         {isAuth && (
-          <div className="navbar__account " onClick={() => setModalBoxAcc(true)}>
+          <div className="navbar__account" onClick={() => setModalBoxAcc(true)}>
             <img src={UserProfile} alt="Аккаунт" width={70} />
           </div>
         )}
