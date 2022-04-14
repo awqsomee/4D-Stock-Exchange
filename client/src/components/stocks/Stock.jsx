@@ -22,7 +22,7 @@ const Stock = (props) => {
   }
 
   let GP
-  if (props.stock.number === 2) GP = 1
+  if (props.stock.number % 3 === 0) GP = true
 
   return (
     <div>
