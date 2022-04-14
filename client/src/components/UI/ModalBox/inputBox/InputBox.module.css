@@ -1,0 +1,15 @@
+.inputBox {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+}
+.inputBoxContent {
+  border-radius: 16px;
+}
+.inputBox.active {
+  display: block;
+  position: relative;
+}

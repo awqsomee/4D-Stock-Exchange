@@ -2,7 +2,7 @@ import React from 'react'
 import '../UI/buttons/buttons.css'
 import "./balance.css"
 import "../UI/input/input.css"
-import ModalBox from '../UI/ModalBox/ModalBox'
+import InputBox from '../UI/ModalBox/inputBox/InputBox'
 import { useState } from 'react'
 import Input from "../UI/input/Input"
 
@@ -17,12 +17,11 @@ const Balance = (props) => {
 
   return (
       <div className="balance">
-         <ModalBox visible={modalBox} setVisible={setModalBox}>
-            <Input className="search balance__input">  </Input>
-        </ModalBox>
-        <div className="balance__summ">{props.balance}</div>
-        <input className="search balance__input"></input>
+        <div className="balance__summ" ></div>
        
+        <InputBox visible={modalBox} setVisible={setModalBox}>
+            <Input className="search balance__input">  </Input>
+        </InputBox>
         <button className="balance__button button button__normal" onClick={() => setModalBox(true)}>Пополнить</button>
       </div>
   )

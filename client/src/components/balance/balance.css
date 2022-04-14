@@ -33,7 +33,7 @@
   color: #a0e28d;
 }
 .balance__input {
-  width: 28%;
+  width: 100%;
   padding: 1% 2%;
   background-color: #e9eef2;
   color: #000000;
@@ -42,4 +42,5 @@
 .balance__button {
   width: 22%;
   margin-left: 5%;
+  right: 0;
 }
