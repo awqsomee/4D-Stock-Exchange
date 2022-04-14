@@ -36,23 +36,42 @@ function App() {
       <BrowserRouter>
         <div className="app">
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Navigate to="/stocks" />}></Route>
-            <Route />
-            <Route path="/stocks" element={<StockList title="Каталог акций" />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/wallet" element={<WalletList title1="Ваш баланс" title2="История изменений" />} />
-            <Route path="/portfolio" element={<Portfolio title="Ваши инвестиции" />} />
-            <Route
-              path="*"
-              element={
-                <main className="page404">
-                  <h1>404</h1>
-                  <p>There's nothing here!</p>
-                </main>
-              }
-            />
-          </Routes>
+          {!isAuth && (
+            <Routes>
+              <Route path="/" element={<Navigate to="/stocks" />}></Route>
+              <Route />
+              <Route path="/stocks" element={<StockList title="Каталог акций" />} />
+
+              <Route
+                path="*"
+                element={
+                  <main className="page404">
+                    <h1>404</h1>
+                    <p>There's nothing here!</p>
+                  </main>
+                }
+              />
+            </Routes>
+          )}
+          {isAuth && (
+            <Routes>
+              <Route path="/" element={<Navigate to="/stocks" />}></Route>
+              <Route />
+              <Route path="/stocks" element={<StockList title="Каталог акций" />} />
+              <Route path="/account" element={<Account />} />
+              <Route path="/wallet" element={<WalletList title1="Ваш баланс" title2="История изменений" />} />
+              <Route path="/portfolio" element={<Portfolio title="Ваши инвестиции" />} />
+              <Route
+                path="*"
+                element={
+                  <main className="page404">
+                    <h1>404</h1>
+                    <p>There's nothing here!</p>
+                  </main>
+                }
+              />
+            </Routes>
+          )}
           <Footer />
         </div>
       </BrowserRouter>

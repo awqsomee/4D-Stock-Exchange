@@ -17,9 +17,6 @@ const StockList = (props) => {
   const [stocks, setStocks] = useState([])
   const [isStocksLoading, setIsStocksLoading] = useState(false)
   const { search, setSearch } = useContext(SearchContext)
-  const [GET_POSTS_LINK, setGET_POSTS_LINK] = useState([
-    `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=demo`,
-  ])
   const dispatch = useDispatch()
   const quantity = 1
 
@@ -29,17 +26,15 @@ const StockList = (props) => {
 
   useEffect(() => {
     getStocks()
-    if (!search) setGET_POSTS_LINK(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=demo`)
-    else
-      setGET_POSTS_LINK(
-        `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${search}&apikey=ACBVRHUCTP4LTHVX`
-      )
   }, [search])
 
   async function getStocks() {
     try {
       setIsStocksLoading(true)
-      const response = await axios.get(GET_POSTS_LINK)
+      const response = await axios.get(
+        // `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${search}&apikey=ACBVRHUCTP4LTHVX`
+        `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=demo`
+      )
       const stocksInfo = response.data['bestMatches'].map((item, index) => {
         return {
           number: index + 1,
@@ -48,27 +43,13 @@ const StockList = (props) => {
           currency: item['8. currency'],
         }
       })
-      while (stocksInfo.length > 4) stocksInfo.pop()
-      // const cockInfo = [
-      //   { number: 0, symbol: 'AAPL',           name: 'Apple Inc',             currency: 'USD' },
-      //   { number: 1, symbol: 'AAPL34.SAO',     name: 'Apple Inc',             currency: 'BRL' },
-      //   { number: 2, symbol: 'AAPLUSTRAD.BSE', name: 'AA Plus Tradelink Ltd', currency: 'INR' },
-      // ]
-
-      // stocksInfo.forEach((element) => console.log(element.symbol))
 
       const stocksInfoWithPrice = await Promise.all(
-        stocksInfo.map(async (item, index) => {
-          // let apikey
-          // if (index < 4) apikey = 'KQRHNIOUP58ZY3G3'
-          // else if (index > 6) apikey = 'AP6O2CY6RJETBYAM'
-          // else apikey = '6OBLQLSC72R7ZSW8'
-          let price
-          if (index < 4) price = Number(await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3'))
-
+        stocksInfo.map(async (item) => {
+          let data = await getStockPrice(item.symbol)
           return {
             ...item,
-            price: price,
+            data,
           }
         })
       )
@@ -82,9 +63,19 @@ const StockList = (props) => {
   async function getStockPrice(symbol, apikey) {
     try {
       const response = await axios.get(
-        `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apikey}`
+        // 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX'
+        'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
       )
-      return response.data['Global Quote']['05. price']
+      let date = Object.keys(response.data['Time Series (Daily)'])
+      date.reverse()
+      const value = date.map((item) => Number(response.data['Time Series (Daily)'][item]['4. close']))
+      const data = []
+      for (let num = 99; num >= 0; num--)
+        data.unshift({
+          date: date,
+          value: value[num],
+        })
+      return data
     } catch (e) {
       console.log(e.message)
     }

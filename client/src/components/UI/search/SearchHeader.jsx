@@ -1,5 +1,5 @@
 import React, { useContext, useTransition } from 'react'
-// import classes from "./search_header.module.css";
+//  import classes from './search_header.module.css'
 import '../input/input.css'
 import { useState } from 'react'
 import { SearchContext } from '../../../context'
@@ -21,15 +21,13 @@ const SearchHeader = (props) => {
   // })
 
   return (
-    <div>
-      <input
-        className="search"
-        onChange={(event) => setSearch(event.target.value)}
-        value={search}
-        type={props.type}
-        placeholder={props.placeholder}
-      />
-    </div>
+    <input
+      className="search"
+      onChange={(event) => setSearch(event.target.value)}
+      value={search}
+      type={props.type}
+      placeholder={props.placeholder}
+    />
   )
 }
 

@@ -22,7 +22,6 @@
 .button__normal {
   background-color: #2be9d9;
   color: #000000;
-  max-height: 43px;
 }
 .button__hover {
   background-color: #d0fcff;
@@ -51,4 +50,16 @@
 .button__push {
   background-color: #394249;
   color: #2be9d9;
+}
+.button__none {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  text-decoration: none !important;
+  border: none !important;
+}
+.button__none:active {
+  background-color: rgba(43, 233, 217, 0.2);
+  border-radius: 50%;
+  text-decoration: none !important;
+  border: none !important;
 }
