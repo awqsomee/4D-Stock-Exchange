@@ -26,8 +26,20 @@
   margin-left: 11.9%;
   flex-direction: column;
 }
+
+.stock__number{
+  margin-right: 30px;
+  color: #394249;
+  font-size: 20px;
+  font-family: 'Exo 2', 'Arial';
+}
+
 .stock__plank {
+  display: flex;
   flex-direction: row;
+  width: 1050px;
+  position:relative;
+  right: 30px;
 }
 .stock__index {
   width: 6%;

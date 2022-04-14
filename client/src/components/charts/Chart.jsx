@@ -64,7 +64,7 @@ const Chart = (props) => {
 
             <XAxis
               dataKey="date"
-              stroke="#47959A"
+              stroke="#2be9d9"
               tickLine={false}
               // tickFormatter={(label) => {
               //   const date = parseISO(label)
@@ -75,7 +75,7 @@ const Chart = (props) => {
 
             <YAxis
               dataKey="value"
-              stroke="#47959A"
+              stroke="#2be9d9"
               tickLine={false}
               tickCount={6}
               tickFormatter={(number) => `${number.toFixed(2)}`}
@@ -83,7 +83,7 @@ const Chart = (props) => {
 
             <Tooltip content={<CustomTooltip />} />
 
-            <CartesianGrid opacity={0.3} vertical={false} stroke="#47959A" />
+            <CartesianGrid opacity={0.3} vertical={false} stroke="#2be9d9" />
           </AreaChart>
         </ResponsiveContainer>
       </div>

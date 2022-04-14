@@ -15,8 +15,8 @@ const Stock = (props) => {
   return (
     <div className="stock">
       <div className="stock__plank">
-        <div className="number">{props.stock.number}</div>
-        <div className="stock__plank">
+        <div className="stock__number">{props.stock.number}</div>
+
           <div className="stock__index">{props.stock.symbol}</div>
           <div className="stock__name">{props.stock.name}</div>
           <div className="stock__cost">
@@ -36,7 +36,7 @@ const Stock = (props) => {
           <div className="stock__arrow">
             <img src={Arrow} alt="arrow_img" className="arrow_img" />
           </div>
-        </div>
+
       </div>
       <Graph_panel />
     </div>
