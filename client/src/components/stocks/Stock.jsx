@@ -21,8 +21,11 @@ const Stock = (props) => {
     props.actionStock(symbol, quantity)
   }
 
-  const [GP, setGP] = useState(false)
-
+  let GP
+  if (props.stock.number % 3 === 0) GP = true
+  // const symbol = response.data['1. symbol']
+  // const name = response.data['2. name']
+  // const price = response.data[price]
   const [counter, setCounter] = useState(1)
 
   function less() {
@@ -30,7 +33,8 @@ const Stock = (props) => {
   }
 
   function more() {
-    if (counter < props.stock.quantity) setCounter(counter + 1)
+    if (counter < props.stock.quantity) setCounter(counter - 1)
+    setCounter(counter + 1)
   }
 
   return (
@@ -50,8 +54,7 @@ const Stock = (props) => {
             </button>
           </div>
           <div className="count">
-            {counter}
-            {props.stock.quantity}
+            {counter}/{props.stock.quantity}
           </div>
           <div className="stock__counter__more">
             <button onClick={more} className="button__none">
@@ -68,12 +71,9 @@ const Stock = (props) => {
         >
           {props.buttonText}
         </button>
-        <button onClick={()=>{
-        if(GP) setGP(false)
-        else setGP(true)
-        }} className="stock__arrow">
+        <div className="stock__arrow">
           <img src={Arrow} alt="arrow_img" className="arrow_img" />
-        </button>
+        </div>
       </div>
       {GP && <Graph_panel stock={props.stock} />}
     </div>
