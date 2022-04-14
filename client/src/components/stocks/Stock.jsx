@@ -18,12 +18,11 @@ const Stock = (props) => {
     props.actionStock(symbol, quantity)
   }
 
-  let GP
-  if (props.stock.number % 3 === 0) GP = true
   // const symbol = response.data['1. symbol']
   // const name = response.data['2. name']
   // const price = response.data[price]
   const [counter, setCounter] = useState(1)
+  const [GP, setGP] = useState(false)
 
   function less() {
     if (counter > 1) setCounter(counter - 1)
