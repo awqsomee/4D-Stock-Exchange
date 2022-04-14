@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../actions/user.js'
 import { useEffect } from 'react'
 import Account from './account/Account.jsx'
+import Balance from './balance/Balance.jsx'
 
 function App() {
   const isAuth = useSelector((state) => state.user.isAuth)
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/stocks" element={<StockList title="Каталог акций" srch="" />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/wallet" element={<Balance />} />
         </Routes>
         <Footer />
       </div>

@@ -46,7 +46,17 @@ const Navbar = () => {
           </div>
         )}
         {isAuth && (
-          <div className="navbar__registration" onClick={() => dispatch(logout())}>
+          <div className="navbar__login button button__normal">
+            <NavLink to="/account">Личный</NavLink>
+          </div>
+        )}
+        {isAuth && (
+          <div className="navbar__login button button__normal">
+            <NavLink to="/wallet">Личный</NavLink>
+          </div>
+        )}
+        {isAuth && (
+          <div className="navbar__registration button button__normal" onClick={() => dispatch(logout())}>
             Личный
           </div>
         )}
