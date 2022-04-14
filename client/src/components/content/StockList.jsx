@@ -17,8 +17,7 @@ const StockList = (props) => {
   }, [])
 
   let GET_POSTS_LINK
-  if (!props.srch)
-    GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=ACBVRHUCTP4LTHVX`
+  if (!props.srch) GET_POSTS_LINK = 'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=demo'
   else
     GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${props.keywords}&apikey=ACBVRHUCTP4LTHVX`
 
@@ -35,9 +34,10 @@ const StockList = (props) => {
       })
       while (stocksInfo.length > 4) stocksInfo.pop()
       console.log(stocksInfo)
+
       // const cockInfo = [
-      //   { number: 0, symbol: 'AAPL', name: 'Apple Inc', currency: 'USD' },
-      //   { number: 1, symbol: 'AAPL34.SAO', name: 'Apple Inc', currency: 'BRL' },
+      //   { number: 0, symbol: 'AAPL',           name: 'Apple Inc',             currency: 'USD' },
+      //   { number: 1, symbol: 'AAPL34.SAO',     name: 'Apple Inc',             currency: 'BRL' },
       //   { number: 2, symbol: 'AAPLUSTRAD.BSE', name: 'AA Plus Tradelink Ltd', currency: 'INR' },
       // ]
 

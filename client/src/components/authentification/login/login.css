@@ -19,6 +19,7 @@
   font-size: 20px;
   font-family: 'Exo 2', 'Arial';
   color: #ffffff;
+  z-index: 15;
 }
 .login__header {
   font-size: 40px;

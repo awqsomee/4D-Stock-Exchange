@@ -20,6 +20,7 @@
   font-size: 20px;
   font-family: 'Exo 2', 'Arial';
   color: #ffffff;
+  z-index: 1;
 }
 .registration__header {
   font-size: 40px;
