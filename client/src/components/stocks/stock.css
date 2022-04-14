@@ -48,6 +48,7 @@
 }
 .stock__counter__more {
   align-items: flex-end;
+  display: block;
 }
 .stock__button {
   width: 14.8%;
