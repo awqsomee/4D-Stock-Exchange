@@ -8,69 +8,66 @@ import Panel from '../panel/Panel.jsx'
 import './stocklist.css'
 import Stock from '../stocks/Stock.jsx'
 import axios from 'axios'
-import History from "../history/History"
+import History from '../history/History'
 import Balance from '../balance/Balance.jsx'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
-  const [isStocksLoading, setIsStocksLoading] = useState(false);
+  const [isStocksLoading, setIsStocksLoading] = useState(false)
 
   useEffect(() => {
     getStocks()
   }, [])
 
   let GET_POSTS_LINK
-  if (!props.srch)
-    GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=ACBVRHUCTP4LTHVX`
+  if (!props.srch) GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=demo`
   else
     GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${props.keywords}&apikey=ACBVRHUCTP4LTHVX`
 
   async function getStocks() {
-    setIsStocksLoading(true);
+    setIsStocksLoading(true)
 
-      try {
-        const response = await axios.get(GET_POSTS_LINK)
-        const stocksInfo = response.data['bestMatches'].map((item, index) => {
+    try {
+      const response = await axios.get(GET_POSTS_LINK)
+      const stocksInfo = response.data['bestMatches'].map((item, index) => {
+        return {
+          number: index + 1,
+          symbol: item['1. symbol'],
+          name: item['2. name'],
+          currency: item['8. currency'],
+        }
+      })
+      while (stocksInfo.length > 4) stocksInfo.pop()
+      console.log(stocksInfo)
+      // const cockInfo = [
+      //   { number: 0, symbol: 'AAPL', name: 'Apple Inc', currency: 'USD' },
+      //   { number: 1, symbol: 'AAPL34.SAO', name: 'Apple Inc', currency: 'BRL' },
+      //   { number: 2, symbol: 'AAPLUSTRAD.BSE', name: 'AA Plus Tradelink Ltd', currency: 'INR' },
+      // ]
+
+      // stocksInfo.forEach((element) => console.log(element.symbol))
+
+      const stocksInfoWithPrice = await Promise.all(
+        stocksInfo.map(async (item, index) => {
+          // let apikey
+          // if (index < 4) apikey = 'KQRHNIOUP58ZY3G3'
+          // else if (index > 6) apikey = 'AP6O2CY6RJETBYAM'
+          // else apikey = '6OBLQLSC72R7ZSW8'
+          let price
+          if (index < 4) price = await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3')
+          else price = await getOurStockPrice(item.symbol)
+          console.log(price)
           return {
-            number: index + 1,
-            symbol: item['1. symbol'],
-            name: item['2. name'],
-            currency: item['8. currency'],
+            ...item,
+            price: price,
           }
         })
-        while (stocksInfo.length > 4) stocksInfo.pop()
-        console.log(stocksInfo)
-        // const cockInfo = [
-        //   { number: 0, symbol: 'AAPL', name: 'Apple Inc', currency: 'USD' },
-        //   { number: 1, symbol: 'AAPL34.SAO', name: 'Apple Inc', currency: 'BRL' },
-        //   { number: 2, symbol: 'AAPLUSTRAD.BSE', name: 'AA Plus Tradelink Ltd', currency: 'INR' },
-        // ]
-  
-        // stocksInfo.forEach((element) => console.log(element.symbol))
-  
-        const stocksInfoWithPrice = await Promise.all(
-          stocksInfo.map(async (item, index) => {
-            // let apikey
-            // if (index < 4) apikey = 'KQRHNIOUP58ZY3G3'
-            // else if (index > 6) apikey = 'AP6O2CY6RJETBYAM'
-            // else apikey = '6OBLQLSC72R7ZSW8'
-            let price
-            if (index < 4) price = await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3')
-            else price = await getOurStockPrice(item.symbol)
-            console.log(price)
-            return {
-              ...item,
-              price: price,
-            }
-          })
-        )
-        setStocks(stocksInfoWithPrice)
-      } catch (e) {
-        console.log(e)
-      }
-      setIsStocksLoading(false);
-
-    
+      )
+      setStocks(stocksInfoWithPrice)
+    } catch (e) {
+      console.log(e)
+    }
+    setIsStocksLoading(false)
   }
 
   async function getStockPrice(symbol, apikey) {
@@ -101,12 +98,15 @@ const StockList = (props) => {
       <div className="container2">
         <div className="list">
           <Sorting />
-          <Panel className="panel"/>
-          {isStocksLoading
-            ? <div style={{display: 'flex', justifyContent: 'center', marginTop: 40}}>Акции загружаются...</div>
-            : <></>
-          }
-          {stocks.map((stock) => (<Stock stock={stock} key={stock.symbol} />))}
+          <Panel className="panel" />
+          {isStocksLoading ? (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+          ) : (
+            <></>
+          )}
+          {stocks.map((stock) => (
+            <Stock stock={stock} key={stock.symbol} />
+          ))}
         </div>
       </div>
     </div>
