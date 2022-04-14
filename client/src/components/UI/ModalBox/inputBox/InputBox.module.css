@@ -1,15 +1,49 @@
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v18/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
+}
 .inputBox {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  display: none;
-}
-.inputBoxContent {
-  border-radius: 16px;
-}
-.inputBox.active {
-  display: block;
   position: relative;
+  width: 50%;
+  max-width: 50%;
+  margin-left: 5%;
+  right: 0;
+}
+.inputBox:active > .inputBoxFull {
+  display: flex;
+  position: relative;
+  border-radius: 16px;
+  width: 50%;
+  padding: 1% 2%;
+  background-color: #e9eef2;
+  color: #000000;
+  border-radius: 5px;
+}
+.inputBoxFull > .inputBoxText {
+  display: block;
+  width: 100%;
+}
+.inputBoxText {
+  display: none;
+  border-radius: 16px;
+  width: 0;
+  padding: 1% 2%;
+  border-radius: 5px;
+  transition: 0.4s;
+  border: 1px;
+  background-color: #e9eef2;
+  font-size: 16px;
+  color: #000000;
+  padding: 2% 5% 2% 10%;
+  outline: none;
 }
