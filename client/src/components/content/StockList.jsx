@@ -99,8 +99,6 @@ const StockList = (props) => {
           {stocks.map((stock) => (
             <Stock stock={stock} key={stock.symbol} />
           ))}
-          <Balance/>
-          <History/>
         </div>
       </div>
     </div>
