@@ -69,7 +69,7 @@ const Navbar = (props) => {
         )}
         {isAuth && (
           <div className="navbar__portfolio">
-            <NavLink to="/balance">
+            <NavLink to="/portfolio">
               <img src={Portfolio} alt="Портфель" width={45} />
             </NavLink>
           </div>
