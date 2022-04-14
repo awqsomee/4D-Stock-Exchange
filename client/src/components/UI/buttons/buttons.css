@@ -27,7 +27,7 @@
   background-color: #d0fcff;
   color: #000000;
 }
-.button__down {
+.button__normal:active {
   background-color: #47959a;
   color: #ffffff;
 }
