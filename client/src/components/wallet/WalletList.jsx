@@ -15,7 +15,7 @@ import Balance from '../balance/Balance'
 // ]
 
 const WalletList = (props) => {
-  const [wallet, setHistory] = useState([])
+  const [wallet, setWallet] = useState([])
 
   useEffect(() => {
     getHistory()
@@ -27,25 +27,25 @@ const WalletList = (props) => {
   ////// else
   //   GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${props.keywords}&apikey=ACBVRHUCTP4LTHVX`
 
-  async function getHistory() {
+  function getHistory() {
     try {
-      const response = await axios.get(GET_POSTS_LINK)
-      const historyInfo = response.data['bestMatches'].map((item) => {
-        return {
-          type: item['type'],
-          name: item['name'],
-          count: item['count'],
-          summ: item['summ'],
-          date: item['date'],
-          symbol: item['symbol'],
-        }
-      })
+      // const response = await axios.get(GET_POSTS_LINK)
+      // const historyInfo = response.data['bestMatches'].map((item) => {
+      //   return {
+      //     type: item['type'],
+      //     name: item['name'],
+      //     count: item['count'],
+      //     summ: item['summ'],
+      //     date: item['date'],
+      //     symbol: item['symbol'],
+      //   }
+      // })
       // while (historyInfo.length > 4) historyInfo.pop()
       // console.log(historyInfo)
       const cockInfo = [
         { type: 'Sale', name: 'Apple Inc', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPL' },
-        { type: 'Sale', name: 'AA Plus Tradelink Ltd', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPL' },
-        { type: 'Buy', name: 'Apple Inc', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPL' },
+        { type: 'Sale', name: 'AA Plus Tradelink Ltd', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPLE' },
+        { type: 'Buy', name: 'Apple Inc', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPLDD' },
       ]
 
       // stocksInfo.forEach((element) => console.log(element.symbol))
@@ -66,7 +66,9 @@ const WalletList = (props) => {
       //     }
       ////////   })
       // )
-      setHistory(cockInfo)
+      setWallet(cockInfo)
+      console.log(cockInfo)
+      console.log(wallet)
     } catch (e) {
       console.log(e)
     }

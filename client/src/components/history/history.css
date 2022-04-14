@@ -27,6 +27,11 @@
 .history__type {
   align-items: flex-start;
 }
-.history_date {
+.history__summ {
+  display: inline-block;
+}
+.history__date {
+  display: inline-block;
   justify-items: right;
+  justify-content: end;
 }

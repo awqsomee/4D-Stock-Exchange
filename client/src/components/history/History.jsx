@@ -10,13 +10,15 @@ const History = (props) => {
   // const date = response.data[date]
 
   return (
-      <div className="history">
-        <div className="history__type">{props.stock.type}</div>
-        <div className="history__name">{props.stock.name}</div>
-        <div className="history__price">{props.stock.price}</div>
-        <div className="history__summ">{props.stock.summ}</div>
-        <div className="history__date">{props.stock.date}</div>
+    <div className="history">
+      <div className="history__type">{props.history.type}</div>
+      <div className="history__name">{props.history.name}</div>
+      <div className="history__price">{props.history.price}</div>
+      <div style={{ width: '30%', justifyContent: 'space-between' }}>
+        <div className="history__summ">{props.history.summ}</div>
+        <div className="history__date">{props.history.date}</div>
       </div>
+    </div>
   )
 }
 
