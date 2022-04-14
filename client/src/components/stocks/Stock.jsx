@@ -21,11 +21,8 @@ const Stock = (props) => {
     props.actionStock(symbol, quantity)
   }
 
-  let GP
-  if (props.stock.number % 3 === 0) GP = true
-  // const symbol = response.data['1. symbol']
-  // const name = response.data['2. name']
-  // const price = response.data[price]
+  const [GP, setGP] = useState(false)
+
   const [counter, setCounter] = useState(1)
 
   function less() {
@@ -70,7 +67,10 @@ const Stock = (props) => {
         >
           {props.buttonText}
         </button>
-        <button className="stock__arrow">
+        <button onClick={()=>{
+        if(GP) setGP(false)
+        else setGP(true)
+        }} className="stock__arrow">
           <img src={Arrow} alt="arrow_img" className="arrow_img" />
         </button>
       </div>
