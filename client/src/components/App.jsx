@@ -13,6 +13,8 @@ import Account from './account/Account.jsx'
 import WalletList from './wallet/WalletList'
 import { SearchContext } from '../context/index.js'
 import Portfolio from './portfolio/Portfolio.jsx'
+import Chart from './charts/Chart.jsx'
+import Graph_panel from './grahp-panel/Graph_panel.jsx'
 
 function App() {
   const isAuth = useSelector((state) => state.user.isAuth)

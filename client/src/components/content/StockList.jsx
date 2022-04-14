@@ -11,6 +11,7 @@ import axios from 'axios'
 import { useContext } from 'react'
 import { SearchContext } from '../../context/index.js'
 import { useDispatch } from 'react-redux'
+import Graph_panel from '../grahp-panel/Graph_panel.jsx'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
@@ -49,8 +50,8 @@ const StockList = (props) => {
       })
       while (stocksInfo.length > 4) stocksInfo.pop()
       // const cockInfo = [
-      //   { number: 0, symbol: 'AAPL', name: 'Apple Inc', currency: 'USD' },
-      //   { number: 1, symbol: 'AAPL34.SAO', name: 'Apple Inc', currency: 'BRL' },
+      //   { number: 0, symbol: 'AAPL',           name: 'Apple Inc',             currency: 'USD' },
+      //   { number: 1, symbol: 'AAPL34.SAO',     name: 'Apple Inc',             currency: 'BRL' },
       //   { number: 2, symbol: 'AAPLUSTRAD.BSE', name: 'AA Plus Tradelink Ltd', currency: 'INR' },
       // ]
 

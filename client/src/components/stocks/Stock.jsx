@@ -7,6 +7,8 @@ import '../UI/buttons/buttons.css'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import compareTime from '../../utils/compareTime'
+import Chart from '../charts/Chart'
+import Graph_panel from '../grahp-panel/Graph_panel'
 
 const Stock = (props) => {
   // const isOpen = compareTime(stock)
@@ -48,6 +50,7 @@ const Stock = (props) => {
           <img src={Arrow} alt="arrow_img" className="arrow_img" />
         </div>
       </div>
+      <Graph_panel />
     </div>
   )
 }

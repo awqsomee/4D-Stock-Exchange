@@ -22,6 +22,7 @@
 .button__normal {
   background-color: #2be9d9;
   color: #000000;
+  max-height: 43px;
 }
 .button__hover {
   background-color: #d0fcff;
