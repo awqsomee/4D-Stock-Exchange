@@ -47,3 +47,7 @@
   border-radius: 5px;
   padding: 4px 10px;
 }
+.button__push {
+  background-color: #394249;
+  color: #2be9d9;
+}

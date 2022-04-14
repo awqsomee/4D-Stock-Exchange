@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ButtonSwith = (props) => {
+const ButtonSwith = ({children,props}) => {
   return (
-    <button className={props.color}>продать</button>
+    <button className={props.className} onClick={props.onClick}>{children}</button>
   )
 }
 

@@ -13,6 +13,7 @@ const Balance = (props) => {
   // const price = response.data[price]
   const [modalBox, setModalBox] = useState(false)
   const [butt, setButt] = useState(" button button__normal balance__button")
+  const [inputText, setInputText] = useState("Пополнить")
 
   // const [modalBoxInput, setModalBoxReg] = useState(false)
 
@@ -21,9 +22,10 @@ const Balance = (props) => {
         <div className="balance__summ" >{props.balance}</div>
        
         <InputBox visible={modalBox} setVisible={setModalBox}>
-            <Input className="search balance__input">  </Input>
+            <Input value={inputText} setValue={setInputText} className="search balance__input">  </Input>
         </InputBox>
-        <ButtonSwith className={butt} onClick={() => setButt("button  button__normal:active balance__button ")}>Пополнить</ButtonSwith>
+        <ButtonSwith className={butt} onClick={() => {setButt("button  button__push balance__button ")
+         setModalBox(true)}}>{inputText}</ButtonSwith>
         
       </div>
   )
