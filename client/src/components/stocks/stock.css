@@ -73,6 +73,29 @@
   width: 5.1%;
   padding-left: 2%;
   margin-top: 1%;
+  background: none;
+  appearance: none;
+  writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: none;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: none;
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: none;
+    border-style: none;
+    border-color: none;
+    border-image: none;
 }
 .stock .count {
   color: #000000;
