@@ -38,11 +38,11 @@ function App() {
           <Navbar />
           {!isAuth && (
             <Routes>
-              <Route path="/" element={<Navigate to="/stocks" />}></Route>
+              <Route path="*" element={<Navigate to="/stocks" />}></Route>
               <Route />
               <Route path="/stocks" element={<StockList title="Каталог акций" />} />
 
-              <Route
+              {/* <Route
                 path="*"
                 element={
                   <main className="page404">
@@ -50,7 +50,7 @@ function App() {
                     <p>There's nothing here!</p>
                   </main>
                 }
-              />
+              /> */}
             </Routes>
           )}
           {isAuth && (

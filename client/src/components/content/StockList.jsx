@@ -84,7 +84,6 @@ const StockList = (props) => {
   const buyStock = (symbol, quantity) => {
     return async (dispatch) => {
       try {
-        console.log('adad')
         const response = await axios.post(
           'http://localhost:5000/api/auth/stock',
           { symbol, quantity },
