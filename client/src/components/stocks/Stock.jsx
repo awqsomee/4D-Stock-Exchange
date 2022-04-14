@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Less from '../../assets/Icons/DashCircle.svg'
 import More from '../../assets/Icons/PlusCircle.svg'
 import Arrow from '../../assets/Icons/angle_down.svg'
@@ -23,6 +23,18 @@ const Stock = (props) => {
 
   let GP
   if (props.stock.number % 3 === 0) GP = true
+  // const symbol = response.data['1. symbol']
+  // const name = response.data['2. name']
+  // const price = response.data[price]
+  const [counter, setCounter] = useState([1])
+
+  function less() {
+    setCounter(counter - 1)
+  }
+
+  function more() {
+    setCounter(counter + 1)
+  }
 
   return (
     <div>
@@ -36,13 +48,17 @@ const Stock = (props) => {
         <div className="stock__change">+23%</div>
         <div className="stock__counter">
           <div className="stock__counter__less">
-            <img src={Less} alt="less_img" className="less_img"></img>{' '}
+            <button onClick={less}>
+              <img src={Less} alt="less_img" className="less_img"></img>{' '}
+            </button>
           </div>
           <div className="count">
             {props.quantity}/{props.stock.quantity}
           </div>
           <div className="stock__counter__more">
-            <img src={More} alt="more_img" className="more_img"></img>{' '}
+            <button onClick={more}>
+              <img src={More} alt="more_img" className="more_img"></img>{' '}
+            </button>
           </div>
         </div>
         <button
