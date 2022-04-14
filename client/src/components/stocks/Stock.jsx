@@ -46,9 +46,9 @@ const Stock = (props) => {
         >
           {props.buttonText}
         </button>
-        <div className="stock__arrow">
+        <button className="stock__arrow">
           <img src={Arrow} alt="arrow_img" className="arrow_img" />
-        </div>
+        </button>
       </div>
       <Graph_panel />
     </div>
