@@ -8,24 +8,34 @@ import Panel from '../panel/Panel.jsx'
 import './stocklist.css'
 import Stock from '../stocks/Stock.jsx'
 import axios from 'axios'
+import { useContext } from 'react'
+import { SearchContext } from '../../context/index.js'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
+  const { search, setSearch } = useContext(SearchContext)
+  console.log(search)
+
+  // useEffect(() => {
+  //   getStocks()
+  // }, [])
 
   useEffect(() => {
     getStocks()
-  }, [])
+  }, [search])
 
   let GET_POSTS_LINK
-  if (!props.srch)
-    GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=ACBVRHUCTP4LTHVX`
+  if (search === '') GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=demo`
   else
-    GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${props.keywords}&apikey=ACBVRHUCTP4LTHVX`
+    GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${search}&apikey=ACBVRHUCTP4LTHVX`
 
   async function getStocks() {
     try {
       const response = await axios.get(GET_POSTS_LINK)
+      console.log(GET_POSTS_LINK)
+      console.log(response.data)
       const stocksInfo = response.data['bestMatches'].map((item, index) => {
+        console.log(response.data)
         return {
           number: index + 1,
           symbol: item['1. symbol'],

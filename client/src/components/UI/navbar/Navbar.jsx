@@ -10,10 +10,10 @@ import SearchHeader from '../search/SearchHeader.jsx'
 import '../buttons/buttons.css'
 import { logout } from '../../../reducers/userReducer'
 
-const Navbar = () => {
+const Navbar = (props) => {
   const isAuth = useSelector((state) => state.user.isAuth)
   const dispatch = useDispatch()
-  const [search, setSearch] = useState('')
+  // const [search, setSearch] = useState('')
   const [modalBoxReg, setModalBoxReg] = useState(false)
   const [modalBoxLog, setModalBoxLog] = useState(false)
   return (
@@ -32,7 +32,7 @@ const Navbar = () => {
         </div>
         <div className="navbar__search">
           <div>
-            <SearchHeader value={search} setValue={setSearch} type="text" placeholder="Поиск..." />
+            <SearchHeader value={props.search} type="text" placeholder="Поиск..." />
           </div>
         </div>
         {!isAuth && (
