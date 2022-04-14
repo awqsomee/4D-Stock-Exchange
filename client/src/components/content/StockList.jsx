@@ -10,6 +10,7 @@ import Stock from '../stocks/Stock.jsx'
 import axios from 'axios'
 import { useContext } from 'react'
 import { SearchContext } from '../../context/index.js'
+import { useDispatch } from 'react-redux'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
@@ -18,6 +19,7 @@ const StockList = (props) => {
   const [GET_POSTS_LINK, setGET_POSTS_LINK] = useState([
     `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=demo`,
   ])
+  const quantity = 10
 
   // useEffect(() => {
   //   getStocks()
@@ -94,6 +96,22 @@ const StockList = (props) => {
       console.log(e)
     }
   }
+  const buyStock = (symbol, quantity) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.post(
+          'http://localhost:5000/api/auth/stock',
+          { symbol, quantity },
+          {
+            headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
+          }
+        )
+        console.log(response.data)
+      } catch (e) {
+        alert(e.response.data.message)
+      }
+    }
+  }
 
   return (
     <div className="stockList">
@@ -108,7 +126,7 @@ const StockList = (props) => {
             <></>
           )}
           {stocks.map((stock) => (
-            <Stock stock={stock} key={stock.symbol} />
+            <Stock stock={stock} function={buyStock} key={stock.symbol} />
           ))}
         </div>
       </div>

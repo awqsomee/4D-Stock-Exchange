@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Less from '../../assets/Icons/DashCircle.svg'
 import More from '../../assets/Icons/PlusCircle.svg'
 import Arrow from '../../assets/Icons/angle_down.svg'
@@ -9,43 +9,11 @@ import axios from 'axios'
 import compareTime from '../../utils/compareTime'
 
 const Stock = (props) => {
-  const stock = {
-    '1. symbol': 'IBM',
-    '2. name': 'International Business Machines Corp',
-    '3. type': 'Equity',
-    '4. region': 'United States',
-    '5. marketOpen': '09:30',
-    '6. marketClose': '16:00',
-    '7. timezone': 'UTC-04',
-    '8. currency': 'USD',
-    '9. matchScore': '1.0000',
-    quantity: 15,
-  }
-
   // const isOpen = compareTime(stock)
 
-  const isAuth = useSelector((state) => state.user.isAuth)
+  // const isAuth = useSelector((state) => state.user.isAuth)     ??
+  const { isAuth, setIsAuth } = useContext
   const dispatch = useDispatch()
-
-  const symbol = 'BA'
-  const quantity = 10
-
-  const buyStock = (symbol, quantity) => {
-    return async (dispatch) => {
-      try {
-        const response = await axios.post(
-          'http://localhost:5000/api/auth/stock',
-          { symbol, quantity },
-          {
-            headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
-          }
-        )
-        console.log(response.data)
-      } catch (e) {
-        alert(e.response.data.message)
-      }
-    }
-  }
 
   return (
     <div>
@@ -69,7 +37,7 @@ const Stock = (props) => {
         <button
           className="button button__normal"
           onClick={() => {
-            if (isAuth) dispatch(buyStock(symbol, quantity))
+            if (isAuth) dispatch(props.function(props.stock.symbol, props.quantity))
             // else setModalLog(true)
           }}
         >
