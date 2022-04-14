@@ -26,14 +26,14 @@ const Stock = (props) => {
   // const symbol = response.data['1. symbol']
   // const name = response.data['2. name']
   // const price = response.data[price]
-  const [counter, setCounter] = useState([1])
+  const [counter, setCounter] = useState(1)
 
   function less() {
-    setCounter(counter - 1)
+    if (counter > 1) setCounter(counter - 1)
   }
 
   function more() {
-    setCounter(counter + 1)
+    if (counter < props.stock.quantity) setCounter(counter + 1)
   }
 
   return (
@@ -48,15 +48,15 @@ const Stock = (props) => {
         <div className="stock__change">+23%</div>
         <div className="stock__counter">
           <div className="stock__counter__less">
-            <button onClick={less}>
+            <button onClick={less} className="button__none">
               <img src={Less} alt="less_img" className="less_img"></img>{' '}
             </button>
           </div>
           <div className="count">
-            {props.quantity}/{props.stock.quantity}
+            {counter}/{props.stock.quantity}
           </div>
           <div className="stock__counter__more">
-            <button onClick={more}>
+            <button onClick={more} className="button__none">
               <img src={More} alt="more_img" className="more_img"></img>{' '}
             </button>
           </div>
