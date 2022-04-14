@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Less from '../../assets/Icons/DashCircle.svg'
 import More from '../../assets/Icons/PlusCircle.svg'
-import Arrow from '../../assets/Icons/angle_down.svg'
+import ArrowDown from '../../assets/Icons/angle_down.svg'
+import ArrowUp from '../../assets/Icons/angle_up.svg'
 import './stock.css'
 import '../UI/buttons/buttons.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -71,7 +72,9 @@ const Stock = (props) => {
         if(GP) setGP(false)
         else setGP(true)
         }} className="stock__arrow">
-          <img src={Arrow} alt="arrow_img" className="arrow_img" />
+          {GP && (<img src={ArrowDown} alt="arrowDown_img" className="arrowDown_img" />)}
+          {!GP && (<img src={ArrowUp} alt="arrowUp_img" className="arrowUp_img" />)}
+          
         </button>
       </div>
       {GP && <Graph_panel stock={props.stock} />}
