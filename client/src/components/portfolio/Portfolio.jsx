@@ -18,25 +18,22 @@ const Portfolio = (props) => {
 
   useEffect(() => {
     getStocks()
-  }, [search])
-
-  let GET_POSTS_LINK = `https://gentle-sea-62964.herokuapp.com/api/auth/stock`
+  }, [])
 
   async function getStocks() {
     try {
       setIsStocksLoading(true)
-      const response = await axios.get(GET_POSTS_LINK, {
+      const response = await axios.get(`https://gentle-sea-62964.herokuapp.com/api/auth/stock`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
       })
       const stocksInfo = response.data
       const stocksInfoWithPrice = await Promise.all(
         stocksInfo.map(async (item, index) => {
-          let price
-          if (index < 5) price = Number(await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3'))
+          let data = await getStockPrice(item.symbol)
           return {
             number: index + 1,
             ...item,
-            price: price,
+            data,
           }
         })
       )
@@ -51,9 +48,19 @@ const Portfolio = (props) => {
   async function getStockPrice(symbol, apikey) {
     try {
       const response = await axios.get(
-        `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apikey}`
+        // 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX'
+        'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
       )
-      return response.data['Global Quote']['05. price']
+      let date = Object.keys(response.data['Time Series (Daily)'])
+      date.reverse()
+      const value = date.map((item) => Number(response.data['Time Series (Daily)'][item]['4. close']))
+      const data = []
+      for (let num = 99; num >= 0; num--)
+        data.unshift({
+          date: date,
+          value: value[num],
+        })
+      return data
     } catch (e) {
       console.log(e.message)
     }
@@ -93,7 +100,7 @@ const Portfolio = (props) => {
             <Stock
               stock={stock}
               function={sellStock}
-              dispatched={dispatch}
+              dispatch={dispatch}
               quantity={quantity}
               key={stock.symbol}
               buttonText="Продать"

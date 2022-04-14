@@ -16,6 +16,14 @@ const Stock = (props) => {
   // const isAuth = useSelector((state) => state.user.isAuth)     ??
   const { isAuth, setIsAuth } = useContext
 
+  const actionStock = (symbol, quantity) => {
+    console.log('hi')
+    props.actionStock(symbol, quantity)
+  }
+
+  let GP
+  if (props.stock.number === 2) GP = 1
+
   return (
     <div>
       <div className="number">{props.stock.number}</div>
@@ -23,7 +31,7 @@ const Stock = (props) => {
         <div className="stock__index">{props.stock.symbol}</div>
         <div className="stock__name">{props.stock.name}</div>
         <div className="stock__cost">
-          {props.stock.price.toFixed(2)} {props.stock.currency}
+          {props.stock.data[99].value.toFixed(2)} {props.stock.currency}
         </div>
         <div className="stock__change">+23%</div>
         <div className="stock__counter">
@@ -40,7 +48,7 @@ const Stock = (props) => {
         <button
           className="button button__normal"
           onClick={() => {
-            if (isAuth) props.dispatched(props.function(props.stock.symbol, props.quantity))
+            if (isAuth) props.dispatched(actionStock(props.stock.symbol, props.quantity))
             // else setModalLog(true)
           }}
         >
@@ -50,7 +58,7 @@ const Stock = (props) => {
           <img src={Arrow} alt="arrow_img" className="arrow_img" />
         </div>
       </div>
-      <Graph_panel />
+      {GP && <Graph_panel stock={props.stock} />}
     </div>
   )
 }
