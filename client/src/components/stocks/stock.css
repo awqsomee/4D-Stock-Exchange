@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   margin-left: 11.9%;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .stock__number{
