@@ -13,7 +13,6 @@
   src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 .inputBox {
-  position: relative;
   width: 50%;
   max-width: 50%;
   margin-left: 5%;

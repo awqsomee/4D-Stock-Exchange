@@ -51,7 +51,8 @@ const Stock = (props) => {
             </button>
           </div>
           <div className="count">
-            {counter}/{props.stock.quantity}
+            {counter}
+            {props.stock.quantity}
           </div>
           <div className="stock__counter__more">
             <button onClick={more} className="button__none">

@@ -23,7 +23,7 @@
   background-color: #2be9d9;
   color: #000000;
 }
-.button__hover {
+.button:hover {
   background-color: #d0fcff;
   color: #000000;
 }
@@ -53,6 +53,12 @@
 }
 .button__none {
   background-color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  text-decoration: none !important;
+  border: none !important;
+}
+.button__none:hover {
+  background-color: rgba(43, 233, 217, 0.2);
   border-radius: 50%;
   text-decoration: none !important;
   border: none !important;
