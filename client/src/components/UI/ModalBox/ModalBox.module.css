@@ -15,8 +15,20 @@
   min-width: 600px;
 }
 
+.modalBoxContentAcc {
+  padding: 20px 30px 0 30px;
+  background: #394249;
+  border-radius: 16px;
+  min-width: 100px;
+  position: absolute;
+  top: 11%;
+  right: 400px;
+}
+
 .modalBox.active {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+
