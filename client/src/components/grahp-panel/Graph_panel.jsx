@@ -2,7 +2,7 @@ import React from 'react'
 import Chart from '../charts/Chart'
 import './graph_panel.css'
 
-const Graph_panel = () => {
+const Graph_panel = (props) => {
   return (
     <div>
       <div className="selectors">
@@ -12,7 +12,7 @@ const Graph_panel = () => {
         <button className="slectors__year button button__sortNormal">год</button>
         <button className="slectors__all button button__sortNormal">все время</button>
       </div>
-      <Chart />
+      <Chart stock={props.stock} />
       <div className="graph"></div>
       <div className="MMPanel"> </div>
     </div>
