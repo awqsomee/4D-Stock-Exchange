@@ -11,6 +11,7 @@ import { auth } from '../actions/user.js'
 import { useEffect } from 'react'
 import Account from './account/Account.jsx'
 import Chart from './charts/Chart.jsx'
+import Graph_panel from './grahp-panel/Graph_panel.jsx'
 
 function App() {
   const isAuth = useSelector((state) => state.user.isAuth)
@@ -24,11 +25,10 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Navbar />
-        {/* <Routes>
+        <Routes>
           <Route path="/stocks" element={<StockList title="Каталог акций" srch="" />} />
           <Route path="/account" element={<Account />} />
-        </Routes> */}
-        <Chart></Chart>
+        </Routes>
         <Footer />
       </div>
     </BrowserRouter>

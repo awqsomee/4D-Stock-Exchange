@@ -8,6 +8,7 @@ import Panel from '../panel/Panel.jsx'
 import './stocklist.css'
 import Stock from '../stocks/Stock.jsx'
 import axios from 'axios'
+import Graph_panel from '../grahp-panel/Graph_panel.jsx'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])

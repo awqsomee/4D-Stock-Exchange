@@ -24,6 +24,10 @@
   align-items: center;
   justify-content: center;
   margin-left: 11.9%;
+  flex-direction: column;
+}
+.stock__plank {
+  flex-direction: row;
 }
 .stock__index {
   width: 6%;

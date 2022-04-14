@@ -18,12 +18,9 @@
   width: 70%;
   height: 55vh;
   background-color: #394249;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   display: flex;
-}
-.chart {
-  margin-right: 52px;
 }
 .tooltip {
   border-radius: 0.25rem;
