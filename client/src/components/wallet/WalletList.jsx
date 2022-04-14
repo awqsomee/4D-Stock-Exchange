@@ -5,15 +5,14 @@ import React, { useEffect, useState } from 'react'
 // import Input from '../../../utils/input/Input';
 // import Sorting from '../sorting/Sorting.jsx'
 import axios from 'axios'
-import History from "../history/History"
+import History from '../history/History'
 import Balance from '../balance/Balance'
 
 // const cockInfo = [
-      //   { number: 0, symbol: 'AAPL', name: 'Apple Inc', currency: 'USD' },
-      //   { number: 1, symbol: 'AAPL34.SAO', name: 'Apple Inc', currency: 'BRL' },
-      //   { number: 2, symbol: 'AAPLUSTRAD.BSE', name: 'AA Plus Tradelink Ltd', currency: 'INR' },
-      // ]
-
+//   { number: 0, symbol: 'AAPL', name: 'Apple Inc', currency: 'USD' },
+//   { number: 1, symbol: 'AAPL34.SAO', name: 'Apple Inc', currency: 'BRL' },
+//   { number: 2, symbol: 'AAPLUSTRAD.BSE', name: 'AA Plus Tradelink Ltd', currency: 'INR' },
+// ]
 
 const WalletList = (props) => {
   const [wallet, setHistory] = useState([])
@@ -24,7 +23,7 @@ const WalletList = (props) => {
 
   let GET_POSTS_LINK
   // ////if (!props.srch)
-    GET_POSTS_LINK = `https://gentle-sea-62964.herokuapp.com/api/`
+  GET_POSTS_LINK = `https://gentle-sea-62964.herokuapp.com/api/`
   ////// else
   //   GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${props.keywords}&apikey=ACBVRHUCTP4LTHVX`
 
@@ -44,14 +43,14 @@ const WalletList = (props) => {
       // while (historyInfo.length > 4) historyInfo.pop()
       // console.log(historyInfo)
       const cockInfo = [
-        { type: 'Sale',  name: 'Apple Inc',              count: 2, summ: '2 510',  date: 'dd.mm.yyyy', symbol: 'AAPL' },
-        { type: 'Sale',  name: 'AA Plus Tradelink Ltd',  count: 2, summ: '2 510',  date: 'dd.mm.yyyy', symbol: 'AAPL' },
-        { type: 'Buy',   name: 'Apple Inc',              count: 2, summ: '2 510',  date: 'dd.mm.yyyy', symbol: 'AAPL' },
+        { type: 'Sale', name: 'Apple Inc', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPL' },
+        { type: 'Sale', name: 'AA Plus Tradelink Ltd', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPL' },
+        { type: 'Buy', name: 'Apple Inc', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPL' },
       ]
 
       // stocksInfo.forEach((element) => console.log(element.symbol))
 
-     ////// // const stocksInfoWithPrice = await Promise.all(
+      ////// // const stocksInfoWithPrice = await Promise.all(
       //   stocksInfo.map(async (item, index) => {
       //     // let apikey
       //     // if (index < 4) apikey = 'KQRHNIOUP58ZY3G3'
@@ -98,11 +97,11 @@ const WalletList = (props) => {
   return (
     <div className="stockList">
       <div className="title">{props.title1}</div>
-      <Balance/>
+      <Balance />
       <div className="title">{props.title2}</div>
       <div className="container2">
         <div className="list">
-          {History.map((history) => (
+          {wallet.map((history) => (
             <History history={history} key={history.symbol} />
           ))}
         </div>
