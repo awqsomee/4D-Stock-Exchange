@@ -4,8 +4,6 @@ import "./balance.css"
 import "../UI/input/input.css"
 import InputBox from '../UI/ModalBox/inputBox/InputBox'
 import { useState } from 'react'
-import Input from '../UI/input/Input'
-import ButtonSwith from "../UI/buttons/ButtonSwitch"
 
 const Balance = (props) => {
   // const symbol = response.data['1. symbol']
@@ -13,6 +11,7 @@ const Balance = (props) => {
   // const price = response.data[price]
   // const currency = "$"
   const [modalBox, setModalBox] = useState(false)
+  // const [balance, setBalance] = useState()
   // const [butt, setButt] = useState(" button button__normal balance__button")
   // const [inputText, setInputText] = useState("Пополнить")
   // const [buttonText, setButtonText] = useState(inputText)
@@ -24,16 +23,12 @@ const Balance = (props) => {
   //     setButtonText(`${inputText}  ${currency}`)
   // }, [inputText])
   // const [modalBoxInput, setModalBoxReg] = useState(false)
-
+const currency = "USD"
   return (
       <div className="balance">
         <div className="balance__summ" >{props.balance}</div>
-       
-        <InputBox visible={modalBox} setVisible={setModalBox}>
-            
+        <InputBox visible={modalBox} setVisible={setModalBox} currency={currency}>
         </InputBox>
-         
-        
       </div>
   )
 }
