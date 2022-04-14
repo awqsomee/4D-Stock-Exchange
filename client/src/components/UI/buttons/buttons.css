@@ -27,7 +27,7 @@
   background-color: #d0fcff;
   color: #000000;
 }
-.button__down {
+.button__normal:active {
   background-color: #47959a;
   color: #ffffff;
 }
@@ -46,4 +46,8 @@
   color: #ffffff;
   border-radius: 5px;
   padding: 4px 10px;
+}
+.button__push {
+  background-color: #394249;
+  color: #2be9d9;
 }

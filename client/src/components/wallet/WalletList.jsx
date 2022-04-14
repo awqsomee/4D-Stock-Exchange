@@ -15,7 +15,7 @@ import Balance from '../balance/Balance'
 // ]
 
 const WalletList = (props) => {
-  const [wallet, setWallet] = useState([])
+  const [wallet, setHistory] = useState([])
 
   useEffect(() => {
     getHistory()
@@ -27,7 +27,7 @@ const WalletList = (props) => {
   ////// else
   //   GET_POSTS_LINK = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${props.keywords}&apikey=ACBVRHUCTP4LTHVX`
 
-  function getHistory() {
+  async function getHistory() {
     try {
       // const response = await axios.get(GET_POSTS_LINK)
       // const historyInfo = response.data['bestMatches'].map((item) => {
@@ -44,8 +44,8 @@ const WalletList = (props) => {
       // console.log(historyInfo)
       const cockInfo = [
         { type: 'Sale', name: 'Apple Inc', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPL' },
-        { type: 'Sale', name: 'AA Plus Tradelink Ltd', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPLE' },
-        { type: 'Buy', name: 'Apple Inc', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPLDD' },
+        { type: 'Sale', name: 'AA Plus Tradelink Ltd', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPLS' },
+        { type: 'Buy', name: 'Apple Inc', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPLg' },
       ]
 
       // stocksInfo.forEach((element) => console.log(element.symbol))
@@ -66,9 +66,7 @@ const WalletList = (props) => {
       //     }
       ////////   })
       // )
-      setWallet(cockInfo)
-      console.log(cockInfo)
-      console.log(wallet)
+      setHistory(cockInfo)
     } catch (e) {
       console.log(e)
     }
@@ -100,7 +98,7 @@ const WalletList = (props) => {
     <div className="stockList">
       <div className="title">{props.title1}</div>
       <div className="list">
-        <Balance />
+        <Balance balance={1000}/>
       </div>
       <div className="title">{props.title2}</div>
       <div className="container2">
@@ -108,7 +106,7 @@ const WalletList = (props) => {
           {wallet.map((history) => (
             <History history={history} key={history.symbol} />
           ))}
-        </div>
+          </div>
       </div>
     </div>
   )
