@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Navigate, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import './navbar.css'
 import Logo from '../../../assets/Icons/logo.svg'
@@ -42,7 +42,7 @@ const Navbar = (props) => {
       <div className="container">
         <div className="navbar__logo">
           <NavLink to="/stocks">
-            <img src={Logo} alt="logo_img" className="logo_img" width={100} />
+            <img src={Logo} alt="logo_img" width={150} />
           </NavLink>
         </div>
         <div className="navbar__search">
