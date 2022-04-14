@@ -6,11 +6,15 @@ import Stock from '../stocks/Stock.jsx'
 import axios from 'axios'
 import { useContext } from 'react'
 import { SearchContext } from '../../context/index.js'
+import { useDispatch } from 'react-redux'
 
 const Portfolio = (props) => {
   const [stocks, setStocks] = useState([])
   const [isStocksLoading, setIsStocksLoading] = useState(false)
   const { search, setSearch } = useContext(SearchContext)
+  const dispatch = useDispatch()
+
+  let quantity = 1
 
   useEffect(() => {
     getStocks()
@@ -24,49 +28,20 @@ const Portfolio = (props) => {
       const response = await axios.get(GET_POSTS_LINK, {
         headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
       })
-      const stockInfo = response.data
+      const stocksInfo = response.data
+      const stocksInfoWithPrice = await Promise.all(
+        stocksInfo.map(async (item, index) => {
+          let price
+          if (index < 5) price = Number(await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3'))
+          return {
+            number: index + 1,
+            ...item,
+            price: price,
+          }
+        })
+      )
 
-      // const cockInfo = [
-      //   {
-      //     _id: '6258563fb6fa89c69a6bfd99',
-      //     symbol: 'IBM',
-      //     name: 'International Business Machines Corp',
-      //     marketOpen: '09:30',
-      //     marketClose: '16:00',
-      //     timezone: 'UTC-04',
-      //     currency: 'USD',
-      //     quantity: 10,
-      //   },
-      //   {
-      //     _id: '62585700bea8e38609cebb47',
-      //     symbol: 'BA',
-      //     name: 'Boeing Company',
-      //     marketOpen: '09:30',
-      //     marketClose: '16:00',
-      //     timezone: 'UTC-04',
-      //     currency: 'USD',
-      //     quantity: 30,
-      //   },
-      // ]
-      // while (stocksInfo.length > 4) stocksInfo.pop()
-      // const cockInfo = [
-      //   { number: 0, symbol: 'AAPL', name: 'Apple Inc', currency: 'USD' },
-      //   { number: 1, symbol: 'AAPL34.SAO', name: 'Apple Inc', currency: 'BRL' },
-      //   { number: 2, symbol: 'AAPLUSTRAD.BSE', name: 'AA Plus Tradelink Ltd', currency: 'INR' },
-      // ]
-
-      // const stocksInfoWithPrice = await Promise.all(
-      //   stocksInfo.map(async (item, index) => {
-      //     let price
-      //     if (index < 4) price = await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3')
-      //     else price = await getOurStockPrice(item.symbol)
-      //     return {
-      //       ...item,
-      //       price: price,
-      //     }
-      //   })
-      // )
-      setStocks(stockInfo)
+      setStocks(stocksInfoWithPrice)
       setIsStocksLoading(false)
     } catch (e) {
       console.log(e)
@@ -84,12 +59,21 @@ const Portfolio = (props) => {
     }
   }
 
-  async function getOurStockPrice(symbol) {
-    try {
-      const response = await axios.get(`https://gentle-sea-62964.herokuapp.com/api/stock?symbol=${symbol}`)
-      return response.data['Global Quote']['05. price']
-    } catch (e) {
-      console.log(e)
+  const sellStock = (symbol, quantity) => {
+    return async (dispatch) => {
+      try {
+        console.log('adad')
+        const response = await axios.delete(
+          'http://localhost:5000/api/auth/stock',
+          { symbol, quantity },
+          {
+            headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
+          }
+        )
+        alert(response.data)
+      } catch (e) {
+        alert(e.response.data.message)
+      }
     }
   }
 
@@ -106,7 +90,14 @@ const Portfolio = (props) => {
             <></>
           )}
           {stocks.map((stock) => (
-            <Stock stock={stock} key={stock.symbol} />
+            <Stock
+              stock={stock}
+              function={sellStock}
+              dispatched={dispatch}
+              quantity={quantity}
+              key={stock.symbol}
+              buttonText="Продать"
+            />
           ))}
         </div>
       </div>

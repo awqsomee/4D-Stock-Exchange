@@ -13,7 +13,6 @@ const Stock = (props) => {
 
   // const isAuth = useSelector((state) => state.user.isAuth)     ??
   const { isAuth, setIsAuth } = useContext
-  const dispatch = useDispatch()
 
   return (
     <div>
@@ -22,14 +21,16 @@ const Stock = (props) => {
         <div className="stock__index">{props.stock.symbol}</div>
         <div className="stock__name">{props.stock.name}</div>
         <div className="stock__cost">
-          {props.stock.price} {props.stock.currency}
+          {props.stock.price.toFixed(2)} {props.stock.currency}
         </div>
         <div className="stock__change">+23%</div>
         <div className="stock__counter">
           <div className="stock__counter__less">
             <img src={Less} alt="less_img" className="less_img"></img>{' '}
           </div>
-          <div className="count">1</div>
+          <div className="count">
+            {props.quantity}/{props.stock.quantity}
+          </div>
           <div className="stock__counter__more">
             <img src={More} alt="more_img" className="more_img"></img>{' '}
           </div>
@@ -37,11 +38,11 @@ const Stock = (props) => {
         <button
           className="button button__normal"
           onClick={() => {
-            if (isAuth) dispatch(props.function(props.stock.symbol, props.quantity))
+            if (isAuth) props.dispatched(props.function(props.stock.symbol, props.quantity))
             // else setModalLog(true)
           }}
         >
-          Купить
+          {props.buttonText}
         </button>
         <div className="stock__arrow">
           <img src={Arrow} alt="arrow_img" className="arrow_img" />

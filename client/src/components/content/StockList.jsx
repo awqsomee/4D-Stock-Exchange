@@ -19,7 +19,8 @@ const StockList = (props) => {
   const [GET_POSTS_LINK, setGET_POSTS_LINK] = useState([
     `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=demo`,
   ])
-  const quantity = 10
+  const dispatch = useDispatch()
+  const quantity = 1
 
   // useEffect(() => {
   //   getStocks()
@@ -62,8 +63,8 @@ const StockList = (props) => {
           // else if (index > 6) apikey = 'AP6O2CY6RJETBYAM'
           // else apikey = '6OBLQLSC72R7ZSW8'
           let price
-          if (index < 4) price = await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3')
-          else price = await getOurStockPrice(item.symbol)
+          if (index < 4) price = Number(await getStockPrice(item.symbol, 'KQRHNIOUP58ZY3G3'))
+
           return {
             ...item,
             price: price,
@@ -88,17 +89,10 @@ const StockList = (props) => {
     }
   }
 
-  async function getOurStockPrice(symbol) {
-    try {
-      const response = await axios.get(`https://gentle-sea-62964.herokuapp.com/api/stock?symbol=${symbol}`)
-      return response.data['Global Quote']['05. price']
-    } catch (e) {
-      console.log(e)
-    }
-  }
   const buyStock = (symbol, quantity) => {
     return async (dispatch) => {
       try {
+        console.log('adad')
         const response = await axios.post(
           'http://localhost:5000/api/auth/stock',
           { symbol, quantity },
@@ -106,7 +100,7 @@ const StockList = (props) => {
             headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
           }
         )
-        console.log(response.data)
+        alert(response.data)
       } catch (e) {
         alert(e.response.data.message)
       }
@@ -126,7 +120,14 @@ const StockList = (props) => {
             <></>
           )}
           {stocks.map((stock) => (
-            <Stock stock={stock} function={buyStock} key={stock.symbol} />
+            <Stock
+              stock={stock}
+              function={buyStock}
+              dispatch={dispatch}
+              quantity={quantity}
+              key={stock.symbol}
+              buttonText="Купить"
+            />
           ))}
         </div>
       </div>

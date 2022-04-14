@@ -37,10 +37,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/stocks" />}></Route>
             <Route />
-            <Route path="/stocks" element={<StockList title="Каталог акций" srch="" />} />
+            <Route path="/stocks" element={<StockList title="Каталог акций" />} />
             <Route path="/account" element={<Account />} />
             <Route path="/wallet" element={<WalletList title1="Ваш баланс" title2="История изменений" />} />
-            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/portfolio" element={<Portfolio title="Ваши инвестиции" />} />
             <Route
               path="*"
               element={
