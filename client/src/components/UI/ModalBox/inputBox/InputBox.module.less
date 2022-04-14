@@ -1,19 +1,50 @@
+@import '../../../../styles/colors/colors';
+@import '../../../../styles/fonts/fonts';
+
 .inputBox {
-  position: fixed;
-  top: 0;
-  bottom: 0;
+  position: relative;
+  width: 50%;
+  max-width: 50%;
+  margin-left: 5%;
   right: 0;
-  left: 0;
-  display: none;
 }
 
-.inputBoxContent {
-  // padding: 50px;
+.inputBox:active > .inputBoxFull {
+  display: flex;
+  position: relative;
+  border-radius: 16px;
+  width: 50%;
+  padding: 1% 2%;
+  background-color: @--light-grey-color;
+  color: @--button-text-color;
+  border-radius: 5px;
+}
+
+.inputBoxFull > .inputBoxText {
+  display: block;
+  width: 100%;
+}
+
+// .inputBoxBut {
+//   display: block;
+//   position: relative;
+// }
+.inputBoxText {
+  display: none;
   border-radius: 16px;
   // min-width: 100%;
-}
+  width: 0;
+  padding: 1% 2%;
+  background-color: @--light-grey-color;
+  color: @--button-text-color;
+  border-radius: 5px;
+  transition: 0.4s;
 
-.inputBox.active {
-  display: block;
-  position: relative;
+  border: 1px;
+  // width: 80%;
+  background-color: @--light-grey-color;
+  font-size: @--button-font-size;
+  color: @--button-text-color;
+  padding: 2% 5% 2% 10%;
+  outline: none;
 }
