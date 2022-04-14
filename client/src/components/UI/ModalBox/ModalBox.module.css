@@ -6,6 +6,7 @@
   left: 0;
   display: none;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .modalBoxContent {
@@ -13,6 +14,7 @@
   background: #394249;
   border-radius: 16px;
   min-width: 600px;
+  z-index: 1;
 }
 
 .modalBoxContentAcc {
@@ -23,12 +25,14 @@
   position: absolute;
   top: 11%;
   right: 400px;
+  z-index: 1;
 }
 
 .modalBox.active {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 

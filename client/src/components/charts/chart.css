@@ -13,13 +13,15 @@
   src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 .stockChart {
-  margin: 20px;
-  border-radius: 20px;
-  width: 100%;
+  border-radius: 5px;
+  margin-left: 11.9%;
+  width: 88.1%;
   height: 55vh;
   justify-content: center;
   align-items: center;
-  display: flex;
+  display:flex;
+  background-color: #6c7175;
+  z-index: -1;
 }
 .tooltip {
   border-radius: 0.25rem;
@@ -30,4 +32,5 @@
   font-family: 'Exo 2', 'Arial';
   font-size: 14px;
   color: #394249;
+  z-index: -1;
 }
