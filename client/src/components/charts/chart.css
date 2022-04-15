@@ -19,7 +19,7 @@
   height: 55vh;
   justify-content: center;
   align-items: center;
-  display:flex;
+  display: flex;
   background-color: #6c7175;
   z-index: -1;
 }
