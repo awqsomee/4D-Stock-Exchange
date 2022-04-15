@@ -61,8 +61,8 @@ async function getStocksSearch(symbol) {
 async function getStockChange(symbol, apikey) {
   try {
     const response = await axios.get(
-      // `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apikey}`
-      'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo'
+      `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apikey}`
+      // 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo'
     )
     return response.data['Global Quote']['10. change percent']
   } catch (e) {
@@ -73,8 +73,8 @@ async function getStockChange(symbol, apikey) {
 async function getStockPrice(symbol, apikey) {
   try {
     const response = await axios.get(
-      // 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX'
-      'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
+      'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX'
+      // 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
     )
     let date = Object.keys(response.data['Time Series (Daily)'])
     date.reverse()
