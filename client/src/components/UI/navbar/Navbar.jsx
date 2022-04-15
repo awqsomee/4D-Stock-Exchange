@@ -37,9 +37,9 @@ const Navbar = (props) => {
         <ModalBoxAcc visible={modalBoxAcc} setVisible={setModalBoxAcc}>
           <div className="acc_pop_up">
             <NavLink to="/wallet" className="acc_pop_up acc_pop_up__b" onClick={() => setModalBoxAcc(false)}>
-              <div className="acc_pop_up acc_pop_up__b">{`${store
-                .getState(setUser)
-                .user.currentUser.balanceUSD.toFixed(2)} $`}</div>
+              <div className="acc_pop_up acc_pop_up__b">{`${new Intl.NumberFormat('ru-RU').format(
+                store.getState(setUser).user.currentUser.balanceUSD
+              )} $`}</div>
             </NavLink>
           </div>
 

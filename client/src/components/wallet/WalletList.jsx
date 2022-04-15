@@ -29,8 +29,8 @@ const WalletList = (props) => {
     <div className="stockList">
       <div className="title">{props.title1}</div>
       <div className="list">
-        <Balance />
-        <Balance />
+        <Balance btnText="Пополнить" type={'Deposit'} />
+        <Balance btnText="Снять" type={'Withdraw'} />
       </div>
       <div className="list"></div>
       <div className="title">{props.title2}</div>
