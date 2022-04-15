@@ -12,6 +12,12 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
+
+.acc_in {
+  color: #e9eef2;
+  text-decoration: none !important;
+  border: none !important;
+}
 .navbar {
   display: flex;
   background-color: #394249;
@@ -74,11 +80,4 @@
   font-size: 20px;
   margin-bottom: 25px;
   cursor: pointer;
-  text-decoration: none !important;
-  border: none !important;
-}
-
-.acc_in {
- text-decoration: none !important;
-  border: none !important;
 }
