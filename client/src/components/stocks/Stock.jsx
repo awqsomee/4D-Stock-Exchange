@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Less from '../../assets/Icons/DashCircle.svg'
 import More from '../../assets/Icons/PlusCircle.svg'
 import ArrowDown from '../../assets/Icons/angle_down.svg'
@@ -18,10 +18,16 @@ const Stock = (props) => {
     props.actionStock(symbol, quantity)
   }
 
+  useEffect(() => {
+    if (!props.stock.quantity) setDashString('')
+    else setDashString(`/${props.stock.quantity}`)
+  }, [])
+
   // const symbol = response.data['1. symbol']
   // const name = response.data['2. name']
   // const price = response.data[price]
   const [counter, setCounter] = useState(1)
+  const [dashString, setDashString] = useState('')
   const [GP, setGP] = useState(false)
 
   function less() {
@@ -29,8 +35,7 @@ const Stock = (props) => {
   }
 
   function more() {
-    if (counter < props.stock.quantity) setCounter(counter - 1)
-    setCounter(counter + 1)
+    if (counter < props.stock.quantity) setCounter(counter + 1)
   }
 
   return (
@@ -50,7 +55,8 @@ const Stock = (props) => {
             </button>
           </div>
           <div className="count">
-            {counter}/{props.stock.quantity}
+            {counter}
+            {dashString}
           </div>
           <div className="stock__counter__more">
             <button onClick={more} className="button__none">
