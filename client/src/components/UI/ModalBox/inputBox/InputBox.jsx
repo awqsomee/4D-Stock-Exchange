@@ -44,9 +44,29 @@ const InputBox = ({ setVisible, ...props }) => {
 
   const withdraw = async (withdraw, currency) => {
     try {
-      const response = await axios.delete(`${serverAddress}/api/auth/balance?withdraw=${withdraw}&currency=USD`, {
+      const response = await axios.delete(`${serverAddress}/api/auth/balance?withdraw=${withdraw}&currency=RUB`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
       })
+      setmodalBoxDepositTrue(true)
+      return response.data
+    } catch (e) {
+      setmodalBoxDepositFalse(true)
+    }
+  }
+
+  const convert = async (fromCurrency, toCurrency, quantity) => {
+    try {
+      const response = await axios.delete(
+        `${serverAddress}/api/auth/balance/convert`,
+        {
+          fromCurrency,
+          toCurrency,
+          quantity,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
+        }
+      )
       setmodalBoxDepositTrue(true)
       return response.data
     } catch (e) {
@@ -88,8 +108,17 @@ const InputBox = ({ setVisible, ...props }) => {
 
             setInputText('')
             if (inputText && inputText !== 'Пополнить')
-              if (props.type === 'Deposit') deposit(Number(inputText), 'USD')
-              else if (props.type === 'Withdraw') withdraw(Number(inputText), 'USD')
+              switch (props.type) {
+                case 'Deposit':
+                  deposit(Number(inputText), 'RUB')
+                  break
+                case 'Withdraw':
+                  withdraw(Number(inputText), 'RUB')
+                  break
+                case 'Convert':
+                  convert(Number(inputText), 'RUB')
+                  break
+              }
           }
 
           //     if (password === repeatPassword) {
