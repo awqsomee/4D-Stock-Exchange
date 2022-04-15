@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 // import Logo from '../../assets/image/logo.svg';
 // import Input from '../../../utils/input/Input';
 // import Sorting from '../sorting/Sorting.jsx'
-import axios from 'axios'
 import History from '../history/History'
 import Balance from '../balance/Balance'
 
@@ -98,7 +97,7 @@ const WalletList = (props) => {
     <div className="stockList">
       <div className="title">{props.title1}</div>
       <div className="list">
-        <Balance balance={1000}/>
+        <Balance />
       </div>
       <div className="title">{props.title2}</div>
       <div className="container2">
@@ -106,7 +105,7 @@ const WalletList = (props) => {
           {wallet.map((history) => (
             <History history={history} key={history.symbol} />
           ))}
-          </div>
+        </div>
       </div>
     </div>
   )
