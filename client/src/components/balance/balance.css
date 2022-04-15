@@ -45,3 +45,10 @@
   max-width: 100%;
   float: right;
 }
+.balance .balance__navbar {
+  text-decoration: none !important;
+  border: none !important;
+  color: #e9eef2;
+  font-size: 20px;
+  margin-bottom: 25px;
+}

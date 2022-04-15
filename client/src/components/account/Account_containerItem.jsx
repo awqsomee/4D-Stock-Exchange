@@ -5,7 +5,6 @@ import { store } from '../../reducers/index'
 
 const Account_containerItem = (props) => {
   const user = store.getState(setUser).user.currentUser
-  console.log(user)
   const UserPhone = '8(999)123-45-67'
   const UserDate = '12.12.1990'
   return (
