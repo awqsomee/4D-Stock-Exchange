@@ -25,6 +25,7 @@ const Navbar = (props) => {
   const [modalBoxReg, setModalBoxReg] = useState(false)
   const [modalBoxLog, setModalBoxLog] = useState(false)
   const [modalBoxAcc, setModalBoxAcc] = useState(false)
+
   return (
     <div className="navbar">
       <ModalBox visible={modalBoxLog} setVisible={setModalBoxLog}>
@@ -67,17 +68,21 @@ const Navbar = (props) => {
           </NavLink>
         </div>
 
-
         <div className="navbar__search">
-          <div className='searchWrapper'>
-            <div className='search_img' > <img src={поиск} width={50} /> </div>
-             
-            <SearchHeader className="searchStroke" value={props.search} type="text" placeholder="Поиск...">
-             </SearchHeader> 
-            
+          <div className="searchWrapper">
+            <div className="search_img">
+              {' '}
+              <img src={поиск} width={50} />{' '}
+            </div>
+
+            <SearchHeader
+              className="searchStroke"
+              value={props.search}
+              type="text"
+              placeholder="Поиск..."
+            ></SearchHeader>
           </div>
         </div>
-
 
         {!isAuth && (
           <div className=" button button__normal " onClick={() => setModalBoxLog(true)}>

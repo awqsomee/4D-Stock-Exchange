@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import '../UI/buttons/buttons.css'
 import './balance.css'
 import '../UI/input/input.css'
@@ -9,21 +8,6 @@ import { setUser } from '../../reducers/userReducer'
 
 const Balance = (props) => {
   const [modalBox, setModalBox] = useState(false)
-
-  useEffect(() => {
-    // getBalance()
-  }, [store])
-
-  // const getBalance = async () => {
-  //   try {
-  //     const responce = await axios.get(`${serverAddress}/api/auth/balance`, {
-  //       headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
-  //     })
-  //     setBalance(responce.data['balanceUSD'])
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // }
 
   const currency = 'USD'
   return (

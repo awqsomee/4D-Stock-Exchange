@@ -1,11 +1,9 @@
 import { ResponsiveContainer, AreaChart, XAxis, YAxis, Area, Tooltip, CartesianGrid } from 'recharts'
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './chart.css'
 import { parseISO, format } from 'date-fns'
 
 const Chart = (props) => {
-  const [data, setData] = useState([])
   const [color, setColor] = useState('')
 
   useEffect(() => {
@@ -61,7 +59,6 @@ function CustomTooltip({ active, payload, label }, currency) {
   if (active)
     return (
       <div className="tooltip">
-        {' '}
         <h4>{format(parseISO(label), 'eeee, d MMM')}</h4>
         <p>{payload[0].value.toFixed(2)}</p>
       </div>

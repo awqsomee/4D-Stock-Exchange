@@ -1,7 +1,6 @@
 import React, { useContext, useTransition } from 'react'
 //  import classes from './search_header.module.css'
 import '../input/input.css'
-import { useState } from 'react'
 import { SearchContext } from '../../../context'
 
 // const Stocks = () => {
@@ -19,7 +18,6 @@ const SearchHeader = (props) => {
   // const filteredStocks = cockInfo.filter((stock) => {
   //   return stock.name.toLowerCase().includes(value.toLowerCase())
   // })
-
   return (
     <input
       className="search"

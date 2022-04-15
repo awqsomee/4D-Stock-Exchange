@@ -3,23 +3,26 @@ import Sorting from '../sorting/Sorting.jsx'
 import Panel from '../panel/Panel.jsx'
 import './stocklist.css'
 import Stock from '../stocks/Stock.jsx'
-import axios from 'axios'
 import { useContext } from 'react'
 import { SearchContext } from '../../context/index.js'
-import { useDispatch } from 'react-redux'
 import { buyStock } from '../../actions/user.js'
 import { getStocksSearch } from '../../actions/stocks.js'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
+  const [run, setRun] = useState()
   const [isStocksLoading, setIsStocksLoading] = useState(false)
   const { search, setSearch } = useContext(SearchContext)
-  const dispatch = useDispatch()
-  const quantity = 1
+  document.addEventListener('keydown', function (event) {
+    if (event.key == 'Enter') {
+      setRun(search.toString())
+      fetchData(run)
+    }
+  })
 
   useEffect(() => {
     fetchData()
-  }, [search])
+  }, [])
 
   const fetchData = async () => {
     setIsStocksLoading(true)
@@ -47,16 +50,8 @@ const StockList = (props) => {
           ) : (
             <></>
           )}
-          {stocks.map((stock) => (
-            <Stock
-              stock={stock}
-              function={buyStock}
-              dispatch={dispatch}
-              quantity={quantity}
-              key={stock.symbol}
-              buttonText="Купить"
-            />
-          ))}
+          {stocks &&
+            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)}
         </div>
       </div>
     </div>
