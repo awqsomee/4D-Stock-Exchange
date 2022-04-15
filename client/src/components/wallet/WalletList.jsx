@@ -30,7 +30,9 @@ const WalletList = (props) => {
       <div className="title">{props.title1}</div>
       <div className="list">
         <Balance />
+        <Balance />
       </div>
+      <div className="list"></div>
       <div className="title">{props.title2}</div>
       <div className="container2">
         <div className="list">

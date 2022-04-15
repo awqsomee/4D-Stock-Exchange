@@ -29,7 +29,6 @@ const StockList = (props) => {
       if (!ignore) setStocks(result)
     }
     await getStocks()
-    console.log(stocks)
     setIsStocksLoading(false)
     return () => {
       ignore = true

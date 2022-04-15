@@ -14,7 +14,6 @@ const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 const Stock = (props) => {
   const isAuth = useSelector((state) => state.user.isAuth)
   const dispatch = useDispatch()
-  console.log(isAuth)
 
   useEffect(() => {
     if (!props.stock.quantity) setslashString('')

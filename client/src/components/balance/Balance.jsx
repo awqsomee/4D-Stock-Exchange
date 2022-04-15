@@ -12,8 +12,6 @@ import { setUser } from '../../reducers/userReducer'
 const Balance = (props) => {
   const [modalBox, setModalBox] = useState(false)
 
-  const [balance, setBalance] = useState(0)
-
   useEffect(() => {
     // getBalance()
   }, [store])

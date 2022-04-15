@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { setUser } from '../reducers/userReducer'
+import { store } from '../reducers'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 
 export const registration = async (name, surname, email, password) => {
