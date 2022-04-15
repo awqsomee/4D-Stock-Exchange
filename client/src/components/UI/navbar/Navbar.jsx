@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import './navbar.css'
 import Logo from '../../../assets/Icons/logo.svg'
+import поиск from '../../../assets/Icons/поиск.svg'
 import ModalBox from '../ModalBox/ModalBox'
 import ModalBoxAcc from '../ModalBox/ModalBoxAcc'
 import Registration from '../../authentification/registration/Registration.jsx'
@@ -59,19 +60,25 @@ const Navbar = (props) => {
           </div>
         </ModalBoxAcc>
       )}
-
       <div className="container">
         <div className="navbar__logo">
           <NavLink to="/stocks">
             <img src={Logo} alt="logo_img" width={150} />
           </NavLink>
         </div>
+
+
         <div className="navbar__search">
-          <div>
-            <SearchHeader value={props.search} type="text" placeholder="Поиск..."> 
-            <div></div></SearchHeader> 
+          <div className='searchWrapper'>
+            <div className='search_img' > <img src={поиск} width={50} /> </div>
+             
+            <SearchHeader className="searchStroke" value={props.search} type="text" placeholder="Поиск...">
+             </SearchHeader> 
+            
           </div>
         </div>
+
+
         {!isAuth && (
           <div className=" button button__normal " onClick={() => setModalBoxLog(true)}>
             Войти
