@@ -16,7 +16,7 @@
   width: 100%;
   display: block;
   min-height: 75vh;
-  padding: 0;
+  padding: 0 55px 0 0;
   font-family: 'Exo 2', 'Arial';
 }
 .container2 {
@@ -24,7 +24,7 @@
 }
 .title {
   left: 19%;
-  margin-top: 5vh;
+  margin-top: 9vh;
   margin-left: 19%;
   color: #000000;
   font-size: 40px;
@@ -32,7 +32,7 @@
   width: auto;
 }
 .list {
-  margin: 0% 19.5% 2% 12%;
+  margin: 2% 19.5% 2% 12%;
   padding-left: 6%;
 }
 .panel {
@@ -41,7 +41,7 @@
 .number {
   float: left;
   margin-left: 10%;
-  margin-top: 0%;
+  margin-top: 0.7%;
   padding-top: 3%;
   font-size: 16px;
   font-family: 'Exo 2', 'Arial';

@@ -72,10 +72,13 @@ function App() {
               />
             </Routes>
           )}
-          <Footer />
+
         </div>
+        
       </BrowserRouter>
+      <Footer />
     </SearchContext.Provider>
+    
   )
 }
 

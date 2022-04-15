@@ -25,13 +25,12 @@
   font-size: 40px;
   font-family: 'Play';
   color: #2be9d9;
-  margin-bottom: 40px;
 }
-.login__input {
+.login__header {
+  font-size: 40px;
+  font-family: 'Play';
+  color: #2be9d9;
   margin-bottom: 40px;
-}
-.login__input_name {
-  margin-bottom: 8px;
 }
 .login__button {
   border: none;
@@ -44,4 +43,10 @@
   margin: 0px 0px 0px 0px;
   width: 25%;
   align-self: revert;
+}
+.login__input {
+  margin-bottom: 40px;
+}
+.login__input_name {
+  margin-bottom: 8px;
 }

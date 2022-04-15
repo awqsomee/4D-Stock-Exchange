@@ -29,12 +29,8 @@
   left: 10%;
   width: 53%;
 }
-.navbar__login {
-  display: inline-block;
-}
 .navbar__registration {
-  padding-left: 20%;
-  display: inline-block;
+  margin-left: 2%;
 }
 .navbar__account {
   width: 10%;
@@ -87,4 +83,23 @@
   color: #e9eef2;
   font-size: 20px;
   margin-bottom: 25px;
+}
+.search_wrapper {
+  position: absolute;
+  display: flex;
+  transform: translate(-50%, -50%);
+}
+.searchStroke {
+  float: right;
+  width: 80%;
+  z-index: -1;
+}
+.search_img {
+  float: left;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }

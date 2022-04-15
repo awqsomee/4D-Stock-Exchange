@@ -4,6 +4,7 @@ import './registration.css'
 import Input from '../../UI/input/Input'
 import { registration } from '../../../actions/user'
 import '../../UI/input/input.css'
+import ModalBoxDeposit from '../../UI/ModalBox/ModalBoxDeposit'
 
 
 const Registration = (props) => {
@@ -12,8 +13,15 @@ const Registration = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
+  const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   return (
     <div className="registration">
+      <ModalBoxDeposit  visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
+      <div className="reg_pop_up">
+          <div>Не удалось зарегистрироваться. Проверьте корректность данных</div>
+      </div>
+      </ModalBoxDeposit>
+
       <div className="registration__header">Регистрация</div>
       <div className="registration__input_name">Имя</div>
       <div className="registration__input">
@@ -37,12 +45,14 @@ const Registration = (props) => {
         placeholder="********"
       /> </div>
       <button
-        className="registration__button"
+        className="button button__normal registration__button"
         onClick={() => {
           if (password === repeatPassword) {
             registration(name, surname, email, password)
             props.sVisible(false)
           }
+          else
+          setmodalBoxDeposit(true)
         }}
       >
         Зарегистрироваться
