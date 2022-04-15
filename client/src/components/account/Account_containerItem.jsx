@@ -1,22 +1,23 @@
 import React from 'react'
+import { setUser } from '../../reducers/userReducer'
 import './account.css'
+import { store } from '../../reducers/index'
 
 const Account_containerItem = (props) => {
-  const UserName = 'Иван'
-  const UserSurname = 'Иванов'
-  const UserEmail = 'ivanov@email.com'
+  const user = store.getState(setUser).user.currentUser
+  console.log(user)
   const UserPhone = '8(999)123-45-67'
   const UserDate = '12.12.1990'
   return (
     <div className="account_container">
       <div className="account_inf">Имя</div>
-      <div className="account_userInf">{UserName}</div>
+      <div className="account_userInf">{user.name}</div>
 
       <div className="account_inf">Фамилия</div>
-      <div className="account_userInf">{UserSurname}</div>
+      <div className="account_userInf">{user.surname}</div>
 
       <div className="account_inf">Электронная почта</div>
-      <div className="account_userInf">{UserEmail}</div>
+      <div className="account_userInf">{user.email}</div>
 
       <div className="account_inf">Номер телефона</div>
       <div className="account_userInf">{UserPhone}</div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Less from '../../assets/Icons/DashCircle.svg'
 import More from '../../assets/Icons/PlusCircle.svg'
 import ArrowDown from '../../assets/Icons/angle_down.svg'
@@ -6,24 +6,15 @@ import ArrowUp from '../../assets/Icons/angle_up.svg'
 import './stock.css'
 import '../UI/buttons/buttons.css'
 import Graph_panel from '../grahp-panel/Graph_panel'
-import { buyStock } from '../../actions/user'
-import { sellStock } from '../../actions/user'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../../reducers/userReducer'
 import axios from 'axios'
+const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 
 const Stock = (props) => {
-  // const isOpen = compareTime(stock)
-
   const isAuth = useSelector((state) => state.user.isAuth)
   const dispatch = useDispatch()
-  // const { isAuth, setIsAuth } = useContext
   console.log(isAuth)
-
-  const actionStock = (symbol, quantity) => {
-    console.log('hi')
-    props.actionStock(symbol, quantity)
-  }
 
   useEffect(() => {
     if (!props.stock.quantity) setslashString('')
@@ -46,7 +37,7 @@ const Stock = (props) => {
     return async (dispatch) => {
       try {
         const response = await axios.post(
-          'http://localhost:5000/api/auth/stock',
+          `${serverAddress}/api/auth/stock`,
           { symbol, quantity },
           {
             headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
@@ -62,7 +53,7 @@ const Stock = (props) => {
   const sellStock = (id, quantity) => {
     return async (dispatch) => {
       try {
-        const response = await axios.delete(`http://localhost:5000/api/auth/stock/?id=${id}&quantity=${quantity}`, {
+        const response = await axios.delete(`${serverAddress}/api/auth/stock/?id=${id}&quantity=${quantity}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
         })
         dispatch(setUser(response.data.user))
@@ -82,7 +73,7 @@ const Stock = (props) => {
         <div className="stock__cost">
           {props.stock.data[99].value.toFixed(2)} {props.stock.currency}
         </div>
-        <div className="stock__change">+23%</div>
+        <div className="stock__change">{props.stock.changes}%</div>
         <div className="stock__counter">
           <div className="stock__counter__less">
             <button onClick={less} className="button__none">

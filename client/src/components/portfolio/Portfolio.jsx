@@ -3,68 +3,28 @@ import Sorting from '../sorting/Sorting.jsx'
 import Panel from '../panel/Panel.jsx'
 import '../content/stocklist.css'
 import Stock from '../stocks/Stock.jsx'
-import axios from 'axios'
-import { useContext } from 'react'
-import { SearchContext } from '../../context/index.js'
-import { useDispatch } from 'react-redux'
-import { sellStock } from '../../actions/user.js'
+import { getUserStocks } from '../../actions/stocks.js'
 
 const Portfolio = (props) => {
   const [stocks, setStocks] = useState([])
   const [isStocksLoading, setIsStocksLoading] = useState(false)
-  const { search, setSearch } = useContext(SearchContext)
-  const dispatch = useDispatch()
-
-  let quantity = 1
 
   useEffect(() => {
-    getStocks()
+    fetchData()
   }, [])
 
-  async function getStocks() {
-    try {
-      setIsStocksLoading(true)
-      const response = await axios.get(`https://gentle-sea-62964.herokuapp.com/api/auth/stock`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
-      })
-      const stocksInfo = response.data
-      const stocksInfoWithPrice = await Promise.all(
-        stocksInfo.map(async (item, index) => {
-          let data = await getStockPrice(item.symbol)
-          return {
-            number: index + 1,
-            ...item,
-            data,
-          }
-        })
-      )
-
-      setStocks(stocksInfoWithPrice)
-      console.log(stocksInfoWithPrice)
-      setIsStocksLoading(false)
-    } catch (e) {
-      console.log(e)
+  const fetchData = async () => {
+    setIsStocksLoading(true)
+    let ignore = false
+    async function getStocks() {
+      const result = await getUserStocks()
+      if (!ignore) setStocks(result)
     }
-  }
-
-  async function getStockPrice(symbol, apikey) {
-    try {
-      const response = await axios.get(
-        // 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX'
-        'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
-      )
-      let date = Object.keys(response.data['Time Series (Daily)'])
-      date.reverse()
-      const value = date.map((item) => Number(response.data['Time Series (Daily)'][item]['4. close']))
-      const data = []
-      for (let num = 99; num >= 0; num--)
-        data.unshift({
-          date: date,
-          value: value[num],
-        })
-      return data
-    } catch (e) {
-      console.log(e.message)
+    await getStocks()
+    console.log(stocks)
+    setIsStocksLoading(false)
+    return () => {
+      ignore = true
     }
   }
 
@@ -81,14 +41,7 @@ const Portfolio = (props) => {
             <></>
           )}
           {stocks.map((stock) => (
-            <Stock
-              stock={stock}
-              function={sellStock}
-              dispatch={dispatch}
-              quantity={quantity}
-              key={stock.symbol}
-              buttonText="Продать"
-            />
+            <Stock stock={stock} key={stock.symbol} changes={stock.changes} buttonText="Продать" />
           ))}
         </div>
       </div>

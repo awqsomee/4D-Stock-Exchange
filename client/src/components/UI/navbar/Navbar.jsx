@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import './navbar.css'
 import Logo from '../../../assets/Icons/logo.svg'
@@ -17,7 +17,6 @@ import Portfolio from '../../../assets/Icons/portfolio.svg'
 const Navbar = (props) => {
   const isAuth = useSelector((state) => state.user.isAuth)
   const dispatch = useDispatch()
-  // const [search, setSearch] = useState('')
   const [modalBoxReg, setModalBoxReg] = useState(false)
   const [modalBoxLog, setModalBoxLog] = useState(false)
   const [modalBoxAcc, setModalBoxAcc] = useState(false)
@@ -32,10 +31,9 @@ const Navbar = (props) => {
 
       <ModalBoxAcc visible={modalBoxAcc} setVisible={setModalBoxAcc}>
         <div className="acc_pop_up">
-          {' '}
           <NavLink to="/account" className="acc_in" onClick={() => setModalBoxAcc(false)}>
             <div>Аккаунт</div>
-          </NavLink>{' '}
+          </NavLink>
         </div>
         <div
           className="acc_pop_up"
@@ -88,16 +86,6 @@ const Navbar = (props) => {
             <img src={UserProfile} alt="Аккаунт" width={70} />
           </div>
         )}
-        {/* {isAuth && (
-          <div className="navbar__login button button__normal">
-            <NavLink to="/wallet">Личный</NavLink>
-          </div>
-        )}
-        {isAuth && (
-          <div className="navbar__registration button button__normal" onClick={() => dispatch(logout())}>
-            Личный
-          </div>
-        )} */}
       </div>
     </div>
   )

@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import { NavLink } from 'react-router-dom';
-// import { useState } from 'react';
-// import Logo from '../../assets/image/logo.svg';
-// import Input from '../../../utils/input/Input';
 import Sorting from '../sorting/Sorting.jsx'
 import Panel from '../panel/Panel.jsx'
 import './stocklist.css'
@@ -12,6 +8,7 @@ import { useContext } from 'react'
 import { SearchContext } from '../../context/index.js'
 import { useDispatch } from 'react-redux'
 import { buyStock } from '../../actions/user.js'
+import { getStocksSearch } from '../../actions/stocks.js'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
@@ -20,64 +17,22 @@ const StockList = (props) => {
   const dispatch = useDispatch()
   const quantity = 1
 
-  // useEffect(() => {
-  //   getStocks()
-  // }, [])
-
   useEffect(() => {
-    getStocks()
+    fetchData()
   }, [search])
 
-  async function getStocks() {
-    try {
-      setIsStocksLoading(true)
-      const response = await axios.get(
-        // `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${search}&apikey=ACBVRHUCTP4LTHVX`
-        `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=demo`
-      )
-      const stocksInfo = response.data['bestMatches'].map((item, index) => {
-        return {
-          number: index + 1,
-          symbol: item['1. symbol'],
-          name: item['2. name'],
-          currency: item['8. currency'],
-        }
-      })
-
-      const stocksInfoWithPrice = await Promise.all(
-        stocksInfo.map(async (item) => {
-          let data = await getStockPrice(item.symbol)
-          return {
-            ...item,
-            data,
-          }
-        })
-      )
-      setStocks(stocksInfoWithPrice)
-      setIsStocksLoading(false)
-    } catch (e) {
-      console.log(e)
+  const fetchData = async () => {
+    setIsStocksLoading(true)
+    let ignore = false
+    async function getStocks() {
+      const result = await getStocksSearch()
+      if (!ignore) setStocks(result)
     }
-  }
-
-  async function getStockPrice(symbol, apikey) {
-    try {
-      const response = await axios.get(
-        // 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX'
-        'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
-      )
-      let date = Object.keys(response.data['Time Series (Daily)'])
-      date.reverse()
-      const value = date.map((item) => Number(response.data['Time Series (Daily)'][item]['4. close']))
-      const data = []
-      for (let num = 99; num >= 0; num--)
-        data.unshift({
-          date: date,
-          value: value[num],
-        })
-      return data
-    } catch (e) {
-      console.log(e.message)
+    await getStocks()
+    console.log(stocks)
+    setIsStocksLoading(false)
+    return () => {
+      ignore = true
     }
   }
 
