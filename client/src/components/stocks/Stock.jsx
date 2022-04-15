@@ -32,7 +32,7 @@ const Stock = (props) => {
   }
 
   function more() {
-    if (counter < props.stock.quantity) setCounter(counter + 1)
+    if (counter < props.stock.quantity || !props.stock.quantity) setCounter(counter + 1)
   }
 
   return (
