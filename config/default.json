@@ -1,0 +1,10 @@
+{
+  "serverPort": 5000,
+  "dbUrl": "mongodb+srv://StockExchangeUser:HlAmMKHyXmKhaSHv@cluster0.3e3yw.mongodb.net/StockExchange?retryWrites=true&w=majority",
+  "key": "f9c91350b94e25db6f1566c767f94dbd",
+  "AV": "https://www.alphavantage.co",
+  "AV_SYMBOL_SEARCH": "/query?function=SYMBOL_SEARCH&keywords=",
+  "AV_TIME_SERIES_INTRADAY": "/query?function=TIME_SERIES_INTRADAY&interval=5min&symbol=",
+  "apiKey": "&apikey=4GDOB0DSWHWXGP9C",
+  "apiKey2": "&apikey=ACBVRHUCTP4LTHVX"
+}
