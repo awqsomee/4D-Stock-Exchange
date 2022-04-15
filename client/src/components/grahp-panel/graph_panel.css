@@ -22,25 +22,23 @@
   align-items: center;
   justify-content: space-between;
   margin-left: 11.9%;
-  background-color: #6c7175;
 }
 .selectors__day {
-  width: 6.5%;
-  background-color: #394249;
+  width: 13%;
 }
 .selectors__week {
-  width: 6.5%;
+  width: 13%;
   background-color: #e9eef2;
 }
 .selectors__month {
-  width: 6.5%;
+  width: 13%;
   background-color: #394249;
 }
 .selectors__year {
-  width: 6.5%;
+  width: 13%;
   background-color: #394249;
 }
 .selectors__all {
-  width: 6.5%;
+  width: 13%;
   background-color: #394249;
 }

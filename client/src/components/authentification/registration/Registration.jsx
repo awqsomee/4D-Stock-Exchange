@@ -5,6 +5,7 @@ import Input from '../../UI/input/Input'
 import { registration } from '../../../actions/user'
 import '../../UI/input/input.css'
 
+
 const Registration = (props) => {
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
