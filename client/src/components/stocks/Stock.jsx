@@ -6,12 +6,19 @@ import ArrowUp from '../../assets/Icons/angle_up.svg'
 import './stock.css'
 import '../UI/buttons/buttons.css'
 import Graph_panel from '../grahp-panel/Graph_panel'
+import { buyStock } from '../../actions/user'
+import { sellStock } from '../../actions/user'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser } from '../../reducers/userReducer'
+import axios from 'axios'
 
 const Stock = (props) => {
   // const isOpen = compareTime(stock)
 
-  // const isAuth = useSelector((state) => state.user.isAuth)     ??
-  const { isAuth, setIsAuth } = useContext
+  const isAuth = useSelector((state) => state.user.isAuth)
+  const dispatch = useDispatch()
+  // const { isAuth, setIsAuth } = useContext
+  console.log(isAuth)
 
   const actionStock = (symbol, quantity) => {
     console.log('hi')
@@ -19,12 +26,12 @@ const Stock = (props) => {
   }
 
   useEffect(() => {
-    if (!props.stock.quantity) setDashString('')
-    else setDashString(`/${props.stock.quantity}`)
+    if (!props.stock.quantity) setslashString('')
+    else setslashString(`/${props.stock.quantity}`)
   }, [])
 
   const [counter, setCounter] = useState(1)
-  const [dashString, setDashString] = useState('')
+  const [slashString, setslashString] = useState('')
   const [GP, setGP] = useState(false)
 
   function less() {
@@ -33,6 +40,37 @@ const Stock = (props) => {
 
   function more() {
     if (counter < props.stock.quantity || !props.stock.quantity) setCounter(counter + 1)
+  }
+
+  const buyStock = (symbol, quantity) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.post(
+          'http://localhost:5000/api/auth/stock',
+          { symbol, quantity },
+          {
+            headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
+          }
+        )
+        dispatch(setUser(response.data.user))
+        alert(response.data)
+      } catch (e) {
+        alert(e.response.data.message)
+      }
+    }
+  }
+  const sellStock = (id, quantity) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.delete(`http://localhost:5000/api/auth/stock/?id=${id}&quantity=${quantity}`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
+        })
+        dispatch(setUser(response.data.user))
+        alert(response.data)
+      } catch (e) {
+        alert(e.response.data.message)
+      }
+    }
   }
 
   return (
@@ -53,7 +91,7 @@ const Stock = (props) => {
           </div>
           <div className="count">
             {counter}
-            {dashString}
+            {slashString}
           </div>
           <div className="stock__counter__more">
             <button onClick={more} className="button__none">
@@ -64,7 +102,15 @@ const Stock = (props) => {
         <button
           className="button button__normal"
           onClick={() => {
-            if (isAuth) props.dispatched(actionStock(props.stock.symbol, props.quantity))
+            if (isAuth)
+              switch (props.buttonText) {
+                case 'Купить':
+                  dispatch(buyStock(props.stock.symbol, counter))
+                  break
+                case 'Продать':
+                  dispatch(sellStock(props.stock['_id'], counter))
+                  break
+              }
           }}
         >
           {props.buttonText}

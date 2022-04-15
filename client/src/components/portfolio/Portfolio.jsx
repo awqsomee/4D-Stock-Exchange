@@ -7,6 +7,7 @@ import axios from 'axios'
 import { useContext } from 'react'
 import { SearchContext } from '../../context/index.js'
 import { useDispatch } from 'react-redux'
+import { sellStock } from '../../actions/user.js'
 
 const Portfolio = (props) => {
   const [stocks, setStocks] = useState([])
@@ -39,6 +40,7 @@ const Portfolio = (props) => {
       )
 
       setStocks(stocksInfoWithPrice)
+      console.log(stocksInfoWithPrice)
       setIsStocksLoading(false)
     } catch (e) {
       console.log(e)
@@ -63,24 +65,6 @@ const Portfolio = (props) => {
       return data
     } catch (e) {
       console.log(e.message)
-    }
-  }
-
-  const sellStock = (symbol, quantity) => {
-    return async (dispatch) => {
-      try {
-        console.log('adad')
-        const response = await axios.delete(
-          'http://localhost:5000/api/auth/stock',
-          { symbol, quantity },
-          {
-            headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
-          }
-        )
-        alert(response.data)
-      } catch (e) {
-        alert(e.response.data.message)
-      }
     }
   }
 
