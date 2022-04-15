@@ -5,21 +5,26 @@
   display: flex;
   flex-direction: column;
   width: 465px;
+  height: auto;
   align-items: left;
   background-color: @--dark-grey-color;
   border-radius: 10px;
-  padding: 34px;
+  padding: 40px;
   align-self: center;
   margin-top: 50px;
-  min-height: 75vh;
-
-  font-size: @--paragraph-font-size;
   font-family: @font-family;
-  color: @--main-text-color;
-
-  &__header {
-    font-size: @--head-font-size;
-    font-family: @--head-font;
-    color: @--accent-color;
-  }
+  color: @background-color;
+  font-size: @--paragraph-font-size;
+  margin-bottom: 24px;
+}
+.header {
+  font-size: @--head-font-size;
+  font-family: @--head-font;
+  color: @--accent-color;
+}
+.account_inf{
+  margin-top: 24px;
+  color: #6c7175;
+  font-size: @--paragraph-font-size;
+  margin-bottom: 12px;
 }
