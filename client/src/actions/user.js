@@ -44,16 +44,3 @@ export const auth = () => {
     }
   }
 }
-
-export const deposit = async (summa, currency) => {
-  try {
-    const response = await axios.post(`${serverAddress}/api/auth/balance`, {
-      summa, currency
-    }, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
-    })
-    alert(response.data.message)
-  } catch (e) {
-    alert(e.response.data.message)
-  }
-}
