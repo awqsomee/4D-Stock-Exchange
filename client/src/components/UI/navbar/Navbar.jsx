@@ -31,8 +31,12 @@ const Navbar = (props) => {
       </ModalBox>
 
       <ModalBoxAcc visible={modalBoxAcc} setVisible={setModalBoxAcc}>
-      <div className="acc_pop_up"> <NavLink to="/account">Аккаунт</NavLink> </div>
-        <div className="acc_pop_up"
+        <div className="acc_pop_up">
+          {' '}
+          <NavLink to="/account">Аккаунт</NavLink>{' '}
+        </div>
+        <div
+          className="acc_pop_up"
           onClick={() => {
             dispatch(logout())
             setModalBoxAcc(false)
@@ -41,7 +45,6 @@ const Navbar = (props) => {
           Выйти
         </div>
       </ModalBoxAcc>
-
 
       <div className="container">
         <div className="navbar__logo">
