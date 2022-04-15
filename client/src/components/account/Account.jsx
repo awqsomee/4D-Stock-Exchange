@@ -6,7 +6,9 @@ const Account = () => {
   const [value, setValue] = useState()
 
   return (
+    
     <div className="account">
+      <div className="header">Профиль</div>
       <Account_containerItem />
     </div>
   )
