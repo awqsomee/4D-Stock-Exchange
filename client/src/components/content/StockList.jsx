@@ -12,14 +12,20 @@ import { getStocksSearch } from '../../actions/stocks.js'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
+  const [run, setRun] = useState()
   const [isStocksLoading, setIsStocksLoading] = useState(false)
   const { search, setSearch } = useContext(SearchContext)
-  const dispatch = useDispatch()
-  const quantity = 1
+  document.addEventListener('keydown', function (event) {
+    if (event.key == 'Enter') {
+      setRun(search.toString())
+      console.log(setRun)
+      fetchData(run)
+    }
+  })
 
   useEffect(() => {
     fetchData()
-  }, [search])
+  }, [])
 
   const fetchData = async () => {
     setIsStocksLoading(true)
@@ -47,16 +53,8 @@ const StockList = (props) => {
           ) : (
             <></>
           )}
-          {stocks.map((stock) => (
-            <Stock
-              stock={stock}
-              function={buyStock}
-              dispatch={dispatch}
-              quantity={quantity}
-              key={stock.symbol}
-              buttonText="Купить"
-            />
-          ))}
+          {stocks &&
+            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)}
         </div>
       </div>
     </div>

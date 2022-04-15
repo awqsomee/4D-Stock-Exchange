@@ -9,7 +9,8 @@ import Graph_panel from '../grahp-panel/Graph_panel'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../../reducers/userReducer'
 import axios from 'axios'
-const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
+// const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
+const serverAddress = 'http://localhost:5000'
 
 const Stock = (props) => {
   const isAuth = useSelector((state) => state.user.isAuth)
@@ -33,7 +34,6 @@ const Stock = (props) => {
   }
 
   const buyStock = async (symbol, quantity) => {
-    // return async (dispatch) => {
     try {
       const response = await axios.post(
         `${serverAddress}/api/auth/stock`,
@@ -42,13 +42,12 @@ const Stock = (props) => {
           headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
         }
       )
-      // dispatch(setUser(response.data.user))
-      alert(response.data)
+      alert(response.data.message)
     } catch (e) {
       alert(e.response.data.message)
     }
   }
-  // }
+
   const sellStock = (id, quantity) => {
     return async (dispatch) => {
       try {
@@ -56,7 +55,7 @@ const Stock = (props) => {
           headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
         })
         dispatch(setUser(response.data.user))
-        alert(response.data)
+        alert(response.data.message)
       } catch (e) {
         alert(e.response.data.message)
       }

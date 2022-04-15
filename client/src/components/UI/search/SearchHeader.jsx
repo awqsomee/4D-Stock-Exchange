@@ -19,7 +19,6 @@ const SearchHeader = (props) => {
   // const filteredStocks = cockInfo.filter((stock) => {
   //   return stock.name.toLowerCase().includes(value.toLowerCase())
   // })
-
   return (
     <input
       className="search"
