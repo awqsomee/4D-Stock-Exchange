@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import History from '../history/History'
 import Balance from '../balance/Balance'
+import axios from 'axios'
+const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 
 const WalletList = (props) => {
-  const [wallet, setHistory] = useState([])
+  const [transactions, setTransactions] = useState([])
 
-  useEffect(() => {
-    getHistory()
-  }, [])
+  useEffect(() => getTransactions(), [])
 
-  let GET_POSTS_LINK
-  GET_POSTS_LINK = `https://gentle-sea-62964.herokuapp.com/api/`
-
-  async function getHistory() {
+  const getTransactions = async () => {
     try {
-      const cockInfo = [
-        { type: 'Sale', name: 'Apple Inc', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPL' },
-        { type: 'Sale', name: 'AA Plus Tradelink Ltd', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPLS' },
-        { type: 'Buy', name: 'Apple Inc', count: 2, summ: '2 510', date: 'dd.mm.yyyy', symbol: 'AAPLG' },
-      ]
-      setHistory(cockInfo)
+      const responce = await axios.get(`${serverAddress}/api/auth/transactions`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
+      })
+      setTransactions(responce.data.transactions)
     } catch (e) {
       console.log(e)
     }
@@ -36,7 +31,7 @@ const WalletList = (props) => {
       <div className="title">{props.title2}</div>
       <div className="container2">
         <div className="list">
-          {wallet.map((history) => (
+          {transactions.map((history) => (
             <History history={history} key={history.symbol} />
           ))}
         </div>

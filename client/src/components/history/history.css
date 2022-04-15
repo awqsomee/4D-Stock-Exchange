@@ -25,17 +25,20 @@
   margin-left: 11.9%;
 }
 .history__type {
-  width: 20%;
-  margin-left: 4%;
+  width: 15%;
+  margin-left: 1%;
 }
 .history__name {
-  width: 50%;
+  width: 20%;
 }
 .history__summ {
   display: inline-block;
-  width: 50%;
+  width: 30%;
+}
+.history__price {
+  width: 40%;
 }
 .history__date {
   display: inline-block;
-  width: 50%;
+  width: 20%;
 }

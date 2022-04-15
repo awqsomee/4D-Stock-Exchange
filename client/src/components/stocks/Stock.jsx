@@ -32,23 +32,23 @@ const Stock = (props) => {
     if (counter < props.stock.quantity || !props.stock.quantity) setCounter(counter + 1)
   }
 
-  const buyStock = (symbol, quantity) => {
-    return async (dispatch) => {
-      try {
-        const response = await axios.post(
-          `${serverAddress}/api/auth/stock`,
-          { symbol, quantity },
-          {
-            headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
-          }
-        )
-        dispatch(setUser(response.data.user))
-        alert(response.data)
-      } catch (e) {
-        alert(e.response.data.message)
-      }
+  const buyStock = async (symbol, quantity) => {
+    // return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        `${serverAddress}/api/auth/stock`,
+        { symbol, quantity },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
+        }
+      )
+      // dispatch(setUser(response.data.user))
+      alert(response.data)
+    } catch (e) {
+      alert(e.response.data.message)
     }
   }
+  // }
   const sellStock = (id, quantity) => {
     return async (dispatch) => {
       try {

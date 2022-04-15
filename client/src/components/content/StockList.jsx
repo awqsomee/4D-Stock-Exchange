@@ -25,7 +25,7 @@ const StockList = (props) => {
     setIsStocksLoading(true)
     let ignore = false
     async function getStocks() {
-      const result = await getStocksSearch()
+      const result = await getStocksSearch(search)
       if (!ignore) setStocks(result)
     }
     await getStocks()

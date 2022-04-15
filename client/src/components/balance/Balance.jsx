@@ -6,8 +6,6 @@ import InputBox from '../UI/ModalBox/inputBox/InputBox'
 import { useState } from 'react'
 import { store } from '../../reducers'
 import { setUser } from '../../reducers/userReducer'
-// import axios from 'axios'
-// const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 
 const Balance = (props) => {
   const [modalBox, setModalBox] = useState(false)
