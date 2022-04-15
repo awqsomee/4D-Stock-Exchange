@@ -30,7 +30,6 @@ async function getStocksSearch(symbol) {
     let link
     if (!symbol) link = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=SAIC&apikey=demo`
     else link = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=ACBVRHUCTP4LTHVX`
-    console.log(link)
     const response = await axios.get(link)
     const stocksInfo = response.data['bestMatches'].map((item, index) => {
       return {
@@ -65,7 +64,6 @@ async function getStockChange(symbol, apikey) {
       // `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apikey}`
       'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo'
     )
-    // console.log(response)
     return response.data['Global Quote']['10. change percent']
   } catch (e) {
     console.log(e.message)

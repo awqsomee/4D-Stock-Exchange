@@ -10,8 +10,6 @@ import ModalBoxDeposit from '../ModalBoxDeposit'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 
 const InputBox = ({ setVisible, ...props }) => {
-  //   let rootClasses = [cl.inputBox ]
-  //   const [visible, setVisible ] = useState(false)
   const currency = '$'
   const [butt, setButt] = useState('button button__normal balance__button')
   const [inputText, setInputText] = useState('Пополнить')
@@ -19,9 +17,6 @@ const InputBox = ({ setVisible, ...props }) => {
   const [rootClasses, setRootClasses] = useState(cl.inputBox)
   const [modalBoxDepositTrue, setmodalBoxDepositTrue] = useState(false)
   const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
-  //   if (visible) {
-  //     rootClasses.push(cl.inputBoxText)
-  //   }
 
   useEffect(() => {
     if (inputText === '' || inputText === 'Пополнить') setButtonText('Пополнить')
@@ -49,8 +44,6 @@ const InputBox = ({ setVisible, ...props }) => {
 
   const withdraw = async (withdraw, currency) => {
     try {
-      console.log(withdraw)
-      console.log(`${serverAddress}/api/auth/balance?withdraw=${withdraw}&currency=USD`)
       const response = await axios.delete(`${serverAddress}/api/auth/balance?withdraw=${withdraw}&currency=USD`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
       })
@@ -90,7 +83,6 @@ const InputBox = ({ setVisible, ...props }) => {
         onClick={
           () => {
             if (butt === 'button button__normal balance__button ') setButt('button  button__push balance__button ')
-            console.log(butt)
             setRootClasses(cl.inputBoxFull)
             setButt('button button__normal balance__button')
 

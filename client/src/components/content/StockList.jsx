@@ -3,10 +3,8 @@ import Sorting from '../sorting/Sorting.jsx'
 import Panel from '../panel/Panel.jsx'
 import './stocklist.css'
 import Stock from '../stocks/Stock.jsx'
-import axios from 'axios'
 import { useContext } from 'react'
 import { SearchContext } from '../../context/index.js'
-import { useDispatch } from 'react-redux'
 import { buyStock } from '../../actions/user.js'
 import { getStocksSearch } from '../../actions/stocks.js'
 
@@ -18,7 +16,6 @@ const StockList = (props) => {
   document.addEventListener('keydown', function (event) {
     if (event.key == 'Enter') {
       setRun(search.toString())
-      console.log(setRun)
       fetchData(run)
     }
   })

@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { setUser } from '../reducers/userReducer'
-import { store } from '../reducers'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 
 export const registration = async (name, surname, email, password) => {
@@ -11,7 +10,6 @@ export const registration = async (name, surname, email, password) => {
       name,
       surname,
     })
-    alert(response.data.message)
   } catch (e) {
     alert(e.response.data.message)
   }
@@ -36,7 +34,6 @@ export const auth = () => {
       const response = await axios.get(`${serverAddress}/api/auth/auth`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
       })
-      console.log(response.data)
       dispatch(setUser(response.data.user))
       localStorage.setItem('stonksToken', response.data.token)
     } catch (e) {
@@ -48,7 +45,6 @@ export const auth = () => {
 export const buyStock = (symbol, quantity) => {
   return async (dispatch) => {
     try {
-      console.log('wwswsw')
       const response = await axios.post(
         'http://localhost:5000/api/auth/stock',
         { symbol, quantity },
@@ -66,7 +62,6 @@ export const buyStock = (symbol, quantity) => {
 export const sellStock = (symbol, quantity) => {
   return async (dispatch) => {
     try {
-      console.log('adad')
       const response = await axios.delete(
         'http://localhost:5000/api/auth/stock/',
         { symbol, quantity },

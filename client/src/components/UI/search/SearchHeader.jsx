@@ -1,7 +1,6 @@
 import React, { useContext, useTransition } from 'react'
 //  import classes from './search_header.module.css'
 import '../input/input.css'
-import { useState } from 'react'
 import { SearchContext } from '../../../context'
 
 // const Stocks = () => {

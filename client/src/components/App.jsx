@@ -61,8 +61,8 @@ function App() {
                 path="*"
                 element={
                   <div className="page404__container">
-                    <p className="page404">404</p>
-                    <p>There's nothing here!</p>
+                    <p className="page404_num">404</p>
+                    <p className="page404">There's nothing here!</p>
                   </div>
                 }
               />
