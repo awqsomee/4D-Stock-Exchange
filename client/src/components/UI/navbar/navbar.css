@@ -29,12 +29,8 @@
   left: 10%;
   width: 53%;
 }
-.navbar__login {
-  display: inline-block;
-}
 .navbar__registration {
-  padding-left: 20%;
-  display: inline-block;
+  margin-left: 2%;
 }
 .navbar__account {
   width: 10%;

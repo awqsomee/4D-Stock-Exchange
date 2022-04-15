@@ -15,7 +15,7 @@ const Login = (props) => {
     <div className="login">
 
   <ModalBoxDeposit  visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
-  <div className="deposit_pop_up">
+  <div className="log_pop_up">
     <div>Вход не выполнен. Проверьте правильность заполнения полей</div>
   </div>
   </ModalBoxDeposit>
@@ -31,7 +31,7 @@ const Login = (props) => {
         <Input className="auth" value={password} setValue={setpassword} type="password" placeholder="********" />{' '}
       </div>
       <button
-        className="login__button"
+        className="button button__normal login__button"
         onClick={() => {
           dispatch(login(email, password))
           if (localStorage.getItem("stonksToken"))

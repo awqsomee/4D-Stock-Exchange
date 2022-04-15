@@ -54,16 +54,17 @@ const Navbar = (props) => {
         </div>
         <div className="navbar__search">
           <div>
-            <SearchHeader value={props.search} type="text" placeholder="Поиск..." />
+            <SearchHeader value={props.search} type="text" placeholder="Поиск..."> 
+            <div></div></SearchHeader> 
           </div>
         </div>
         {!isAuth && (
-          <div className="navbar__login button button__normal" onClick={() => setModalBoxLog(true)}>
+          <div className=" button button__normal " onClick={() => setModalBoxLog(true)}>
             Войти
           </div>
         )}
         {!isAuth && (
-          <div className="navbar__registration button button__normal" onClick={() => setModalBoxReg(true)}>
+          <div className=" button button__normal navbar__registration" onClick={() => setModalBoxReg(true)}>
             Регистрация
           </div>
         )}

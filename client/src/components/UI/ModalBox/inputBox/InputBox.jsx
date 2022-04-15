@@ -13,7 +13,7 @@ const InputBox = ({ setVisible }) => {
   //   let rootClasses = [cl.inputBox ]
   //   const [visible, setVisible ] = useState(false)
   const currency = '$'
-  const [butt, setButt] = useState('button balance__button button__normal')
+  const [butt, setButt] = useState('button button__normal balance__button')
   const [inputText, setInputText] = useState('Пополнить')
   const [buttonText, setButtonText] = useState(inputText)
   const [rootClasses, setRootClasses] = useState(cl.inputBox)
@@ -76,10 +76,10 @@ const InputBox = ({ setVisible }) => {
         className={butt}
         onClick={
           () => {
-            if (butt === 'button balance__button button__normal') setButt('button  button__push balance__button ')
+            if (butt === 'button button__normal balance__button ') setButt('button  button__push balance__button ')
             console.log(butt)
             setRootClasses(cl.inputBoxFull)
-            setButt('button balance__button button__normal')
+            setButt('button button__normal balance__button')
 
             setInputText('')
             if (inputText && inputText !== 'Пополнить') deposit(Number(inputText), 'USD')

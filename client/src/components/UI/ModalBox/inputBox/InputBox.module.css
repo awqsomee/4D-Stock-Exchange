@@ -46,14 +46,6 @@
   padding: 2% 5% 2% 10%;
   outline: none;
 }
-.deposit_true {
-  color: #e9eef2;
-  font-size: 20px;
-  margin-bottom: 25px;
-}
 .deposit_false {
-  background: #ff9180;
-  color: #e9eef2;
-  font-size: 20px;
-  margin-bottom: 25px;
+  color: #ff9180;
 }
