@@ -11,7 +11,7 @@ import axios from 'axios'
 import { useContext } from 'react'
 import { SearchContext } from '../../context/index.js'
 import { useDispatch } from 'react-redux'
-import Graph_panel from '../grahp-panel/Graph_panel.jsx'
+import { buyStock } from '../../actions/user.js'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
@@ -78,23 +78,6 @@ const StockList = (props) => {
       return data
     } catch (e) {
       console.log(e.message)
-    }
-  }
-
-  const buyStock = (symbol, quantity) => {
-    return async (dispatch) => {
-      try {
-        const response = await axios.post(
-          'http://localhost:5000/api/auth/stock',
-          { symbol, quantity },
-          {
-            headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
-          }
-        )
-        alert(response.data)
-      } catch (e) {
-        alert(e.response.data.message)
-      }
     }
   }
 
