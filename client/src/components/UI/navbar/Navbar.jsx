@@ -33,9 +33,9 @@ const Navbar = (props) => {
       <ModalBoxAcc visible={modalBoxAcc} setVisible={setModalBoxAcc}>
         <div className="acc_pop_up">
           {' '}
-          <NavLink to="/account">
-            <div className="acc_in">Аккаунт</div>
-          </NavLink>{' '}
+          <NavLink to="/account"  className="acc_in">
+            <div >Аккаунт</div>
+          </NavLink>{' '} 
         </div>
         <div
           className="acc_pop_up"
