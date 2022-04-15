@@ -12,8 +12,6 @@ import { setUser } from '../../reducers/userReducer'
 const Balance = (props) => {
   const [modalBox, setModalBox] = useState(false)
 
-  const [balance, setBalance] = useState(0)
-
   useEffect(() => {
     // getBalance()
   }, [store])
@@ -32,8 +30,16 @@ const Balance = (props) => {
   const currency = 'USD'
   return (
     <div className="balance">
-      <div className="balance__summ">{`${store.getState(setUser).user.currentUser.balanceUSD.toFixed(2)} $`}</div>
-      <InputBox visible={modalBox} setVisible={setModalBox} currency={currency}></InputBox>
+      <div className="balance__summ">{`${new Intl.NumberFormat('ru-RU').format(
+        store.getState(setUser).user.currentUser.balanceUSD
+      )} $`}</div>
+      <InputBox
+        visible={modalBox}
+        setVisible={setModalBox}
+        currency={currency}
+        type={props.type}
+        btnText={props.btnText}
+      ></InputBox>
     </div>
   )
 }

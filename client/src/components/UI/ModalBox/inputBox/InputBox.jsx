@@ -9,7 +9,7 @@ import axios from 'axios'
 import ModalBoxDeposit from '../ModalBoxDeposit'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 
-const InputBox = ({ setVisible }) => {
+const InputBox = ({ setVisible, ...props }) => {
   //   let rootClasses = [cl.inputBox ]
   //   const [visible, setVisible ] = useState(false)
   const currency = '$'
@@ -42,7 +42,20 @@ const InputBox = ({ setVisible }) => {
       )
       setmodalBoxDepositTrue(true)
       return response.data
-     
+    } catch (e) {
+      setmodalBoxDepositFalse(true)
+    }
+  }
+
+  const withdraw = async (withdraw, currency) => {
+    try {
+      console.log(withdraw)
+      console.log(`${serverAddress}/api/auth/balance?withdraw=${withdraw}&currency=USD`)
+      const response = await axios.delete(`${serverAddress}/api/auth/balance?withdraw=${withdraw}&currency=USD`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
+      })
+      setmodalBoxDepositTrue(true)
+      return response.data
     } catch (e) {
       setmodalBoxDepositFalse(true)
     }
@@ -50,23 +63,23 @@ const InputBox = ({ setVisible }) => {
 
   return (
     <div className={rootClasses} onClick={() => setVisible(false)}>
+      <ModalBoxDeposit visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
+        <div className="deposit_true">
+          {props.type === 'Deposit' && <div>Баланс успешно пополнен</div>}
+          {props.type === 'Withdraw' && <div>Баланс успешно выведен</div>}
+        </div>
+      </ModalBoxDeposit>
 
-    <ModalBoxDeposit  visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
-    <div className="deposit_true">
-      <div>Баланс успешно пополнен</div>
-    </div>
-    </ModalBoxDeposit>
-
-    <ModalBoxDeposit  visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
-    <div className="deposit_false">
-      <div>Не вышло пополнить баланс. Проверьте корректность данных</div>
-    </div>
-    </ModalBoxDeposit>
+      <ModalBoxDeposit visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
+        <div className="deposit_false">
+          <div>Не вышло пополнить баланс. Проверьте корректность данных</div>
+        </div>
+      </ModalBoxDeposit>
 
       <Input
         value={inputText}
         setValue={setInputText}
-        placeholder="Пополнить"
+        placeholder={props.btnText}
         className={cl.inputBoxText}
         type="number"
         onClick={(e) => e.stopPropagation()}
@@ -82,16 +95,18 @@ const InputBox = ({ setVisible }) => {
             setButt('button button__normal balance__button')
 
             setInputText('')
-            if (inputText && inputText !== 'Пополнить') deposit(Number(inputText), 'USD')
+            if (inputText && inputText !== 'Пополнить')
+              if (props.type === 'Deposit') deposit(Number(inputText), 'USD')
+              else if (props.type === 'Withdraw') withdraw(Number(inputText), 'USD')
           }
-          
+
           //     if (password === repeatPassword) {
           //       registration(name, surname, email, password)
           //       props.sVisible(false)
           //     }
         }
       >
-        {buttonText}
+        {props.btnText}
       </ButtonSwith>
     </div>
   )

@@ -20,7 +20,8 @@ const Chart = (props) => {
           <AreaChart data={props.stock.data}>
             <defs>
               <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor={color} stopOpacity={0.7}></stop>
+                <stop offset="0%" stopColor={color} stopOpacity={1}></stop>
+                <stop offset="35%" stopColor={color} stopOpacity={0.8}></stop>
                 <stop offset="75%" stopColor={color} stopOpacity={0.1}></stop>
               </linearGradient>
             </defs>

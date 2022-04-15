@@ -2,8 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 import './login.css'
 import Input from '../../UI/input/Input'
-import { login } from '../../../actions/user'
+import { isLogin, login } from '../../../actions/user'
 import { useDispatch } from 'react-redux'
+import { store } from '../../../reducers'
+import { setUser } from '../../../reducers/userReducer'
 import ModalBoxDeposit from '../../UI/ModalBox/ModalBoxDeposit'
 
 const Login = (props) => {
@@ -13,12 +15,11 @@ const Login = (props) => {
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   return (
     <div className="login">
-
-  <ModalBoxDeposit  visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
-  <div className="log_pop_up">
-    <div>Вход не выполнен. Проверьте правильность заполнения полей</div>
-  </div>
-  </ModalBoxDeposit>
+      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
+        <div className="deposit_pop_up">
+          <div>Вход не выполнен. Проверьте правильность заполнения полей</div>
+        </div>
+      </ModalBoxDeposit>
 
       <div className="login__header">Вход</div>
       <div className="login"></div>
@@ -31,15 +32,13 @@ const Login = (props) => {
         <Input className="auth" value={password} setValue={setpassword} type="password" placeholder="********" />{' '}
       </div>
       <button
-        className="button button__normal login__button"
-        onClick={() => {
-          dispatch(login(email, password))
-          if (localStorage.getItem("stonksToken"))
-          {
+        className="login__button"
+        onClick={async () => {
+          await dispatch(login(email, password))
+          console.log(store.getState(setUser).user.isAuth)
+          if (store.getState(setUser).user.isAuth) {
             props.sVisible(false)
-          }
-          else
-          setmodalBoxDeposit(true)
+          } else setmodalBoxDeposit(true)
         }}
       >
         Войти

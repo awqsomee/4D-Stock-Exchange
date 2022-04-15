@@ -69,6 +69,13 @@
   color: #e9eef2;
   font-size: 20px;
   margin-bottom: 25px;
+  cursor: pointer;
+  text-align: right;
+}
+.acc_pop_up__b {
+  color: #a0e28d;
+  text-decoration: none !important;
+  border: none !important;
 }
 .acc_in {
   text-decoration: none !important;
