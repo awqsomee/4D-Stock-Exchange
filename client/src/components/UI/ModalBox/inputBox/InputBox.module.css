@@ -28,12 +28,10 @@
   color: #000000;
   border-radius: 5px;
 }
-
-/* .inputBoxFull > .inputBoxText {
+.inputBoxFull > .inputBoxText {
   display: block;
   width: 100%;
-} */
-
+}
 .inputBoxText {
   display: none;
   border-radius: 16px;
@@ -47,9 +45,4 @@
   color: #000000;
   padding: 2% 5% 2% 10%;
   outline: none;
-}
-
-.inputBoxText.inputBoxFull {
-  display: block;
-  width: 100%;
 }

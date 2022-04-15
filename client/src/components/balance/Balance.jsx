@@ -30,7 +30,7 @@ const Balance = (props) => {
 
   useEffect(() => {
     getBalance()
-  }, [])
+  }, [InputBox])
 
   const getBalance = async () => {
     try {
