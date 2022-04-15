@@ -24,6 +24,7 @@ const Account_containerItem = (props) => {
 
         <div className="account_inf">Дата рождения</div>
         <div classname="account_userInf">{UserDate}</div>
+
     </div>
   )
 }

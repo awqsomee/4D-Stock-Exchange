@@ -4,13 +4,22 @@ import './login.css'
 import Input from '../../UI/input/Input'
 import { login } from '../../../actions/user'
 import { useDispatch } from 'react-redux'
+import ModalBoxDeposit from '../../UI/ModalBox/ModalBoxDeposit'
 
 const Login = (props) => {
   const [email, setEmail] = useState('')
   const [password, setpassword] = useState('')
   const dispatch = useDispatch()
+  const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   return (
     <div className="login">
+
+  <ModalBoxDeposit  visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
+  <div className="deposit_pop_up">
+    <div>Вход не выполнен. Проверьте правильность заполнения полей</div>
+  </div>
+  </ModalBoxDeposit>
+
       <div className="login__header">Вход</div>
       <div className="login"></div>
       <div className="login__input_name">Электронная почта</div>
@@ -25,7 +34,12 @@ const Login = (props) => {
         className="login__button"
         onClick={() => {
           dispatch(login(email, password))
-          props.sVisible(false)
+          if (localStorage.getItem("stonksToken"))
+          {
+            props.sVisible(false)
+          }
+          else
+          setmodalBoxDeposit(true)
         }}
       >
         Войти
@@ -33,6 +47,8 @@ const Login = (props) => {
     </div>
   )
 }
+
+
 
 
 export default Login

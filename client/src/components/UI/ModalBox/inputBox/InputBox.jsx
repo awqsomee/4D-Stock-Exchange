@@ -6,6 +6,7 @@ import Input from '../../../UI/input/Input'
 import ButtonSwith from '../../../UI/buttons/ButtonSwitch'
 import '../../../../components/balance/balance.css'
 import axios from 'axios'
+import ModalBoxDeposit from '../ModalBoxDeposit'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 
 const InputBox = ({ setVisible }) => {
@@ -16,7 +17,8 @@ const InputBox = ({ setVisible }) => {
   const [inputText, setInputText] = useState('Пополнить')
   const [buttonText, setButtonText] = useState(inputText)
   const [rootClasses, setRootClasses] = useState(cl.inputBox)
-
+  const [modalBoxDepositTrue, setmodalBoxDepositTrue] = useState(false)
+  const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
   //   if (visible) {
   //     rootClasses.push(cl.inputBoxText)
   //   }
@@ -38,14 +40,29 @@ const InputBox = ({ setVisible }) => {
           headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
         }
       )
+      setmodalBoxDepositTrue(true)
       return response.data
+     
     } catch (e) {
-      alert(e.response.data.message)
+      setmodalBoxDepositFalse(true)
     }
   }
 
   return (
     <div className={rootClasses} onClick={() => setVisible(false)}>
+
+    <ModalBoxDeposit  visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
+    <div className="deposit_true">
+      <div>Баланс успешно пополнен</div>
+    </div>
+    </ModalBoxDeposit>
+
+    <ModalBoxDeposit  visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
+    <div className="deposit_false">
+      <div>Не вышло пополнить баланс. Проверьте корректность данных</div>
+    </div>
+    </ModalBoxDeposit>
+
       <Input
         value={inputText}
         setValue={setInputText}
@@ -67,6 +84,7 @@ const InputBox = ({ setVisible }) => {
             setInputText('')
             if (inputText && inputText !== 'Пополнить') deposit(Number(inputText), 'USD')
           }
+          
           //     if (password === repeatPassword) {
           //       registration(name, surname, email, password)
           //       props.sVisible(false)

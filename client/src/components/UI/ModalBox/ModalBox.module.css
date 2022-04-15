@@ -1,3 +1,6 @@
+@import '../../../styles/colors/colors';
+@import '../../../styles/fonts/fonts';
+
 .modalBox {
   position: fixed;
   top: 0;
@@ -34,5 +37,21 @@
   align-items: center;
   z-index: 1;
 }
+
+.setmodalBoxDeposit{
+  padding: 20px 30px;
+  background: #394249;
+  opacity: 0.85;
+  border-radius: 16px;
+  min-width: 100px;
+  position: absolute;
+  top: 11%;
+  /* right: 400px; */
+  z-index: 1;
+}
+
+
+
+
 
 
