@@ -23,9 +23,6 @@ const Stock = (props) => {
     else setDashString(`/${props.stock.quantity}`)
   }, [])
 
-  // const symbol = response.data['1. symbol']
-  // const name = response.data['2. name']
-  // const price = response.data[price]
   const [counter, setCounter] = useState(1)
   const [dashString, setDashString] = useState('')
   const [GP, setGP] = useState(false)
@@ -68,7 +65,6 @@ const Stock = (props) => {
           className="button button__normal"
           onClick={() => {
             if (isAuth) props.dispatched(actionStock(props.stock.symbol, props.quantity))
-            // else setModalLog(true)
           }}
         >
           {props.buttonText}
