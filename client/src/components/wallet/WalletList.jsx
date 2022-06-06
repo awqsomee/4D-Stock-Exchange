@@ -8,7 +8,9 @@ const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 const WalletList = (props) => {
   const [transactions, setTransactions] = useState([])
 
-  useEffect(() => getTransactions(), [])
+  useEffect(() => {
+    getTransactions()
+  }, [])
 
   const getTransactions = async () => {
     try {
@@ -17,7 +19,7 @@ const WalletList = (props) => {
       })
       responce.data.transactions.reverse()
       setTransactions(responce.data.transactions)
-      console.log(transactions)
+      console.log(responce.data.transactions)
     } catch (e) {
       console.log(e)
     }
