@@ -1,14 +1,16 @@
 import { ResponsiveContainer, AreaChart, XAxis, YAxis, Area, Tooltip, CartesianGrid } from 'recharts'
 import { useEffect, useState } from 'react'
 import './chart.css'
-import { parseISO, format } from 'date-fns'
+import { parseISO, format, isToday } from 'date-fns'
 
 const Chart = (props) => {
   const [color, setColor] = useState('')
+  const today = new Date()
+  const dayOfWeek = today.getDay()
 
   useEffect(() => {
-    if (props.stock.data[0].value < props.stock.data[99].value) setColor('#FF9180')
-    else setColor('#A0E28D')
+    if (props.stock.data[0].value < props.stock.data[99].value) setColor('#A0E28D')
+    else setColor('#FF9180')
   }, [])
 
   return (
@@ -30,11 +32,15 @@ const Chart = (props) => {
               dataKey="date"
               stroke="#2be9d9"
               tickLine={false}
-              // tickFormatter={(label) => {
-              //   const date = parseISO(label)
-              //   for (let i = 0; i < 100; i++) if (i % 7 === 0) return ``
-              // }}
-              tickCount={6}
+              interval={0}
+              angle={-30}
+              dy={-3}
+              tickFormatter={(label) => {
+                label = new Date(label)
+                const date = new Date(today - label)
+                if (date.getDay() % 7 === 0) return label.toLocaleDateString()
+                else return ' '
+              }}
             />
 
             <YAxis
