@@ -22,10 +22,10 @@ const StockList = (props) => {
 
   useEffect(() => {
     fetchData()
-    setInterval(() => {
-      fetchData()
-      console.log(1)
-    }, 120000)
+    // setInterval(() => {
+    //   fetchData()
+    //   console.log(1)
+    // }, 120000)
   }, [])
 
   const fetchData = async () => {

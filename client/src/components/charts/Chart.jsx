@@ -7,8 +7,8 @@ const Chart = (props) => {
   const [color, setColor] = useState('')
 
   useEffect(() => {
-    if (props.stock.data[0].value < props.stock.data[99].value) setColor('#A0E28D')
-    else setColor('#FF9180')
+    if (props.stock.data[0].value < props.stock.data[99].value) setColor('#FF9180')
+    else setColor('#A0E28D')
   }, [])
 
   return (

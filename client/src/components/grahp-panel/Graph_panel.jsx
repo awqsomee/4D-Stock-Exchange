@@ -85,7 +85,7 @@ const Graph_panel = (props) => {
           все время
         </ButtonSwith>
       </div>
-      <Chart stock={props.stock} />
+      {props?.stock?.data && <Chart stock={props.stock} />}
       <div className="graph"></div>
       <div className="MMPanel"> </div>
     </div>

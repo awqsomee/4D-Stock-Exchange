@@ -24,6 +24,7 @@ const Stock = (props) => {
   const [counter, setCounter] = useState(1)
   const [slashString, setslashString] = useState('')
   const [GP, setGP] = useState(false)
+  const [mouse, setMouse] = useState(false)
 
   function less() {
     if (counter > 1) setCounter(counter - 1)
@@ -68,9 +69,11 @@ const Stock = (props) => {
       <div className="stock">
         <div className="stock__index">{props.stock.symbol}</div>
         <div className="stock__name">{props.stock.name}</div>
-        <div className="stock__cost">
-          {props.stock.data[99].value.toFixed(2)} {props.stock.currency}
-        </div>
+        {props?.stock?.data?.length >= 100 && (
+          <div className="stock__cost">
+            {props?.stock?.data[99]?.value?.toFixed(2)} {props.stock.currency}
+          </div>
+        )}
         <div className="stock__change">{props.stock.changes}%</div>
         <div className="stock__counter">
           <div className="stock__counter__less">
