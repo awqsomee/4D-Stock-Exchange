@@ -32,14 +32,12 @@ const Chart = (props) => {
               dataKey="date"
               stroke="#2be9d9"
               tickLine={false}
-              interval={0}
+              interval={6}
               angle={-30}
               dy={-3}
               tickFormatter={(label) => {
                 label = new Date(label)
-                const date = new Date(today - label)
-                if (date.getDay() % 7 === 0) return label.toLocaleDateString()
-                else return ' '
+                return label.toLocaleDateString()
               }}
             />
 
