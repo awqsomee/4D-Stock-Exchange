@@ -2,14 +2,13 @@ import '../UI/buttons/buttons.css'
 import './convert.css'
 import '../UI/input/input.css'
 // import cl from '../UI/input/'
-import InputBox from '../UI/ModalBox/inputBox/InputBox'
 import { useState } from 'react'
-import { store } from '../../reducers'
-import { setUser } from '../../reducers/userReducer'
 import Input from '../UI/input/Input'
 import axios from 'axios'
 import ButtonSwith from '../UI/buttons/ButtonSwitch'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit'
+import { store } from '../../redux'
+import { setUser } from '../../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
 
@@ -58,7 +57,7 @@ const Balance = (props) => {
         </div>
       </ModalBoxDeposit>
       <div className="balance__summ">{`${new Intl.NumberFormat('ru-RU').format(
-        store.getState(setUser).user.currentUser.balanceRUB
+        store.getState(setUser).toolkit.currentUser.balanceRUB
       )} ₽`}</div>
       <Input className="inputBox" value={fromInputText} setValue={setFromInputText} placeholder="100 RUB" />
       <p>В</p>

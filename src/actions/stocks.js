@@ -30,8 +30,7 @@ async function getUserStocks() {
 async function getStocksSearch(symbol) {
   try {
     let link
-    if (!symbol) link = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=SAIC&apikey=demo`
-    else link = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=ACBVRHUCTP4LTHVX`
+    link = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=SAIC&apikey=demo`
     const response = await axios.get(link)
     const stocksInfo = response.data['bestMatches'].map((item, index) => {
       return {

@@ -6,14 +6,14 @@ import ArrowUp from '../../assets/Icons/angle_up.svg'
 import './stock.css'
 import '../UI/buttons/buttons.css'
 import Graph_panel from '../grahp-panel/Graph_panel'
-import { useDispatch, useSelector } from 'react-redux'
-import { setUser } from '../../reducers/userReducer'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser } from '../../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
 
 const Stock = (props) => {
-  const isAuth = useSelector((state) => state.user.isAuth)
+  const isAuth = useSelector((state) => state.toolkit.isAuth)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -69,9 +69,11 @@ const Stock = (props) => {
       <div className="stock">
         <div className="stock__index">{props.stock.symbol}</div>
         <div className="stock__name">{props.stock.name}</div>
-        <div className="stock__cost">
-          {props.stock.data[99].value.toFixed(2)} {props.stock.currency}
-        </div>
+        {props.stock?.data && (
+          <div className="stock__cost">
+            {props.stock.data[99].value.toFixed(2)} {props.stock.currency}
+          </div>
+        )}
         <div className="stock__change">{props.stock.changes}%</div>
         <div className="stock__counter">
           <div className="stock__counter__less">

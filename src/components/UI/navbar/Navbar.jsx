@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
 import './navbar.css'
 import Logo from '../../../assets/Icons/logo.svg'
 import поиск from '../../../assets/Icons/поиск.svg'
@@ -10,18 +9,18 @@ import Registration from '../../authentification/registration/Registration.jsx'
 import Login from '../../authentification/login/Login'
 import SearchHeader from '../search/SearchHeader.jsx'
 import '../buttons/buttons.css'
-import { logout } from '../../../reducers/userReducer'
 import UserProfile from '../../../assets/Icons/user.svg'
 import Wallet from '../../../assets/Icons/wallet.svg'
 import Portfolio from '../../../assets/Icons/portfolio.svg'
-import { store } from '../../../reducers'
-import { setUser } from '../../../reducers/userReducer'
 import '../../balance/balance.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { store } from '../../../redux'
+import { logout, setUser } from '../../../redux/slice'
 
-const Navbar = (props) => {
-  const user = store.getState(setUser).user.currentUser
-  const isAuth = useSelector((state) => state.user.isAuth)
+const Navbar = () => {
+  const isAuth = useSelector((state) => state.toolkit.isAuth)
   const dispatch = useDispatch()
+  const search = useSelector((state) => state.toolkit.search)
   const [modalBoxReg, setModalBoxReg] = useState(false)
   const [modalBoxLog, setModalBoxLog] = useState(false)
   const [modalBoxAcc, setModalBoxAcc] = useState(false)
@@ -40,7 +39,7 @@ const Navbar = (props) => {
           <div className="acc_pop_up">
             <NavLink to="/wallet" className="acc_pop_up acc_pop_up__b" onClick={() => setModalBoxAcc(false)}>
               <div className="acc_pop_up acc_pop_up__b">{`${new Intl.NumberFormat('ru-RU').format(
-                store.getState(setUser).user.currentUser.balanceUSD
+                store.getState(setUser).toolkit.currentUser.balanceUSD
               )} $`}</div>
             </NavLink>
           </div>
@@ -71,16 +70,10 @@ const Navbar = (props) => {
         <div className="navbar__search">
           <div className="searchWrapper">
             <div className="search_img">
-              {' '}
               <img src={поиск} width={50} />{' '}
             </div>
 
-            <SearchHeader
-              className="searchStroke"
-              value={props.search}
-              type="text"
-              placeholder="Поиск..."
-            ></SearchHeader>
+            <SearchHeader className="searchStroke" value={search} type="text" placeholder="Поиск..."></SearchHeader>
           </div>
         </div>
 

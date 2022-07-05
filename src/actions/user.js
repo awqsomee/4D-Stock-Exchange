@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { setUser } from '../reducers/userReducer'
+import { setUser } from '../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 
 export const registration = async (name, surname, email, password) => {
@@ -24,7 +24,9 @@ export const login = (email, password) => {
       })
       dispatch(setUser(response.data.user))
       localStorage.setItem('stonksToken', response.data.token)
-    } catch (e) {}
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 

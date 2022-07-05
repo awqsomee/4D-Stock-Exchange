@@ -3,8 +3,8 @@ import './balance.css'
 import '../UI/input/input.css'
 import InputBox from '../UI/ModalBox/inputBox/InputBox'
 import { useState } from 'react'
-import { store } from '../../reducers'
-import { setUser } from '../../reducers/userReducer'
+import { store } from '../../redux'
+import { setUser } from '../../redux/slice'
 
 const Balance = (props) => {
   const [modalBox, setModalBox] = useState(false)
@@ -13,7 +13,7 @@ const Balance = (props) => {
   return (
     <div className="balance">
       <div className="balance__summ">{`${new Intl.NumberFormat('ru-RU').format(
-        store.getState(setUser).user.currentUser.balanceUSD
+        store.getState(setUser).toolkit.currentUser.balanceUSD
       )} $`}</div>
       <InputBox
         visible={modalBox}

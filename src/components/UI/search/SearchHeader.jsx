@@ -14,6 +14,7 @@ import { SearchContext } from '../../../context'
 const SearchHeader = (props) => {
   // const [value, setValue] = useState('')
   const { search, setSearch } = useContext(SearchContext)
+  console.log(props)
 
   // const filteredStocks = cockInfo.filter((stock) => {
   //   return stock.name.toLowerCase().includes(value.toLowerCase())
@@ -22,7 +23,7 @@ const SearchHeader = (props) => {
     <input
       className="search"
       onChange={(event) => setSearch(event.target.value)}
-      value={search}
+      value={props.search}
       type={props.type}
       placeholder={props.placeholder}
     />

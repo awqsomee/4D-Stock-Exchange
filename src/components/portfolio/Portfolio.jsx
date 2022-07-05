@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Sorting from '../sorting/Sorting.jsx'
 import Panel from '../panel/Panel.jsx'
-import '../content/stocklist.css'
+import '../StockList/stocklist.css'
 import Stock from '../stocks/Stock.jsx'
 import { getUserStocks } from '../../actions/stocks.js'
 

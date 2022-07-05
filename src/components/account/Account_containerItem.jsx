@@ -1,10 +1,10 @@
 import React from 'react'
-import { setUser } from '../../reducers/userReducer'
+import { store } from '../../redux'
+import { setUser } from '../../redux/slice'
 import './account.css'
-import { store } from '../../reducers/index'
 
 const Account_containerItem = (props) => {
-  const user = store.getState(setUser).user.currentUser
+  const user = store.getState(setUser).toolkit.currentUser
   const UserPhone = '8(999)123-45-67'
   const UserDate = '12.12.1990'
   return (

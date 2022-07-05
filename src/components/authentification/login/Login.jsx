@@ -3,10 +3,10 @@ import { useState } from 'react'
 import './login.css'
 import Input from '../../UI/input/Input'
 import { login } from '../../../actions/user'
-import { useDispatch } from 'react-redux'
-import { store } from '../../../reducers'
-import { setUser } from '../../../reducers/userReducer'
+import { store } from '../../../redux'
 import ModalBoxDeposit from '../../UI/ModalBox/ModalBoxDeposit'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../../../redux/slice'
 
 const Login = (props) => {
   const [email, setEmail] = useState('')
@@ -35,8 +35,8 @@ const Login = (props) => {
         className="login__button"
         onClick={async () => {
           await dispatch(login(email, password))
-          console.log(store.getState(setUser).user.isAuth)
-          if (store.getState(setUser).user.isAuth) {
+          console.log(store.getState(setUser).toolkit.isAuth)
+          if (store.getState(setUser).toolkit.isAuth) {
             props.sVisible(false)
           } else setmodalBoxDeposit(true)
         }}
