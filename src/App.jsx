@@ -42,9 +42,7 @@ function App() {
           <footer />
         </div>
       ) : (
-        <div className="app">
-          <p>LOADING</p>
-        </div>
+        <div></div>
       )}
     </BrowserRouter>
   )
