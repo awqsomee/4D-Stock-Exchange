@@ -20,7 +20,6 @@ import { logout, setUser } from '../../../redux/slice'
 const Navbar = () => {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
   const dispatch = useDispatch()
-  const search = useSelector((state) => state.toolkit.search)
   const [modalBoxReg, setModalBoxReg] = useState(false)
   const [modalBoxLog, setModalBoxLog] = useState(false)
   const [modalBoxAcc, setModalBoxAcc] = useState(false)
@@ -73,7 +72,7 @@ const Navbar = () => {
               <img src={поиск} width={50} />{' '}
             </div>
 
-            <SearchHeader className="searchStroke" value={search} type="text" placeholder="Поиск..."></SearchHeader>
+            <SearchHeader />
           </div>
         </div>
 

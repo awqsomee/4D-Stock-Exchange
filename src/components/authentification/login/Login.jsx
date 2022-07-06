@@ -35,7 +35,6 @@ const Login = (props) => {
         className="login__button"
         onClick={async () => {
           await dispatch(login(email, password))
-          console.log(store.getState(setUser).toolkit.isAuth)
           if (store.getState(setUser).toolkit.isAuth) {
             props.sVisible(false)
           } else setmodalBoxDeposit(true)

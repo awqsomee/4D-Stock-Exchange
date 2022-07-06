@@ -69,11 +69,15 @@ const Stock = (props) => {
       <div className="stock">
         <div className="stock__index">{props.stock.symbol}</div>
         <div className="stock__name">{props.stock.name}</div>
-        {props.stock?.data && (
-          <div className="stock__cost">
-            {props.stock.data[99].value.toFixed(2)} {props.stock.currency}
-          </div>
-        )}
+        <div className="stock__cost">
+          {props.stock?.data ? (
+            <div>
+              {props.stock.data[99].value.toFixed(2)} {props.stock.currency}
+            </div>
+          ) : (
+            <div>-</div>
+          )}
+        </div>
         <div className="stock__change">{props.stock.changes}%</div>
         <div className="stock__counter">
           <div className="stock__counter__less">

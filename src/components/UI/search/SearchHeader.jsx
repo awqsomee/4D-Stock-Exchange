@@ -1,7 +1,8 @@
 import React, { useContext, useTransition } from 'react'
 //  import classes from './search_header.module.css'
 import '../input/input.css'
-import { SearchContext } from '../../../context'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSearch } from '../../../redux/slice'
 
 // const Stocks = () => {
 //   const cockInfo = [
@@ -11,21 +12,16 @@ import { SearchContext } from '../../../context'
 //   ]
 // }
 
-const SearchHeader = (props) => {
-  // const [value, setValue] = useState('')
-  const { search, setSearch } = useContext(SearchContext)
-  console.log(props)
-
-  // const filteredStocks = cockInfo.filter((stock) => {
-  //   return stock.name.toLowerCase().includes(value.toLowerCase())
-  // })
+const SearchHeader = () => {
+  const search = useSelector((state) => state.toolkit.search)
+  const dispatch = useDispatch()
   return (
     <input
       className="search"
-      onChange={(event) => setSearch(event.target.value)}
-      value={props.search}
-      type={props.type}
-      placeholder={props.placeholder}
+      onChange={(event) => dispatch(setSearch(event.target.value))}
+      value={search}
+      type={'text'}
+      placeholder={'Поиск...'}
     />
   )
 }

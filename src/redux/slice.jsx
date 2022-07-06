@@ -12,6 +12,7 @@ const slice = createSlice({
       state.isAuth = true
     },
     logout(state) {
+      localStorage.removeItem('stonksToken')
       state.currentUser = {}
       state.isAuth = false
     },
@@ -22,4 +23,4 @@ const slice = createSlice({
 })
 
 export default slice.reducer
-export const { setUser, logout } = slice.actions
+export const { setUser, logout, setSearch } = slice.actions
