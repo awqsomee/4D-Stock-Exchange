@@ -4,9 +4,9 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { auth } from './actions/user'
 import Navbar from './components/UI/navbar/Navbar'
 import StockList from './components/StockList/StockList'
-import Account from './components/Account/Account'
+import Account from './components/account/Account'
 import WalletList from './components/WalletList/WalletList'
-import Portfolio from './components/Portfolio/Portfolio'
+import Portfolio from './components/portfolio/Portfolio'
 import './app.css'
 
 function App() {
