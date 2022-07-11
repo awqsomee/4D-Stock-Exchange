@@ -20,7 +20,7 @@ function App() {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       {!isLoading ? (
         <div className="app">
           <Navbar />
@@ -44,7 +44,7 @@ function App() {
       ) : (
         <div></div>
       )}
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
