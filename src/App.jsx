@@ -20,7 +20,7 @@ function App() {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       {!isLoading ? (
         <div className="app">
           <Navbar />
