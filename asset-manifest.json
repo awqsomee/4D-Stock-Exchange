@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/4D-Stock-Exchange/static/css/main.5c9d455a.css",
-    "main.js": "/4D-Stock-Exchange/static/js/main.3ec1caa6.js",
+    "main.js": "/4D-Stock-Exchange/static/js/main.825eca9f.js",
     "static/media/logo.svg": "/4D-Stock-Exchange/static/media/logo.46e980d9b8b88a2da5030c77ff2a0b77.svg",
     "static/media/PlusCircle.svg": "/4D-Stock-Exchange/static/media/PlusCircle.b6f13dbbc745e617de6d7ead6ea195bb.svg",
     "static/media/DashCircle.svg": "/4D-Stock-Exchange/static/media/DashCircle.c7771615f05ad2f2a422dd60c7831786.svg",
@@ -9,15 +9,15 @@
     "static/media/убывание 2.svg": "/4D-Stock-Exchange/static/media/убывание 2.42b23d4c8202e422dfa7b4cd1d5cfe9e.svg",
     "static/media/wallet.svg": "/4D-Stock-Exchange/static/media/wallet.2b761e80fa51b09a1527d931530138fe.svg",
     "static/media/user.svg": "/4D-Stock-Exchange/static/media/user.677647fcd4a94666a4f3b3afdd24a519.svg",
+    "index.html": "/4D-Stock-Exchange/index.html",
     "static/media/поиск.svg": "/4D-Stock-Exchange/static/media/поиск.27d140cbf29e6eef35950cb25e5df05b.svg",
     "static/media/angle_down.svg": "/4D-Stock-Exchange/static/media/angle_down.108ff04abf6ceed5bebfe0bfd463a8b9.svg",
     "static/media/angle_up.svg": "/4D-Stock-Exchange/static/media/angle_up.ffcd35f57dfae1074880070405060e8f.svg",
-    "index.html": "/4D-Stock-Exchange/index.html",
     "main.5c9d455a.css.map": "/4D-Stock-Exchange/static/css/main.5c9d455a.css.map",
-    "main.3ec1caa6.js.map": "/4D-Stock-Exchange/static/js/main.3ec1caa6.js.map"
+    "main.825eca9f.js.map": "/4D-Stock-Exchange/static/js/main.825eca9f.js.map"
   },
   "entrypoints": [
     "static/css/main.5c9d455a.css",
-    "static/js/main.3ec1caa6.js"
+    "static/js/main.825eca9f.js"
   ]
 }
