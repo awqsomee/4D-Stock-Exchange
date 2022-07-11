@@ -12,26 +12,28 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-.stockList {
-  width: 100%;
-  display: block;
-  min-height: 75vh;
-  padding: 0 55px 0 0;
-  font-family: 'Exo 2', 'Arial';
-}
-.title {
-  color: #000000;
-  font-size: 40px;
-  font-family: 'Play';
-  width: auto;
-}
-.number {
-  float: left;
-  margin-left: 10%;
-  margin-top: 0.7%;
-  padding-top: 3%;
+.balance {
+  display: flex;
+  justify-content: space-between;
+  background-color: #6c7175;
   font-size: 16px;
   font-family: 'Exo 2', 'Arial';
-  color: 'Exo 2', 'Arial';
-  font-weight: 600;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 15px 10px;
+  margin-top: 20px;
+}
+.balance__currency {
+  color: #e9eef2;
+  font-size: 32px;
+  margin: 0px 10px;
+}
+.balance__sum {
+  white-space: nowrap;
+  color: #a0e28d;
+  margin: 0px 10px;
+  font-size: 32px;
+}
+.balance__button {
+  margin: 0px 10px;
 }

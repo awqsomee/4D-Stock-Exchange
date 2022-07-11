@@ -12,26 +12,14 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-.stockList {
-  width: 100%;
-  display: block;
-  min-height: 75vh;
-  padding: 0 55px 0 0;
+.list {
+  width: 60%;
   font-family: 'Exo 2', 'Arial';
 }
 .title {
+  margin-top: 5vh;
   color: #000000;
   font-size: 40px;
   font-family: 'Play';
   width: auto;
-}
-.number {
-  float: left;
-  margin-left: 10%;
-  margin-top: 0.7%;
-  padding-top: 3%;
-  font-size: 16px;
-  font-family: 'Exo 2', 'Arial';
-  color: 'Exo 2', 'Arial';
-  font-weight: 600;
 }

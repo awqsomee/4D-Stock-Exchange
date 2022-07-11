@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { auth } from './actions/user'
-import Navbar from './components/UI/navbar/Navbar'
+import Navbar from './components/navbar/Navbar'
 import StockList from './components/StockList/StockList'
 import Account from './components/Account/Account'
-import WalletList from './components/WalletList/WalletList'
+import Currency from './components/currency/Currency'
 import Portfolio from './components/Portfolio/Portfolio'
 import './app.css'
 
@@ -34,7 +34,7 @@ function App() {
             <Routes>
               <Route path="/stocks" element={<StockList title="Каталог акций" />} />
               <Route path="/account" element={<Account />} />
-              <Route path="/wallet" element={<WalletList />} />
+              <Route path="/wallet" element={<Currency />} />
               <Route path="/portfolio" element={<Portfolio title="Ваши инвестиции" />} />
               <Route path="*" element={<Navigate to="/stocks" />} />
             </Routes>

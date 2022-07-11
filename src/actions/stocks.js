@@ -23,7 +23,7 @@ async function getUserStocks() {
 
     return stocksInfoWithPrice
   } catch (e) {
-    console.log(e)
+    // console.log(e)
   }
 }
 
@@ -55,7 +55,7 @@ async function getStocksSearch(symbol) {
     )
     return stocksInfoWithPrice
   } catch (e) {
-    console.log(e)
+    // console.log(e)
   }
 }
 
@@ -67,7 +67,7 @@ async function getStockChange(symbol, apikey) {
     )
     return response.data['Global Quote']['10. change percent']
   } catch (e) {
-    console.log(e.message)
+    // console.log(e.message)
   }
 }
 
@@ -77,7 +77,6 @@ async function getStockPrice(symbol, apikey) {
       `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX`
       // 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
     )
-    console.log(response.data)
     let date = Object.keys(response.data['Time Series (Daily)'])
     date.reverse()
     const value = date.map((item) => Number(response.data['Time Series (Daily)'][item]['4. close']))
@@ -89,7 +88,7 @@ async function getStockPrice(symbol, apikey) {
       })
     return data
   } catch (e) {
-    console.log(e.message)
+    // console.log(e.message)
   }
 }
 
