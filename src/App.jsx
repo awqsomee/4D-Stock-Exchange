@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { auth } from './actions/user'
+import { auth } from './actions/auth'
 import Navbar from './components/navbar/Navbar'
 import StockList from './components/StockList/StockList'
 import Account from './components/account/Account'
