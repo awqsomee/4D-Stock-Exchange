@@ -57,7 +57,7 @@ const Balance = (props) => {
         </div>
       </ModalBoxDeposit>
       <div className="balance__summ">{`${new Intl.NumberFormat('ru-RU').format(
-        store.getState(setUser).toolkit.currentUser.balanceRUB
+        store.getState(setUser).toolkit.currentUser.balance
       )} ₽`}</div>
       <Input className="inputBox" value={fromInputText} setValue={setFromInputText} placeholder="100 RUB" />
       <p>В</p>

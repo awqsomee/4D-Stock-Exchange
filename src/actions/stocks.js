@@ -6,22 +6,23 @@ async function getUserStocks() {
       headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
     })
     const stocksInfo = response.data
-    const stocksInfoWithPrice = await Promise.all(
-      stocksInfo.map(async (item, index) => {
-        if (index < 1) {
-          let data = await getStockPrice(item.symbol)
-          let changes = await getStockChange(item.symbol)
-          return {
-            number: index + 1,
-            ...item,
-            data,
-            changes: Number(changes.slice(0, 4)),
+    if (Array.isArray(stocksInfo)) {
+      const stocksInfoWithPrice = await Promise.all(
+        stocksInfo.map(async (item, index) => {
+          if (index < 1) {
+            let data = await getStockPrice(item.symbol)
+            let changes = await getStockChange(item.symbol)
+            return {
+              number: index + 1,
+              ...item,
+              data,
+              changes: Number(changes.slice(0, 4)),
+            }
           }
-        }
-      })
-    )
-
-    return stocksInfoWithPrice
+        })
+      )
+      return stocksInfoWithPrice
+    } else return []
   } catch (e) {
     console.log(e)
   }
@@ -77,7 +78,6 @@ async function getStockPrice(symbol, apikey) {
       `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX`
       // 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
     )
-    console.log(response.data)
     let date = Object.keys(response.data['Time Series (Daily)'])
     date.reverse()
     const value = date.map((item) => Number(response.data['Time Series (Daily)'][item]['4. close']))

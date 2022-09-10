@@ -19,7 +19,6 @@ const WalletList = (props) => {
       })
       responce.data.transactions.reverse()
       setTransactions(responce.data.transactions)
-      console.log(responce.data.transactions)
     } catch (e) {
       console.log(e)
     }

@@ -13,7 +13,7 @@ const Balance = (props) => {
   return (
     <div className="balance">
       <div className="balance__summ">{`${new Intl.NumberFormat('ru-RU').format(
-        store.getState(setUser).toolkit.currentUser.balanceUSD
+        store.getState(setUser).toolkit.currentUser.balance
       )} $`}</div>
       <InputBox
         visible={modalBox}

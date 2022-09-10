@@ -36,12 +36,15 @@ const Portfolio = (props) => {
           <Panel className="panel" />
           {isStocksLoading ? (
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+          ) : stocks.length > 0 ? (
+            stocks.map((stock) => (
+              <Stock stock={stock} key={stock.symbol} changes={stock.changes} buttonText="Продать" />
+            ))
           ) : (
-            <></>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
+              У вас нет приобретенных акций
+            </div>
           )}
-          {stocks.map((stock) => (
-            <Stock stock={stock} key={stock.symbol} changes={stock.changes} buttonText="Продать" />
-          ))}
         </div>
       </div>
     </div>
