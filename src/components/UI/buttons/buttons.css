@@ -3,14 +3,14 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/exo2/v18/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Play';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 .button {
   border-radius: 10px;
@@ -20,36 +20,36 @@
   border: none !important;
 }
 .button__normal {
-  background-color: #2be9d9;
-  color: #000000;
+  background-color: #272727;
+  color: #e9eef2;
 }
 .button:hover {
-  background-color: #d0fcff;
-  color: #000000;
+  background-color: #202020;
+  color: #e9eef2;
 }
 .button__normal:active {
-  background-color: #47959a;
+  background-color: #ee8100;
   color: #ffffff;
 }
 .button__non {
-  background-color: #d0fcff;
-  color: #6c7175;
+  background-color: #202020;
+  color: #9293b0;
 }
 .button__sortPush {
   background-color: #e9eef2;
-  color: #000000;
+  color: #e9eef2;
   border-radius: 5px;
   padding: 4px 10px;
 }
 .button__sortNormal {
-  background-color: #394249;
+  background-color: #4d4d4d;
   color: #ffffff;
   border-radius: 5px;
   padding: 4px 10px;
 }
 .button__push {
-  background-color: #394249;
-  color: #2be9d9;
+  background-color: #4d4d4d;
+  color: #ee8100;
 }
 .button__none {
   background-color: rgba(0, 0, 0, 0);

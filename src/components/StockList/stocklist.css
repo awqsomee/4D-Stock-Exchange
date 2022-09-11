@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/exo2/v18/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Play';
@@ -26,7 +26,7 @@
   left: 19%;
   margin-top: 9vh;
   margin-left: 19%;
-  color: #000000;
+  color: #e9eef2;
   font-size: 40px;
   font-family: 'Play';
   width: auto;

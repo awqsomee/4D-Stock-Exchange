@@ -1,0 +1,30 @@
+@import '../../../styles/colors/colors';
+@import '../../../styles/fonts/fonts';
+
+.balance {
+  display: flex;
+  justify-content: space-between;
+  background-color: @--main-grey-color;
+  font-size: @--button-font-size;
+  font-family: @font-family;
+  color: @--main-text-color;
+  border-radius: 5px;
+  padding: 15px 10px;
+  margin-top: 20px;
+
+  &__currency {
+    color: @--light-grey-color;
+    font-size: 32px;
+    margin: 0px 10px;
+  }
+  &__sum {
+    white-space: nowrap;
+    color: @--green-color;
+    margin: 0px 10px;
+    font-size: 32px;
+  }
+
+  &__button {
+    margin: 0px 10px;
+  }
+}

@@ -12,30 +12,14 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-.history {
-  display: flex;
-  border-radius: 5px;
-  background-color: #9293b0;
-  font-size: 16px;
+.list {
+  width: 60%;
   font-family: 'Exo 2', 'Arial';
-  color: #ffffff;
-  padding: 2% 2%;
-  margin-top: 0.7%;
-  justify-content: space-around;
-  margin-left: 11.9%;
 }
-.history__type {
-  width: 20%;
-  margin-left: 4%;
-}
-.history__name {
-  width: 50%;
-}
-.history__summ {
-  display: inline-block;
-  width: 50%;
-}
-.history__date {
-  display: inline-block;
-  width: 50%;
+.title {
+  margin-top: 5vh;
+  color: #e9eef2;
+  font-size: 40px;
+  font-family: 'Play';
+  width: auto;
 }

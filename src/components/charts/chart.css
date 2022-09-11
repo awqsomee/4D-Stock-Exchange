@@ -3,34 +3,32 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/exo2/v18/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Play';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 .stockChart {
-  border-radius: 5px;
-  margin-left: 11.9%;
-  width: 88.1%;
+  margin: 20px;
+  border-radius: 20px;
+  width: 70%;
   height: 55vh;
-  justify-content: center;
+  background-color: #4d4d4d;
+  justify-content: flex-start;
   align-items: center;
   display: flex;
-  background-color: #6c7175;
-  z-index: -1;
 }
 .tooltip {
   border-radius: 0.25rem;
   padding: 1rem;
   box-shadow: 15px 15px 15px 5px rgba(0, 0, 0, 0.2);
   text-align: center;
-  background-color: #d0fcff;
+  background-color: #202020;
   font-family: 'Exo 2', 'Arial';
   font-size: 14px;
-  color: #394249;
-  z-index: -1;
+  color: #4d4d4d;
 }

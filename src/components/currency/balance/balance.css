@@ -12,30 +12,28 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-.history {
+.balance {
   display: flex;
-  border-radius: 5px;
+  justify-content: space-between;
   background-color: #9293b0;
   font-size: 16px;
   font-family: 'Exo 2', 'Arial';
   color: #ffffff;
-  padding: 2% 2%;
-  margin-top: 0.7%;
-  justify-content: space-around;
-  margin-left: 11.9%;
+  border-radius: 5px;
+  padding: 15px 10px;
+  margin-top: 20px;
 }
-.history__type {
-  width: 20%;
-  margin-left: 4%;
+.balance__currency {
+  color: #e9eef2;
+  font-size: 32px;
+  margin: 0px 10px;
 }
-.history__name {
-  width: 50%;
+.balance__sum {
+  white-space: nowrap;
+  color: #bbffa7;
+  margin: 0px 10px;
+  font-size: 32px;
 }
-.history__summ {
-  display: inline-block;
-  width: 50%;
-}
-.history__date {
-  display: inline-block;
-  width: 50%;
+.balance__button {
+  margin: 0px 10px;
 }

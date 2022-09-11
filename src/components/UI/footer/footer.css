@@ -3,14 +3,14 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/exo2/v18/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Play';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/play/v16/6aez4K2oVqwIjtI.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 .footer {
   width: 100%;
@@ -19,8 +19,7 @@
   height: 11vh;
   z-index: -1;
   display: flex;
-  flex-direction: row;
-  background-color: #394249;
+  background-color: #4d4d4d;
   align-items: center;
   justify-content: center;
   font-size: 14px;
@@ -36,24 +35,7 @@
 }
 .footer__socnet {
   width: 33%;
-  text-align: center;
-  display: flex;
-  z-index: 1;
-  position: relative;
-  left: 150px;
-  bottom: 10px;
-}
-.fb_img {
-  margin-right: 20px;
-  z-index: 1;
-}
-.twitter_img {
-  margin-right: 20px;
-  z-index: 1;
-}
-.youtube_img {
-  margin-right: 20px;
-  z-index: 1;
+  text-align: right;
 }
 .container_footer {
   width: 61%;
