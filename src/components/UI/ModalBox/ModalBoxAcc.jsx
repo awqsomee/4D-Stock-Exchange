@@ -8,8 +8,8 @@ const ModalBoxAcc = ({ children, visible, setVisible }) => {
   }
 
   return (
-    <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
-      <div className={cl.modalBoxContentAcc} onClick={(e) => e.stopPropagation()}>
+    <div className={rootClasses.join(' ')} onMouseDown={() => setVisible(false)}>
+      <div className={cl.modalBoxContentAcc} onMouseDown={(e) => e.stopPropagation()}>
         {children}
       </div>
     </div>

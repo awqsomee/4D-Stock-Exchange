@@ -19,6 +19,9 @@
   padding: 0 55px 0 0;
   font-family: 'Exo 2', 'Arial';
 }
+.container2 {
+  align-items: center;
+}
 .title {
   left: 19%;
   margin-top: 9vh;
@@ -27,6 +30,13 @@
   font-size: 40px;
   font-family: 'Play';
   width: auto;
+}
+.list {
+  margin: 2% 19.5% 2% 12%;
+  padding-left: 6%;
+}
+.panel {
+  justify-content: center;
 }
 .number {
   float: left;
