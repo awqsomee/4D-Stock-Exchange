@@ -24,7 +24,7 @@ async function getUserStocks() {
       return stocksInfoWithPrice
     } else return []
   } catch (e) {
-    console.log(e)
+    // console.log(e)
   }
 }
 
@@ -56,7 +56,7 @@ async function getStocksSearch(symbol) {
     )
     return stocksInfoWithPrice
   } catch (e) {
-    console.log(e)
+    // console.log(e)
   }
 }
 
@@ -68,7 +68,7 @@ async function getStockChange(symbol, apikey) {
     )
     return response.data['Global Quote']['10. change percent']
   } catch (e) {
-    console.log(e.message)
+    // console.log(e.message)
   }
 }
 
@@ -89,7 +89,7 @@ async function getStockPrice(symbol, apikey) {
       })
     return data
   } catch (e) {
-    console.log(e.message)
+    // console.log(e.message)
   }
 }
 

@@ -23,7 +23,7 @@
   margin-top: 0.7%;
   align-items: center;
   justify-content: center;
-  margin-left: 11.9%;
+  margin-left: 12%;
   flex-direction: row;
 }
 
@@ -44,7 +44,6 @@
 .stock__index {
   width: 6%;
   font-size: 12px;
-  top: 50%;
 }
 .stock__name {
   width: 20%;
@@ -57,7 +56,7 @@
   width: 19%;
 }
 .stock__counter {
-  width: 12.1%;
+  width: 12%;
   display: flex;
   justify-content: space-between;
   padding-right: 1%;
@@ -66,10 +65,10 @@
   align-items: flex-end;
 }
 .stock__button {
-  width: 14.8%;
+  width: 15%;
 }
 .stock__arrow {
-  width: 5.1%;
+  width: 5%;
   padding-left: 2%;
   margin-top: 1%;
   background: none;

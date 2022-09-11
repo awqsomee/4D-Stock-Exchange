@@ -19,8 +19,11 @@ const slice = createSlice({
     setSearch(state, action) {
       state.search = action.payload
     },
+    setUserBalance(state, action) {
+      state.currentUser.balance = action.payload
+    },
   },
 })
 
 export default slice.reducer
-export const { setUser, logout, setSearch } = slice.actions
+export const { setUser, logout, setSearch, setUserBalance } = slice.actions
