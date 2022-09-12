@@ -7,7 +7,9 @@
   font-family: @font-family;
   border-radius: 5px;
   color: @--main-text-color;
-  background: @--main-grey-color;
+  background: @--cards-background-color;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5),
+    0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 2% 25% 2% 7%;
   // margin-top: 0.7%;
   align-items: center;
@@ -16,27 +18,22 @@
 
   &__day {
     width: 13%;
-    // background-color: @--dark-grey-color;
+    // background-color: @--hover-button-color;
   }
   &__week {
     width: 13%;
-    background-color: @--light-grey-color;
+    background-color: @--process-button-color;
   }
   &__month {
     width: 13%;
-    background-color: @--dark-grey-color;
+    background-color: @--hover-button-color;
   }
   &__year {
     width: 13%;
-    background-color: @--dark-grey-color;
+    background-color: @--hover-button-color;
   }
   &__all {
     width: 13%;
-    background-color: @--dark-grey-color;
+    background-color: @--hover-button-color;
   }
 }
-
-// .canvas_diagram{
-//   width: ;
-//   height: ;
-// }

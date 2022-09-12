@@ -13,39 +13,74 @@
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 .button {
-  border-radius: 10px;
-  padding: 12px 36px;
+  display: flex;
+  border-radius: 22px;
+  padding: 10px 40px 12px;
+  gap: 10px;
+  align-items: center;
   font-family: 'Exo 2', 'Arial';
+  font-size: 16px;
   text-decoration: none !important;
   border: none !important;
+}
+.button:hover {
+  background-color: #202020;
+  color: #ee8100;
+  box-shadow: -5px -5px 15px rgba(77, 77, 77, 0.3), 5px 5px 15px rgba(0, 0, 0, 0.4), inset 5px 5px 15px rgba(0, 0, 0, 0.3), inset -5px -5px 15px rgba(77, 77, 77, 0.3);
+}
+.button:active {
+  background-color: #ee8100;
+  color: #e9eef2;
+  box-shadow: -5px -5px 15px rgba(77, 77, 77, 0.3), 5px 5px 15px rgba(0, 0, 0, 0.4), inset 5px 5px 15px rgba(0, 0, 0, 0.3), inset -5px -5px 15px rgba(77, 77, 77, 0.3);
 }
 .button__normal {
   background-color: #272727;
   color: #e9eef2;
+  box-shadow: -5px -5px 15px rgba(77, 77, 77, 0.3), 5px 5px 15px rgba(0, 0, 0, 0.4), inset 5px 5px 15px rgba(0, 0, 0, 0.3), inset -5px -5px 15px rgba(77, 77, 77, 0.3);
 }
-.button:hover {
-  background-color: #202020;
-  color: #e9eef2;
+.button__process {
+  background-color: #e9eef2;
+  color: #202020;
+  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.6), inset 5px 5px 5px rgba(171, 171, 171, 0.5), inset -5px -5px 5px #ffffff;
 }
-.button__normal:active {
-  background-color: #ee8100;
-  color: #ffffff;
+.button__process:hover {
+  background-color: #e9eef2;
+  color: #ee8100;
+  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.6), inset 5px 5px 5px rgba(171, 171, 171, 0.5), inset -5px -5px 5px #ffffff;
 }
 .button__non {
   background-color: #202020;
-  color: #9293b0;
+  color: #4d4d4d;
 }
 .button__sortPush {
+  font-size: 13px;
   background-color: #e9eef2;
+  color: #202020;
+  border-radius: 5px;
+  padding: 4px 10px;
+  box-shadow: -3px -3px 8px rgba(77, 77, 77, 0.3), 3px 3px 8px rgba(0, 0, 0, 0.3), inset 5px 5px 8px rgba(0, 0, 0, 0.3), inset -5px -5px 8px #ffffff;
+}
+.button__sortPush:hover {
+  background-color: #e9eef2;
+  color: #202020;
+  box-shadow: -3px -3px 8px rgba(77, 77, 77, 0.3), 3px 3px 8px rgba(0, 0, 0, 0.3), inset 5px 5px 8px rgba(0, 0, 0, 0.3), inset -5px -5px 8px #ffffff;
+}
+.button__sortNormal {
+  font-size: 13px;
+  background-color: #202020;
   color: #e9eef2;
   border-radius: 5px;
   padding: 4px 10px;
+  box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.3), inset -5px -5px 8px rgba(77, 77, 77, 0.3), -3px -3px 8px rgba(77, 77, 77, 0.3), 3px 3px 8px rgba(0, 0, 0, 0.3);
 }
-.button__sortNormal {
-  background-color: #4d4d4d;
-  color: #ffffff;
-  border-radius: 5px;
-  padding: 4px 10px;
+.button__sortNormal:hover {
+  background-color: #202020;
+  color: #ee8100;
+  box-shadow: initial;
+}
+.button__sortNormal:active {
+  background-color: #ee8100;
+  color: #e9eef2;
 }
 .button__push {
   background-color: #4d4d4d;

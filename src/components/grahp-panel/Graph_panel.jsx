@@ -17,7 +17,7 @@ const Graph_panel = (props) => {
         <ButtonSwith
           className={buttDay}
           onClick={() => {
-            if (buttDay === 'button button__sortNormal ') {
+            if (buttDay === 'button button__sortNormal') {
               setButtDay('button button__sortPush ')
               setButtbuttWeek('button button__sortNormal ')
               setButtbuttMonth('button button__sortNormal ')

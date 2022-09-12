@@ -2,40 +2,93 @@
 @import '../../../styles/fonts/fonts';
 
 .button {
-  border-radius: 10px;
-  padding: 12px 36px;
+  display: flex;
+  border-radius: 22px;
+  padding: 10px 40px 12px;
+  gap: 10px;
+  // justify-content: center;s
+  align-items: center;
   font-family: @font-family;
+  font-size: @--button-font-size;
   text-decoration: none !important;
   border: none !important;
 
+  &:hover {
+    background-color: @--hover-button-color;
+    color: @--hover-button-text-color;
+    box-shadow: -5px -5px 15px rgba(77, 77, 77, 0.3),
+      5px 5px 15px rgba(0, 0, 0, 0.4), inset 5px 5px 15px rgba(0, 0, 0, 0.3),
+      inset -5px -5px 15px rgba(77, 77, 77, 0.3);
+  }
+  &:active {
+    background-color: @--down-button-color;
+    color: @--button-text-color;
+    box-shadow: -5px -5px 15px rgba(77, 77, 77, 0.3),
+      5px 5px 15px rgba(0, 0, 0, 0.4), inset 5px 5px 15px rgba(0, 0, 0, 0.3),
+      inset -5px -5px 15px rgba(77, 77, 77, 0.3);
+  }
   &__normal {
     background-color: @--main-button-color;
     color: @--button-text-color;
+    box-shadow: -5px -5px 15px rgba(77, 77, 77, 0.3),
+      5px 5px 15px rgba(0, 0, 0, 0.4), inset 5px 5px 15px rgba(0, 0, 0, 0.3),
+      inset -5px -5px 15px rgba(77, 77, 77, 0.3);
+  }
+  &__process {
+    background-color: @--process-button-color;
+    color: @--hover-button-color;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+      5px 5px 15px rgba(0, 0, 0, 0.6),
+      inset 5px 5px 5px rgba(171, 171, 171, 0.5), inset -5px -5px 5px #ffffff;
+    &:hover {
+      background-color: @--process-button-color;
+      color: @--hover-button-text-color;
+      box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+        5px 5px 15px rgba(0, 0, 0, 0.6),
+        inset 5px 5px 5px rgba(171, 171, 171, 0.5), inset -5px -5px 5px #ffffff;
+    }
   }
 
-  &:hover {
-    background-color: @--hover-button-color;
-    color: @--button-text-color;
-  }
-  &__normal:active {
-    background-color: @--down-button-color;
-    color: @--main-text-color;
-  }
   &__non {
     background-color: @--hover-button-color;
-    color: @--main-grey-color;
+    color: @--disable-color;
   }
+
   &__sortPush {
-    background-color: @--light-grey-color;
-    color: @--button-text-color;
+    font-size: @--selector-font-size;
+    background-color: @--process-button-color;
+    color: @--hover-button-color;
     border-radius: 5px;
     padding: 4px 10px;
+    box-shadow: -3px -3px 8px rgba(77, 77, 77, 0.3),
+      3px 3px 8px rgba(0, 0, 0, 0.3), inset 5px 5px 8px rgba(0, 0, 0, 0.3),
+      inset -5px -5px 8px #ffffff;
+    &:hover {
+      background-color: @--process-button-color;
+      color: @--hover-button-color;
+      box-shadow: -3px -3px 8px rgba(77, 77, 77, 0.3),
+        3px 3px 8px rgba(0, 0, 0, 0.3), inset 5px 5px 8px rgba(0, 0, 0, 0.3),
+        inset -5px -5px 8px #ffffff;
+    }
   }
   &__sortNormal {
-    background-color: @--dark-grey-color;
-    color: @--main-text-color;
+    font-size: @--selector-font-size;
+    background-color: @--hover-button-color;
+    color: @--process-button-color;
     border-radius: 5px;
     padding: 4px 10px;
+    box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.3),
+      inset -5px -5px 8px rgba(77, 77, 77, 0.3),
+      -3px -3px 8px rgba(77, 77, 77, 0.3), 3px 3px 8px rgba(0, 0, 0, 0.3);
+    &:hover {
+      background-color: @--hover-button-color;
+      color: @--hover-button-text-color;
+      box-shadow: initial;
+    }
+    &:active {
+      background-color: @--down-button-color;
+      color: @--button-text-color;
+    }
   }
 
   &__push {

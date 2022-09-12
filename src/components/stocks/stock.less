@@ -4,7 +4,9 @@
 .stock {
   display: flex;
   border-radius: 5px;
-  background-color: @--main-grey-color;
+  background-color: @--cards-background-color;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5),
+    0px 4px 4px rgba(0, 0, 0, 0.25);
   font-size: @--button-font-size;
   font-family: @font-family;
   color: @--main-text-color;
@@ -13,33 +15,39 @@
   align-items: center;
   justify-content: center;
   margin-left: 11.9%;
-  flex-direction: column;
+  // flex-direction: column;
 
   //   float: left;
   //   width: 51%;
 
   &__plank {
     flex-direction: row;
+    opacity: 1;
   }
 
   &__index {
+    opacity: 1;
     width: 6%;
     font-size: 12px;
     top: 50%;
   }
 
   &__name {
+    opacity: 1;
     width: 20%;
   }
 
   &__cost {
+    opacity: 1;
     width: 23%;
   }
   &__change {
+    opacity: 1;
     color: @--green-color;
     width: 19%;
   }
   &__counter {
+    opacity: 1;
     width: 12.1%;
     display: flex;
     justify-content: space-between;
@@ -49,20 +57,24 @@
     //   // vertical-align: middle;
     // }
     &__more {
+      opacity: 1;
       align-items: flex-end;
       // vertical-align: middle;
     }
   }
   &__button {
+    opacity: 1;
     width: 14.8%;
   }
   &__arrow {
+    opacity: 1;
     width: 5.1%;
     padding-left: 2%;
     margin-top: 1%;
   }
 
   .count {
+    opacity: 1;
     color: @--button-text-color;
   }
 }

@@ -25,6 +25,7 @@ const Stock = (props) => {
   const [slashString, setslashString] = useState('')
   const [GP, setGP] = useState(false)
   const [mouse, setMouse] = useState(false)
+  const [buttBuy, setButtBuy] = useState('button button__normal')
 
   function less() {
     if (counter > 1) setCounter(counter - 1)
@@ -79,9 +80,19 @@ const Stock = (props) => {
           )}
         </div>
         <div className="stock__change">{props.stock.changes}%</div>
+        
+        {buttBuy==='button button__process'?(
         <div className="stock__counter">
-          <div className="stock__counter__less">
-            <button onClick={less} className="button__none">
+            <div className="stock__counter__less">
+            <button 
+            className="button__none"
+            onClick={
+              //  {
+              less
+              // if (counter == 1) 
+              // setButtBuy('button button__normal')}
+            }
+             >
               <img src={Less} alt="less_img" className="less_img"></img>{' '}
             </button>
           </div>
@@ -94,10 +105,14 @@ const Stock = (props) => {
               <img src={More} alt="more_img" className="more_img"></img>{' '}
             </button>
           </div>
-        </div>
+        </div>)
+          :
+          (null)}
         <button
-          className="button button__normal"
+          className={counter == 0 ? setButtBuy('button button__normal') : buttBuy}
           onClick={() => {
+            if (buttBuy === 'button button__normal')
+            setButtBuy('button button__process')
             if (isAuth)
               switch (props.buttonText) {
                 case 'Купить':

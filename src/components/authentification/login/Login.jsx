@@ -7,6 +7,7 @@ import { store } from '../../../redux'
 import ModalBoxDeposit from '../../UI/ModalBox/ModalBoxDeposit'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../../redux/slice'
+import Close from '../../../assets/Icons/close.svg'
 
 const Login = (props) => {
   const [email, setEmail] = useState('')
@@ -20,7 +21,8 @@ const Login = (props) => {
           <div>Вход не выполнен. Проверьте правильность заполнения полей</div>
         </div>
       </ModalBoxDeposit>
-
+      
+      <div><img src={Close} alt="close_img" className="close_img" /></div>
       <div className="login__header">Вход</div>
       <div className="login"></div>
       <div className="login__input_name">Электронная почта</div>
@@ -32,7 +34,7 @@ const Login = (props) => {
         <Input className="auth" value={password} setValue={setpassword} type="password" placeholder="********" />{' '}
       </div>
       <button
-        className="login__button"
+        className="button button__normal login__button"
         onClick={async () => {
           await dispatch(login(email, password))
           if (store.getState(setUser).toolkit.isAuth) {

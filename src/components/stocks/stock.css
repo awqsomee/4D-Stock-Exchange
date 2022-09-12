@@ -15,7 +15,8 @@
 .stock {
   display: flex;
   border-radius: 5px;
-  background-color: #9293b0;
+  background-color: #eaeaea0d;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5), 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-size: 16px;
   font-family: 'Exo 2', 'Arial';
   color: #ffffff;
@@ -23,78 +24,53 @@
   margin-top: 0.7%;
   align-items: center;
   justify-content: center;
-  margin-left: 12%;
-  flex-direction: row;
+  margin-left: 11.9%;
 }
-
-.stock__number {
-  margin-right: 30px;
-  color: #394249;
-  font-size: 20px;
-  font-family: 'Exo 2', 'Arial';
-}
-
 .stock__plank {
-  display: flex;
   flex-direction: row;
-  width: 1050px;
-  position: relative;
-  right: 30px;
+  opacity: 1;
 }
 .stock__index {
+  opacity: 1;
   width: 6%;
   font-size: 12px;
+  top: 50%;
 }
 .stock__name {
+  opacity: 1;
   width: 20%;
 }
 .stock__cost {
+  opacity: 1;
   width: 23%;
 }
 .stock__change {
+  opacity: 1;
   color: #bbffa7;
   width: 19%;
 }
 .stock__counter {
-  width: 12%;
+  opacity: 1;
+  width: 12.1%;
   display: flex;
   justify-content: space-between;
   padding-right: 1%;
 }
 .stock__counter__more {
+  opacity: 1;
   align-items: flex-end;
 }
 .stock__button {
-  width: 15%;
+  opacity: 1;
+  width: 14.8%;
 }
 .stock__arrow {
-  width: 5%;
+  opacity: 1;
+  width: 5.1%;
   padding-left: 2%;
   margin-top: 1%;
-  background: none;
-  appearance: none;
-  writing-mode: horizontal-tb !important;
-  text-rendering: auto;
-  color: none;
-  letter-spacing: normal;
-  word-spacing: normal;
-  line-height: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: center;
-  align-items: flex-start;
-  cursor: default;
-  box-sizing: border-box;
-  background-color: none;
-  margin: 0em;
-  padding: 1px 6px;
-  border-width: none;
-  border-style: none;
-  border-color: none;
-  border-image: none;
 }
 .stock .count {
+  opacity: 1;
   color: #e9eef2;
 }

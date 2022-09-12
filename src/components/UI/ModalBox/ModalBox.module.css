@@ -8,15 +8,21 @@
   right: 0;
   left: 0;
   display: none;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.9);
   z-index: 1;
 }
 
 .modalBoxContent {
-  padding: 50px;
-  background: #394249;
-  border-radius: 16px;
-  min-width: 600px;
+  padding: 50px 45px 65px 45px;
+  /* background: #394249; */
+  background: #eaeaea0d;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 
+      inset 2px 4px 8px 0 rgba(111,111,111,0.25),
+      inset -2px 0px 4px 0 rgba(0,0,0,0.5);
+  backdrop-filter: blur(15px);
+  border-radius: 40px;
+  min-width: 400px;
+  /* max-height: 300px; */
   z-index: 1;
 }
 

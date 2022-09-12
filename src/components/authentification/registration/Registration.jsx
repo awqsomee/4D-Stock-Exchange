@@ -6,6 +6,7 @@ import { registration } from '../../../actions/auth'
 import '../../UI/input/input.css'
 import ModalBoxDeposit from '../../UI/ModalBox/ModalBoxDeposit'
 import { useDispatch } from 'react-redux'
+import Close from '../../../assets/Icons/close.svg'
 
 const Registration = (props) => {
   const dispatch = useDispatch()
@@ -23,6 +24,7 @@ const Registration = (props) => {
         </div>
       </ModalBoxDeposit>
 
+      <div><img src={Close} alt="close_img" className="close_img" /></div>
       <div className="registration__header">Регистрация</div>
       <div className="registration__input_name">Имя</div>
       <div className="registration__input">
