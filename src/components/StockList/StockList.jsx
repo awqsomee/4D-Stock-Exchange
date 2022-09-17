@@ -55,6 +55,30 @@ const StockList = (props) => {
             stocks &&
             stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
           )}
+          {isStocksLoading ? (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+          ) : (
+            stocks &&
+            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
+          )}
+          {isStocksLoading ? (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+          ) : (
+            stocks &&
+            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
+          )}
+          {isStocksLoading ? (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+          ) : (
+            stocks &&
+            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
+          )}
+          {isStocksLoading ? (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+          ) : (
+            stocks &&
+            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
+          )}
         </div>
       </div>
     </div>

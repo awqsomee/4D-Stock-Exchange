@@ -7,6 +7,7 @@ import StockList from './components/StockList/StockList'
 import Account from './components/account/Account'
 import Currency from './components/currency/Currency'
 import Portfolio from './components/portfolio/Portfolio'
+import Footer from './components/UI/footer/Footer'
 import './app.css'
 
 function App() {
@@ -24,25 +25,27 @@ function App() {
       {!isLoading ? (
         <div className="app">
           <Navbar />
-          {!isAuth && (
-            <Routes>
-              <Route path="/stocks" element={<StockList title="Каталог акций" />} />
-              <Route path="*" element={<Navigate to="/stocks" />} />
-            </Routes>
-          )}
-          {isAuth && (
-            <Routes>
-              <Route path="/stocks" element={<StockList title="Каталог акций" />} />
-              <Route path="/account" element={<Account />} />
-              <Route path="/wallet" element={<Currency />} />
-              <Route path="/portfolio" element={<Portfolio title="Ваши инвестиции" />} />
-              <Route path="*" element={<Navigate to="/stocks" />} />
-            </Routes>
-          )}
-          <footer />
+          <div className="wrap">
+            {!isAuth && (
+              <Routes>
+                <Route path="/stocks" element={<StockList title="Каталог акций" />} />
+                <Route path="*" element={<Navigate to="/stocks" />} />
+              </Routes>
+            )}
+            {isAuth && (
+              <Routes>
+                <Route path="/stocks" element={<StockList title="Каталог акций" />} />
+                <Route path="/account" element={<Account />} />
+                <Route path="/wallet" element={<Currency />} />
+                <Route path="/portfolio" element={<Portfolio title="Ваши инвестиции" />} />
+                <Route path="*" element={<Navigate to="/stocks" />} />
+              </Routes>
+            )}
+          </div>
+          <Footer />
         </div>
       ) : (
-        <div></div>
+        <div className="app">Loading...</div>
       )}
     </BrowserRouter>
   )
