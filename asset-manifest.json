@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/4D-Stock-Exchange/static/css/main.fa45c75c.css",
-    "main.js": "/4D-Stock-Exchange/static/js/main.d861b536.js",
+    "main.css": "/4D-Stock-Exchange/static/css/main.082faa7b.css",
+    "main.js": "/4D-Stock-Exchange/static/js/main.bfbb275f.js",
     "static/media/logo.svg": "/4D-Stock-Exchange/static/media/logo.46e980d9b8b88a2da5030c77ff2a0b77.svg",
     "static/media/PlusCircle.svg": "/4D-Stock-Exchange/static/media/PlusCircle.b6f13dbbc745e617de6d7ead6ea195bb.svg",
+    "static/media/close.svg": "/4D-Stock-Exchange/static/media/close.5510aa9bacd71fd5ae552a73e4bb9278.svg",
     "static/media/DashCircle.svg": "/4D-Stock-Exchange/static/media/DashCircle.c7771615f05ad2f2a422dd60c7831786.svg",
     "static/media/portfolio.svg": "/4D-Stock-Exchange/static/media/portfolio.f55f1458fc677e945770b4918b2724d2.svg",
     "static/media/убывание 2.svg": "/4D-Stock-Exchange/static/media/убывание 2.42b23d4c8202e422dfa7b4cd1d5cfe9e.svg",
@@ -13,11 +14,11 @@
     "static/media/поиск.svg": "/4D-Stock-Exchange/static/media/поиск.27d140cbf29e6eef35950cb25e5df05b.svg",
     "static/media/angle_down.svg": "/4D-Stock-Exchange/static/media/angle_down.108ff04abf6ceed5bebfe0bfd463a8b9.svg",
     "static/media/angle_up.svg": "/4D-Stock-Exchange/static/media/angle_up.ffcd35f57dfae1074880070405060e8f.svg",
-    "main.fa45c75c.css.map": "/4D-Stock-Exchange/static/css/main.fa45c75c.css.map",
-    "main.d861b536.js.map": "/4D-Stock-Exchange/static/js/main.d861b536.js.map"
+    "main.082faa7b.css.map": "/4D-Stock-Exchange/static/css/main.082faa7b.css.map",
+    "main.bfbb275f.js.map": "/4D-Stock-Exchange/static/js/main.bfbb275f.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa45c75c.css",
-    "static/js/main.d861b536.js"
+    "static/css/main.082faa7b.css",
+    "static/js/main.bfbb275f.js"
   ]
 }
