@@ -18,7 +18,7 @@ export const changeBalance = (value) => {
       )
       dispatch(setUserBalance(response.data.user.balance))
     } catch (e) {
-      console.log(e)
+      alert(e.response.data.message)
     }
   }
 }
