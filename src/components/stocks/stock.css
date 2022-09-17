@@ -65,7 +65,8 @@
   width: 14.8%;
 }
 .stock__arrow {
-  opacity: 1;
+  background-color: transparent;
+  border: none;
   width: 5.1%;
   padding-left: 2%;
   margin-top: 1%;
