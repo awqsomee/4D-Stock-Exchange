@@ -9,18 +9,15 @@ const Account_containerItem = (props) => {
   const UserDate = '12.12.1990'
   return (
     <div className="account_container">
+      {console.log(user)}
       <div className="account_inf">Имя</div>
       <div className="account_userInf">{user.name}</div>
-
       <div className="account_inf">Фамилия</div>
       <div className="account_userInf">{user.surname}</div>
-
       <div className="account_inf">Электронная почта</div>
       <div className="account_userInf">{user.email}</div>
-
       <div className="account_inf">Номер телефона</div>
       <div className="account_userInf">{UserPhone}</div>
-
       <div className="account_inf">Дата рождения</div>
       <div className="account_userInf">{UserDate}</div>
     </div>

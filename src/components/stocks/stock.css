@@ -75,3 +75,6 @@
   opacity: 1;
   color: #e9eef2;
 }
+.arrowUp_img {
+  transform: rotate(90deg);
+}

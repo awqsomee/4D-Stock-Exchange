@@ -6,10 +6,10 @@ import ButtonSwith from '../../components/UI/buttons/ButtonSwitch'
 
 const Graph_panel = (props) => {
   const [buttDay, setButtDay] = useState('button button__sortPush')
-  const [buttWeek, setButtbuttWeek] = useState('button button__sortNormal ')
-  const [buttMonth, setButtbuttMonth] = useState('button button__sortNormal ')
-  const [buttYear, setButtbuttYear] = useState('button button__sortNormal ')
-  const [buttAll, setButtbuttAll] = useState('button button__sortNormal ')
+  const [buttWeek, setButtbuttWeek] = useState('button button__sortNormal')
+  const [buttMonth, setButtbuttMonth] = useState('button button__sortNormal')
+  const [buttYear, setButtbuttYear] = useState('button button__sortNormal')
+  const [buttAll, setButtbuttAll] = useState('button button__sortNormal')
 
   return (
     <div>
@@ -18,11 +18,11 @@ const Graph_panel = (props) => {
           className={buttDay}
           onClick={() => {
             if (buttDay === 'button button__sortNormal') {
-              setButtDay('button button__sortPush ')
-              setButtbuttWeek('button button__sortNormal ')
-              setButtbuttMonth('button button__sortNormal ')
-              setButtbuttYear('button button__sortNormal ')
-              setButtbuttAll('button button__sortNormal ')
+              setButtDay('button button__sortPush')
+              setButtbuttWeek('button button__sortNormal')
+              setButtbuttMonth('button button__sortNormal')
+              setButtbuttYear('button button__sortNormal')
+              setButtbuttAll('button button__sortNormal')
             }
           }}
         >
@@ -31,12 +31,12 @@ const Graph_panel = (props) => {
         <ButtonSwith
           className={buttWeek}
           onClick={() => {
-            if (buttWeek === 'button button__sortNormal ') {
-              setButtDay('button button__sortNormal ')
-              setButtbuttWeek('button button__sortPush ')
-              setButtbuttMonth('button button__sortNormal ')
-              setButtbuttYear('button button__sortNormal ')
-              setButtbuttAll('button button__sortNormal ')
+            if (buttWeek === 'button button__sortNormal') {
+              setButtDay('button button__sortNormal')
+              setButtbuttWeek('button button__sortPush')
+              setButtbuttMonth('button button__sortNormal')
+              setButtbuttYear('button button__sortNormal')
+              setButtbuttAll('button button__sortNormal')
             }
           }}
         >
@@ -45,12 +45,12 @@ const Graph_panel = (props) => {
         <ButtonSwith
           className={buttMonth}
           onClick={() => {
-            if (buttMonth === 'button button__sortNormal ') {
-              setButtDay('button button__sortNormal ')
-              setButtbuttWeek('button button__sortNormal ')
-              setButtbuttMonth('button button__sortPush ')
-              setButtbuttYear('button button__sortNormal ')
-              setButtbuttAll('button button__sortNormal ')
+            if (buttMonth === 'button button__sortNormal') {
+              setButtDay('button button__sortNormal')
+              setButtbuttWeek('button button__sortNormal')
+              setButtbuttMonth('button button__sortPush')
+              setButtbuttYear('button button__sortNormal')
+              setButtbuttAll('button button__sortNormal')
             }
           }}
         >
@@ -59,12 +59,12 @@ const Graph_panel = (props) => {
         <ButtonSwith
           className={buttYear}
           onClick={() => {
-            if (buttYear === 'button button__sortNormal ') {
-              setButtDay('button button__sortNormal ')
-              setButtbuttWeek('button button__sortNormal ')
-              setButtbuttMonth('button button__sortNormal ')
-              setButtbuttYear('button button__sortPush ')
-              setButtbuttAll('button button__sortNormal ')
+            if (buttYear === 'button button__sortNormal') {
+              setButtDay('button button__sortNormal')
+              setButtbuttWeek('button button__sortNormal')
+              setButtbuttMonth('button button__sortNormal')
+              setButtbuttYear('button button__sortPush')
+              setButtbuttAll('button button__sortNormal')
             }
           }}
         >
@@ -73,12 +73,12 @@ const Graph_panel = (props) => {
         <ButtonSwith
           className={buttAll}
           onClick={() => {
-            if (buttAll === 'button button__sortNormal ') {
-              setButtDay('button button__sortNormal ')
-              setButtbuttWeek('button button__sortNormal ')
-              setButtbuttMonth('button button__sortNormal ')
-              setButtbuttYear('button button__sortNormal ')
-              setButtbuttAll('button button__sortPush ')
+            if (buttAll === 'button button__sortNormal') {
+              setButtDay('button button__sortNormal')
+              setButtbuttWeek('button button__sortNormal')
+              setButtbuttMonth('button button__sortNormal')
+              setButtbuttYear('button button__sortNormal')
+              setButtbuttAll('button button__sortPush')
             }
           }}
         >

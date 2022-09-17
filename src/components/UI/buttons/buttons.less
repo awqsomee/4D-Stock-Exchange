@@ -16,35 +16,30 @@
   &:hover {
     background-color: @--hover-button-color;
     color: @--hover-button-text-color;
-    box-shadow: -5px -5px 15px rgba(77, 77, 77, 0.3),
-      5px 5px 15px rgba(0, 0, 0, 0.4), inset 5px 5px 15px rgba(0, 0, 0, 0.3),
-      inset -5px -5px 15px rgba(77, 77, 77, 0.3);
+    box-shadow: -5px -5px 15px rgba(63, 63, 63, 0.2), 5px 5px 15px rgba(0, 0, 0, 0.4),
+      inset 5px 5px 15px rgba(0, 0, 0, 0.3), inset -5px -5px 15px rgba(77, 77, 77, 0.3);
   }
   &:active {
     background-color: @--down-button-color;
     color: @--button-text-color;
-    box-shadow: -5px -5px 15px rgba(77, 77, 77, 0.3),
-      5px 5px 15px rgba(0, 0, 0, 0.4), inset 5px 5px 15px rgba(0, 0, 0, 0.3),
-      inset -5px -5px 15px rgba(77, 77, 77, 0.3);
+    box-shadow: -5px -5px 15px rgba(63, 63, 63, 0.2), 5px 5px 15px rgba(0, 0, 0, 0.4),
+      inset 5px 5px 15px rgba(0, 0, 0, 0.3), inset -5px -5px 15px rgba(77, 77, 77, 0.3);
   }
   &__normal {
     background-color: @--main-button-color;
     color: @--button-text-color;
-    box-shadow: -5px -5px 15px rgba(77, 77, 77, 0.3),
-      5px 5px 15px rgba(0, 0, 0, 0.4), inset 5px 5px 15px rgba(0, 0, 0, 0.3),
-      inset -5px -5px 15px rgba(77, 77, 77, 0.3);
+    box-shadow: -5px -5px 15px rgba(63, 63, 63, 0.2), 5px 5px 15px rgba(0, 0, 0, 0.4),
+      inset 5px 5px 15px rgba(0, 0, 0, 0.3), inset -5px -5px 15px rgba(77, 77, 77, 0.3);
   }
   &__process {
     background-color: @--process-button-color;
     color: @--hover-button-color;
-    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
-      5px 5px 15px rgba(0, 0, 0, 0.6),
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.6),
       inset 5px 5px 5px rgba(171, 171, 171, 0.5), inset -5px -5px 5px #ffffff;
     &:hover {
       background-color: @--process-button-color;
       color: @--hover-button-text-color;
-      box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
-        5px 5px 15px rgba(0, 0, 0, 0.6),
+      box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.6),
         inset 5px 5px 5px rgba(171, 171, 171, 0.5), inset -5px -5px 5px #ffffff;
     }
   }
@@ -60,15 +55,13 @@
     color: @--hover-button-color;
     border-radius: 5px;
     padding: 4px 10px;
-    box-shadow: -3px -3px 8px rgba(77, 77, 77, 0.3),
-      3px 3px 8px rgba(0, 0, 0, 0.3), inset 5px 5px 8px rgba(0, 0, 0, 0.3),
-      inset -5px -5px 8px #ffffff;
+    box-shadow: -3px -3px 8px rgba(77, 77, 77, 0.3), 3px 3px 8px rgba(0, 0, 0, 0.3),
+      inset 5px 5px 8px rgba(0, 0, 0, 0.3), inset -5px -5px 8px #ffffff;
     &:hover {
       background-color: @--process-button-color;
       color: @--hover-button-color;
-      box-shadow: -3px -3px 8px rgba(77, 77, 77, 0.3),
-        3px 3px 8px rgba(0, 0, 0, 0.3), inset 5px 5px 8px rgba(0, 0, 0, 0.3),
-        inset -5px -5px 8px #ffffff;
+      box-shadow: -3px -3px 8px rgba(77, 77, 77, 0.3), 3px 3px 8px rgba(0, 0, 0, 0.3),
+        inset 5px 5px 8px rgba(0, 0, 0, 0.3), inset -5px -5px 8px #ffffff;
     }
   }
   &__sortNormal {
@@ -77,13 +70,13 @@
     color: @--process-button-color;
     border-radius: 5px;
     padding: 4px 10px;
-    box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.3),
-      inset -5px -5px 8px rgba(77, 77, 77, 0.3),
+    box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.3), inset -5px -5px 8px rgba(77, 77, 77, 0.3),
       -3px -3px 8px rgba(77, 77, 77, 0.3), 3px 3px 8px rgba(0, 0, 0, 0.3);
     &:hover {
       background-color: @--hover-button-color;
       color: @--hover-button-text-color;
-      box-shadow: initial;
+      box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.3), inset -5px -5px 8px rgba(77, 77, 77, 0.3),
+        -3px -3px 8px rgba(77, 77, 77, 0.3), 3px 3px 8px rgba(0, 0, 0, 0.3);
     }
     &:active {
       background-color: @--down-button-color;
