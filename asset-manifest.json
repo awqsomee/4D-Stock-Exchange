@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/4D-Stock-Exchange/static/css/main.01b68d57.css",
-    "main.js": "/4D-Stock-Exchange/static/js/main.ebcafca3.js",
-    "static/media/logo.svg": "/4D-Stock-Exchange/static/media/logo.46e980d9b8b88a2da5030c77ff2a0b77.svg",
+    "main.css": "/4D-Stock-Exchange/static/css/main.dc2835e0.css",
+    "main.js": "/4D-Stock-Exchange/static/js/main.5f308256.js",
+    "static/media/logo.svg": "/4D-Stock-Exchange/static/media/logo.792e24423e92b72c8cdb2d70d60a28a9.svg",
     "static/media/PlusCircle.svg": "/4D-Stock-Exchange/static/media/PlusCircle.b6f13dbbc745e617de6d7ead6ea195bb.svg",
     "static/media/fb.svg": "/4D-Stock-Exchange/static/media/fb.a38a3da8ed1968c9f03b55c369419614.svg",
     "static/media/close.svg": "/4D-Stock-Exchange/static/media/close.5510aa9bacd71fd5ae552a73e4bb9278.svg",
@@ -17,11 +17,11 @@
     "static/media/поиск.svg": "/4D-Stock-Exchange/static/media/поиск.27d140cbf29e6eef35950cb25e5df05b.svg",
     "static/media/angle_down.svg": "/4D-Stock-Exchange/static/media/angle_down.108ff04abf6ceed5bebfe0bfd463a8b9.svg",
     "static/media/angle_up.svg": "/4D-Stock-Exchange/static/media/angle_up.ffcd35f57dfae1074880070405060e8f.svg",
-    "main.01b68d57.css.map": "/4D-Stock-Exchange/static/css/main.01b68d57.css.map",
-    "main.ebcafca3.js.map": "/4D-Stock-Exchange/static/js/main.ebcafca3.js.map"
+    "main.dc2835e0.css.map": "/4D-Stock-Exchange/static/css/main.dc2835e0.css.map",
+    "main.5f308256.js.map": "/4D-Stock-Exchange/static/js/main.5f308256.js.map"
   },
   "entrypoints": [
-    "static/css/main.01b68d57.css",
-    "static/js/main.ebcafca3.js"
+    "static/css/main.dc2835e0.css",
+    "static/js/main.5f308256.js"
   ]
 }
