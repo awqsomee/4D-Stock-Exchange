@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/4D-Stock-Exchange/static/css/main.d3971b3d.css",
-    "main.js": "/4D-Stock-Exchange/static/js/main.bfbb275f.js",
+    "main.js": "/4D-Stock-Exchange/static/js/main.032ce58a.js",
     "static/media/logo.svg": "/4D-Stock-Exchange/static/media/logo.46e980d9b8b88a2da5030c77ff2a0b77.svg",
     "static/media/PlusCircle.svg": "/4D-Stock-Exchange/static/media/PlusCircle.b6f13dbbc745e617de6d7ead6ea195bb.svg",
     "static/media/close.svg": "/4D-Stock-Exchange/static/media/close.5510aa9bacd71fd5ae552a73e4bb9278.svg",
@@ -15,10 +15,10 @@
     "static/media/angle_down.svg": "/4D-Stock-Exchange/static/media/angle_down.108ff04abf6ceed5bebfe0bfd463a8b9.svg",
     "static/media/angle_up.svg": "/4D-Stock-Exchange/static/media/angle_up.ffcd35f57dfae1074880070405060e8f.svg",
     "main.d3971b3d.css.map": "/4D-Stock-Exchange/static/css/main.d3971b3d.css.map",
-    "main.bfbb275f.js.map": "/4D-Stock-Exchange/static/js/main.bfbb275f.js.map"
+    "main.032ce58a.js.map": "/4D-Stock-Exchange/static/js/main.032ce58a.js.map"
   },
   "entrypoints": [
     "static/css/main.d3971b3d.css",
-    "static/js/main.bfbb275f.js"
+    "static/js/main.032ce58a.js"
   ]
 }
