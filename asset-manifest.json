@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/4D-Stock-Exchange/static/css/main.c84597b5.css",
-    "main.js": "/4D-Stock-Exchange/static/js/main.cbce8c9d.js",
+    "main.js": "/4D-Stock-Exchange/static/js/main.faa39290.js",
     "static/media/logo.svg": "/4D-Stock-Exchange/static/media/logo.fe612611a93aa9d56191de6d81d00147.svg",
     "static/media/PlusCircle.svg": "/4D-Stock-Exchange/static/media/PlusCircle.b6f13dbbc745e617de6d7ead6ea195bb.svg",
     "static/media/fb.svg": "/4D-Stock-Exchange/static/media/fb.a38a3da8ed1968c9f03b55c369419614.svg",
@@ -18,10 +18,10 @@
     "static/media/angle_down.svg": "/4D-Stock-Exchange/static/media/angle_down.108ff04abf6ceed5bebfe0bfd463a8b9.svg",
     "static/media/angle_up.svg": "/4D-Stock-Exchange/static/media/angle_up.ffcd35f57dfae1074880070405060e8f.svg",
     "main.c84597b5.css.map": "/4D-Stock-Exchange/static/css/main.c84597b5.css.map",
-    "main.cbce8c9d.js.map": "/4D-Stock-Exchange/static/js/main.cbce8c9d.js.map"
+    "main.faa39290.js.map": "/4D-Stock-Exchange/static/js/main.faa39290.js.map"
   },
   "entrypoints": [
     "static/css/main.c84597b5.css",
-    "static/js/main.cbce8c9d.js"
+    "static/js/main.faa39290.js"
   ]
 }
