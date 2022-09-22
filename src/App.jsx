@@ -12,10 +12,13 @@ import './app.css'
 
 function App() {
   const dispatch = useDispatch()
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    dispatch(auth()).finally(() => setIsLoading(false))
+    if (localStorage.getItem('stonksToken')) {
+      setIsLoading(true)
+      dispatch(auth()).finally(() => setIsLoading(false))
+    }
   }, [])
 
   const isAuth = useSelector((state) => state.toolkit.isAuth)
