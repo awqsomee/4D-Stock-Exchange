@@ -24,7 +24,9 @@ const Registration = (props) => {
         </div>
       </ModalBoxDeposit>
 
-      <div><img src={Close} alt="close_img" className="close_img" /></div>
+      <div onClick={() => props.sVisible(false)}>
+        <img src={Close} alt="close_img" className="close_img" />
+      </div>
       <div className="registration__header">Регистрация</div>
       <div className="registration__input_name">Имя</div>
       <div className="registration__input">

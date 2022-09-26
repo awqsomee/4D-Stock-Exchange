@@ -21,8 +21,10 @@ const Login = (props) => {
           <div>Вход не выполнен. Проверьте правильность заполнения полей</div>
         </div>
       </ModalBoxDeposit>
-      
-      <div><img src={Close} alt="close_img" className="close_img" /></div>
+
+      <div onClick={() => props.sVisible(false)}>
+        <img src={Close} alt="close_img" className="close_img" />
+      </div>
       <div className="login__header">Вход</div>
       <div className="login"></div>
       <div className="login__input_name">Электронная почта</div>
