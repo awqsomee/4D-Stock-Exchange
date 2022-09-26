@@ -30,7 +30,7 @@ const Chart = (props) => {
 
             <XAxis
               dataKey="date"
-              stroke="#2be9d9"
+              stroke="white" // здесь может быть #fffff
               tickLine={false}
               interval={6}
               angle={-30}
@@ -43,7 +43,7 @@ const Chart = (props) => {
 
             <YAxis
               dataKey="value"
-              stroke="#2be9d9"
+              stroke="white" // здесь может быть #fffff
               tickLine={false}
               tickCount={6}
               tickFormatter={(number) => `${number.toFixed(2)}`}
@@ -51,7 +51,7 @@ const Chart = (props) => {
 
             <Tooltip content={<CustomTooltip />} />
 
-            <CartesianGrid opacity={0.3} vertical={false} stroke="#2be9d9" />
+            <CartesianGrid opacity={0.3} vertical={false} stroke="#4d4d4d" />
           </AreaChart>
         </ResponsiveContainer>
       </div>
@@ -62,7 +62,7 @@ const Chart = (props) => {
 function CustomTooltip({ active, payload, label }, currency) {
   if (active)
     return (
-      <div className="tooltip">
+      <div className="tooltip" style={{ color: 'white' }}>
         <h4>{format(parseISO(label), 'eeee, d MMM')}</h4>
         <p>{payload[0].value.toFixed(2)}</p>
       </div>
