@@ -56,25 +56,25 @@ const StockList = (props) => {
             stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
           )}
           {isStocksLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}></div>
           ) : (
             stocks &&
             stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
           )}
           {isStocksLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}></div>
           ) : (
             stocks &&
             stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
           )}
           {isStocksLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}></div>
           ) : (
             stocks &&
             stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
           )}
           {isStocksLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}></div>
           ) : (
             stocks &&
             stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
