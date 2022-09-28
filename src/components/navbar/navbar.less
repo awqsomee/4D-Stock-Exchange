@@ -1,68 +1,87 @@
 @import '../../styles/colors/colors';
 @import '../../styles/fonts/fonts';
+@import '../../styles/shadows/shadows';
 
 //ширина контейнера 1080
+.container {
+  display: flex; //inline-block
+  margin: 10px auto;
+  max-width: 66.7%;
+  // max-width: 75%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.option_wrapper {
+  display: flex;
+  align-items: center;
+}
 
 .navbar {
-  display: flex;
   background-color: @background-color;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  align-items: center;
-  height: 11vh;
+  box-shadow: @shadow_navbar;
   width: 100%;
   font-size: @--button-font-size;
   font-family: @font-family;
 
   &__logo {
-    width: 17%;
-    // height: 70%;
+    max-width: 164px;
+    display: block;
+    &__img {
+      max-width: 100%;
+    }
   }
 
   &__search {
-    margin-left: 6.25%;
-    left: 10%;
-    width: 53%;
+    align-items: center;
+    position: relative;
+    display: flex;
+    margin-left: auto; //449 после того, как иконку внутрь втащу????(не факт что надо трогать)
+    &__img {
+      position: absolute;
+      right: 12px;
+      max-width: 25px;
+      display: inline-block;
+      z-index: 10;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    padding-left: 24px;
+    align-items: center;
   }
 
   &__registration {
-    margin-left: 2%;
+    margin-left: 10px;
   }
 
   &__account {
-    width: 10%;
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
   }
 
-  &__account:hover {
+  &__account:hover .icon {
+    fill: @--accent-color;
     cursor: pointer;
   }
   &__wallet {
-    width: 10%;
+    // width: 10%;
+    margin-left: 20px;
   }
   &__portfolio {
-    width: 10%;
+    // width: 10%;
+    margin-left: 20px;
+  }
+  &____portfolio:hover .icon {
+    fill: @--accent-color;
+    cursor: pointer;
   }
 }
-
-.container {
-  width: 66%;
-  height: 63%;
-  display: flex;
-  margin-left: 14%;
-  align-items: center;
+svg:hover {
+  fill: @--accent-color;
 }
-
-.logo_img {
-  width: 100%;
-}
-
-.search_input {
-  width: 80%;
-  background-color: @--light-grey-color;
-  font-size: @--paragraph-font-size;
-  color: @--button-text-color;
-  border-radius: 10px;
-}
-
 .user {
   display: block;
   right: 0;
@@ -88,32 +107,3 @@
   font-size: @--paragraph-font-size;
   margin-bottom: 25px;
 }
-
-.search_wrapper {
-  position: absolute;
-  display: flex;
-  transform: translate(-50%, -50%);
-}
-
-.searchStroke {
-  float: right;
-  width: 80%;
-  z-index: -1;
-}
-
-.search_img {
-  float: left;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-}
-// .user_pic {
-//   float: left;
-//   margin-right: 10px;
-//   width: 80px;
-//   height: 80px;
-//   border: none;
-// }

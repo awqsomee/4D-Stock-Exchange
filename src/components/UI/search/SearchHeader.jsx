@@ -1,8 +1,10 @@
 import React, { useContext, useTransition } from 'react'
 //  import classes from './search_header.module.css'
 import '../input/input.css'
+import '../../navbar/navbar.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSearch } from '../../../redux/slice'
+import Search from '../../../assets/Icons/search.svg'
 
 // const Stocks = () => {
 //   const cockInfo = [
@@ -16,13 +18,18 @@ const SearchHeader = () => {
   const search = useSelector((state) => state.toolkit.search)
   const dispatch = useDispatch()
   return (
-    <input
-      className="search"
-      onChange={(event) => dispatch(setSearch(event.target.value))}
-      value={search}
-      type={'text'}
-      placeholder={'Поиск...'}
-    />
+    <div className='navbar__search'>
+      <input className="search"
+        onChange={(event) => dispatch(setSearch(event.target.value))}
+        value={search}
+        type={'text'}
+        placeholder={'Поиск...'}
+      />
+      <div className="navbar__search__img">
+        <img src={Search} width={25} />
+      </div>
+    </div>
+    
   )
 }
 
