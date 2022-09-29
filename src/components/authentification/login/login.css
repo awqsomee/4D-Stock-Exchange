@@ -1,9 +1,30 @@
 @font-face {
   font-family: 'Exo 2';
   font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvOcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8j4PKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jF_WcPg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Play';
@@ -28,6 +49,12 @@
   font-family: 'Play';
   color: #ee8100;
 }
+.login__link_to {
+  justify-content: left;
+  font-size: 13px;
+  color: #e9eef2;
+  font-weight: 300;
+}
 .login__button {
   font-size: 16px;
   font-family: 'Exo 2', 'Arial';
@@ -37,6 +64,7 @@
   align-self: flex-start;
 }
 .close_img {
+  cursor: pointer;
   position: absolute;
   width: 24px;
   height: 24px;

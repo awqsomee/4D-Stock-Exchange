@@ -1,6 +1,38 @@
-@import '../../../styles/colors/colors';
-@import '../../../styles/fonts/fonts';
-
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvOcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8j4PKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jF_WcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
+}
 .modalBox {
   position: fixed;
   top: 0;
@@ -9,41 +41,35 @@
   left: 0;
   display: none;
   background: rgba(0, 0, 0, 0.9);
-  z-index: 1;
+  z-index: 10;
 }
-
 .modalBoxContent {
   padding: 50px 45px 65px 45px;
-  /* background: #394249; */
   background: #eaeaea0d;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 
-      inset 2px 4px 8px 0 rgba(111,111,111,0.25),
-      inset -2px 0px 4px 0 rgba(0,0,0,0.5);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 2px 4px 8px 0 rgba(111, 111, 111, 0.25), inset -2px 0px 4px 0 rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(15px);
   border-radius: 40px;
   min-width: 400px;
-  /* max-height: 300px; */
-  z-index: 1;
+  z-index: 10;
 }
-
 .modalBoxContentAcc {
-  padding: 20px 30px 0 30px;
-  background: #394249;
-  border-radius: 16px;
-  min-width: 100px;
   position: absolute;
+  min-width: 100px;
   top: 11%;
-  right: 400px;
-  z-index: 1;
+  right: 16%;
+  padding: 20px 30px 0 30px;
+  background: #eaeaea0d;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 2px 4px 8px 0 rgba(111, 111, 111, 0.25), inset -2px 0px 4px 0 rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  z-index: 10;
 }
-
 .modalBox.active {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 10;
 }
-
 .setmodalBoxDeposit {
   padding: 20px 30px;
   background: #394249;
@@ -52,6 +78,5 @@
   min-width: 100px;
   position: absolute;
   top: 11%;
-  /* right: 400px; */
-  z-index: 1;
+  z-index: 10;
 }

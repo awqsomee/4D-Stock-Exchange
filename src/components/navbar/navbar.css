@@ -1,9 +1,30 @@
 @font-face {
   font-family: 'Exo 2';
   font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvOcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8j4PKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jF_WcPg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Play';
@@ -48,7 +69,7 @@
   right: 12px;
   max-width: 25px;
   display: inline-block;
-  z-index: 10;
+  z-index: 1;
 }
 .navbar__buttons {
   display: flex;
@@ -58,26 +79,25 @@
 .navbar__registration {
   margin-left: 10px;
 }
-.navbar__account {
-  width: 25px;
-  height: 25px;
-  margin-left: 20px;
-}
-.navbar__account:hover .icon {
-  fill: #ee8100;
-  cursor: pointer;
-}
 .navbar__wallet {
   margin-left: 20px;
+}
+.navbar__wallet:hover path {
+  fill: #ee8100;
 }
 .navbar__portfolio {
   margin-left: 20px;
 }
-.navbar____portfolio:hover .icon {
+.navbar__portfolio:hover path {
   fill: #ee8100;
+}
+.navbar__account {
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
   cursor: pointer;
 }
-svg:hover {
+.navbar__account:hover path {
   fill: #ee8100;
 }
 .user {
@@ -85,7 +105,7 @@ svg:hover {
   right: 0;
 }
 .acc_pop_up {
-  color: #272727;
+  color: #ffffff;
   font-size: 20px;
   margin-bottom: 25px;
   cursor: pointer;
@@ -94,12 +114,14 @@ svg:hover {
 .acc_pop_up__b {
   color: #bbffa7;
   text-decoration: none !important;
-  border: none !important;
 }
 .acc_in {
   text-decoration: none !important;
   border: none !important;
-  color: #272727;
+  color: #ffffff;
   font-size: 20px;
   margin-bottom: 25px;
+}
+.close_img:hover path {
+  fill: #ee8100;
 }
