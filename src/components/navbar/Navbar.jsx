@@ -40,14 +40,14 @@ const Navbar = () => {
       {isAuth && (
                     <ModalBoxAcc visible={modalBoxAcc} setVisible={setModalBoxAcc}>
                       <div className="acc_pop_up">
-                        <NavLink to="/wallet" className="acc_pop_up acc_pop_up__b" onClick={() => setModalBoxAcc(false)}>
-                          <div className="acc_pop_up acc_pop_up__b">{`${new Intl.NumberFormat('ru-RU').format(
+                        <NavLink to="/wallet" className="acc_pop_up__b" onClick={() => setModalBoxAcc(false)}>
+                          <div className="acc_pop_up__b">{`${new Intl.NumberFormat('ru-RU').format(
                             store.getState(setUser).toolkit.currentUser.balance
                           )} ₽`}</div>
                         </NavLink>
                       </div>
                       <div className="acc_pop_up">
-                        <NavLink to="/account" className="acc_in" onClick={() => setModalBoxAcc(false)}>
+                        <NavLink to="/account" className="acc_pop_up" onClick={() => setModalBoxAcc(false)}>
                           <div>Аккаунт</div>
                         </NavLink>
                       </div>

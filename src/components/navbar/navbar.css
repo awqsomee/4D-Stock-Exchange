@@ -105,6 +105,8 @@
   right: 0;
 }
 .acc_pop_up {
+  text-decoration: none !important;
+  border: none !important;
   color: #ffffff;
   font-size: 20px;
   margin-bottom: 25px;
@@ -112,15 +114,14 @@
   text-align: right;
 }
 .acc_pop_up__b {
+  text-decoration: none !important;
   color: #bbffa7;
-  text-decoration: none !important;
 }
-.acc_in {
-  text-decoration: none !important;
-  border: none !important;
-  color: #ffffff;
-  font-size: 20px;
-  margin-bottom: 25px;
+.acc_pop_up__b:hover {
+  color: #bbffa7;
+}
+.acc_pop_up:hover {
+  color: #ee8100;
 }
 .close_img:hover path {
   fill: #ee8100;
