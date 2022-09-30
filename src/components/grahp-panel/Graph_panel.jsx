@@ -13,81 +13,81 @@ const Graph_panel = (props) => {
 
   return (
     <div>
-      <div className="selectors">
-        <ButtonSwith
-          className={buttDay}
-          onClick={() => {
-            if (buttDay === 'button button__sortNormal') {
-              setButtDay('button button__sortPush')
-              setButtbuttWeek('button button__sortNormal')
-              setButtbuttMonth('button button__sortNormal')
-              setButtbuttYear('button button__sortNormal')
-              setButtbuttAll('button button__sortNormal')
-            }
-          }}
-        >
-          день
-        </ButtonSwith>
-        <ButtonSwith
-          className={buttWeek}
-          onClick={() => {
-            if (buttWeek === 'button button__sortNormal') {
-              setButtDay('button button__sortNormal')
-              setButtbuttWeek('button button__sortPush')
-              setButtbuttMonth('button button__sortNormal')
-              setButtbuttYear('button button__sortNormal')
-              setButtbuttAll('button button__sortNormal')
-            }
-          }}
-        >
-          неделя
-        </ButtonSwith>
-        <ButtonSwith
-          className={buttMonth}
-          onClick={() => {
-            if (buttMonth === 'button button__sortNormal') {
-              setButtDay('button button__sortNormal')
-              setButtbuttWeek('button button__sortNormal')
-              setButtbuttMonth('button button__sortPush')
-              setButtbuttYear('button button__sortNormal')
-              setButtbuttAll('button button__sortNormal')
-            }
-          }}
-        >
-          месяц
-        </ButtonSwith>
-        <ButtonSwith
-          className={buttYear}
-          onClick={() => {
-            if (buttYear === 'button button__sortNormal') {
-              setButtDay('button button__sortNormal')
-              setButtbuttWeek('button button__sortNormal')
-              setButtbuttMonth('button button__sortNormal')
-              setButtbuttYear('button button__sortPush')
-              setButtbuttAll('button button__sortNormal')
-            }
-          }}
-        >
-          год
-        </ButtonSwith>
-        <ButtonSwith
-          className={buttAll}
-          onClick={() => {
-            if (buttAll === 'button button__sortNormal') {
-              setButtDay('button button__sortNormal')
-              setButtbuttWeek('button button__sortNormal')
-              setButtbuttMonth('button button__sortNormal')
-              setButtbuttYear('button button__sortNormal')
-              setButtbuttAll('button button__sortPush')
-            }
-          }}
-        >
-          все время
-        </ButtonSwith>
+      <div className="panel_wrap">
+        <div className="selectors">
+          <ButtonSwith
+            className={buttDay}
+            onClick={() => {
+              if (buttDay === 'button button__sortNormal') {
+                setButtDay('button button__sortPush')
+                setButtbuttWeek('button button__sortNormal')
+                setButtbuttMonth('button button__sortNormal')
+                setButtbuttYear('button button__sortNormal')
+                setButtbuttAll('button button__sortNormal')
+              }
+            }}
+          >
+            день
+          </ButtonSwith>
+          <ButtonSwith
+            className={buttWeek}
+            onClick={() => {
+              if (buttWeek === 'button button__sortNormal') {
+                setButtDay('button button__sortNormal')
+                setButtbuttWeek('button button__sortPush')
+                setButtbuttMonth('button button__sortNormal')
+                setButtbuttYear('button button__sortNormal')
+                setButtbuttAll('button button__sortNormal')
+              }
+            }}
+          >
+            неделя
+          </ButtonSwith>
+          <ButtonSwith
+            className={buttMonth}
+            onClick={() => {
+              if (buttMonth === 'button button__sortNormal') {
+                setButtDay('button button__sortNormal')
+                setButtbuttWeek('button button__sortNormal')
+                setButtbuttMonth('button button__sortPush')
+                setButtbuttYear('button button__sortNormal')
+                setButtbuttAll('button button__sortNormal')
+              }
+            }}
+          >
+            месяц
+          </ButtonSwith>
+          <ButtonSwith
+            className={buttYear}
+            onClick={() => {
+              if (buttYear === 'button button__sortNormal') {
+                setButtDay('button button__sortNormal')
+                setButtbuttWeek('button button__sortNormal')
+                setButtbuttMonth('button button__sortNormal')
+                setButtbuttYear('button button__sortPush')
+                setButtbuttAll('button button__sortNormal')
+              }
+            }}
+          >
+            год
+          </ButtonSwith>
+          <ButtonSwith
+            className={buttAll}
+            onClick={() => {
+              if (buttAll === 'button button__sortNormal') {
+                setButtDay('button button__sortNormal')
+                setButtbuttWeek('button button__sortNormal')
+                setButtbuttMonth('button button__sortNormal')
+                setButtbuttYear('button button__sortNormal')
+                setButtbuttAll('button button__sortPush')
+              }
+            }}
+          >
+            все время
+          </ButtonSwith>
+        </div>
+        {props?.stock?.data && <Chart stock={props.stock} />}
       </div>
-      {props?.stock?.data && <Chart stock={props.stock} />}
-      <div className="graph"></div>
-      <div className="MMPanel"> </div>
     </div>
   )
 }

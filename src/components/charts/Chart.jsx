@@ -1,4 +1,12 @@
-import { ResponsiveContainer, AreaChart, XAxis, YAxis, Area, Tooltip, CartesianGrid } from 'recharts'
+import {
+  ResponsiveContainer,
+  AreaChart,
+  XAxis,
+  YAxis,
+  Area,
+  Tooltip,
+  CartesianGrid,
+} from 'recharts'
 import { useEffect, useState } from 'react'
 import './chart.css'
 import { parseISO, format, isToday } from 'date-fns'
@@ -9,14 +17,19 @@ const Chart = (props) => {
   const dayOfWeek = today.getDay()
 
   useEffect(() => {
-    if (props.stock.data[0].value < props.stock.data[99].value) setColor('#A0E28D')
+    if (props.stock.data[0].value < props.stock.data[99].value)
+      setColor('#A0E28D')
     else setColor('#FF9180')
   }, [])
 
   return (
     <div className="stockChart">
       <div className="chart">
-        <ResponsiveContainer width={800} height={400}>
+        <ResponsiveContainer
+          width={800}
+          height={400}
+          style={{ overflow: 'visible' }}
+        >
           <AreaChart data={props.stock.data}>
             <defs>
               <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
@@ -32,9 +45,10 @@ const Chart = (props) => {
               dataKey="date"
               stroke="white" // здесь может быть #fffff
               tickLine={false}
-              interval={6}
-              angle={-30}
+              interval={9}
+              // angle={-30}
               dy={-3}
+              dx={30}
               tickFormatter={(label) => {
                 label = new Date(label)
                 return label.toLocaleDateString()

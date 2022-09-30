@@ -1,9 +1,30 @@
 @font-face {
   font-family: 'Exo 2';
   font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvOcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8j4PKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jF_WcPg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Play';
@@ -13,13 +34,7 @@
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 .stockChart {
-  margin: 0px 20px 20px;
-  margin-left: 11.9%;
   border-radius: 20px;
-  width: 88%;
-  height: 55vh;
-  background-color: #eaeaea0d;
-  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5), 0px 4px 4px rgba(0, 0, 0, 0.25);
   justify-content: flex-start;
   align-items: center;
   display: flex;
@@ -33,4 +48,7 @@
   font-family: 'Exo 2', 'Arial';
   font-size: 14px;
   color: #4d4d4d;
+}
+.recharts-surface {
+  overflow: visible;
 }
