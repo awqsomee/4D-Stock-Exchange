@@ -39,6 +39,7 @@
   padding: 10px 40px 12px;
   gap: 10px;
   align-items: center;
+  justify-content: center;
   font-family: 'Exo 2', 'Arial';
   font-size: 16px;
   text-decoration: none !important;

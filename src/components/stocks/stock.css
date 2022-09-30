@@ -45,30 +45,27 @@
   margin-top: 0.7%;
   align-items: center;
 }
-.stock__plank {
-  flex-direction: row;
-  opacity: 1;
-}
 .stock__index {
-  width: 9.3%;
+  width: 6%;
   font-size: 12px;
   top: 50%;
 }
 .stock__name {
-  width: 32.2%;
+  width: 44%;
 }
 .stock__cost {
-  width: 12.2%;
+  text-align: center;
+  width: 12%;
 }
 .stock__change {
+  text-align: center;
   color: #bbffa7;
-  width: 11%;
+  width: 10%;
 }
 .stock__counter {
-  width: 14.2%;
+  width: 8%;
   display: flex;
   justify-content: space-between;
-  padding-right: 1%;
 }
 .stock__counter__less:hover path {
   fill: #ee8100;
@@ -78,12 +75,12 @@
 }
 .stock__button {
   margin-left: auto;
-  width: 16%;
+  align-self: center;
 }
 .stock__arrow {
   background-color: transparent;
   border: none;
-  width: 5.1%;
+  width: 5%;
   padding-left: 2%;
   margin-top: 1%;
 }

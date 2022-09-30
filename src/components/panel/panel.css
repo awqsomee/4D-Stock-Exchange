@@ -40,13 +40,19 @@
   font-size: 16px;
   font-family: 'Exo 2', 'Arial';
   color: #ffffff;
+  padding: 0.5% 2%;
+}
+.ticker {
+  width: 6%;
 }
 .name {
-  width: 26%;
+  width: 44%;
 }
 .cost {
-  width: 23%;
+  text-align: center;
+  width: 12%;
 }
 .change {
-  width: 51%;
+  text-align: center;
+  width: 10%;
 }
