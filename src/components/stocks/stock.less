@@ -10,39 +10,43 @@
   font-size: @--button-font-size;
   font-family: @font-family;
   color: @--main-text-color;
-  padding: 2% 1.8%;
+  padding: 1.5% 1.8%;
   margin-top: 0.7%;
   align-items: center;
-  // justify-content: center;
-  // flex-direction: column;
-
-  //   float: left;
-  //   width: 51%;
 
   &__index {
     width: 6%;
-    // width: 6%;
+    padding-right: 1%;
     font-size: 12px;
     top: 50%;
   }
 
   &__name {
     width: 44%;
+    padding-right: 1%;
   }
 
   &__cost {
     text-align: center;
     width: 12%;
+    padding-right: 1%;
   }
   &__change {
     text-align: center;
-    color: @--green-color;
+    display: inline-block;
     width: 10%;
+    padding-right: 1%;
+    &__green {
+      color: @--green-color;
+    }
+    &__red {
+      color: @--red-color;
+    }
   }
   &__counter {
     width: 8%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     &__less:hover path {
       fill: @--accent-color;
     }
@@ -51,15 +55,18 @@
     }
   }
   &__button {
+    overflow: hidden;
+    white-space: nowrap;
     margin-left: auto;
     align-self: center;
   }
   &__arrow {
     background-color: transparent;
     border: none;
-    width: 5%;
-    padding-left: 2%;
-    margin-top: 1%;
+    align-self: center;
+    justify-content: end;
+    margin-top: 5px;
+    margin-left: 2%;
   }
 
   .count {
@@ -68,4 +75,11 @@
 }
 .arrowUp_img {
   transform: rotate(90deg);
+}
+.arrowUp_img:hover path {
+  fill: @--accent-color;
+}
+
+.arrowDown_img:hover path {
+  fill: @--accent-color;
 }

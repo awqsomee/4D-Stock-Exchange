@@ -87,7 +87,15 @@ const Stock = (props) => {
             <div>-</div>
           )}
         </div>
-        <div className="stock__change">{props.stock.changes}%</div>
+        {props.stock.changes < 0 ? (
+          <div className="stock__change stock__change__red">
+            {props.stock.changes}%
+          </div>
+        ) : (
+          <div className="stock__change stock__change__green">
+            {props.stock.changes}%
+          </div>
+        )}
 
         {buttBuy === 'button stock__button button__process' ? (
           <div className="stock__counter">
@@ -159,14 +167,34 @@ const Stock = (props) => {
           className="stock__arrow"
         >
           {GP && (
-            <img
-              src={ArrowDown}
-              alt="arrowDown_img"
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
               className="arrowDown_img"
-            />
+            >
+              <path
+                d="M1.46077 5.85643C1.93597 5.38563 2.70157 5.38123 3.18117 5.84323L3.19437 5.85643L11 13.574L18.8056 5.85643C19.2808 5.38563 20.0464 5.38123 20.526 5.84323L20.5392 5.85643C21.0144 6.32723 21.0188 7.08403 20.5524 7.55923L20.5392 7.57243L11.8668 16.1436C11.3916 16.6144 10.626 16.6188 10.1464 16.1568L10.1332 16.1436L1.46077 7.56803C0.981174 7.09723 0.981174 6.32723 1.46077 5.85643Z"
+                fill="white"
+              />
+            </svg>
           )}
           {!GP && (
-            <img src={ArrowUp} alt="arrowUp_img" className="arrowUp_img" />
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg "
+              className="arrowUp_img"
+            >
+              <path
+                d="M20.5392 16.1436C20.064 16.6144 19.2984 16.6188 18.8188 16.1568L18.8056 16.1436L11 8.42596L3.19442 16.1436C2.71922 16.6144 1.95362 16.6188 1.47402 16.1568L1.46082 16.1436C0.985622 15.6728 0.981222 14.916 1.44762 14.4408L1.46082 14.4276L10.1332 5.85636C10.6084 5.38556 11.374 5.38116 11.8536 5.84316L11.8668 5.85636L20.5392 14.432C21.0188 14.9028 21.0188 15.6728 20.5392 16.1436Z"
+                fill="white"
+              />
+            </svg>
           )}
         </button>
       </div>

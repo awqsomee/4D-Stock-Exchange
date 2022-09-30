@@ -41,31 +41,41 @@
   font-size: 16px;
   font-family: 'Exo 2', 'Arial';
   color: #ffffff;
-  padding: 2% 1.8%;
+  padding: 1.5% 1.8%;
   margin-top: 0.7%;
   align-items: center;
 }
 .stock__index {
   width: 6%;
+  padding-right: 1%;
   font-size: 12px;
   top: 50%;
 }
 .stock__name {
   width: 44%;
+  padding-right: 1%;
 }
 .stock__cost {
   text-align: center;
   width: 12%;
+  padding-right: 1%;
 }
 .stock__change {
   text-align: center;
-  color: #bbffa7;
+  display: inline-block;
   width: 10%;
+  padding-right: 1%;
+}
+.stock__change__green {
+  color: #bbffa7;
+}
+.stock__change__red {
+  color: #ff2a51;
 }
 .stock__counter {
   width: 8%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .stock__counter__less:hover path {
   fill: #ee8100;
@@ -74,19 +84,28 @@
   fill: #ee8100;
 }
 .stock__button {
+  overflow: hidden;
+  white-space: nowrap;
   margin-left: auto;
   align-self: center;
 }
 .stock__arrow {
   background-color: transparent;
   border: none;
-  width: 5%;
-  padding-left: 2%;
-  margin-top: 1%;
+  align-self: center;
+  justify-content: end;
+  margin-top: 5px;
+  margin-left: 2%;
 }
 .stock .count {
   color: #e9eef2;
 }
 .arrowUp_img {
   transform: rotate(90deg);
+}
+.arrowUp_img:hover path {
+  fill: #ee8100;
+}
+.arrowDown_img:hover path {
+  fill: #ee8100;
 }
