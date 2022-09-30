@@ -39,7 +39,15 @@ const StockList = (props) => {
     let ignore = false
     async function getStocks() {
       const result = await getStocksSearch(search)
-      if (!ignore) setStocks(result)
+      const fish = {
+        currency: 'RUB',
+        name: 'Специализированный Фонд Приватизации „Чековый инвестиционный фонд аграрно­-промышленного комплекса Республики Татарстан „Золотой Колос“',
+        symbol: 'WWWWW',
+        changes: '531.43',
+        data: [],
+      }
+      fish.data[99] = { value: 136800.59 }
+      if (!ignore) setStocks([...result, fish])
     }
     await getStocks()
     setIsStocksLoading(false)
@@ -50,16 +58,31 @@ const StockList = (props) => {
 
   return (
     <div className="stockList">
-    <div className="container2">
-      <div className="title">{props.title}</div>
+      <div className="container2">
+        <div className="title">{props.title}</div>
         <div className="list">
           <Sorting />
           <Panel className="panel" />
           {isStocksLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: 40,
+              }}
+            >
+              Акции загружаются...
+            </div>
           ) : (
             stocks &&
-            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText='Купить'/>)
+            stocks.map((stock) => (
+              <Stock
+                stock={stock}
+                function={buyStock}
+                key={stock.symbol}
+                buttonText="Купить"
+              />
+            ))
           )}
         </div>
       </div>
