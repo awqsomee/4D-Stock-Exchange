@@ -13,12 +13,18 @@ const StockList = (props) => {
   const [run, setRun] = useState()
   const [isStocksLoading, setIsStocksLoading] = useState(false)
   const { search, setSearch } = useContext(SearchContext)
+  // const [buttonText, setButtonText] = useState(0)
+
   document.addEventListener('keydown', function (event) {
     if (event.key == 'Enter') {
       setRun(search.toString())
       fetchData(run)
     }
   })
+
+  // const switchButtonText=(()=>{
+  //   setButtonText(props.count * props)
+  // })
 
   useEffect(() => {
     fetchData()
@@ -44,8 +50,8 @@ const StockList = (props) => {
 
   return (
     <div className="stockList">
+    <div className="container2">
       <div className="title">{props.title}</div>
-      <div className="container2">
         <div className="list">
           <Sorting />
           <Panel className="panel" />
@@ -53,31 +59,7 @@ const StockList = (props) => {
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
           ) : (
             stocks &&
-            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
-          )}
-          {isStocksLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}></div>
-          ) : (
-            stocks &&
-            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
-          )}
-          {isStocksLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}></div>
-          ) : (
-            stocks &&
-            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
-          )}
-          {isStocksLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}></div>
-          ) : (
-            stocks &&
-            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
-          )}
-          {isStocksLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}></div>
-          ) : (
-            stocks &&
-            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
+            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText='Купить'/>)
           )}
         </div>
       </div>
