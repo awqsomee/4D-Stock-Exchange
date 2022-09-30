@@ -3,19 +3,21 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf)
+    format('truetype');
 }
 @font-face {
   font-family: 'Play';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf)
+    format('truetype');
 }
 .footer {
   display: flex;
   width: 100%;
-  height: 11vh;
+  height: 14vh;
   justify-content: center;
   background-color: #1b1b1b;
   font-size: 14px;
