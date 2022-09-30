@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/4D-Stock-Exchange/static/css/main.c40ff8a8.css",
-    "main.js": "/4D-Stock-Exchange/static/js/main.390b81e6.js",
-    "static/media/logo.svg": "/4D-Stock-Exchange/static/media/logo.fe612611a93aa9d56191de6d81d00147.svg",
+    "main.css": "/4D-Stock-Exchange/static/css/main.f74eceb4.css",
+    "main.js": "/4D-Stock-Exchange/static/js/main.92f7498c.js",
+    "static/media/logo.svg": "/4D-Stock-Exchange/static/media/logo.f202b9d8df85dc9ad71560e649783b92.svg",
     "static/media/PlusCircle.svg": "/4D-Stock-Exchange/static/media/PlusCircle.b6f13dbbc745e617de6d7ead6ea195bb.svg",
+    "static/media/briefcase.svg": "/4D-Stock-Exchange/static/media/briefcase.37e3d8b4d55d111fb9bfcd23458e5854.svg",
     "static/media/fb.svg": "/4D-Stock-Exchange/static/media/fb.a38a3da8ed1968c9f03b55c369419614.svg",
+    "static/media/wallet.svg": "/4D-Stock-Exchange/static/media/wallet.771a876c19f3527886fdb79087c6cfbe.svg",
     "static/media/close.svg": "/4D-Stock-Exchange/static/media/close.5510aa9bacd71fd5ae552a73e4bb9278.svg",
     "static/media/twitter.svg": "/4D-Stock-Exchange/static/media/twitter.8318e032c911c38aa505a4a77dbbf1d1.svg",
     "static/media/DashCircle.svg": "/4D-Stock-Exchange/static/media/DashCircle.c7771615f05ad2f2a422dd60c7831786.svg",
-    "static/media/portfolio.svg": "/4D-Stock-Exchange/static/media/portfolio.f55f1458fc677e945770b4918b2724d2.svg",
+    "static/media/user.svg": "/4D-Stock-Exchange/static/media/user.940204a88cef342414114334845f4e1b.svg",
     "static/media/убывание 2.svg": "/4D-Stock-Exchange/static/media/убывание 2.42b23d4c8202e422dfa7b4cd1d5cfe9e.svg",
     "static/media/youtube.svg": "/4D-Stock-Exchange/static/media/youtube.f5a9ca64ecb409959b95ace11826f478.svg",
-    "static/media/wallet.svg": "/4D-Stock-Exchange/static/media/wallet.2b761e80fa51b09a1527d931530138fe.svg",
-    "static/media/user.svg": "/4D-Stock-Exchange/static/media/user.677647fcd4a94666a4f3b3afdd24a519.svg",
     "index.html": "/4D-Stock-Exchange/index.html",
-    "static/media/поиск.svg": "/4D-Stock-Exchange/static/media/поиск.27d140cbf29e6eef35950cb25e5df05b.svg",
+    "static/media/search.svg": "/4D-Stock-Exchange/static/media/search.425cf63fe46ad7abff9805fde58f49a0.svg",
     "static/media/angle_down.svg": "/4D-Stock-Exchange/static/media/angle_down.108ff04abf6ceed5bebfe0bfd463a8b9.svg",
     "static/media/angle_up.svg": "/4D-Stock-Exchange/static/media/angle_up.ffcd35f57dfae1074880070405060e8f.svg",
-    "main.c40ff8a8.css.map": "/4D-Stock-Exchange/static/css/main.c40ff8a8.css.map",
-    "main.390b81e6.js.map": "/4D-Stock-Exchange/static/js/main.390b81e6.js.map"
+    "main.f74eceb4.css.map": "/4D-Stock-Exchange/static/css/main.f74eceb4.css.map",
+    "main.92f7498c.js.map": "/4D-Stock-Exchange/static/js/main.92f7498c.js.map"
   },
   "entrypoints": [
-    "static/css/main.c40ff8a8.css",
-    "static/js/main.390b81e6.js"
+    "static/css/main.f74eceb4.css",
+    "static/js/main.92f7498c.js"
   ]
 }
