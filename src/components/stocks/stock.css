@@ -1,9 +1,30 @@
 @font-face {
   font-family: 'Exo 2';
   font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvOcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8j4PKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jF_WcPg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Play';
@@ -20,49 +41,44 @@
   font-size: 16px;
   font-family: 'Exo 2', 'Arial';
   color: #ffffff;
-  padding: 2% 2%;
+  padding: 2% 1.8%;
   margin-top: 0.7%;
   align-items: center;
-  justify-content: center;
-  margin-left: 11.9%;
 }
 .stock__plank {
   flex-direction: row;
   opacity: 1;
 }
 .stock__index {
-  opacity: 1;
-  width: 6%;
+  width: 9.3%;
   font-size: 12px;
   top: 50%;
 }
 .stock__name {
-  opacity: 1;
-  width: 20%;
+  width: 32.2%;
 }
 .stock__cost {
-  opacity: 1;
-  width: 23%;
+  width: 12.2%;
 }
 .stock__change {
-  opacity: 1;
   color: #bbffa7;
-  width: 19%;
+  width: 11%;
 }
 .stock__counter {
-  opacity: 1;
-  width: 12.1%;
+  width: 14.2%;
   display: flex;
   justify-content: space-between;
   padding-right: 1%;
 }
-.stock__counter__more {
-  opacity: 1;
-  align-items: flex-end;
+.stock__counter__less:hover path {
+  fill: #ee8100;
+}
+.stock__counter__more:hover path {
+  fill: #ee8100;
 }
 .stock__button {
-  opacity: 1;
-  width: 14.8%;
+  margin-left: auto;
+  width: 16%;
 }
 .stock__arrow {
   background-color: transparent;
@@ -72,7 +88,6 @@
   margin-top: 1%;
 }
 .stock .count {
-  opacity: 1;
   color: #e9eef2;
 }
 .arrowUp_img {

@@ -5,15 +5,15 @@
   display: flex;
   border-radius: 5px;
   background-color: @--cards-background-color;
-  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5),
+    0px 4px 4px rgba(0, 0, 0, 0.25);
   font-size: @--button-font-size;
   font-family: @font-family;
   color: @--main-text-color;
-  padding: 2% 2%;
+  padding: 2% 1.8%;
   margin-top: 0.7%;
   align-items: center;
-  justify-content: center;
-  margin-left: 11.9%;
+  // justify-content: center;
   // flex-direction: column;
 
   //   float: left;
@@ -25,45 +25,38 @@
   }
 
   &__index {
-    opacity: 1;
-    width: 6%;
+    width: 9.3%;
+    // width: 6%;
     font-size: 12px;
     top: 50%;
   }
 
   &__name {
-    opacity: 1;
-    width: 20%;
+    width: 32.2%;
   }
 
   &__cost {
-    opacity: 1;
-    width: 23%;
+    width: 12.2%;
   }
   &__change {
-    opacity: 1;
     color: @--green-color;
-    width: 19%;
+    width: 11%;
   }
   &__counter {
-    opacity: 1;
-    width: 12.1%;
+    width: 14.2%;
     display: flex;
     justify-content: space-between;
     padding-right: 1%;
-
-    // &__less {
-    //   // vertical-align: middle;
-    // }
-    &__more {
-      opacity: 1;
-      align-items: flex-end;
-      // vertical-align: middle;
+    &__less:hover path {
+      fill: @--accent-color;
+    }
+    &__more:hover path {
+      fill: @--accent-color;
     }
   }
   &__button {
-    opacity: 1;
-    width: 14.8%;
+    margin-left: auto;
+    width: 16%;
   }
   &__arrow {
     background-color: transparent;
@@ -74,7 +67,6 @@
   }
 
   .count {
-    opacity: 1;
     color: @--button-text-color;
   }
 }
