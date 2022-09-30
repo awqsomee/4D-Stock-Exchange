@@ -2,9 +2,14 @@ import axios from 'axios'
 
 async function getUserStocks() {
   try {
-    const response = await axios.get(`https://gentle-sea-62964.herokuapp.com/api/auth/stock`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
-    })
+    const response = await axios.get(
+      `https://gentle-sea-62964.herokuapp.com/api/auth/stock`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+        },
+      }
+    )
     const stocksInfo = response.data
     if (Array.isArray(stocksInfo)) {
       const stocksInfoWithPrice = await Promise.all(
@@ -75,12 +80,14 @@ async function getStockChange(symbol, apikey) {
 async function getStockPrice(symbol, apikey) {
   try {
     const response = await axios.get(
-      `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX`
-      // 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
+      // `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX`
+      'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
     )
     let date = Object.keys(response.data['Time Series (Daily)'])
     date.reverse()
-    const value = date.map((item) => Number(response.data['Time Series (Daily)'][item]['4. close']))
+    const value = date.map((item) =>
+      Number(response.data['Time Series (Daily)'][item]['4. close'])
+    )
     const data = []
     for (let num = 99; num >= 0; num--)
       data.unshift({
