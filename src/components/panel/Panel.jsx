@@ -7,7 +7,6 @@ const Panel = () => {
       <div className="name">Наименование</div>
       <div className="cost">Цена акции</div>
       <div className="change">Изменение</div>
-      <div className="rest"></div>
     </div>
   )
 }
