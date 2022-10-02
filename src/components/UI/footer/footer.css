@@ -15,10 +15,8 @@
     format('truetype');
 }
 .footer {
-  display: flex;
   width: 100%;
-  height: 14vh;
-  justify-content: center;
+  /* height: 80px; */
   background-color: #1b1b1b;
   font-size: 14px;
   font-family: 'Exo 2', 'Arial';
@@ -36,8 +34,12 @@
   text-align: right;
 }
 .container_footer {
-  width: 61%;
   display: flex;
+  max-width: 66.7%;
+  margin: 2% auto;
+  /* height: 80px; */
+  justify-content: space-between;
   align-items: center;
+  align-self: baseline;
   color: #ffffff;
 }

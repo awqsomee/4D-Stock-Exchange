@@ -51,13 +51,10 @@ body {
 .app {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 .wrap {
-  width: 100%;
-  min-height: 78vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex: 1;
 }
 .page404 {
   text-align: center;
