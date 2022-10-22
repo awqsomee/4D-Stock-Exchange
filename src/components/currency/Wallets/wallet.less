@@ -1,0 +1,45 @@
+@import '../../../styles/colors/colors.less';
+@import '../../../styles/fonts/fonts.less';
+@import '../../../styles/shadows/shadows.less';
+
+.walletItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 36px;
+  gap: 55px;
+  background-color: @--cards-background-color;
+  font-family: @--head-font;
+  border-radius: 25px;
+  width: 320px;
+  height: 86px;
+  box-shadow: @shadow_wallet_item;
+  border: none !important;
+
+  &:hover {
+    background-color: @--silver-color;
+    box-shadow: @shadow_push_wallet_item;
+  }
+  &:active {
+    background-color: @--silver-color;
+    box-shadow: @shadow_push_wallet_item;
+  }
+
+  &:hover &__balance {
+    color: @--input-text-color;
+  }
+  &:active &__balance {
+    color: @--input-text-color;
+  }
+
+  &__title {
+    font-size: @--head-font-size;
+    color: @--accent-color;
+  }
+
+  &__balance {
+    display: flex;
+    font-size: @--head-font-size;
+    color: @--main-text-color;
+  }
+}
