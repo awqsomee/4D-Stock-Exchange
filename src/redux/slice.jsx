@@ -5,6 +5,8 @@ const slice = createSlice({
     currentUser: {},
     isAuth: false,
     search: '',
+    currecncies: [],
+    userCurrencies: [],
   },
   reducers: {
     setUser(state, action) {
@@ -16,6 +18,12 @@ const slice = createSlice({
       state.currentUser = {}
       state.isAuth = false
     },
+    setCurrencies(state, action) {
+      state.currecncies = action.payload
+    },
+    setUserCurrencies(state, action) {
+      state.userCurrencies = action.payload
+    },
     setSearch(state, action) {
       state.search = action.payload
     },
@@ -26,4 +34,4 @@ const slice = createSlice({
 })
 
 export default slice.reducer
-export const { setUser, logout, setSearch, setUserBalance } = slice.actions
+export const { setUser, logout, setCurrencies, setUserCurrencies, setSearch, setUserBalance } = slice.actions

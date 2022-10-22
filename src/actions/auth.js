@@ -6,14 +6,11 @@ const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 export const registration = (name, email, password) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(
-        `${serverAddress}/api/auth/registration`,
-        {
-          email,
-          password,
-          name,
-        }
-      )
+      const response = await axios.post(`${serverAddress}/api/auth/registration`, {
+        email,
+        password,
+        name,
+      })
       dispatch(setUser(response.data.user))
       localStorage.setItem('stonksToken', response.data.token)
     } catch (e) {
@@ -49,6 +46,7 @@ export const auth = () => {
       localStorage.setItem('stonksToken', response.data.token)
     } catch (e) {
       localStorage.removeItem('stonksToken')
+      console.log(e)
     }
   }
 }
