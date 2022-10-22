@@ -38,7 +38,7 @@ export const getUserCurrencies = () => {
   }
 }
 
-export const exchangeCurrency = (userCurrencies, symbol, amount) => {
+export const exchangeCurrency = (symbol, amount) => {
   return async (dispatch) => {
     try {
       symbol = String(symbol)
@@ -53,16 +53,28 @@ export const exchangeCurrency = (userCurrencies, symbol, amount) => {
           headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
         }
       )
-      userCurrencies = userCurrencies.map((currency) => {
-        if (currency.symbol === response.data.user.currency.symbol) {
-          currency = response.data.user.currency
-        }
-        return currency
-      })
-      dispatch(setUserCurrencies(userCurrencies))
       alert(response.data.message)
+      return response.data.currency
     } catch (e) {
       console.log(e)
     }
+  }
+}
+
+export const openCurrencyAccount = async (symbol) => {
+  try {
+    const response = await axios.get(`${serverAddress}/api/forex/auth/${symbol}/open`)
+    alert(response.data.message)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export const closeCurrencyAccount = async (symbol) => {
+  try {
+    const response = await axios.get(`${serverAddress}/api/forex/auth/${symbol}/close`)
+    alert(response.data.message)
+  } catch (e) {
+    console.log(e)
   }
 }
