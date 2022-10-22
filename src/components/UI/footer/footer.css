@@ -1,22 +1,43 @@
 @font-face {
   font-family: 'Exo 2';
   font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvOcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8j4PKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf)
-    format('truetype');
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jF_WcPg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Play';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf)
-    format('truetype');
+  src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 .footer {
+  display: flex;
   width: 100%;
-  /* height: 80px; */
+  height: 11vh;
+  justify-content: center;
   background-color: #1b1b1b;
   font-size: 14px;
   font-family: 'Exo 2', 'Arial';
@@ -34,12 +55,8 @@
   text-align: right;
 }
 .container_footer {
+  width: 61%;
   display: flex;
-  max-width: 66.7%;
-  margin: 2% auto;
-  /* height: 80px; */
-  justify-content: space-between;
   align-items: center;
-  align-self: baseline;
   color: #ffffff;
 }
