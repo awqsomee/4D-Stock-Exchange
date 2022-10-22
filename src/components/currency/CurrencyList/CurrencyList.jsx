@@ -16,14 +16,6 @@ const CurrencyList = () => {
     })
   }, [])
 
-  const fetchUserCurrencies = async () => {
-    console.log('1', getUserCurrencies)
-    console.log('2', getUserCurrencies())
-    console.log('3', dispatch(getUserCurrencies()))
-    const uC = dispatch(getUserCurrencies())
-    return uC
-  }
-
   const currencyHandler = async (dispatch, symbol, amount) => {
     await dispatch(exchangeCurrency(store.getState(setUserCurrencies).toolkit.userCurrencies, symbol, amount))
   }
@@ -32,7 +24,6 @@ const CurrencyList = () => {
       <div>CurrencyList</div>
       {!isLoading ? (
         <div>
-          {console.log('sad', store.getState(setUserCurrencies).toolkit.userCurrencies)}
           {store.getState(setUserCurrencies).toolkit.userCurrencies.map((currencyItem) => (
             <Wallet currencyItem={currencyItem} key={currencyItem.symbol} />
           ))}
@@ -40,6 +31,7 @@ const CurrencyList = () => {
       ) : (
         <div className="app">Loading...</div>
       )}
+      // Тут захардкожено, надо делать инпуты. МодалБокс скорее всего
       <button className="button balance__button" onClick={() => currencyHandler(dispatch, 'EUR', 1000)}>
         Купить валюту
       </button>
