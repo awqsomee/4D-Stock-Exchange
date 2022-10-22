@@ -33,10 +33,41 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-.container2 {
-  margin: 72px auto;
-  max-width: 60.6%;
-}
-.currency {
+.walletItem {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 36px;
+  gap: 55px;
+  background-color: #eaeaea0d;
+  font-family: 'Play';
+  border-radius: 25px;
+  width: 320px;
+  height: 86px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 0px 4px rgba(0, 0, 0, 0.5);
+  border: none !important;
+  margin-bottom: 16px;
+}
+.walletItem:hover {
+  background-color: #e9eef2;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7), inset -8px -8px 5px #ffffff, inset 8px 8px 8px rgba(171, 171, 171, 0.7);
+}
+.walletItem:active {
+  background-color: #e9eef2;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7), inset -8px -8px 5px #ffffff, inset 8px 8px 8px rgba(171, 171, 171, 0.7);
+}
+.walletItem:hover .walletItem__balance {
+  color: #000;
+}
+.walletItem:active .walletItem__balance {
+  color: #000;
+}
+.walletItem__title {
+  font-size: 40px;
+  color: #ee8100;
+}
+.walletItem__balance {
+  display: flex;
+  font-size: 40px;
+  color: #ffffff;
 }

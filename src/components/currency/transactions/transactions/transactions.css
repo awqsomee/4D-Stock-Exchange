@@ -33,40 +33,32 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-.walletItem {
-  display: flex;
+.transactions {
+  display: block;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
-  padding: 20px 36px;
-  gap: 55px;
   background-color: #eaeaea0d;
-  font-family: 'Play';
-  border-radius: 25px;
-  width: 320px;
-  height: 86px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 0px 4px rgba(0, 0, 0, 0.5);
-  border: none !important;
-}
-.walletItem:hover {
-  background-color: #e9eef2;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7), inset -8px -8px 5px #ffffff, inset 8px 8px 8px rgba(171, 171, 171, 0.7);
-}
-.walletItem:active {
-  background-color: #e9eef2;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7), inset -8px -8px 5px #ffffff, inset 8px 8px 8px rgba(171, 171, 171, 0.7);
-}
-.walletItem:hover .walletItem__balance {
-  color: #000;
-}
-.walletItem:active .walletItem__balance {
-  color: #000;
-}
-.walletItem__title {
-  font-size: 40px;
-  color: #ee8100;
-}
-.walletItem__balance {
-  display: flex;
-  font-size: 40px;
+  width: 766px;
+  margin-left: 20px;
+  padding: 20px 36px;
+  border-radius: 10px;
+  font-family: 'Exo 2', 'Arial';
+  font-size: 36px;
   color: #ffffff;
+}
+.transactions__actions {
+  display: flex;
+}
+.transactions__summ {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.transactions__history {
+  margin-top: 50px;
+  font-size: 20px;
+}
+.transactions__list {
+  margin-top: 20px;
 }

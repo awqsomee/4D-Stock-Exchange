@@ -1,5 +1,9 @@
 import axios from 'axios'
-import { setCurrencies, setUserCurrencies } from '../redux/slice'
+import {
+  setCurrencies,
+  setSelectedCurrency,
+  setUserCurrencies,
+} from '../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
 
@@ -28,9 +32,12 @@ export const getUserCurrencies = () => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`${serverAddress}/api/forex/auth`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+        },
       })
       dispatch(setUserCurrencies(response.data.currencies))
+      dispatch(setSelectedCurrency(response.data.currencies[1]))
       return response.data.message
     } catch (e) {
       console.log(e)
@@ -50,7 +57,9 @@ export const exchangeCurrency = (symbol, amount) => {
           amount,
         },
         {
-          headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+          },
         }
       )
       alert(response.data.message)
@@ -63,7 +72,9 @@ export const exchangeCurrency = (symbol, amount) => {
 
 export const openCurrencyAccount = async (symbol) => {
   try {
-    const response = await axios.get(`${serverAddress}/api/forex/auth/${symbol}/open`)
+    const response = await axios.post(
+      `${serverAddress}/api/forex/auth/${symbol}/open`
+    )
     alert(response.data.message)
   } catch (e) {
     console.log(e)
@@ -72,9 +83,26 @@ export const openCurrencyAccount = async (symbol) => {
 
 export const closeCurrencyAccount = async (symbol) => {
   try {
-    const response = await axios.get(`${serverAddress}/api/forex/auth/${symbol}/close`)
+    const response = await axios.post(
+      `${serverAddress}/api/forex/auth/${symbol}/close`
+    )
     alert(response.data.message)
   } catch (e) {
     console.log(e)
   }
 }
+
+// export const getSelectedCurrency = async () => {
+//   return async (dispatch) => {
+//     try {
+//       const response = await axios.get(`${serverAddress}/api/forex/auth`, {
+//         headers: {
+//           Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+//         },
+//       })
+//       return response.data.message
+//     } catch (e) {
+//       console.log(e)
+//     }
+//   }
+// }
