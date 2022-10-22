@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { store } from '../redux'
 import { setCurrencies, setUserCurrencies } from '../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
@@ -7,10 +6,10 @@ const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 export const getAllCurrencies = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`https://www.cbr-xml-daily.ru/daily_json.js`)
-      dispatch(setCurrencies(response.data.Valute))
+      const response = await axios.get(`${serverAddress}/api/forex`)
+      dispatch(setCurrencies(response.data.currencies))
+      return response.data.message
     } catch (e) {
-      dispatch(setCurrencies([]))
       console.log(e)
     }
   }
@@ -18,8 +17,8 @@ export const getAllCurrencies = () => {
 
 export const getCurrencyInfo = async (symbol) => {
   try {
-    const response = await axios.get(`${serverAddress}/api/forex?symbol=${symbol}`)
-    return response
+    const response = await axios.get(`${serverAddress}/api/forex/${symbol}`)
+    return response.data
   } catch (e) {
     console.log(e)
   }
@@ -32,7 +31,10 @@ export const getUserCurrencies = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
       })
       dispatch(setUserCurrencies(response.data.currencies))
-    } catch (e) {}
+      return response.data.message
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 
