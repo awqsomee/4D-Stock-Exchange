@@ -2,13 +2,16 @@ import React from 'react'
 import Sort from '../../assets/Icons/убывание 2.svg'
 import '../UI/buttons/buttons.css'
 import './sorting.css'
-import '../../assets/Icons/sorting_img.css'
 import { useState } from 'react'
 import ButtonSwith from '../../components/UI/buttons/ButtonSwitch'
 
 const StockListFilter = () => {
-  const [buttInc, setButtInc] = useState(' sorting__increase button button__sortPush')
-  const [buttDec, setButtDec] = useState('sorting__decrease button button__sortNormal')
+  const [buttInc, setButtInc] = useState(
+    ' sorting__increase button button__sortPush'
+  )
+  const [buttDec, setButtDec] = useState(
+    'sorting__decrease button button__sortNormal'
+  )
   return (
     <div className="sorting">
       <ButtonSwith
@@ -33,7 +36,7 @@ const StockListFilter = () => {
       >
         по падению
       </ButtonSwith>
-      <div className="sorting_img">
+      <div className="sorting__img">
         <img src={Sort} alt="sort_img" className="sort_img" />
       </div>
     </div>

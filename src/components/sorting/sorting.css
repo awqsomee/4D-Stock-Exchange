@@ -39,19 +39,24 @@
   font-family: 'Exo 2', 'Arial';
   align-items: center;
   justify-content: end;
+  right: 0;
+  margin-left: 65%;
+  margin-right: 1%;
   margin-bottom: 0.8%;
 }
-.increase {
+.sorting__increase {
   margin-right: 3%;
-  width: 42.7%;
   font-size: 12px;
 }
-.decrease {
+.sorting__decrease {
   margin-right: 2%;
-  width: 42.7%;
   font-size: 12px;
 }
-.sorting_img {
+.sorting__img {
   left: 30%;
-  width: 14.6%;
+}
+.sort_img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
 }
