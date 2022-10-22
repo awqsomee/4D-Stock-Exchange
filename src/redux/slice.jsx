@@ -7,6 +7,7 @@ const slice = createSlice({
     search: '',
     currecncies: [],
     userCurrencies: [],
+    selectedCurrency: {},
   },
   reducers: {
     setUser(state, action) {
@@ -30,8 +31,19 @@ const slice = createSlice({
     setUserBalance(state, action) {
       state.currentUser.balance = action.payload
     },
+    setSelectedCurrency(state, action) {
+      state.selectedCurrency = action.payload
+    },
   },
 })
 
 export default slice.reducer
-export const { setUser, logout, setCurrencies, setUserCurrencies, setSearch, setUserBalance } = slice.actions
+export const {
+  setUser,
+  logout,
+  setCurrencies,
+  setUserCurrencies,
+  setSearch,
+  setUserBalance,
+  setSelectedCurrency,
+} = slice.actions
