@@ -13,21 +13,20 @@ const Transactions = () => {
   const [value, setValue] = useState('')
   const [transactions, setTransactions] = useState()
 
-  // TODO: сделать одновременную асинхронную загрузку
   useEffect(() => {
     setIsLoading(true)
-    dispatch(getUserCurrencies())
-      .then(() => {
-        getTransactions()
-      })
-      .then((data) => {
-        console.log(data)
-        setTransactions(data)
-      })
+    fetchData()
+      .then((data) => setTransactions(data))
       .finally(() => {
         setIsLoading(false)
       })
   }, [])
+
+  const fetchData = () => {
+    dispatch(getUserCurrencies())
+    const data = getTransactions()
+    return data
+  }
 
   const replenishHandler = async (dispatch, value, setValue) => {
     await dispatch(changeBalance(value))
@@ -45,15 +44,18 @@ const Transactions = () => {
 
   const selectedCurrency = store.getState().toolkit.selectedCurrency
 
-  console.log('sel', selectedCurrency)
   return (
     <div className="transactions">
       <div className="transactions__actions">
         <div className="transactions__summ">
-          <div className="transactions__number">
-            {new Intl.NumberFormat('ru-RU').format(selectedCurrency.amount)}
-          </div>
-          <div className="transactions__symbol">{selectedCurrency.symbol}</div>
+          {selectedCurrency.amount ? (
+            <div className="transactions__number">
+              {new Intl.NumberFormat('ru-RU').format(selectedCurrency?.amount)}
+            </div>
+          ) : (
+            <></>
+          )}
+          <div className="transactions__symbol">{selectedCurrency?.symbol}</div>
         </div>
         <div className="transactions__actions">
           <input
@@ -79,7 +81,6 @@ const Transactions = () => {
         <div>История изменений</div>
         {!isLoading ? (
           <div className="transactions__list">
-            {console.log('tr', transactions)}
             {transactions
               .filter((transaction) => {
                 return transaction.currency === selectedCurrency.symbol

@@ -13,11 +13,21 @@ const slice = createSlice({
     setUser(state, action) {
       state.currentUser = action.payload
       state.isAuth = true
+      state.selectedCurrency = {
+        _id: action.payload.id,
+        symbol: 'RUB',
+        name: 'Рубль',
+        user: action.payload.id,
+        amount: action.payload.balance,
+        __v: 0,
+      }
     },
     logout(state) {
       localStorage.removeItem('stonksToken')
       state.currentUser = {}
       state.isAuth = false
+      state.selectedCurrency = {}
+      state.userCurrencies = []
     },
     setCurrencies(state, action) {
       state.currecncies = action.payload
