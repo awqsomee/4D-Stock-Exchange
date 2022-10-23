@@ -11,19 +11,19 @@ const Transactions = () => {
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(true)
   const [value, setValue] = useState('')
-
-  useEffect(() => {
-    setIsLoading(true)
-    dispatch(getUserCurrencies()).finally(() => {
-      setIsLoading(false)
-    })
-  }, [])
-
   const [transactions, setTransactions] = useState()
+
+  // TODO: сделать одновременную асинхронную загрузку
   useEffect(() => {
     setIsLoading(true)
-    getTransactions()
-      .then((data) => setTransactions(data))
+    dispatch(getUserCurrencies())
+      .then(() => {
+        getTransactions()
+      })
+      .then((data) => {
+        console.log(data)
+        setTransactions(data)
+      })
       .finally(() => {
         setIsLoading(false)
       })
@@ -50,7 +50,9 @@ const Transactions = () => {
     <div className="transactions">
       <div className="transactions__actions">
         <div className="transactions__summ">
-          <div className="transactions__number">{selectedCurrency.amount}</div>
+          <div className="transactions__number">
+            {new Intl.NumberFormat('ru-RU').format(selectedCurrency.amount)}
+          </div>
           <div className="transactions__symbol">{selectedCurrency.symbol}</div>
         </div>
         <div className="transactions__actions">
@@ -77,10 +79,10 @@ const Transactions = () => {
         <div>История изменений</div>
         {!isLoading ? (
           <div className="transactions__list">
-            {/* заглушка */}
+            {console.log('tr', transactions)}
             {transactions
               .filter((transaction) => {
-                return transaction.currency === 'RUB'
+                return transaction.currency === selectedCurrency.symbol
               })
               .map((transactionItem) => (
                 <TransactionItem

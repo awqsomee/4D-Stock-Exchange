@@ -30,12 +30,20 @@ const Balance = () => {
       <div className="balance__currency">{currencyName}</div>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <div className="balance__sum">
-          {`${new Intl.NumberFormat('ru-RU').format(store.getState(setUser).toolkit.currentUser.balance)} ₽`}
+          {`${new Intl.NumberFormat('ru-RU').format(
+            store.getState(setUser).toolkit.currentUser.balance
+          )} ₽`}
         </div>
-        <button className="button balance__button" onClick={() => replenishHandler(dispatch, value, setValue)}>
+        <button
+          className="button balance__button"
+          onClick={() => replenishHandler(dispatch, value, setValue)}
+        >
           Пополнить
         </button>
-        <button className="button balance__button" onClick={() => withdrawHandler(dispatch, value, setValue)}>
+        <button
+          className="button balance__button"
+          onClick={() => withdrawHandler(dispatch, value, setValue)}
+        >
           Вывести
         </button>
         <form onSubmit={() => replenishHandler(dispatch, value, setValue)}>

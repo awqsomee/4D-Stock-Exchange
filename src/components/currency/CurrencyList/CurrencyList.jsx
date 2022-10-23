@@ -31,14 +31,20 @@ const CurrencyList = () => {
   }
   return (
     <div>
-      <WalletItem currencyItem={rubCurrency} />
+      <div
+        onClick={() => {
+          dispatch(setSelectedCurrency(rubCurrency))
+        }}
+      >
+        <WalletItem currencyItem={rubCurrency} />
+      </div>
+
       {!isLoading ? (
         <div>
           {store.getState().toolkit.userCurrencies.map((currencyItem) => (
             <div
               onClick={() => {
                 dispatch(setSelectedCurrency(currencyItem))
-                console.log('33', currencyItem)
               }}
             >
               <WalletItem
