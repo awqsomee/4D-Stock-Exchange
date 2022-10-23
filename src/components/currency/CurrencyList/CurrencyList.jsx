@@ -21,19 +21,31 @@ const CurrencyList = () => {
       exchangeCurrency(store.getState().toolkit.userCurrencies, symbol, amount)
     )
   }
-
+  const rubCurrency = {
+    _id: store.getState().toolkit.currentUser.id,
+    symbol: 'RUB',
+    name: 'Рубль',
+    user: store.getState().toolkit.currentUser.id,
+    amount: store.getState().toolkit.currentUser.balance,
+    __v: 0,
+  }
   return (
     <div>
+      <WalletItem currencyItem={rubCurrency} />
       {!isLoading ? (
         <div>
           {store.getState().toolkit.userCurrencies.map((currencyItem) => (
-            <WalletItem
-              currencyItem={currencyItem}
-              key={currencyItem.symbol}
+            <div
               onClick={() => {
                 dispatch(setSelectedCurrency(currencyItem))
+                console.log('33', currencyItem)
               }}
-            />
+            >
+              <WalletItem
+                currencyItem={currencyItem}
+                key={currencyItem.symbol}
+              />
+            </div>
           ))}
         </div>
       ) : (

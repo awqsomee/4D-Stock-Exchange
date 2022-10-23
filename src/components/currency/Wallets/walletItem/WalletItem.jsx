@@ -1,12 +1,17 @@
-import { React } from 'react'
+import { React, useState, useEffect } from 'react'
 import { store } from '../../../../redux'
 import './walletItem.css'
 
 const WalletItem = (props) => {
   const currencyItem = props.currencyItem
-  const selectedCurrency = store.getState().toolkit.selectedCurrency
-
+  const [selectedCurrency, setSelectedCurrency] = useState(
+    store.getState().toolkit.selectedCurrency
+  )
   console.log('selectedC', selectedCurrency)
+
+  useEffect(() => {
+    setSelectedCurrency(store.getState().toolkit.selectedCurrency)
+  }, [store])
 
   return (
     <button
@@ -23,7 +28,9 @@ const WalletItem = (props) => {
         }
       >
         <div className="walletItem__symbol"></div>
-        <div className={'walletItem__sum'}>{currencyItem.amount}</div>
+        <div className={'walletItem__sum'}>
+          {new Intl.NumberFormat('ru-RU').format(currencyItem.amount)}
+        </div>
       </div>
     </button>
   )
