@@ -1,9 +1,5 @@
 import axios from 'axios'
-import {
-  setCurrencies,
-  setSelectedCurrency,
-  setUserCurrencies,
-} from '../redux/slice'
+import { setCurrencies, setSelectedCurrency, setUserCurrencies } from '../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
 
@@ -37,7 +33,6 @@ export const getUserCurrencies = () => {
         },
       })
       dispatch(setUserCurrencies(response.data.currencies))
-      dispatch(setSelectedCurrency(response.data.currencies[1]))
       return response.data.message
     } catch (e) {
       console.log(e)
@@ -72,9 +67,7 @@ export const exchangeCurrency = (symbol, amount) => {
 
 export const openCurrencyAccount = async (symbol) => {
   try {
-    const response = await axios.post(
-      `${serverAddress}/api/forex/auth/${symbol}/open`
-    )
+    const response = await axios.post(`${serverAddress}/api/forex/auth/${symbol}/open`)
     alert(response.data.message)
   } catch (e) {
     console.log(e)
@@ -83,9 +76,7 @@ export const openCurrencyAccount = async (symbol) => {
 
 export const closeCurrencyAccount = async (symbol) => {
   try {
-    const response = await axios.post(
-      `${serverAddress}/api/forex/auth/${symbol}/close`
-    )
+    const response = await axios.post(`${serverAddress}/api/forex/auth/${symbol}/close`)
     alert(response.data.message)
   } catch (e) {
     console.log(e)
