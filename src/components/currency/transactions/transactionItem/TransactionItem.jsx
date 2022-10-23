@@ -2,13 +2,23 @@ import React from 'react'
 import './transactionItem.css'
 
 const TransactionItem = (props) => {
-  const transactionItem = props.currencyItem
+  const transactionItem = props.transactionItem
   return (
     <div className="transactionItem">
-      <div>Покупка</div>
-      <div>Apple</div>
-      <div>1000</div>
-      <div>18.07.2022</div>
+      <div>{transactionItem?.type}</div>
+      {transactionItem?.symbol ? (
+        <div>
+          {transactionItem?.symbol}, ({transactionItem?.amount})
+        </div>
+      ) : null}
+      <div>{transactionItem?.price}</div>
+      <div>
+        {new Date(Date.parse(transactionItem?.date)).toLocaleDateString('ru', {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+        })}
+      </div>
     </div>
   )
 }

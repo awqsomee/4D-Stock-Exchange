@@ -38,9 +38,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 8px;
   padding: 16px 30px;
   gap: 107px;
+  border-radius: 5px;
   background-color: #eaeaea0d;
   font-family: 'Exo 2', 'Arial';
-  font-size: 20px;
+  font-size: 13px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 1px 4px rgba(0, 0, 0, 0.5);
 }

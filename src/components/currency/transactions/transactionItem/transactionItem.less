@@ -1,13 +1,17 @@
 @import '../../../../styles/colors/colors';
 @import '../../../../styles/fonts/fonts';
+@import '../../../../styles/shadows/shadows';
 .transactionItem {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 8px;
   padding: 16px 30px;
   gap: 107px;
+  border-radius: 5px;
   background-color: @--cards-background-color;
   font-family: @font-family;
-  font-size: @--paragraph-font-size;
+  font-size: @--selector-font-size;
+  box-shadow: @shadow_transaction_item;
 }

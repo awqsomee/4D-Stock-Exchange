@@ -41,7 +41,7 @@ const CurrencyList = () => {
       )}
       {/*Тут захардкожено, надо делать инпуты. МодалБокс скорее всего */}
       <button
-        className="button balance__button"
+        className="button button__normal"
         onClick={() => currencyHandler(dispatch, 'EUR', 1000)}
       >
         +

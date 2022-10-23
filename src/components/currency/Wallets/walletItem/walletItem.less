@@ -5,16 +5,34 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 16px;
   padding: 20px 36px;
   gap: 55px;
-  background-color: @--cards-background-color;
-  font-family: @--head-font;
   border-radius: 25px;
   width: 320px;
   height: 86px;
+  background-color: @--cards-background-color;
+  font-family: @--head-font;
+  color: @--main-text-color;
   box-shadow: @shadow_wallet_item;
   border: none !important;
-  margin-bottom: 16px;
+
+  &__push {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 20px 36px;
+    gap: 55px;
+    border-radius: 25px;
+    width: 320px;
+    height: 86px;
+    background-color: @--silver-color;
+    font-family: @--head-font;
+    color: @--input-text-color;
+    box-shadow: @shadow_push_wallet_item;
+    border: none !important;
+  }
 
   &:hover {
     background-color: @--silver-color;
@@ -41,5 +59,10 @@
     display: flex;
     font-size: @--head-font-size;
     color: @--main-text-color;
+
+    &__push {
+      font-size: @--head-font-size;
+      color: @--input-text-color;
+    }
   }
 }
