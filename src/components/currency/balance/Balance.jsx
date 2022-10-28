@@ -18,7 +18,7 @@ const withdrawHandler = async (dispatch, value, setValue) => {
 }
 
 const changeHandler = (value, setValue) => {
-  setValue(value.replace(/\D/, ''))
+  setValue(value.replaceAll(/\D/g, ''))
 }
 
 const Balance = () => {
