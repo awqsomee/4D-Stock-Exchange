@@ -48,13 +48,32 @@
   font-size: 36px;
   color: #ffffff;
 }
-.transactions__actions {
+.transactions__info {
+  display: block;
+}
+.transactions__head {
   display: flex;
+  justify-content: space-between;
+}
+.transactions__delete {
+  cursor: pointer;
+}
+.transactions__delete:hover path {
+  fill: #ee8100;
 }
 .transactions__summ {
   display: flex;
   align-items: center;
   text-align: center;
+}
+.transactions__actions {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+}
+.transactions__input {
+  width: 50%;
+  margin-right: 10px;
 }
 .transactions__history {
   margin-top: 50px;

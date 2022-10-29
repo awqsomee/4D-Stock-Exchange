@@ -5,10 +5,14 @@ import { exchangeCurrency, getUserCurrencies } from '../../../actions/forex'
 import { store } from '../../../redux'
 import WalletItem from '../Wallets/walletItem/WalletItem'
 import { setSelectedCurrency } from '../../../redux/slice'
+import ModalBox from '../../UI/ModalBox/ModalBox'
+import NewWallet from '../Wallets/newWallet/NewWallet'
 
 const CurrencyList = () => {
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(true)
+  const [visible, setVisible] = useState(false)
+
   useEffect(() => {
     setIsLoading(true)
     dispatch(getUserCurrencies()).finally(() => {
@@ -29,6 +33,7 @@ const CurrencyList = () => {
     amount: store.getState().toolkit.currentUser.balance,
     __v: 0,
   }
+
   return (
     <div>
       <div
@@ -57,10 +62,15 @@ const CurrencyList = () => {
       ) : (
         <div className="app">Loading...</div>
       )}
+
+      <ModalBox visible={visible} setVisible={setVisible}>
+        <NewWallet sVisible={setVisible} />
+      </ModalBox>
+
       {/*Тут захардкожено, надо делать инпуты. МодалБокс скорее всего */}
       <button
         className="button button__normal"
-        onClick={() => currencyHandler(dispatch, 'EUR', 1000)}
+        onClick={() => setVisible(true)}
       >
         +
       </button>

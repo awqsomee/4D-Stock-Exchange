@@ -17,13 +17,33 @@
   font-size: @--form-font-size;
   color: @--main-text-color;
 
-  &__actions {
+  &__info {
+    display: block;
+  }
+  &__head {
     display: flex;
+    justify-content: space-between;
+  }
+  &__delete {
+    cursor: pointer;
+  }
+  &__delete:hover path {
+    fill: @--accent-color;
   }
   &__summ {
     display: flex;
     align-items: center;
     text-align: center;
+  }
+  &__actions {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+  }
+
+  &__input {
+    width: 50%;
+    margin-right: 10px;
   }
   &__history {
     margin-top: 50px;

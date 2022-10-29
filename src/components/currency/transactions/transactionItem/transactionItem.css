@@ -34,16 +34,39 @@
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 .transactionItem {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+  width: 100%;
   margin-bottom: 8px;
   padding: 16px 30px;
-  gap: 107px;
   border-radius: 5px;
   background-color: #eaeaea0d;
   font-family: 'Exo 2', 'Arial';
   font-size: 13px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 1px 4px rgba(0, 0, 0, 0.5);
+}
+.transactionItem__type {
+  position: static;
+  min-width: 20%;
+}
+.transactionItem__amount {
+  display: flex;
+  min-width: 20%;
+  justify-content: flex-end;
+}
+.transactionItem__price {
+  display: flex;
+  min-width: 20%;
+  justify-content: flex-end;
+}
+.transactionItem__cost {
+  display: flex;
+  min-width: 20%;
+  justify-content: flex-end;
+}
+.transactionItem__date {
+  display: flex;
+  min-width: 20%;
+  justify-content: flex-end;
 }

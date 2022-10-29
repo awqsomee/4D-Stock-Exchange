@@ -7,12 +7,10 @@ import CurrencyList from './CurrencyList/CurrencyList'
 const Currency = (props) => {
   return (
     <div className="container2">
-      <Balance />
       <div className="title">{props.title}</div>
       <div className="currency">
         <div className="wallet">
           <CurrencyList />
-          {/* <Wallet></Wallet> */}
         </div>
         <div className="transactios">
           <Transactions></Transactions>
