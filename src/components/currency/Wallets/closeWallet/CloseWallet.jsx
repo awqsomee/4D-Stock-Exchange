@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { closeCurrencyAccount } from '../../../../actions/forex'
 import ModalBoxDeposit from '../../../UI/ModalBox/ModalBoxDeposit'
 
 const CloseWallet = (props) => {
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const dispatch = useDispatch()
+  const userCurrencies = useSelector((state) => state.toolkit.userCurrencies)
 
   const closeWallet = async (symbol) => {
-    await dispatch(closeCurrencyAccount(symbol))
+    await dispatch(closeCurrencyAccount(userCurrencies, symbol))
   }
 
   return (

@@ -1,5 +1,9 @@
 import axios from 'axios'
-import { setCurrencies, setSelectedCurrency, setUserCurrencies } from '../redux/slice'
+import {
+  setCurrencies,
+  setSelectedCurrency,
+  setUserCurrencies,
+} from '../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
 
@@ -67,30 +71,47 @@ export const exchangeCurrency = (symbol, amount) => {
   }
 }
 
-export const openCurrencyAccount = async (symbol) => {
-  try {
-    const response = await axios.post(`${serverAddress}/api/forex/auth/${symbol}/open`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
-      },
-    })
-
-    alert(response.data.message)
-  } catch (e) {
-    console.log(e)
+export const openCurrencyAccount = (userCurrencies, symbol) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        `${serverAddress}/api/forex/auth/${symbol}/open`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+          },
+        }
+      )
+      dispatch(setUserCurrencies([...userCurrencies, response.data.currency]))
+      alert(response.data.message)
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 
-export const closeCurrencyAccount = async (symbol) => {
-  try {
-    const response = await axios.post(`${serverAddress}/api/forex/auth/${symbol}/close`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
-      },
-    })
-    alert(response.data.message)
-  } catch (e) {
-    console.log(e)
+export const closeCurrencyAccount = (userCurrencies, symbol) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        `${serverAddress}/api/forex/auth/${symbol}/close`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+          },
+        }
+      )
+      dispatch(
+        setUserCurrencies(
+          userCurrencies.filter((currency) => currency.symbol != symbol)
+        )
+      )
+      alert(response.data.message)
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 
