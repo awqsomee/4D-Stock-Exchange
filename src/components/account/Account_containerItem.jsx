@@ -9,7 +9,6 @@ const Account_containerItem = (props) => {
   const UserDate = '12.12.1990'
   return (
     <div className="account_container">
-      {console.log(user)}
       <div className="account_inf">Имя</div>
       <div className="account_userInf">{user.name}</div>
       <div className="account_inf">Фамилия</div>
