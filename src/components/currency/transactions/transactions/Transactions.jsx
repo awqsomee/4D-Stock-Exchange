@@ -17,6 +17,7 @@ const Transactions = () => {
   const [value, setValue] = useState('')
   const [transactions, setTransactions] = useState()
   const [visible, setVisible] = useState(false)
+  const selectedCurrency = useSelector((state) => state.toolkit.selectedCurrency)
 
   useEffect(() => {
     setIsLoading(true)
@@ -35,14 +36,14 @@ const Transactions = () => {
 
   const replenishHandler = async (dispatch, value, setValue) => {
     setIsReplenishing(true)
-    await dispatch(changeBalance(value))
+    await dispatch(exchangeCurrency(selectedCurrency?.symbol, value))
     setValue('')
     setIsReplenishing(false)
   }
 
   const withdrawHandler = async (dispatch, value, setValue) => {
     setIsWithdrawing(true)
-    await dispatch(changeBalance(-value))
+    await dispatch(exchangeCurrency(selectedCurrency?.symbol, -value))
     setValue('')
     setIsWithdrawing(false)
   }
@@ -52,14 +53,12 @@ const Transactions = () => {
   }
 
   // const balance = useSelector((state) => state.toolkit.currentUser.balance)
-  const selectedCurrency = useSelector((state) => state.toolkit.selectedCurrency)
 
   return (
     <div className="transactions">
       <ModalBox visible={visible} setVisible={setVisible}>
         <CloseWallet symbol={selectedCurrency?.symbol} sVisible={setVisible} />
       </ModalBox>
-      {console.log('v', visible)}
       <div className="transactions__info">
         <div className="transactions__head">
           <div className="transactions__summ">
@@ -87,9 +86,7 @@ const Transactions = () => {
             className="transactions__input"
             onChange={(event) => {
               event.stopPropagation()
-              console.log(selectedCurrency)
               changeHandler(event.target.value, setValue)
-              console.log(selectedCurrency)
             }}
             value={value}
             placeholder={'Сумма'}

@@ -30,7 +30,6 @@ const StockList = (props) => {
     fetchData()
     // setInterval(() => {
     //   fetchData()
-    //   console.log(1)
     // }, 120000)
   }, [])
 
@@ -75,14 +74,7 @@ const StockList = (props) => {
             </div>
           ) : (
             stocks &&
-            stocks.map((stock) => (
-              <Stock
-                stock={stock}
-                function={buyStock}
-                key={stock.symbol}
-                buttonText="Купить"
-              />
-            ))
+            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
           )}
         </div>
       </div>

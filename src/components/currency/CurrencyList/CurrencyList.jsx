@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../../../actions/auth'
 import { exchangeCurrency, getUserCurrencies } from '../../../actions/forex'
 import { store } from '../../../redux'
@@ -21,9 +21,7 @@ const CurrencyList = () => {
   }, [])
 
   const currencyHandler = async (dispatch, symbol, amount) => {
-    await dispatch(
-      exchangeCurrency(store.getState().toolkit.userCurrencies, symbol, amount)
-    )
+    await dispatch(exchangeCurrency(store.getState().toolkit.userCurrencies, symbol, amount))
   }
   const rubCurrency = {
     _id: store.getState().toolkit.currentUser.id,
@@ -33,6 +31,8 @@ const CurrencyList = () => {
     amount: store.getState().toolkit.currentUser.balance,
     __v: 0,
   }
+
+  const userCurrencies = useSelector((state) => state.toolkit.userCurrencies)
 
   return (
     <div>
@@ -46,16 +46,13 @@ const CurrencyList = () => {
 
       {!isLoading ? (
         <div>
-          {store.getState().toolkit.userCurrencies.map((currencyItem) => (
+          {userCurrencies.map((currencyItem) => (
             <div
               onClick={() => {
                 dispatch(setSelectedCurrency(currencyItem))
               }}
             >
-              <WalletItem
-                currencyItem={currencyItem}
-                key={currencyItem.symbol}
-              />
+              <WalletItem currencyItem={currencyItem} key={currencyItem.symbol} />
             </div>
           ))}
         </div>
@@ -68,10 +65,7 @@ const CurrencyList = () => {
       </ModalBox>
 
       {/*Тут захардкожено, надо делать инпуты. МодалБокс скорее всего */}
-      <button
-        className="button button__normal"
-        onClick={() => setVisible(true)}
-      >
+      <button className="button button__normal" onClick={() => setVisible(true)}>
         +
       </button>
     </div>

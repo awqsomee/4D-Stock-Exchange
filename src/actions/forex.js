@@ -1,9 +1,5 @@
 import axios from 'axios'
-import {
-  setCurrencies,
-  setSelectedCurrency,
-  setUserCurrencies,
-} from '../redux/slice'
+import { setCurrencies, setUserCurrencies } from '../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
 
@@ -61,6 +57,8 @@ export const exchangeCurrency = (symbol, amount) => {
           },
         }
       )
+      console.log(response.data)
+      dispatch(setUserCurrencies(response.data.user.currencies))
       alert(response.data.message)
       return response.data.currency
     } catch (e) {
@@ -71,14 +69,11 @@ export const exchangeCurrency = (symbol, amount) => {
 
 export const openCurrencyAccount = async (symbol) => {
   try {
-    const response = await axios.post(
-      `${serverAddress}/api/forex/auth/${symbol}/open`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
-        },
-      }
-    )
+    const response = await axios.post(`${serverAddress}/api/forex/auth/${symbol}/open`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+      },
+    })
 
     alert(response.data.message)
   } catch (e) {
@@ -88,14 +83,11 @@ export const openCurrencyAccount = async (symbol) => {
 
 export const closeCurrencyAccount = async (symbol) => {
   try {
-    const response = await axios.post(
-      `${serverAddress}/api/forex/auth/${symbol}/close`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
-        },
-      }
-    )
+    const response = await axios.post(`${serverAddress}/api/forex/auth/${symbol}/close`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+      },
+    })
     alert(response.data.message)
   } catch (e) {
     console.log(e)
