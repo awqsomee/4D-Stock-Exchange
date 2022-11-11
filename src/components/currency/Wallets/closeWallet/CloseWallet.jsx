@@ -43,7 +43,7 @@ const CloseWallet = (props) => {
       </div>
       <div>
         <button
-          className="button button__normal"
+          className="button button__danger"
           onClick={() => {
             closeWallet(props.symbol)
             if (closeWallet) props.sVisible(false)
@@ -52,7 +52,12 @@ const CloseWallet = (props) => {
         >
           Закрыть счет
         </button>
-        <button onClick={() => props.sVisible(false)}>Отмена</button>
+        <button
+          className="button button__normal"
+          onClick={() => props.sVisible(false)}
+        >
+          Отмена
+        </button>
       </div>
     </div>
   )

@@ -125,3 +125,13 @@
   color: #ee8100;
   cursor: pointer;
 }
+.button__danger {
+  background-color: #fd2929;
+  color: #ffffff;
+  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.6), inset 5px 5px 5px rgba(180, 0, 0, 0.5), inset -4px -4px 5px rgba(228, 114, 114, 0.35);
+}
+.button__danger:hover {
+  background-color: #ffffff;
+  color: #fd2929;
+  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.6), inset 5px 5px 5px rgba(171, 171, 171, 0.5), inset -5px -5px 5px #ffffff;
+}

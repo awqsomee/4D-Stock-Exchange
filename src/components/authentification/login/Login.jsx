@@ -24,7 +24,7 @@ const Login = (props) => {
         setVisible={setmodalBoxDeposit}
       >
         <div className="deposit_pop_up">
-          <div>Вход не выполнен. Проверьте правильность заполнения полей</div>
+          Вход не выполнен. Проверьте правильность заполнения полей
         </div>
       </ModalBoxDeposit>
 

@@ -26,6 +26,9 @@
   &__img {
     // margin-top: 2%;
     left: 30%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
     // width: 14.6%;
   }
 }
@@ -34,6 +37,18 @@
   max-width: 100%;
   max-height: 100%;
   vertical-align: middle;
-  // margin-right: -50%;
-  // left: 50%;
+}
+
+.decreaseSort:hover path {
+  fill: @--accent-color;
+  stroke: @--accent-color;
+}
+.increaseSort {
+  transform: scale(1, -1);
+  fill: @--accent-color;
+  stroke: @--accent-color;
+  &:hover path {
+    fill: @--accent-color;
+    stroke: @--accent-color;
+  }
 }

@@ -101,4 +101,15 @@
     color: @--accent-color;
     cursor: pointer;
   }
+
+  &__danger {
+    background-color: @--red-color;
+    color: @--main-text-color;
+    box-shadow: @shadow_danger_button;
+    &:hover {
+      background-color: @--main-text-color;
+      color: @--red-color;
+      box-shadow: @shadow_light_buttons;
+    }
+  }
 }
