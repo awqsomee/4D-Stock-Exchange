@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react'
 import TransactionItem from '../transactionItem/TransactionItem'
 import { store } from '../../../../redux'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { exchangeCurrency, getUserCurrencies } from '../../../../actions/forex'
 import { getTransactions } from '../../../../actions/transactions'
 import { changeBalance } from '../../../../actions/balance'
@@ -12,6 +12,8 @@ import ModalBox from '../../../UI/ModalBox/ModalBox'
 const Transactions = () => {
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(true)
+  const [isReplenishing, setIsReplenishing] = useState(false)
+  const [isWithdrawing, setIsWithdrawing] = useState(false)
   const [value, setValue] = useState('')
   const [transactions, setTransactions] = useState()
   const [visible, setVisible] = useState(false)
@@ -32,20 +34,25 @@ const Transactions = () => {
   }
 
   const replenishHandler = async (dispatch, value, setValue) => {
+    setIsReplenishing(true)
     await dispatch(changeBalance(value))
-    setValue(0)
+    setValue('')
+    setIsReplenishing(false)
   }
 
   const withdrawHandler = async (dispatch, value, setValue) => {
+    setIsWithdrawing(true)
     await dispatch(changeBalance(-value))
-    setValue(0)
+    setValue('')
+    setIsWithdrawing(false)
   }
 
   const changeHandler = (value, setValue) => {
     setValue(value.replaceAll(/\D/g, ''))
   }
 
-  const selectedCurrency = store.getState().toolkit.selectedCurrency
+  // const balance = useSelector((state) => state.toolkit.currentUser.balance)
+  const selectedCurrency = useSelector((state) => state.toolkit.selectedCurrency)
 
   return (
     <div className="transactions">
@@ -78,15 +85,20 @@ const Transactions = () => {
         <div className="transactions__actions">
           <input
             className="transactions__input"
-            onChange={(event) => changeHandler(event.target.value, setValue)}
+            onChange={(event) => {
+              event.stopPropagation()
+              console.log(selectedCurrency)
+              changeHandler(event.target.value, setValue)
+              console.log(selectedCurrency)
+            }}
             value={value}
             placeholder={'Сумма'}
           ></input>
           <button className="button button__normal" onClick={() => replenishHandler(dispatch, value, setValue)}>
-            Пополнить
+            {isReplenishing ? 'Loading...' : 'Пополнить'}
           </button>
           <button className="button button__normal" onClick={() => withdrawHandler(dispatch, value, setValue)}>
-            Вывести
+            {isWithdrawing ? 'Loading...' : 'Вывести'}
           </button>
         </div>
       </div>
