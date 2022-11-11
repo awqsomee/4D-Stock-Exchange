@@ -36,14 +36,18 @@ const Transactions = () => {
 
   const replenishHandler = async (dispatch, value, setValue) => {
     setIsReplenishing(true)
-    await dispatch(exchangeCurrency(selectedCurrency?.symbol, value))
+
+    // One LEG!!!
+    if (selectedCurrency?.symbol === 'RUB') await dispatch(changeBalance(value))
+    else await dispatch(exchangeCurrency(selectedCurrency?.symbol, value))
     setValue('')
     setIsReplenishing(false)
   }
 
   const withdrawHandler = async (dispatch, value, setValue) => {
     setIsWithdrawing(true)
-    await dispatch(exchangeCurrency(selectedCurrency?.symbol, -value))
+    if (selectedCurrency?.symbol === 'RUB') await dispatch(changeBalance(-value))
+    else await dispatch(exchangeCurrency(selectedCurrency?.symbol, -value))
     setValue('')
     setIsWithdrawing(false)
   }

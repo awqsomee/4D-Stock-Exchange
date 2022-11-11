@@ -57,7 +57,6 @@ export const exchangeCurrency = (symbol, amount) => {
           },
         }
       )
-      console.log(response.data)
       dispatch(setUserCurrencies(response.data.user.currencies))
       dispatch(setSelectedCurrency(response.data.user.currency))
       alert(response.data.message)
