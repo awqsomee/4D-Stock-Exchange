@@ -1,7 +1,8 @@
-import React from 'react'
+import { React, useState } from 'react'
 import './transactionItem.css'
 
 const TransactionItem = (props) => {
+  const [isOverTime, setIsOverTime] = useState(false)
   const transactionItem = props.transactionItem
   const cost = transactionItem?.symbol
     ? transactionItem?.price * transactionItem?.amount
@@ -14,18 +15,29 @@ const TransactionItem = (props) => {
           {transactionItem?.amount} {transactionItem?.symbol}
         </div>
       ) : (
-        <div> </div>
+        <div className="transactionItem__amount"> </div>
       )}
-      <div className="transactionItem__price">{transactionItem?.price}</div>
+      <div className="transactionItem__price">
+        {new Intl.NumberFormat('ru-RU').format(transactionItem?.price)}
+      </div>
       <div className="transactionItem__cost">
         {new Intl.NumberFormat('ru-RU').format(cost)}
       </div>
-      <div className="transactionItem__date">
-        {new Date(Date.parse(transactionItem?.date)).toLocaleDateString('ru', {
-          year: 'numeric',
-          month: 'numeric',
-          day: 'numeric',
-        })}
+      <div
+        className="transactionItem__date"
+        onMouseEnter={() => setIsOverTime(true)}
+        onMouseLeave={() => setIsOverTime(false)}
+      >
+        {isOverTime
+          ? new Date(Date.parse(transactionItem?.date)).toLocaleTimeString('ru')
+          : new Date(Date.parse(transactionItem?.date)).toLocaleDateString(
+              'ru',
+              {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+              }
+            )}
       </div>
     </div>
   )
