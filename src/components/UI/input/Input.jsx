@@ -3,15 +3,22 @@ import './input.css'
 // import classes from "./input.module.less";
 
 const Input = (props) => {
+  // const [value, setValue] = useState('')
+
+  const changeHandler = (value, setValue) => {
+    setValue(value.replaceAll(/\D/g, ''))
+  }
+
   return (
     <input
       className={props.className}
-      onChange={(event) => props.setValue(event.target.value)}
+      onChange={(event) => {
+        event.stopPropagation()
+        changeHandler(event.target.value, props.setValue)
+      }}
       value={props.value}
-      type={props.type}
-      placeholder={props.placeholder}
-    />
-    
+      placeholder={'Сумма'}
+    ></input>
   )
 }
 

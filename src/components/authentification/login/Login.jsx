@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
 import './login.css'
-import Input from '../../UI/input/Input'
 import { login } from '../../../actions/auth'
 import { store } from '../../../redux'
 import ModalBox from '../../UI/ModalBox/ModalBox'
@@ -45,23 +44,27 @@ const Login = (props) => {
       <div className="login__header">Вход</div>
       <div className="login__input_name">Электронная почта</div>
       <div className="login__input">
-        <Input
+        <input
           className="auth"
           value={email}
-          setValue={setEmail}
+          onChange={(event) => {
+            setEmail(event.target.value)
+          }}
           type="email"
           placeholder="email@example.com"
-        />{' '}
+        />
       </div>
       <div className="login__input_name">Пароль</div>
       <div className="login__input">
-        <Input
+        <input
           className="auth"
           value={password}
-          setValue={setpassword}
+          onChange={(event) => {
+            setpassword(event.target.value)
+          }}
           type="password"
           placeholder="********"
-        />{' '}
+        />
       </div>
       <div className="login__link_to">
         <div>Нет аккаунта?</div>
