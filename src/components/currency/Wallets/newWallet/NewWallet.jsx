@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getAllCurrencies, openCurrencyAccount } from '../../../../actions/forex'
 import { store } from '../../../../redux'
 import ModalBoxDeposit from '../../../UI/ModalBox/ModalBoxDeposit'
@@ -21,6 +21,8 @@ const NewWallet = (props) => {
   const createWallet = async (currency) => {
     await dispatch(openCurrencyAccount(currency))
   }
+
+  const allCurrencies = useSelector((state) => state.toolkit.currecncies)
 
   return (
     <div>
@@ -46,7 +48,9 @@ const NewWallet = (props) => {
           }}
         >
           {currecncies.map((currency) => (
-            <option value={currency}>{store.getState().toolkit.currecncies[currency].name}</option>
+            <option value={currency} key={currency.name}>
+              {allCurrencies[currency].name}
+            </option>
           ))}
         </select>
 

@@ -52,8 +52,6 @@ const Transactions = () => {
     setValue(value.replaceAll(/\D/g, ''))
   }
 
-  // const balance = useSelector((state) => state.toolkit.currentUser.balance)
-
   return (
     <div className="transactions">
       <ModalBox visible={visible} setVisible={setVisible}>

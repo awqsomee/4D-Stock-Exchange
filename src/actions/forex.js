@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { setCurrencies, setUserCurrencies } from '../redux/slice'
+import { setCurrencies, setSelectedCurrency, setUserCurrencies } from '../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
 
@@ -59,6 +59,7 @@ export const exchangeCurrency = (symbol, amount) => {
       )
       console.log(response.data)
       dispatch(setUserCurrencies(response.data.user.currencies))
+      dispatch(setSelectedCurrency(response.data.user.currency))
       alert(response.data.message)
       return response.data.currency
     } catch (e) {
