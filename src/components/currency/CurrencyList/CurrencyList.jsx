@@ -20,9 +20,6 @@ const CurrencyList = () => {
     })
   }, [])
 
-  const currencyHandler = async (dispatch, symbol, amount) => {
-    await dispatch(exchangeCurrency(store.getState().toolkit.userCurrencies, symbol, amount))
-  }
   const rubCurrency = {
     _id: store.getState().toolkit.currentUser.id,
     symbol: 'RUB',
@@ -51,8 +48,9 @@ const CurrencyList = () => {
               onClick={() => {
                 dispatch(setSelectedCurrency(currencyItem))
               }}
+              key={currencyItem.symbol}
             >
-              <WalletItem currencyItem={currencyItem} key={currencyItem.symbol} />
+              <WalletItem currencyItem={currencyItem} />
             </div>
           ))}
         </div>
@@ -65,7 +63,10 @@ const CurrencyList = () => {
       </ModalBox>
 
       {/*Тут захардкожено, надо делать инпуты. МодалБокс скорее всего */}
-      <button className="button button__normal" onClick={() => setVisible(true)}>
+      <button
+        className="button button__normal"
+        onClick={() => setVisible(true)}
+      >
         +
       </button>
     </div>
