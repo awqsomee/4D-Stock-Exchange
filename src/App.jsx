@@ -18,7 +18,7 @@ function App() {
     if (localStorage.getItem('stonksToken')) {
       setIsLoading(true)
       dispatch(auth()).finally(() => setIsLoading(false))
-    }
+    } else setIsLoading(false)
   }, [])
 
   const isAuth = useSelector((state) => state.toolkit.isAuth)
@@ -31,16 +31,25 @@ function App() {
           <div className="wrap">
             {!isAuth && (
               <Routes>
-                <Route path="/stocks" element={<StockList title="Каталог акций" />} />
+                <Route
+                  path="/stocks"
+                  element={<StockList title="Каталог акций" />}
+                />
                 <Route path="*" element={<Navigate to="/stocks" />} />
               </Routes>
             )}
             {isAuth && (
               <Routes>
-                <Route path="/stocks" element={<StockList title="Каталог акций" />} />
+                <Route
+                  path="/stocks"
+                  element={<StockList title="Каталог акций" />}
+                />
                 <Route path="/account" element={<Account />} />
                 <Route path="/wallet" element={<Currency title="Кошелек" />} />
-                <Route path="/portfolio" element={<Portfolio title="Ваши инвестиции" />} />
+                <Route
+                  path="/portfolio"
+                  element={<Portfolio title="Ваши инвестиции" />}
+                />
                 <Route path="*" element={<Navigate to="/stocks" />} />
               </Routes>
             )}
