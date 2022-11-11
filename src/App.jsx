@@ -12,7 +12,7 @@ import './app.css'
 
 function App() {
   const dispatch = useDispatch()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     if (localStorage.getItem('stonksToken')) {
@@ -39,7 +39,7 @@ function App() {
               <Routes>
                 <Route path="/stocks" element={<StockList title="Каталог акций" />} />
                 <Route path="/account" element={<Account />} />
-                <Route path="/wallet" element={<Currency title="Кошелек"/>} />
+                <Route path="/wallet" element={<Currency title="Кошелек" />} />
                 <Route path="/portfolio" element={<Portfolio title="Ваши инвестиции" />} />
                 <Route path="*" element={<Navigate to="/stocks" />} />
               </Routes>
