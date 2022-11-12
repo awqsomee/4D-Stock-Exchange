@@ -65,6 +65,7 @@ const CurrencyList = () => {
       {/*Тут захардкожено, надо делать инпуты. МодалБокс скорее всего */}
       <button
         className="button button__normal"
+        style={{ fontSize: '32px' }}
         onClick={() => setVisible(true)}
       >
         +
