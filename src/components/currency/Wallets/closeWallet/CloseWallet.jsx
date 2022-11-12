@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeCurrencyAccount } from '../../../../actions/forex'
 import ModalBoxDeposit from '../../../UI/ModalBox/ModalBoxDeposit'
+import '../../../currency/сurrency.css'
 
 const CloseWallet = (props) => {
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
@@ -26,6 +27,9 @@ const CloseWallet = (props) => {
 
         <div>
           <div className="title">Уверены, что хотите закрыть счет?</div>
+          <div className="message">
+            Все средства автоматически будут выведены в рубли.
+          </div>
           <div className="close_img" onClick={() => props.sVisible(false)}>
             <svg
               width="24"
@@ -42,7 +46,13 @@ const CloseWallet = (props) => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="close_actions">
+        <button
+          className="button button__normal"
+          onClick={() => props.sVisible(false)}
+        >
+          Отмена
+        </button>
         <button
           className="button button__danger"
           onClick={() => {
@@ -52,12 +62,6 @@ const CloseWallet = (props) => {
           }}
         >
           Закрыть счет
-        </button>
-        <button
-          className="button button__normal"
-          onClick={() => props.sVisible(false)}
-        >
-          Отмена
         </button>
       </div>
     </div>

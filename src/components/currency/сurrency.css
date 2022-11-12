@@ -42,4 +42,14 @@
 }
 .title {
   margin-bottom: 56px;
+  color: #ee8100;
+  margin-right: 66px;
+}
+.message {
+  font-size: 16px;
+}
+.close_actions {
+  display: flex;
+  margin-top: 60px;
+  justify-content: left;
 }
