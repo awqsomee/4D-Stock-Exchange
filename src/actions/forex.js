@@ -1,9 +1,5 @@
 import axios from 'axios'
-import {
-  setCurrencies,
-  setSelectedCurrency,
-  setUserCurrencies,
-} from '../redux/slice'
+import { setCurrencies, setSelectedCurrency, setUserBalance, setUserCurrencies } from '../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
 
@@ -61,6 +57,7 @@ export const exchangeCurrency = (symbol, amount) => {
           },
         }
       )
+      dispatch(setUserBalance(response.data.user.balance))
       dispatch(setUserCurrencies(response.data.user.currencies))
       dispatch(setSelectedCurrency(response.data.user.currency))
       alert(response.data.message)
@@ -103,10 +100,17 @@ export const closeCurrencyAccount = (userCurrencies, symbol) => {
           },
         }
       )
+      dispatch(setUserBalance(response.data.user.balance))
+      dispatch(setUserCurrencies(userCurrencies.filter((currency) => currency.symbol != symbol)))
       dispatch(
-        setUserCurrencies(
-          userCurrencies.filter((currency) => currency.symbol != symbol)
-        )
+        setSelectedCurrency({
+          _id: response.data.user.id,
+          symbol: 'RUB',
+          name: 'Рубль',
+          user: response.data.user.id,
+          amount: response.data.user.balance,
+          __v: 0,
+        })
       )
       alert(response.data.message)
     } catch (e) {
