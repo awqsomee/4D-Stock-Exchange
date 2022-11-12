@@ -26,7 +26,7 @@ const CloseWallet = (props) => {
         </ModalBoxDeposit>
 
         <div>
-          <div className="title">Уверены, что хотите закрыть счет?</div>
+          <div className="login__header">Уверены, что хотите закрыть счет?</div>
           <div className="message">
             Все средства автоматически будут выведены в рубли.
           </div>
