@@ -61,7 +61,6 @@ export const exchangeCurrency = (symbol, amount) => {
       dispatch(setUserCurrencies(response.data.user.currencies))
       dispatch(setSelectedCurrency(response.data.user.currency))
       alert(response.data.message)
-      return response.data.currency
     } catch (e) {
       console.log(e)
     }
@@ -81,6 +80,7 @@ export const openCurrencyAccount = (userCurrencies, symbol) => {
         }
       )
       dispatch(setUserCurrencies([...userCurrencies, response.data.currency]))
+      dispatch(setSelectedCurrency(response.data.currency))
       alert(response.data.message)
     } catch (e) {
       console.log(e)
