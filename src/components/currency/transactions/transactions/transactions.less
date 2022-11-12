@@ -35,6 +35,34 @@
     align-items: center;
     text-align: center;
   }
+  &__difference {
+    display: flex;
+    font-size: @--mark-font-size;
+    align-items: flex-end;
+    color: @--silver-color;
+  }
+  &__last_price {
+    flex-direction: column;
+    margin-right: 20px;
+    &__price {
+      color: @--main-text-color;
+    }
+  }
+  &__difference_amount {
+    flex-direction: column;
+    &__amount_dec {
+      display: flex;
+      flex-direction: row;
+      color: @--red-color;
+    }
+
+    &__amount_inc {
+      display: flex;
+      flex-direction: row;
+      color: @--green-color;
+    }
+  }
+
   &__actions {
     display: flex;
     margin-top: 30px;

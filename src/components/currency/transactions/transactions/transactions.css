@@ -66,6 +66,32 @@
   align-items: center;
   text-align: center;
 }
+.transactions__difference {
+  display: flex;
+  font-size: 14px;
+  align-items: flex-end;
+  color: #e9eef2;
+}
+.transactions__last_price {
+  flex-direction: column;
+  margin-right: 20px;
+}
+.transactions__last_price__price {
+  color: #ffffff;
+}
+.transactions__difference_amount {
+  flex-direction: column;
+}
+.transactions__difference_amount__amount_dec {
+  display: flex;
+  flex-direction: row;
+  color: #fd2929;
+}
+.transactions__difference_amount__amount_inc {
+  display: flex;
+  flex-direction: row;
+  color: #bbffa7;
+}
 .transactions__actions {
   display: flex;
   margin-top: 30px;
