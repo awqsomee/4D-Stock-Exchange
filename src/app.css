@@ -56,9 +56,10 @@ body {
 .wrap {
   flex: 1;
 }
-.page404 {
+.loading {
+  align-items: center;
   text-align: center;
-  font-size: 144px;
+  justify-content: center;
   font-family: 'Play';
 }
 .page404__container {
