@@ -64,3 +64,6 @@
   min-width: 50%;
   justify-content: space-between;
 }
+.account__item__input {
+  width: 50%;
+}
