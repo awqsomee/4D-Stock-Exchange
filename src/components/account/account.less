@@ -1,29 +1,37 @@
 @import '../../styles/colors/colors';
 @import '../../styles/fonts/fonts';
+@import '../../styles/shadows/shadows';
 
 .account {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 465px;
-  height: auto;
-  background-color: @--dark-grey-color;
-  border-radius: 10px;
-  padding: 40px;
-  margin-top: 50px;
-  font-family: @font-family;
-  color: @background-color;
-  font-size: @--paragraph-font-size;
-  margin-bottom: 24px;
-}
-.header {
-  font-size: @--head-font-size;
-  font-family: @--head-font;
-  color: @--accent-color;
-}
-.account_inf {
-  margin-top: 24px;
-  color: #6c7175;
-  font-size: @--paragraph-font-size;
-  margin-bottom: 12px;
+  &__item {
+    display: flex;
+    height: 200px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    background: @--cards-background-color;
+    box-shadow: @shadow_cards;
+    font-size: @--paragraph-font-size;
+    color: @--main-text-color;
+    font-family: @font-family;
+
+    &__first_column {
+      display: flex;
+      flex-direction: column;
+      padding: 30px 0 30px 67px;
+      min-width: 50%;
+      justify-content: center;
+      font-size: @--form-font-size;
+    }
+
+    &__column {
+      display: flex;
+      flex-direction: column;
+      padding: 41px 0 41px 67px;
+      min-width: 50%;
+      justify-content: space-between;
+    }
+  }
 }

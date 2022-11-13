@@ -31,16 +31,25 @@ function App() {
           <div className="wrap">
             {!isAuth && (
               <Routes>
-                <Route path="/stocks" element={<StockList title="Каталог акций" />} />
+                <Route
+                  path="/stocks"
+                  element={<StockList title="Каталог акций" />}
+                />
                 <Route path="*" element={<Navigate to="/stocks" />} />
               </Routes>
             )}
             {isAuth && (
               <Routes>
-                <Route path="/stocks" element={<StockList title="Каталог акций" />} />
-                <Route path="/account" element={<Account />} />
+                <Route
+                  path="/stocks"
+                  element={<StockList title="Каталог акций" />}
+                />
+                <Route path="/account" element={<Account title="Профиль" />} />
                 <Route path="/wallet" element={<Currency title="Кошелек" />} />
-                <Route path="/portfolio" element={<Portfolio title="Ваши инвестиции" />} />
+                <Route
+                  path="/portfolio"
+                  element={<Portfolio title="Ваши инвестиции" />}
+                />
                 <Route path="*" element={<Navigate to="/stocks" />} />
               </Routes>
             )}

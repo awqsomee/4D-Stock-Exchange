@@ -1,9 +1,30 @@
 @font-face {
   font-family: 'Exo 2';
   font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvOcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8j4PKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKcPg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/exo2/v20/7cH1v4okm5zmbvwkAx_sfcEuiD8jF_WcPg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Play';
@@ -16,25 +37,30 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 465px;
-  height: auto;
-  background-color: #4d4d4d;
+}
+.account__item {
+  display: flex;
+  height: 200px;
+  margin-bottom: 16px;
   border-radius: 10px;
-  padding: 40px;
-  margin-top: 50px;
+  background: #eaeaea0d;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 1px 4px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  color: #ffffff;
   font-family: 'Exo 2', 'Arial';
-  color: #272727;
-  font-size: 20px;
-  margin-bottom: 24px;
 }
-.header {
-  font-size: 40px;
-  font-family: 'Play';
-  color: #ee8100;
+.account__item__first_column {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0 30px 67px;
+  min-width: 50%;
+  justify-content: center;
+  font-size: 36px;
 }
-.account_inf {
-  margin-top: 24px;
-  color: #6c7175;
-  font-size: 20px;
-  margin-bottom: 12px;
+.account__item__column {
+  display: flex;
+  flex-direction: column;
+  padding: 41px 0 41px 67px;
+  min-width: 50%;
+  justify-content: space-between;
 }
