@@ -3,6 +3,7 @@ import Chart from '../charts/Chart'
 import './graph_panel.css'
 import { useState } from 'react'
 import ButtonSwith from '../../components/UI/buttons/ButtonSwitch'
+import Loader from '../UI/loader/Loader'
 
 const Graph_panel = (props) => {
   const [buttDay, setButtDay] = useState('button button__sortPush')
@@ -86,7 +87,7 @@ const Graph_panel = (props) => {
             все время
           </ButtonSwith>
         </div>
-        {props?.stock?.data && <Chart stock={props.stock} />}
+        {props?.stock?.data ? <Chart stock={props?.stock} /> : <Loader />}
       </div>
     </div>
   )

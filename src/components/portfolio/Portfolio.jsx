@@ -4,6 +4,8 @@ import Panel from '../panel/Panel.jsx'
 import '../StockList/stocklist.css'
 import Stock from '../stocks/Stock.jsx'
 import { getUserStocks } from '../../actions/stocks.js'
+import './portfolio.css'
+import Loader from '../UI/loader/Loader.jsx'
 
 const Portfolio = (props) => {
   const [stocks, setStocks] = useState([])
@@ -35,13 +37,32 @@ const Portfolio = (props) => {
           <Sorting />
           <Panel className="panel" />
           {isStocksLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>Акции загружаются...</div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: 40,
+              }}
+            >
+              <Loader></Loader>
+            </div>
           ) : stocks.length > 0 ? (
             stocks.map((stock) => (
-              <Stock stock={stock} key={stock.symbol} changes={stock.changes} buttonText="Продать" />
+              <Stock
+                stock={stock}
+                key={stock.symbol}
+                changes={stock.changes}
+                buttonText="Продать"
+              />
             ))
           ) : (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: 40,
+              }}
+            >
               У вас нет приобретенных акций
             </div>
           )}

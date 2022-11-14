@@ -7,6 +7,7 @@ import WalletItem from '../Wallets/walletItem/WalletItem'
 import { setSelectedCurrency } from '../../../redux/slice'
 import ModalBox from '../../UI/ModalBox/ModalBox'
 import NewWallet from '../Wallets/newWallet/NewWallet'
+import Loader from '../../UI/loader/Loader'
 
 const CurrencyList = () => {
   const dispatch = useDispatch()
@@ -55,7 +56,7 @@ const CurrencyList = () => {
           ))}
         </div>
       ) : (
-        <div className="app">Loading...</div>
+        <Loader />
       )}
 
       <ModalBox visible={visible} setVisible={setVisible}>

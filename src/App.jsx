@@ -9,6 +9,7 @@ import Currency from './components/currency/Currency'
 import Portfolio from './components/portfolio/Portfolio'
 import Footer from './components/UI/footer/Footer'
 import './app.css'
+import PageLoader from './components/UI/loader/PageLoader'
 
 function App() {
   const dispatch = useDispatch()
@@ -57,7 +58,9 @@ function App() {
           <Footer />
         </div>
       ) : (
-        <div className="app loading">Loading...</div>
+        <div className="app loading">
+          <PageLoader />
+        </div>
       )}
     </BrowserRouter>
   )
