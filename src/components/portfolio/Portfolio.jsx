@@ -4,7 +4,7 @@ import Panel from '../panel/Panel.jsx'
 import '../StockList/stocklist.css'
 import Stock from '../stocks/Stock.jsx'
 import { getUserStocks } from '../../actions/stocks.js'
-import './portfolio.css'
+// import './portfolio.css'
 import Loader from '../UI/loader/Loader.jsx'
 
 const Portfolio = (props) => {
