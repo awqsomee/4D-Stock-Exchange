@@ -62,12 +62,7 @@ const CurrencyList = () => {
         <NewWallet sVisible={setVisible} />
       </ModalBox>
 
-      {/*Тут захардкожено, надо делать инпуты. МодалБокс скорее всего */}
-      <button
-        className="button button__normal"
-        style={{ fontSize: '32px' }}
-        onClick={() => setVisible(true)}
-      >
+      <button className="button button__normal" style={{ fontSize: '32px' }} onClick={() => setVisible(true)}>
         +
       </button>
     </div>
