@@ -66,29 +66,33 @@ const Transactions = () => {
               {new Intl.NumberFormat('ru-RU').format(selectedCurrency?.amount) + ' ' + selectedCurrency?.symbol}
             </div>
           </div>
-          <div className="transactions__difference">
-            <div className="transactions__last_price">
-              <div>Последняя цена </div>
-              <div className="transactions__last_price__price">
-                {new Intl.NumberFormat('ru-RU').format(selectedCurrency?.latestPrice)}
+          {selectedCurrency?.symbol != 'RUB' ? (
+            <div className="transactions__difference">
+              <div className="transactions__last_price">
+                <div>Прежняя цена</div>
+                <div className="transactions__last_price__price">
+                  {new Intl.NumberFormat('ru-RU').format(selectedCurrency?.latestPrice)}
+                </div>
+              </div>
+              <div className="transactions__difference_amount">
+                <div>Изменение</div>
+
+                {selectedCurrency?.difference >= 0 ? (
+                  <div className="transactions__difference_amount__amount_inc">
+                    <div>+</div>
+                    <div>{selectedCurrency?.difference}</div>
+                  </div>
+                ) : (
+                  <div className="transactions__difference_amount__amount_dec">
+                    <div>-</div>
+                    <div>{selectedCurrency?.difference}</div>
+                  </div>
+                )}
               </div>
             </div>
-            <div className="transactions__difference_amount">
-              <div>Разница</div>
-
-              {selectedCurrency?.difference >= 0 ? (
-                <div className="transactions__difference_amount__amount_inc">
-                  <div>+</div>
-                  <div>{selectedCurrency?.difference}</div>
-                </div>
-              ) : (
-                <div className="transactions__difference_amount__amount_dec">
-                  <div>-</div>
-                  <div>{selectedCurrency?.difference}</div>
-                </div>
-              )}
-            </div>
-          </div>
+          ) : (
+            <div className="transactions__difference"></div>
+          )}
           {selectedCurrency?.symbol != 'RUB' ? (
             <div className="transactions__delete" onClick={() => setVisible(true)}>
               <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
