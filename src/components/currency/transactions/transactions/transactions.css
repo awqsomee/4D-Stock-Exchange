@@ -101,10 +101,47 @@
   width: 50%;
   margin-right: 10px;
 }
+.transactions__panel {
+  display: inline-flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 20px;
+  padding: 6px 30px;
+  border-radius: 5px 5px 0 0;
+  background-color: #ee8100;
+  font-size: 14px;
+  font-family: 'Exo 2', 'Arial';
+  color: #ffffff;
+  align-items: center;
+}
+.transactions__panel__type {
+  position: static;
+  min-width: 20%;
+}
+.transactions__panel__amount {
+  display: flex;
+  min-width: 20%;
+  justify-content: flex-end;
+}
+.transactions__panel__price {
+  display: flex;
+  min-width: 20%;
+  justify-content: flex-end;
+}
+.transactions__panel__cost {
+  display: flex;
+  min-width: 22%;
+  justify-content: flex-end;
+}
+.transactions__panel__date {
+  display: flex;
+  min-width: 18%;
+  justify-content: flex-end;
+}
 .transactions__history {
   margin-top: 50px;
   font-size: 20px;
 }
 .transactions__list {
-  margin-top: 20px;
+  margin-top: 8px;
 }

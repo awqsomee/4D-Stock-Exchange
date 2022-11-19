@@ -62,11 +62,11 @@
 }
 .transactionItem__cost {
   display: flex;
-  min-width: 20%;
+  min-width: 22%;
   justify-content: flex-end;
 }
 .transactionItem__date {
   display: flex;
-  min-width: 20%;
+  min-width: 18%;
   justify-content: flex-end;
 }

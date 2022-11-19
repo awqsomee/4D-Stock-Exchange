@@ -121,8 +121,16 @@ const Transactions = (props) => {
           </button>
         </div>
       </div>
+
       <div className="transactions__history">
         <div>История изменений</div>
+        <div className="transactions__panel">
+          <div className="transactions__panel__type">Тип операции</div>
+          <div className="transactions__panel__amount">Количество денежных единиц</div>
+          <div className="transactions__panel__price">Цена валюты</div>
+          <div className="transactions__panel__cost">Сумма операции</div>
+          <div className="transactions__panel__date">Дата</div>
+        </div>
         {!isLoading ? (
           <div className="transactions__list">
             {transactions
