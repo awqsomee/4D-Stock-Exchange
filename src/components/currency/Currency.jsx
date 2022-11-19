@@ -12,19 +12,20 @@ const Currency = (props) => {
   const [modalBoxDepositCloseFalse, setmodalBoxDepositCloseFalse] = useState(false)
   return (
     <div className="container2">
-      <ModalBoxDeposit className={'err'} visible={modalBoxDepositOpenFalse} setVisible={setmodalBoxDepositOpenFalse}>
-        <div>Не удалось открыть счет</div>
+      <ModalBoxDeposit className="err" visible={modalBoxDepositOpenFalse} setVisible={setmodalBoxDepositOpenFalse}>
+        <div>Не удалось открыть счет.</div>
       </ModalBoxDeposit>
 
-      <ModalBoxDeposit className={'ok'} visible={modalBoxDepositOpenTrue} setVisible={setmodalBoxDepositOpenTrue}>
-        <div>Счет успешно открыт</div>
+      <ModalBoxDeposit className="ok" visible={modalBoxDepositOpenTrue} setVisible={setmodalBoxDepositOpenTrue}>
+        <div>Счет успешно открыт.</div>
       </ModalBoxDeposit>
 
-      <ModalBoxDeposit className={'err'} visible={modalBoxDepositCloseFalse} setVisible={setmodalBoxDepositCloseFalse}>
-        <div>Не удалось закрыть счет</div>
+      <ModalBoxDeposit className="err" visible={modalBoxDepositCloseFalse} setVisible={setmodalBoxDepositCloseFalse}>
+        <div>Не удалось закрыть счет.</div>
       </ModalBoxDeposit>
-      <ModalBoxDeposit className={'ok'} visible={modalBoxDepositCloseTrue} setVisible={setmodalBoxDepositCloseTrue}>
-        <div>Счет успешно закрыт. Все средства были переведены в рубли и уже поступили на ваш счет</div>
+
+      <ModalBoxDeposit className="ok" visible={modalBoxDepositCloseTrue} setVisible={setmodalBoxDepositCloseTrue}>
+        <div>Счет успешно закрыт. Все средства были переведены в рубли и уже поступили на ваш счет.</div>
       </ModalBoxDeposit>
 
       <div className="title">{props.title}</div>
