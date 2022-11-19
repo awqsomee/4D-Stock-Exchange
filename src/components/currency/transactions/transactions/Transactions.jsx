@@ -112,7 +112,7 @@ const Transactions = (props) => {
         </div>
 
         <div className="transactions__actions">
-          <InputNumber value={value} setValue={setValue}></InputNumber>
+          <InputNumber className="number_input" value={value} setValue={setValue}></InputNumber>
           <button className="button button__normal" onClick={() => replenishHandler(dispatch, value, setValue)}>
             {isReplenishing ? 'Loading...' : 'Пополнить'}
           </button>
