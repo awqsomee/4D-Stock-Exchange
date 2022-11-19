@@ -1,9 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import './registration.css'
-import Input from '../../UI/input/Input'
 import { registration } from '../../../actions/auth'
-import '../../UI/input/input.css'
 import ModalBoxDeposit from '../../UI/ModalBox/ModalBoxDeposit'
 import { useDispatch } from 'react-redux'
 import Close from '../../../assets/Icons/close.svg'
@@ -12,7 +10,6 @@ const Registration = (props) => {
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
   const [name, setName] = useState('')
-  const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
@@ -36,26 +33,56 @@ const Registration = (props) => {
       <div className="registration__header">Регистрация</div>
       <div className="registration__input_name">ФИО</div>
       <div className="registration__input">
-        <Input className="auth" value={name} setValue={setName} type="text" placeholder="Иванов Иван Алексеевич" />
-      </div>
-      <div className="registration__input_name">Электронная почта</div>
-      <div className="registration__input">
-        <Input className="auth" value={email} setValue={setEmail} type="email" placeholder="email@example.com" />
-      </div>
-      <div className="registration__input_name">Придумайте пароль</div>
-      <div className="registration__input">
-        <Input className="auth" value={password} setValue={setPassword} type="password" placeholder="********" />
-      </div>
-      <div className="registration__input_name">Повторите пароль</div>
-      <div className="registration__input">
-        <Input
+        <input
           className="auth"
-          value={repeatPassword}
-          setValue={setRepeatPassword}
-          type="password"
-          placeholder="********"
+          value={name}
+          type="text"
+          placeholder="Иванов Иван Алексеевич"
+          onChange={(event) => {
+            setName(event.target.value)
+          }}
         />
       </div>
+
+      <div className="registration__input_name">Электронная почта</div>
+      <div className="registration__input">
+        <input
+          className="auth"
+          value={email}
+          type="email"
+          placeholder="email@example.com"
+          onChange={(event) => {
+            setEmail(event.target.value)
+          }}
+        />
+      </div>
+
+      <div className="registration__input_name">Придумайте пароль</div>
+      <div className="registration__input">
+        <input
+          className="auth"
+          value={password}
+          type="password"
+          placeholder="********"
+          onChange={(event) => {
+            setPassword(event.target.value)
+          }}
+        />
+      </div>
+
+      <div className="registration__input_name">Повторите пароль</div>
+      <div className="registration__input">
+        <input
+          className="auth"
+          value={repeatPassword}
+          type="password"
+          placeholder="********"
+          onChange={(event) => {
+            setRepeatPassword(event.target.value)
+          }}
+        />
+      </div>
+
       <div className="registration__link_to">
         <div>Есть аккаунт?</div>
         <div

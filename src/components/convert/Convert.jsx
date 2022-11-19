@@ -3,7 +3,7 @@ import './convert.css'
 import '../UI/input/input.css'
 // import cl from '../UI/input/'
 import { useState } from 'react'
-import Input from '../UI/input/Input'
+import InputNumber from '../UI/input/InputNumber'
 import axios from 'axios'
 import ButtonSwith from '../UI/buttons/ButtonSwitch'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit'
@@ -59,9 +59,9 @@ const Balance = (props) => {
       <div className="balance__summ">{`${new Intl.NumberFormat('ru-RU').format(
         store.getState(setUser).toolkit.currentUser.balance
       )} ₽`}</div>
-      <Input className="inputBox" value={fromInputText} setValue={setFromInputText} placeholder="100 RUB" />
+      <InputNumber className="inputBox" value={fromInputText} setValue={setFromInputText} placeholder="100 RUB" />
       <p>В</p>
-      <Input className="inputBox" value={toInputText} setValue={setToInputText} placeholder="USD" />
+      <InputNumber className="inputBox" value={toInputText} setValue={setToInputText} placeholder="USD" />
       <ButtonSwith
         className="button button__normal button_convert"
         onClick={() => {

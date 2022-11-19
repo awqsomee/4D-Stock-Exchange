@@ -8,7 +8,7 @@ import { changeBalance } from '../../../../actions/balance'
 import './transactions.css'
 import CloseWallet from '../../Wallets/closeWallet/CloseWallet'
 import ModalBox from '../../../UI/ModalBox/ModalBox'
-import Input from '../../../UI/input/Input'
+import InputNumber from '../../../UI/input/InputNumber'
 import Loader from '../../../UI/loader/Loader'
 
 const Transactions = (props) => {
@@ -112,7 +112,7 @@ const Transactions = (props) => {
         </div>
 
         <div className="transactions__actions">
-          <Input value={value} setValue={setValue}></Input>
+          <InputNumber value={value} setValue={setValue}></InputNumber>
           <button className="button button__normal" onClick={() => replenishHandler(dispatch, value, setValue)}>
             {isReplenishing ? 'Loading...' : 'Пополнить'}
           </button>

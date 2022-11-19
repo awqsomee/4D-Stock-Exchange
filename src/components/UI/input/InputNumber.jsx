@@ -1,8 +1,8 @@
 import React from 'react'
-import './input.css'
+import './inputNumber.css'
 // import classes from "./input.module.less";
 
-const Input = (props) => {
+const InputNumber = (props) => {
   const changeHandler = (value, setValue) => {
     setValue(value.replaceAll(/\D/g, ''))
   }
@@ -20,4 +20,4 @@ const Input = (props) => {
   )
 }
 
-export default Input
+export default InputNumber
