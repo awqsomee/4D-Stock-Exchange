@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import ClickAwayListener from 'react-click-away-listener'
 import { useDispatch } from 'react-redux'
 import { store } from '../../redux'
 import { setUser } from '../../redux/slice'
+import Alert from '../UI/ModalBox/alert/Alert'
 import './account.css'
 
 const Account_containerItem = (props) => {
   const user = store.getState(setUser).toolkit.currentUser
+  const [isInput, setIsInput] = useState(false)
+  const [value, setValue] = useState(user?.name)
+  const [alert, setAlert] = useState(false)
+  const ref = useRef()
   // const [user, setUser] = useEffect()
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   // const [isLoading, setIsLoading] = useState(true)
 
   // useEffect(() => {
@@ -24,14 +30,42 @@ const Account_containerItem = (props) => {
   //   return data
   // }
 
+  const changeHandler = (value) => {
+    setValue(value)
+  }
+
+  // const event = new KeyboardEvent('keypress', {
+  //   key: 'enter',
+  // })
+
   return (
     <div className="account">
+      <Alert visible={alert} setVisible={setAlert}>
+        <div>Изменения успешно сохранены</div>
+      </Alert>
       <div className="account__item">
         <div className="account__item__first_column">
           <rect style={{ background: '#fff', minHeight: '100%' }}>dkdkdkd</rect>
         </div>
         <div className="account__item__first_column">
-          <div>{user?.name}</div>
+          <div
+            className="account__item__imput"
+            onClick={() => setIsInput(true)}
+          >
+            {!isInput ? (
+              <div>{value}</div>
+            ) : (
+              <ClickAwayListener onClickAway={() => setIsInput(false)}>
+                <input
+                  value={value}
+                  onChange={(event) => {
+                    event.stopPropagation()
+                    changeHandler(event.target.value)
+                  }}
+                ></input>
+              </ClickAwayListener>
+            )}
+          </div>
         </div>
       </div>
 

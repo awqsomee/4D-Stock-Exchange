@@ -9,6 +9,7 @@ import './transactions.css'
 import CloseWallet from '../../Wallets/closeWallet/CloseWallet'
 import ModalBox from '../../../UI/ModalBox/ModalBox'
 import Input from '../../../UI/input/Input'
+import Loader from '../../../UI/loader/Loader'
 
 const Transactions = () => {
   const dispatch = useDispatch()
@@ -132,7 +133,7 @@ const Transactions = () => {
               })}
           </div>
         ) : (
-          <div className="app">Loading...</div>
+          <Loader />
         )}
       </div>
     </div>

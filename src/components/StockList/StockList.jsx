@@ -7,6 +7,7 @@ import { useContext } from 'react'
 import { SearchContext } from '../../context/index.js'
 import { buyStock } from '../../actions/user.js'
 import { getStocksSearch } from '../../actions/stocks.js'
+import Loader from '../UI/loader/Loader.jsx'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
@@ -63,18 +64,17 @@ const StockList = (props) => {
           <Sorting />
           <Panel className="panel" />
           {isStocksLoading ? (
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                marginTop: 40,
-              }}
-            >
-              Акции загружаются...
-            </div>
+            <Loader />
           ) : (
             stocks &&
-            stocks.map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
+            stocks.map((stock) => (
+              <Stock
+                stock={stock}
+                function={buyStock}
+                key={stock.symbol}
+                buttonText="Купить"
+              />
+            ))
           )}
         </div>
       </div>
