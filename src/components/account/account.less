@@ -38,4 +38,28 @@
       width: 50%;
     }
   }
+
+  &__avatar {
+    position: relative;
+    align-items: center;
+    display: flex;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    justify-content: center;
+
+    &__img {
+      justify-content: center;
+      &:hover {
+        filter: brightness(40%);
+      }
+    }
+  }
+}
+.upload {
+  cursor: pointer;
+  position: absolute;
+  color: @--accent-color;
+  font-size: @--mark-font-size;
+  z-index: 1;
 }
