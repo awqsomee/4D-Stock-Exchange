@@ -69,15 +69,20 @@ const NewWallet = (props) => {
           ))}
         </select>
 
-        <button
-          disabled={currency === ''}
-          className={currency === '' ? 'button__disable' : 'button button__normal'}
-          onClick={() => {
-            CreateWallet(currency)
-          }}
-        >
-          Создать кошелек
-        </button>
+        <div className="close_actions">
+          <button className="button button__normal" onClick={() => props.sVisible(false)}>
+            Отмена
+          </button>
+          <button
+            disabled={currency === ''}
+            className={currency === '' ? 'button__disable' : 'button button__success'}
+            onClick={() => {
+              CreateWallet(currency)
+            }}
+          >
+            Создать кошелек
+          </button>
+        </div>
       </div>
     </div>
   )
