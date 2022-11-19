@@ -16,15 +16,14 @@ const Login = (props) => {
   const [password, setpassword] = useState('')
   const dispatch = useDispatch()
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
+
   return (
     <div className="login">
       <ModalBoxDeposit
         visible={modalBoxDeposit}
         setVisible={setmodalBoxDeposit}
       >
-        <div className="deposit_pop_up">
-          Вход не выполнен. Проверьте правильность заполнения полей
-        </div>
+        Вход не выполнен. Проверьте правильность заполнения полей
       </ModalBoxDeposit>
 
       <div className="close_img" onClick={() => props.sVisible(false)}>
