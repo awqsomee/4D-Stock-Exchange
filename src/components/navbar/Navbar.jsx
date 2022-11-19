@@ -8,9 +8,6 @@ import Registration from '../authentification/registration/Registration.jsx'
 import Login from '../authentification/login/Login'
 import SearchHeader from '../UI/search/SearchHeader.jsx'
 import '../UI/buttons/buttons.css'
-import UserProfile from '../../assets/Icons/user.svg'
-import Wallet from '../../assets/Icons/wallet.svg'
-import Portfolio from '../../assets/Icons/briefcase.svg'
 import '../currency/balance/balance.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from '../../redux'
@@ -40,24 +37,14 @@ const Navbar = () => {
       {isAuth && (
         <ModalBoxAcc visible={modalBoxAcc} setVisible={setModalBoxAcc}>
           <div className="acc_pop_up">
-            <NavLink
-              to="/wallet"
-              className="acc_pop_up__b"
-              onClick={() => setModalBoxAcc(false)}
-            >
-              <div className="acc_pop_up__b">{`${new Intl.NumberFormat(
-                'ru-RU'
-              ).format(
+            <NavLink to="/wallet" className="acc_pop_up__b" onClick={() => setModalBoxAcc(false)}>
+              <div className="acc_pop_up__b">{`${new Intl.NumberFormat('ru-RU').format(
                 store.getState(setUser).toolkit.currentUser.balance
               )} ₽`}</div>
             </NavLink>
           </div>
           <div className="acc_pop_up">
-            <NavLink
-              to="/account"
-              className="acc_pop_up"
-              onClick={() => setModalBoxAcc(false)}
-            >
+            <NavLink to="/account" className="acc_pop_up" onClick={() => setModalBoxAcc(false)}>
               <div>Аккаунт</div>
             </NavLink>
           </div>
@@ -84,31 +71,19 @@ const Navbar = () => {
 
           <div className="navbar__buttons">
             {!isAuth && (
-              <div
-                className=" button button__normal "
-                onClick={() => setModalBoxLog(true)}
-              >
+              <div className=" button button__normal " onClick={() => setModalBoxLog(true)}>
                 Войти
               </div>
             )}
             {!isAuth && (
-              <div
-                className=" button button__normal navbar__registration"
-                onClick={() => setModalBoxReg(true)}
-              >
+              <div className=" button button__normal navbar__registration" onClick={() => setModalBoxReg(true)}>
                 Регистрация
               </div>
             )}
             {isAuth && (
               <div className="navbar__wallet">
                 <NavLink to="/wallet">
-                  <svg
-                    width="25"
-                    height="25"
-                    viewBox="0 0 25 25"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                  <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_903_4383)">
                       <path
                         d="M20.1923 25H4.80769C2.11538 25 0 22.8778 0 20.1767V6.67145C0 6.09265 0.384615 5.70679 0.961538 5.70679H20.1923C22.8846 5.70679 25 7.82904 25 10.5301V20.1767C25 22.8778 22.8846 25 20.1923 25ZM1.92308 7.63611V20.1767C1.92308 21.8166 3.17308 23.0707 4.80769 23.0707H20.1923C21.8269 23.0707 23.0769 21.8166 23.0769 20.1767V10.5301C23.0769 8.89017 21.8269 7.63611 20.1923 7.63611H1.92308Z"
@@ -135,13 +110,7 @@ const Navbar = () => {
             {isAuth && (
               <div className="navbar__portfolio">
                 <NavLink to="/portfolio">
-                  <svg
-                    width="28"
-                    height="25"
-                    viewBox="0 0 28 25"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                  <svg width="28" height="25" viewBox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_903_4381)">
                       <path
                         d="M23.3654 13.3997H4.5254C4.16556 13.3997 3.8728 13.1069 3.8728 12.7471C3.8728 12.3872 4.16556 12.0945 4.5254 12.0945H23.3654C23.7252 12.0945 24.018 12.3872 24.018 12.7471C24.018 13.1069 23.7252 13.3997 23.3654 13.3997Z"
@@ -170,10 +139,7 @@ const Navbar = () => {
               </div>
             )}
             {isAuth && (
-              <div
-                className="navbar__account"
-                onClick={() => setModalBoxAcc(true)}
-              >
+              <div className="navbar__account" onClick={() => setModalBoxAcc(true)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
