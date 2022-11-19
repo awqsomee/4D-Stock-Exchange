@@ -17,11 +17,19 @@ const CloseWallet = (props) => {
     <div>
       <div>
         <ModalBoxDeposit
-          visible={modalBoxDeposit}
-          setVisible={setmodalBoxDeposit}
+          visible={props.modalBoxDepositFalse}
+          setVisible={props.setmodalBoxDepositFalse}
         >
-          <div className="deposit_pop_up">
-            <div>Не удалось закрыть счет. Мы уже решаем проблему</div>
+          <div>Не удалось закрыть счет. Мы уже решаем проблему</div>
+        </ModalBoxDeposit>
+
+        <ModalBoxDeposit
+          visible={props.modalBoxDepositTrue}
+          setVisible={props.setmodalBoxDepositTrue}
+        >
+          <div>
+            Счет успешно закрыт. Все ваши средства были переведы в рубли и скоро
+            поступят на счет.
           </div>
         </ModalBoxDeposit>
 
