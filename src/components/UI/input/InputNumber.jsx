@@ -1,6 +1,5 @@
 import React from 'react'
-import './inputNumber.css'
-// import classes from "./input.module.less";
+import './input.css'
 
 const InputNumber = (props) => {
   const changeHandler = (value, setValue) => {
