@@ -11,7 +11,7 @@ import ModalBox from '../../../UI/ModalBox/ModalBox'
 import Input from '../../../UI/input/Input'
 import Loader from '../../../UI/loader/Loader'
 
-const Transactions = () => {
+const Transactions = (props) => {
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(true)
   const [isReplenishing, setIsReplenishing] = useState(false)
@@ -58,7 +58,14 @@ const Transactions = () => {
   return (
     <div className="transactions">
       <ModalBox visible={visible} setVisible={setVisible}>
-        <CloseWallet symbol={selectedCurrency?.symbol} sVisible={setVisible} />
+        <CloseWallet
+          symbol={selectedCurrency?.symbol}
+          sVisible={setVisible}
+          modalBoxDepositFalse={props.modalBoxDepositFalse}
+          modalBoxDepositTrue={props.modalBoxDepositTrue}
+          setmodalBoxDepositFalse={props.setmodalBoxDepositFalse}
+          setmodalBoxDepositTrue={props.setmodalBoxDepositTrue}
+        />
       </ModalBox>
       <div className="transactions__info">
         <div className="transactions__head">
