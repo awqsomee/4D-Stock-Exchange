@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllCurrencies, openCurrencyAccount } from '../../../../actions/forex'
 import { useTimeout } from '../../../../actions/timer'
 import { store } from '../../../../redux'
-import { setUserCurrencies } from '../../../../redux/slice'
-import ModalBoxDeposit from '../../../UI/ModalBox/ModalBoxDeposit'
+import './newWallet.css'
 
 const NewWallet = (props) => {
   const [currency, setCurrency] = useState('')
@@ -53,9 +52,10 @@ const NewWallet = (props) => {
           />
         </svg>
       </div>
-      <div>
+      <div className="newWallet">
         <div className="login__header">Открытие кошелька</div>
         <select
+          className="select-css"
           value={currency}
           onChange={(e) => {
             setCurrency(e.target.value)
@@ -69,7 +69,7 @@ const NewWallet = (props) => {
           ))}
         </select>
 
-        <div className="close_actions">
+        <div className="newWallet__close_actions">
           <button className="button button__normal" onClick={() => props.sVisible(false)}>
             Отмена
           </button>
