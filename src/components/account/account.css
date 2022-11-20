@@ -79,7 +79,7 @@
 .account__avatar__img {
   justify-content: center;
 }
-.account__avatar__img:hover {
+.account__avatar__img__hover {
   filter: brightness(40%);
 }
 .upload {

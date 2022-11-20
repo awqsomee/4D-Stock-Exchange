@@ -39,6 +39,11 @@ const Account_containerItem = (props) => {
   //   key: 'enter',
   // })
 
+  const rootClasses = ['account__avatar__img', 'upload']
+  if (isOverTime) {
+    rootClasses.push('account__avatar__img__hover')
+  }
+
   return (
     <div className="account">
       <Alert visible={alert} setVisible={setAlert}>
@@ -52,9 +57,9 @@ const Account_containerItem = (props) => {
             onMouseLeave={() => setIsOverTime(false)}
           >
             {user?.avatar ? (
-              <div className="account__avatar__img" />
+              <div className={rootClasses.join(' ')} />
             ) : (
-              <div className="account__avatar__img">
+              <div className={rootClasses.join(' ')}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140" fill="none">
                   <g clipЗath="url(#clip0_102_1934)">
                     <path
@@ -70,13 +75,7 @@ const Account_containerItem = (props) => {
                 </svg>
               </div>
             )}
-            {isOverTime ? (
-              <div className="upload" onMouseEnter={(e) => e.stopPropagation()}>
-                Загрузить фото
-              </div>
-            ) : (
-              ''
-            )}
+            {isOverTime ? <div className="upload">Загрузить фото</div> : ''}
             {/* {user?.avatar ? (
               <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140" fill="none">
                 <g clipЗath="url(#clip0_102_1934)">
