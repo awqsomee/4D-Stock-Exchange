@@ -1,6 +1,5 @@
 import React, { useContext, useTransition } from 'react'
 //  import classes from './search_header.module.css'
-import '../input/input.css'
 import '../../navbar/navbar.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSearch } from '../../../redux/slice'
@@ -18,8 +17,9 @@ const SearchHeader = () => {
   const search = useSelector((state) => state.toolkit.search)
   const dispatch = useDispatch()
   return (
-    <div className='navbar__search'>
-      <input className="search"
+    <div className="navbar__search">
+      <input
+        className="search"
         onChange={(event) => dispatch(setSearch(event.target.value))}
         value={search}
         type={'text'}
@@ -29,7 +29,6 @@ const SearchHeader = () => {
         <img src={Search} width={25} />
       </div>
     </div>
-    
   )
 }
 

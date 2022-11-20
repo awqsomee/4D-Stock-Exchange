@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCurrencies, openCurrencyAccount } from '../../../../actions/forex'
+import { useTimeout } from '../../../../actions/timer'
 import { store } from '../../../../redux'
-import { setUserCurrencies } from '../../../../redux/slice'
-import ModalBoxDeposit from '../../../UI/ModalBox/ModalBoxDeposit'
+import './newWallet.css'
 
 const NewWallet = (props) => {
   const [currency, setCurrency] = useState('')
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
   const allCurrencies = useSelector((state) => state.toolkit.currecncies)
   const userCurrencies = useSelector((state) => state.toolkit.userCurrencies)
   const currecncies = Object.keys(allCurrencies)
 
-  // const timerTrue = useTimeout(props.setmodalBoxDepositTrue(false), 500)
-  // const timerFalse = useTimeout(props.setmodalBoxDepositFalse(false), 500)
   useEffect(() => {
     setIsLoading(true)
     dispatch(getAllCurrencies()).finally(() => {
@@ -26,18 +24,26 @@ const NewWallet = (props) => {
     setIsLoading(true)
     await dispatch(openCurrencyAccount(userCurrencies, currency))
     setCurrency('')
-    // if (store.getState(setUserCurrencies).toolkit.userCurrencies.includes(currency)) {
-    //   props.sVisible(false)
-    //   props.setmodalBoxDepositTrue(true)
-    // } else {
-    //   props.sVisible(false)
-    //   props.setmodalBoxDepositFalse(true)
-    // }
+    if (store.getState().toolkit.userCurrencies.some((item) => item.symbol === currency)) {
+      props.sVisible(false)
+      props.setmodalBoxDepositTrue(true)
+      // setTimeout(props.setmodalBoxDepositOpenTrue(false), 5000)
+    } else {
+      props.sVisible(false)
+      props.setmodalBoxDepositFalse(true)
+    }
     setIsLoading(false)
   }
 
   return (
     <div>
+      {/* <ModalBoxDeposit visible={props.modalBoxDepositOpenFalse} setVisible={props.setmodalBoxDepositOpenFalse}>
+        <div>Не удалось открыть счет. Мы уже решаем проблему</div>
+      </ModalBoxDeposit>
+
+      <ModalBoxDeposit visible={props.modalBoxDepositOpenTrue} setVisible={props.setmodalBoxDepositOpenTrue}>
+        <div>Счет успешно открыт.</div>
+      </ModalBoxDeposit> */}
       <div className="close_img" onClick={() => props.sVisible(false)}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -46,9 +52,10 @@ const NewWallet = (props) => {
           />
         </svg>
       </div>
-      <div>
+      <div className="newWallet">
         <div className="login__header">Открытие кошелька</div>
         <select
+          className="select-css"
           value={currency}
           onChange={(e) => {
             setCurrency(e.target.value)
@@ -62,21 +69,20 @@ const NewWallet = (props) => {
           ))}
         </select>
 
-        <button
-          disabled={currency === ''}
-          className={currency === '' ? 'button__disable' : 'button button__normal'}
-          onClick={() => {
-            CreateWallet(currency)
-            if (CreateWallet) {
-              props.sVisible(false)
-              props.setmodalBoxDepositTrue(true)
-            } else {
-              props.setmodalBoxDepositFalse(true)
-            }
-          }}
-        >
-          Создать кошелек
-        </button>
+        <div className="newWallet__close_actions">
+          <button className="button button__normal" onClick={() => props.sVisible(false)}>
+            Отмена
+          </button>
+          <button
+            disabled={currency === ''}
+            className={currency === '' ? 'button__disable' : 'button button__success'}
+            onClick={() => {
+              CreateWallet(currency)
+            }}
+          >
+            Создать кошелек
+          </button>
+        </div>
       </div>
     </div>
   )

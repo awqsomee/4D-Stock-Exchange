@@ -67,3 +67,25 @@
 .account__item__input {
   width: 50%;
 }
+.account__avatar {
+  position: relative;
+  align-items: center;
+  display: flex;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  justify-content: center;
+}
+.account__avatar__img {
+  justify-content: center;
+}
+.account__avatar__img:hover {
+  filter: brightness(40%);
+}
+.upload {
+  cursor: pointer;
+  position: absolute;
+  color: #ee8100;
+  font-size: 14px;
+  z-index: 1;
+}

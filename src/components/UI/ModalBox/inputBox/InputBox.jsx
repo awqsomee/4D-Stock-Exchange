@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import cl from './InputBox.module.css'
 import '../../../UI/buttons/buttons.css'
 import { useState } from 'react'
-import Input from '../../../UI/input/Input'
+import InputNumber from '../../../UI/input/InputNumber'
 import ButtonSwith from '../../../UI/buttons/ButtonSwitch'
 import '../../../../components/balance/balance.css'
 import axios from 'axios'
@@ -89,14 +89,14 @@ const InputBox = ({ setVisible, ...props }) => {
         </div>
       </ModalBoxDeposit>
 
-      <Input
+      <InputNumber
         value={inputText}
         setValue={setInputText}
         placeholder={props.btnText}
         className={cl.inputBoxText}
         type="number"
         onClick={(e) => e.stopPropagation()}
-      ></Input>
+      ></InputNumber>
 
       <ButtonSwith
         className={butt}

@@ -9,9 +9,9 @@ import ModalBox from '../../UI/ModalBox/ModalBox'
 import NewWallet from '../Wallets/newWallet/NewWallet'
 import Loader from '../../UI/loader/Loader'
 
-const CurrencyList = () => {
+const CurrencyList = (props) => {
   const dispatch = useDispatch()
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -60,7 +60,13 @@ const CurrencyList = () => {
       )}
 
       <ModalBox visible={visible} setVisible={setVisible}>
-        <NewWallet sVisible={setVisible} />
+        <NewWallet
+          sVisible={setVisible}
+          modalBoxDepositFalse={props.modalBoxDepositFalse}
+          modalBoxDepositTrue={props.modalBoxDepositTrue}
+          setmodalBoxDepositFalse={props.setmodalBoxDepositFalse}
+          setmodalBoxDepositTrue={props.setmodalBoxDepositTrue}
+        />
       </ModalBox>
 
       <button className="button button__normal" style={{ fontSize: '32px' }} onClick={() => setVisible(true)}>

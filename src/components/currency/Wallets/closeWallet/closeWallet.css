@@ -33,40 +33,11 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
-.transactionItem {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 8px;
-  padding: 16px 30px;
-  border-radius: 5px;
-  background-color: #eaeaea0d;
-  font-family: 'Exo 2', 'Arial';
-  font-size: 13px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 1px 4px rgba(0, 0, 0, 0.5);
+.closeWallet {
+  width: 600px;
 }
-.transactionItem__type {
-  position: static;
-  min-width: 20%;
-}
-.transactionItem__amount {
+.closeWallet__close_actions {
   display: flex;
-  min-width: 20%;
-  justify-content: flex-end;
-}
-.transactionItem__price {
-  display: flex;
-  min-width: 20%;
-  justify-content: flex-end;
-}
-.transactionItem__cost {
-  display: flex;
-  min-width: 22%;
-  justify-content: flex-end;
-}
-.transactionItem__date {
-  display: flex;
-  min-width: 18%;
-  justify-content: flex-end;
+  margin-top: 80px;
+  justify-content: space-between;
 }

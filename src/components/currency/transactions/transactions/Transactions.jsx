@@ -8,12 +8,12 @@ import { changeBalance } from '../../../../actions/balance'
 import './transactions.css'
 import CloseWallet from '../../Wallets/closeWallet/CloseWallet'
 import ModalBox from '../../../UI/ModalBox/ModalBox'
-import Input from '../../../UI/input/Input'
+import InputNumber from '../../../UI/input/InputNumber'
 import Loader from '../../../UI/loader/Loader'
 
 const Transactions = (props) => {
   const dispatch = useDispatch()
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [isReplenishing, setIsReplenishing] = useState(false)
   const [isWithdrawing, setIsWithdrawing] = useState(false)
   const [value, setValue] = useState('')
@@ -116,7 +116,7 @@ const Transactions = (props) => {
         </div>
 
         <div className="transactions__actions">
-          <Input value={value} setValue={setValue}></Input>
+          <InputNumber className="number_input" value={value} setValue={setValue}></InputNumber>
           <button className="button button__normal" onClick={() => replenishHandler(dispatch, value, setValue)}>
             {isReplenishing ? 'Loading...' : 'Пополнить'}
           </button>
@@ -125,12 +125,20 @@ const Transactions = (props) => {
           </button>
         </div>
       </div>
+
       <div className="transactions__history">
         <div>История изменений</div>
+        <div className="transactions__panel">
+          <div className="transactions__panel__type">Тип операции</div>
+          <div className="transactions__panel__amount">Количество денежных единиц</div>
+          <div className="transactions__panel__price">Цена валюты</div>
+          <div className="transactions__panel__cost">Сумма операции</div>
+          <div className="transactions__panel__date">Дата</div>
+        </div>
         {!isLoading ? (
           <div className="transactions__list">
             {transactions
-              .filter((transaction) => {
+              ?.filter((transaction) => {
                 return (
                   transaction.symbol === selectedCurrency.symbol || transaction.currency === selectedCurrency.symbol
                 )

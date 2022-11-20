@@ -73,11 +73,55 @@
     width: 50%;
     margin-right: 10px;
   }
+
+  &__panel {
+    display: inline-flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 20px;
+    padding: 6px 30px;
+    border-radius: 5px 5px 0 0;
+    background-color: @--dark-accent-color;
+    font-size: @--mark-font-size;
+    font-family: @font-family;
+    color: @--main-text-color;
+    align-items: center;
+    &__type {
+      position: static;
+      min-width: 20%;
+    }
+
+    &__amount {
+      display: flex;
+      // position: static;
+      min-width: 20%;
+      justify-content: flex-end;
+    }
+
+    &__price {
+      display: flex;
+      // position: static;
+      min-width: 20%;
+      justify-content: flex-end;
+    }
+    &__cost {
+      display: flex;
+      // position: static;
+      min-width: 22%;
+      justify-content: flex-end;
+    }
+    &__date {
+      display: flex;
+      // position: static;
+      min-width: 18%;
+      justify-content: flex-end;
+    }
+  }
   &__history {
     margin-top: 50px;
     font-size: @--paragraph-font-size;
   }
   &__list {
-    margin-top: 20px;
+    margin-top: 8px;
   }
 }

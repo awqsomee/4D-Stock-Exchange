@@ -113,6 +113,17 @@
     }
   }
 
+  &__success {
+    background-color: @--green-color;
+    color: @--input-text-color;
+    box-shadow: @shadow_success_button;
+    &:hover {
+      background-color: @--main-text-color;
+      color: @--input-text-color;
+      box-shadow: @shadow_light_buttons;
+    }
+  }
+
   &__disable {
     display: flex;
     border-radius: 22px;
