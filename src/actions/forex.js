@@ -1,5 +1,12 @@
 import axios from 'axios'
-import { setCurrencies, setSelectedCurrency, setUserBalance, setUserCurrencies } from '../redux/slice'
+import {
+  setAlertMessage,
+  setAlertStatus,
+  setCurrencies,
+  setSelectedCurrency,
+  setUserBalance,
+  setUserCurrencies,
+} from '../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
 
@@ -69,8 +76,8 @@ export const exchangeCurrency = (symbol, amount) => {
 
 export const openCurrencyAccount = (userCurrencies, symbol) => {
   return async (dispatch) => {
-    try {
-      const response = await axios.post(
+    await axios
+      .post(
         `${serverAddress}/api/forex/auth/${symbol}/open`,
         {},
         {
@@ -79,19 +86,23 @@ export const openCurrencyAccount = (userCurrencies, symbol) => {
           },
         }
       )
-      dispatch(setUserCurrencies([...userCurrencies, response.data.currency]))
-      dispatch(setSelectedCurrency(response.data.currency))
-      alert(response.data.message)
-    } catch (e) {
-      console.log(e)
-    }
+      .then((response) => {
+        dispatch(setUserCurrencies([...userCurrencies, response.data.currency]))
+        dispatch(setSelectedCurrency(response.data.currency))
+        dispatch(setAlertMessage(response.data.message))
+        dispatch(setAlertStatus(response.status))
+      })
+      .catch((error) => {
+        dispatch(setAlertMessage(error.response.data.message))
+        dispatch(setAlertStatus(error.response.status))
+      })
   }
 }
 
 export const closeCurrencyAccount = (userCurrencies, symbol) => {
   return async (dispatch) => {
-    try {
-      const response = await axios.post(
+    await axios
+      .post(
         `${serverAddress}/api/forex/auth/${symbol}/close`,
         {},
         {
@@ -100,22 +111,27 @@ export const closeCurrencyAccount = (userCurrencies, symbol) => {
           },
         }
       )
-      dispatch(setUserBalance(response.data.user.balance))
-      dispatch(setUserCurrencies(userCurrencies.filter((currency) => currency.symbol != symbol)))
-      dispatch(
-        setSelectedCurrency({
-          _id: response.data.user.id,
-          symbol: 'RUB',
-          name: 'Рубль',
-          user: response.data.user.id,
-          amount: response.data.user.balance,
-          __v: 0,
-        })
-      )
-      alert(response.data.message)
-    } catch (e) {
-      console.log(e)
-    }
+      .then((response) => {
+        dispatch(setUserBalance(response.data.user.balance))
+        dispatch(setUserCurrencies(userCurrencies.filter((currency) => currency.symbol != symbol)))
+        dispatch(
+          setSelectedCurrency({
+            _id: response.data.user.id,
+            symbol: 'RUB',
+            name: 'Рубль',
+            user: response.data.user.id,
+            amount: response.data.user.balance,
+            __v: 0,
+          })
+        )
+        dispatch(setAlertStatus(response.status))
+        dispatch(setAlertMessage(response.data.message))
+      })
+      .catch((error) => {
+        dispatch(setAlertMessage(error.response.data.message))
+        dispatch(setAlertStatus(error.response.status))
+        throw error.response.data.message
+      })
   }
 }
 

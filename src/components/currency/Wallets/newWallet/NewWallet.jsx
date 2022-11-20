@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllCurrencies, openCurrencyAccount } from '../../../../actions/forex'
 import { useTimeout } from '../../../../actions/timer'
 import { store } from '../../../../redux'
+import { setAlertStatus } from '../../../../redux/slice'
 import './newWallet.css'
 
 const NewWallet = (props) => {
@@ -24,12 +25,20 @@ const NewWallet = (props) => {
     setIsLoading(true)
     await dispatch(openCurrencyAccount(userCurrencies, currency))
     setCurrency('')
-    if (store.getState().toolkit.userCurrencies.some((item) => item.symbol === currency)) {
+    console.log('uc', store.getState().toolkit.userCurrencies)
+    console.log('c', currency)
+    // if (store.getState().toolkit.userCurrencies.some((item) => item.symbol === currency)) {
+    //   props.sVisible(false)
+    //   props.setmodalBoxDepositTrue(true)
+    //   // setTimeout(props.setmodalBoxDepositOpenTrue(false), 5000)
+    // } else {
+    //   props.sVisible(false)
+    //   props.setmodalBoxDepositFalse(true)
+    // }
+    if (store.getState().toolkit.alertStatus == 200) {
       props.sVisible(false)
       props.setmodalBoxDepositTrue(true)
-      // setTimeout(props.setmodalBoxDepositOpenTrue(false), 5000)
     } else {
-      props.sVisible(false)
       props.setmodalBoxDepositFalse(true)
     }
     setIsLoading(false)

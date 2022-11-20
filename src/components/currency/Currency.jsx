@@ -4,28 +4,30 @@ import './сurrency.css'
 import Transactions from './transactions/transactions/Transactions'
 import CurrencyList from './CurrencyList/CurrencyList'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit'
+import { useSelector } from 'react-redux'
 
 const Currency = (props) => {
   const [modalBoxDepositOpenTrue, setmodalBoxDepositOpenTrue] = useState(false)
   const [modalBoxDepositOpenFalse, setmodalBoxDepositOpenFalse] = useState(false)
   const [modalBoxDepositCloseTrue, setmodalBoxDepositCloseTrue] = useState(false)
   const [modalBoxDepositCloseFalse, setmodalBoxDepositCloseFalse] = useState(false)
+  const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   return (
     <div className="container2">
       <ModalBoxDeposit className="err" visible={modalBoxDepositOpenFalse} setVisible={setmodalBoxDepositOpenFalse}>
-        <div>Не удалось открыть счет.</div>
+        <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
       <ModalBoxDeposit className="ok" visible={modalBoxDepositOpenTrue} setVisible={setmodalBoxDepositOpenTrue}>
-        <div>Счет успешно открыт.</div>
+        <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
       <ModalBoxDeposit className="err" visible={modalBoxDepositCloseFalse} setVisible={setmodalBoxDepositCloseFalse}>
-        <div>Не удалось закрыть счет.</div>
+        <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
       <ModalBoxDeposit className="ok" visible={modalBoxDepositCloseTrue} setVisible={setmodalBoxDepositCloseTrue}>
-        <div>Счет успешно закрыт. Все средства были переведены в рубли и уже поступили на ваш счет.</div>
+        <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
       <div className="title">{props.title}</div>

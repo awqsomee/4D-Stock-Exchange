@@ -21,6 +21,13 @@ const CloseWallet = (props) => {
       props.sVisible(false)
       props.setmodalBoxDepositTrue(true)
     }
+    // if (store.getState().toolkit.alertStatus == 200) {
+    //   alert(store.getState().toolkit.alertMessage)
+    //   props.sVisible(false)
+    // } else {
+    //   alert(store.getState().toolkit.alertMessage)
+    //   setmodalBoxDeposit(true)
+    // }
     setIsLoading(false)
   }
 

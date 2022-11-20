@@ -8,6 +8,8 @@ const slice = createSlice({
     currecncies: [],
     userCurrencies: [],
     selectedCurrency: {},
+    alertMessage: null,
+    alertStatus: null,
   },
   reducers: {
     setUser(state, action) {
@@ -44,6 +46,12 @@ const slice = createSlice({
     setSelectedCurrency(state, action) {
       state.selectedCurrency = action.payload
     },
+    setAlertMessage(state, action) {
+      state.alertMessage = action.payload
+    },
+    setAlertStatus(state, action) {
+      state.alertStatus = action.payload
+    },
   },
 })
 
@@ -56,4 +64,6 @@ export const {
   setSearch,
   setUserBalance,
   setSelectedCurrency,
+  setAlertMessage,
+  setAlertStatus,
 } = slice.actions
