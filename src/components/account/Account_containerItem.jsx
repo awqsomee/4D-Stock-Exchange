@@ -50,6 +50,12 @@ const Account_containerItem = (props) => {
     setIsLoading(true)
     console.log('acc', account)
     await dispatch(updateAccount(account))
+    if (store.getState().toolkit.alertStatus == 200) {
+      props.setmodalBoxDepositTrue(true)
+    } else {
+      props.setmodalBoxDepositFalse(true)
+    }
+    setIsLoading(false)
   }
 
   // const event = new KeyboardEvent('keypress', {
@@ -192,7 +198,7 @@ const Account_containerItem = (props) => {
 
           <div onClick={() => setIsInputBirthday(true)}>
             {!isInputBirthday ? (
-              account.birthday ? (
+              account?.birthday ? (
                 <div>{account?.birthday}</div>
               ) : (
                 <div style={{ opacity: '0.2' }}>Установите дату рождения</div>
