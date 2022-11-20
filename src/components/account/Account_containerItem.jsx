@@ -192,7 +192,11 @@ const Account_containerItem = (props) => {
 
           <div onClick={() => setIsInputBirthday(true)}>
             {!isInputBirthday ? (
-              <div>{account?.birthday}</div>
+              account.birthday ? (
+                <div>{account?.birthday}</div>
+              ) : (
+                <div style={{ opacity: '0.2' }}>Установите дату рождения</div>
+              )
             ) : (
               <ClickAwayListener onClickAway={() => setIsInputBirthday(false)}>
                 <input
