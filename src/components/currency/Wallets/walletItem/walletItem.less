@@ -12,36 +12,29 @@
   border-radius: 25px;
   width: 320px;
   height: 86px;
-  background-color: @--cards-background-color;
   font-family: @--head-font;
-  color: @--main-text-color;
-  box-shadow: @shadow_wallet_item;
   border: none !important;
 
   &__push {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-    padding: 20px 36px;
-    gap: 55px;
-    border-radius: 25px;
-    width: 320px;
-    height: 86px;
     background-color: @--silver-color;
-    font-family: @--head-font;
     color: @--input-text-color;
     box-shadow: @shadow_push_wallet_item;
-    border: none !important;
+  }
+
+  &__normal {
+    background-color: @--cards-background-color;
+    color: @--main-text-color;
+    box-shadow: @shadow_wallet_item;
   }
 
   &:hover {
     background-color: @--silver-color;
+    color: @--input-text-color;
     box-shadow: @shadow_push_wallet_item;
   }
   &:active {
     background-color: @--silver-color;
+    color: @--input-text-color;
     box-shadow: @shadow_push_wallet_item;
   }
 
@@ -53,7 +46,7 @@
   }
 
   &__title {
-    font-size: @--head-font-size;
+    font-size: @--paragraph-font-size;
     color: @--accent-color;
   }
 
@@ -68,6 +61,7 @@
     }
   }
   &__sum {
-    font-size: @--paragraph-font-size;
+    font-size: 28px;
+    // font-size: 20px;
   }
 }
