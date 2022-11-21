@@ -10,10 +10,10 @@ const WalletItem = (props) => {
 
   return (
     <button className={isSelected ? 'walletItem__push' : 'walletItem'}>
-      <div className="walletItem__title">{currencyItem.symbol}</div>
+      <div className={'walletItem__sum'}>{new Intl.NumberFormat('ru-RU').format(currencyItem.amount)}</div>
       <div className={isSelected ? 'walletItem__balance__push' : 'walletItem__balance'}>
         <div className="walletItem__symbol"></div>
-        <div className={'walletItem__sum'}>{new Intl.NumberFormat('ru-RU').format(currencyItem.amount)}</div>
+        <div className="walletItem__title">{currencyItem.symbol}</div>
       </div>
     </button>
   )
