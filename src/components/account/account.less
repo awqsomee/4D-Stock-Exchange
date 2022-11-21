@@ -8,7 +8,7 @@
   flex-direction: column;
   &__item {
     display: flex;
-    height: 200px;
+    // height: 200px;
     margin-bottom: 16px;
     border-radius: 10px;
     background: @--cards-background-color;
@@ -62,4 +62,16 @@
   color: @--accent-color;
   font-size: @--mark-font-size;
   z-index: 1;
+}
+
+.field {
+  padding: 12px 0;
+
+  &__input {
+    cursor: pointer;
+
+    &:hover {
+      color: @--accent-color;
+    }
+  }
 }

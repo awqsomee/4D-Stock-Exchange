@@ -40,7 +40,6 @@
 }
 .account__item {
   display: flex;
-  height: 200px;
   margin-bottom: 16px;
   border-radius: 10px;
   background: #eaeaea0d;
@@ -88,4 +87,13 @@
   color: #ee8100;
   font-size: 14px;
   z-index: 1;
+}
+.field {
+  padding: 12px 0;
+}
+.field__input {
+  cursor: pointer;
+}
+.field__input:hover {
+  color: #ee8100;
 }
