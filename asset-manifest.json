@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/4D-Stock-Exchange/static/css/main.aea80975.css",
-    "main.js": "/4D-Stock-Exchange/static/js/main.5da7ca82.js",
+    "main.css": "/4D-Stock-Exchange/static/css/main.f036c14f.css",
+    "main.js": "/4D-Stock-Exchange/static/js/main.1c7c108b.js",
     "static/media/logo.svg": "/4D-Stock-Exchange/static/media/logo.f202b9d8df85dc9ad71560e649783b92.svg",
     "static/media/PlusCircle.svg": "/4D-Stock-Exchange/static/media/PlusCircle.ba0318b693ee81573f891f0437942b62.svg",
     "static/media/fb.svg": "/4D-Stock-Exchange/static/media/fb.a38a3da8ed1968c9f03b55c369419614.svg",
@@ -15,11 +15,11 @@
     "static/media/search.svg": "/4D-Stock-Exchange/static/media/search.425cf63fe46ad7abff9805fde58f49a0.svg",
     "static/media/angle_down.svg": "/4D-Stock-Exchange/static/media/angle_down.108ff04abf6ceed5bebfe0bfd463a8b9.svg",
     "static/media/angle_up.svg": "/4D-Stock-Exchange/static/media/angle_up.ffcd35f57dfae1074880070405060e8f.svg",
-    "main.aea80975.css.map": "/4D-Stock-Exchange/static/css/main.aea80975.css.map",
-    "main.5da7ca82.js.map": "/4D-Stock-Exchange/static/js/main.5da7ca82.js.map"
+    "main.f036c14f.css.map": "/4D-Stock-Exchange/static/css/main.f036c14f.css.map",
+    "main.1c7c108b.js.map": "/4D-Stock-Exchange/static/js/main.1c7c108b.js.map"
   },
   "entrypoints": [
-    "static/css/main.aea80975.css",
-    "static/js/main.5da7ca82.js"
+    "static/css/main.f036c14f.css",
+    "static/js/main.1c7c108b.js"
   ]
 }
