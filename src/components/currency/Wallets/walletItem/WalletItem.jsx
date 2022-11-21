@@ -9,11 +9,11 @@ const WalletItem = (props) => {
   const isSelected = currencyItem.symbol === selectedCurrency.symbol
 
   return (
-    <button className={isSelected ? 'walletItem__push' : 'walletItem'}>
-      <div className="walletItem__title">{currencyItem.symbol}</div>
+    <button className={isSelected ? 'walletItem walletItem__push' : 'walletItem walletItem__normal'}>
+      <div className="walletItem__sum">{new Intl.NumberFormat('ru-RU').format(currencyItem.amount)}</div>
       <div className={isSelected ? 'walletItem__balance__push' : 'walletItem__balance'}>
         <div className="walletItem__symbol"></div>
-        <div className={'walletItem__sum'}>{new Intl.NumberFormat('ru-RU').format(currencyItem.amount)}</div>
+        <div className="walletItem__title">{currencyItem.symbol}</div>
       </div>
     </button>
   )
