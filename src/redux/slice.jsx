@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const slice = createSlice({
   name: 'toolkit',
   initialState: {
+    accountUser: {},
     currentUser: {},
     isAuth: false,
     search: '',
@@ -12,6 +13,9 @@ const slice = createSlice({
     alertStatus: null,
   },
   reducers: {
+    setAccountUser(state, action) {
+      state.accountUser = action.payload
+    },
     setUser(state, action) {
       state.currentUser = action.payload
       state.isAuth = true
@@ -66,4 +70,5 @@ export const {
   setSelectedCurrency,
   setAlertMessage,
   setAlertStatus,
+  setAccountUser,
 } = slice.actions

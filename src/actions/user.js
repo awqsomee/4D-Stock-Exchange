@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { setAccountUser, setAlertMessage, setAlertStatus } from '../redux/slice'
 const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 // const serverAddress = 'http://localhost:5000'
 
@@ -33,5 +34,47 @@ export const sellStock = (symbol, quantity) => {
     } catch (e) {
       alert(e.response.data.message)
     }
+  }
+}
+
+export const getAccount = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${serverAddress}/api/auth/user`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+        },
+      })
+      dispatch(setAccountUser(response.data.user))
+      return response.data.user
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
+export const updateAccount = (account) => {
+  return async (dispatch) => {
+    const response = await axios
+      .put(
+        `${serverAddress}/api/auth/user`,
+        {
+          ...account,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+          },
+        }
+      )
+      .then((response) => {
+        dispatch(setAccountUser(response.data.user))
+        dispatch(setAlertMessage(response.data.message))
+        dispatch(setAlertStatus(response.status))
+      })
+      .catch((error) => {
+        dispatch(setAlertMessage(error.response.data.message))
+        dispatch(setAlertStatus(error.response.status))
+      })
   }
 }

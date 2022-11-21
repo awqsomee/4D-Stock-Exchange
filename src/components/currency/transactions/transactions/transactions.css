@@ -111,7 +111,7 @@
   background-color: #ee8100;
   font-size: 14px;
   font-family: 'Exo 2', 'Arial';
-  color: #ffffff;
+  color: hsla(0, 0%, 0%, 0.61);
   align-items: center;
 }
 .transactions__panel__type {
