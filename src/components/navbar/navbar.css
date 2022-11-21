@@ -126,3 +126,7 @@
 .close_img:hover path {
   fill: #ee8100;
 }
+.wrapper img {
+  height: 100%;
+  width: auto;
+}

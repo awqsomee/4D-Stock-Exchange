@@ -29,12 +29,16 @@ const Account_containerItem = (props) => {
   ])
   // const ref = useRef()
 
+  const user = useSelector((state) => state.toolkit.currentUser)
+  const avatar = `https://gentle-sea-62964.herokuapp.com/${user.avatar}`
+
   const sumName = () => {
     setAccount({
       ...account,
       name: `${fullname.get('surname')}` + ' ' + `${fullname.get('name')}` + ' ' + `${fullname.get('patronymic')}`,
     })
   }
+  console.log('user', user)
 
   console.log('fn', fullname)
   console.log('account', account)
@@ -83,7 +87,9 @@ const Account_containerItem = (props) => {
                 onMouseLeave={() => setIsOverTime(false)}
               >
                 {account?.avatar ? (
-                  <div className={rootClasses.join(' ')} />
+                  <div className={rootClasses.join(' ') + ' wrapper account__avatar'}>
+                    <img src={avatar} alt="" />
+                  </div>
                 ) : (
                   <div className={rootClasses.join(' ')}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140" fill="none">
@@ -142,7 +148,7 @@ const Account_containerItem = (props) => {
               <div className="field">Дата рождения</div>
             </div>
             <div className="account__item__column">
-              <div className="field" onClick={() => setIsInputName(true)}>
+              <div className="field field__input" onClick={() => setIsInputName(true)}>
                 {!isInputName ? (
                   <div>{fullname.get('name')}</div>
                 ) : (
