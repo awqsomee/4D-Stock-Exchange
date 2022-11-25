@@ -80,3 +80,53 @@ font-size: 16px; Правило важно , потому что IOS Safari бу
   background-position: left 0.7em top 50%, 0 0;
   padding: 0.6em 0.8em 0.5em 1.4em;
 }
+
+.select__filter {
+  display: block;
+  font-size: @--mark-font-size;
+  font-family: 'Exo 2', 'Arial';
+  color: hsla(0, 0%, 0%, 0.61);
+  line-height: 1.3;
+  // padding: 0.6em 1.4em 0.5em 0.8em;
+  width: 100%;
+  // max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 3px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border-color: @--accent-color;
+  background-color: #fff;
+  background-image: url('../../../../assets/Icons/openSelect.svg'),
+    linear-gradient(to bottom, @--accent-color 0%, @--accent-color 100%);
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
+}
+.select__filter::-ms-expand {
+  display: none;
+}
+.select__filter:hover {
+  border-color: @--accent-color;
+  color: #fff;
+}
+.select__filter:focus {
+  border-color: @--accent-color;
+  color: hsla(0, 0%, 0%, 0.61);
+  outline: none;
+}
+.select__filter option {
+  font-weight: normal;
+  font-family: 'Exo 2', 'Arial';
+  font-size: @--mark-font-size;
+  color: #000;
+}
+.select__filter option:hover {
+  background-color: #fff;
+}
+*[dir='rtl'] .select__filter,
+:root:lang(ar) .select__filter,
+:root:lang(iw) .select__filter {
+  background-position: left 0.7em top 50%, 0 0;
+  padding: 0.6em 0.8em 0.5em 1.4em;
+}
