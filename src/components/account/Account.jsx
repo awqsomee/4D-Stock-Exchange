@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit'
 import './account.css'
-import Account_containerItem from './Account_containerItem.jsx'
+import Account_container from './Account_container.jsx'
 
 const Account = (props) => {
   const [modalBoxDepositTrue, setmodalBoxDepositTrue] = useState(false)
@@ -20,7 +20,7 @@ const Account = (props) => {
       </ModalBoxDeposit>
 
       <div className="title">{props.title}</div>
-      <Account_containerItem
+      <Account_container
         modalBoxDepositFalse={modalBoxDepositFalse}
         modalBoxDepositTrue={modalBoxDepositTrue}
         setmodalBoxDepositFalse={setmodalBoxDepositFalse}

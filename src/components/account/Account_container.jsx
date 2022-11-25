@@ -71,14 +71,34 @@ const Account_containerItem = (props) => {
     }
     setIsLoading(false)
   }
-  document.addEventListener('keydown', function (event) {
-    if (event.key == 'Enter') {
-      if (event.target.value != '') {
-        sumName()
-        UpdateAccount(account)
-      } else fullname.set('name', account?.name.split(' ')[1])
-    }
-  })
+  window.onload = function () {
+    document.getElementById('acc_field').addEventListener('keydown', function (event) {
+      if (event.key === 13) {
+        console.log('work')
+        event.preventDefault()
+        if (event.target.value != '') {
+          sumName()
+          UpdateAccount(account)
+        } else fullname.set('name', account?.name.split(' ')[1])
+      }
+    })
+  }
+
+  // document.getElementById('name').addEventListener('keyup', function (event) {
+  //   if (event.code === 'Enter') {
+  //     event.preventDefault()
+  //     document.querySelector('form').submit()
+  //   }
+  // })
+
+  // document.addEventListener('keydown', function (event) {
+  //   // if (event.key == 'Enter') {
+  //   if (event.target.value != '') {
+  //     sumName()
+  //     UpdateAccount(account)
+  //   } else fullname.set('name', account?.name.split(' ')[1])
+  //   // }
+  // })
 
   const rootClasses = ['account__avatar__img', 'upload']
   if (isOverTime) {
@@ -128,6 +148,7 @@ const Account_containerItem = (props) => {
               )}
             </div>
           </div>
+
           <div className="account__item__first_column">
             <div className="account__item__input field__input" onClick={() => setIsInputUsername(true)}>
               {!isInputUsername ? (
@@ -166,6 +187,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputName(false)}>
                   <input
+                    id="acc_field"
                     className="search"
                     value={fullname.get('name')}
                     onBlur={(event) => {
@@ -190,6 +212,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputSurname(false)}>
                   <input
+                    id="acc_field"
                     className="search"
                     value={fullname.get('surname')}
                     onBlur={(e) => {
@@ -210,6 +233,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputPatronymic(false)}>
                   <input
+                    id="acc_field"
                     className="search"
                     value={fullname.get('patronymic')}
                     onBlur={(e) => {
@@ -235,6 +259,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputBirthday(false)}>
                   <input
+                    id="acc_field"
                     className="search"
                     type="date"
                     value={account?.birthday}
@@ -265,6 +290,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputEmail(false)}>
                   <input
+                    id="acc_field"
                     className="search"
                     value={account?.email}
                     onBlur={(e) => {
@@ -284,6 +310,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputPhoneNumber(false)}>
                   <input
+                    id="acc_field"
                     className="search"
                     value={account?.phoneNumber}
                     onBlur={(e) => {
@@ -303,6 +330,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputPassport(false)}>
                   <input
+                    id="acc_field"
                     className="search"
                     value={account?.passportNumber}
                     onBlur={(e) => {
@@ -326,9 +354,15 @@ const Account_containerItem = (props) => {
             <div className="field">Срок действия карты</div>
           </div>
           <div className="account__item__column">
-            <div className="field field__input">{account?.paySystem}</div>
-            <div className="field field__input">{account?.cardsNumber}</div>
-            <div className="field field__input">{account?.validity}</div>
+            <div id="acc_field" className="field field__input">
+              {account?.paySystem}
+            </div>
+            <div id="acc_field" className="field field__input">
+              {account?.cardsNumber}
+            </div>
+            <div id="acc_field" className="field field__input">
+              {account?.validity}
+            </div>
           </div>
         </div>
       </div>
