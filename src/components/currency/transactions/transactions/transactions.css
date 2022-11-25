@@ -118,25 +118,40 @@
   position: static;
   min-width: 20%;
 }
+.transactions__panel__type:hover {
+  color: #ffffff;
+}
 .transactions__panel__amount {
   display: flex;
   min-width: 20%;
   justify-content: flex-end;
+}
+.transactions__panel__amount:hover {
+  color: #ffffff;
 }
 .transactions__panel__price {
   display: flex;
   min-width: 20%;
   justify-content: flex-end;
 }
+.transactions__panel__price:hover {
+  color: #ffffff;
+}
 .transactions__panel__cost {
   display: flex;
   min-width: 22%;
   justify-content: flex-end;
 }
+.transactions__panel__cost:hover {
+  color: #ffffff;
+}
 .transactions__panel__date {
   display: flex;
   min-width: 18%;
   justify-content: flex-end;
+}
+.transactions__panel__date:hover {
+  color: #ffffff;
 }
 .transactions__history {
   margin-top: 50px;
