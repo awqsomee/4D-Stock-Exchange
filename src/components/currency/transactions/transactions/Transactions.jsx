@@ -10,6 +10,7 @@ import CloseWallet from '../../Wallets/closeWallet/CloseWallet'
 import ModalBox from '../../../UI/ModalBox/ModalBox'
 import InputNumber from '../../../UI/input/InputNumber'
 import Loader from '../../../UI/loader/Loader'
+import TransactionsPanel from './TransactionsPanel'
 
 const Transactions = (props) => {
   const dispatch = useDispatch()
@@ -19,7 +20,9 @@ const Transactions = (props) => {
   const [value, setValue] = useState('')
   const [transactions, setTransactions] = useState()
   const [visible, setVisible] = useState(false)
-
+  const [sortImg, setSortImg] = useState('decreaseSort')
+  const [filter, setFilter] = useState('')
+  const [sort, setSort] = useState(false)
   useEffect(() => {
     setIsLoading(true)
     fetchData()
@@ -34,6 +37,8 @@ const Transactions = (props) => {
     const data = getTransactions()
     return data
   }
+  console.log('f', filter)
+  console.log('s', sort)
 
   const replenishHandler = async (dispatch, value, setValue) => {
     setIsReplenishing(true)
@@ -55,6 +60,29 @@ const Transactions = (props) => {
   // const balance = useSelector((state) => state.toolkit.currentUser.balance)
   const selectedCurrency = useSelector((state) => state.toolkit.selectedCurrency)
 
+  const sorting = (a, b) => {
+    const value = filter
+    if ((value != '') & (value != 'Обмен валюты' || value != 'Пополнение баланса' || value != 'Вывод средств')) {
+      if (sort) {
+        if (a[value] > b[value]) {
+          return 1
+        }
+        if (a[value] < b[value]) {
+          return -1
+        }
+        return 0
+      } else {
+        if (a[value] > b[value]) {
+          return -1
+        }
+        if (a[value] < b[value]) {
+          return 1
+        }
+        return 0
+      }
+    }
+  }
+
   return (
     <div className="transactions">
       <ModalBox visible={visible} setVisible={setVisible}>
@@ -67,6 +95,7 @@ const Transactions = (props) => {
           setmodalBoxDepositTrue={props.setmodalBoxDepositTrue}
         />
       </ModalBox>
+
       <div className="transactions__info">
         <div className="transactions__head">
           <div className="transactions__summ">
@@ -74,6 +103,7 @@ const Transactions = (props) => {
               {new Intl.NumberFormat('ru-RU').format(selectedCurrency?.amount) + ' ' + selectedCurrency?.symbol}
             </div>
           </div>
+
           {selectedCurrency?.symbol != 'RUB' ? (
             <div className="transactions__difference">
               <div className="transactions__last_price">
@@ -84,7 +114,6 @@ const Transactions = (props) => {
               </div>
               <div className="transactions__difference_amount">
                 <div>Изменение</div>
-
                 {selectedCurrency?.difference >= 0 ? (
                   <div className="transactions__difference_amount__amount_inc">
                     <div>+</div>
@@ -101,6 +130,7 @@ const Transactions = (props) => {
           ) : (
             <div className="transactions__difference"></div>
           )}
+
           {selectedCurrency?.symbol != 'RUB' ? (
             <div className="transactions__delete" onClick={() => setVisible(true)}>
               <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -127,14 +157,40 @@ const Transactions = (props) => {
       </div>
 
       <div className="transactions__history">
-        <div>История изменений</div>
-        <div className="transactions__panel">
-          <div className="transactions__panel__type">Тип операции</div>
-          <div className="transactions__panel__amount">Количество денежных единиц</div>
-          <div className="transactions__panel__price">Цена валюты</div>
-          <div className="transactions__panel__cost">Сумма операции</div>
-          <div className="transactions__panel__date">Дата</div>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div>История изменений</div>
+          <button
+            className="sorting__img"
+            onClick={() => {
+              if (sortImg == 'decreaseSort') {
+                setSortImg('increaseSort')
+                setSort(true)
+              } else {
+                setSortImg('decreaseSort')
+                setSort(false)
+              }
+            }}
+          >
+            <svg
+              width="27"
+              height="27"
+              viewBox="0 0 27 27"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={sortImg}
+            >
+              <path
+                d="M7.76252 22.275C7.65002 22.3875 7.53752 22.5 7.31252 22.5C7.08752 22.5 6.97502 22.3875 6.86252 22.275L3.60002 19.0125C3.37502 18.7875 3.37502 18.45 3.60002 18.225C3.82502 18 4.16252 18 4.38752 18.225L6.75002 20.5875V5.0625C6.75002 4.725 6.97502 4.5 7.31252 4.5C7.65002 4.5 7.87502 4.725 7.87502 5.0625V20.5875L10.2375 18.225C10.4625 18 10.8 18 11.025 18.225C11.25 18.45 11.25 18.7875 11.025 19.0125L7.76252 22.275ZM14.0625 6.75C13.725 6.75 13.5 6.525 13.5 6.1875C13.5 5.85 13.725 5.625 14.0625 5.625H23.0625C23.4 5.625 23.625 5.85 23.625 6.1875C23.625 6.525 23.4 6.75 23.0625 6.75H14.0625ZM14.0625 11.25C13.725 11.25 13.5 11.025 13.5 10.6875C13.5 10.35 13.725 10.125 14.0625 10.125H20.8125C21.15 10.125 21.375 10.35 21.375 10.6875C21.375 11.025 21.15 11.25 20.8125 11.25H14.0625ZM14.0625 15.75C13.725 15.75 13.5 15.525 13.5 15.1875C13.5 14.85 13.725 14.625 14.0625 14.625H18.5625C18.9 14.625 19.125 14.85 19.125 15.1875C19.125 15.525 18.9 15.75 18.5625 15.75H14.0625ZM14.0625 20.25C13.725 20.25 13.5 20.025 13.5 19.6875C13.5 19.35 13.725 19.125 14.0625 19.125H16.3125C16.65 19.125 16.875 19.35 16.875 19.6875C16.875 20.025 16.65 20.25 16.3125 20.25H14.0625Z"
+                fill="#394249"
+                stroke="#394249"
+                strokeMiterlimit="10"
+              />
+            </svg>
+          </button>
         </div>
+
+        <TransactionsPanel filter={filter} setFilter={setFilter}></TransactionsPanel>
+
         {!isLoading ? (
           <div className="transactions__list">
             {transactions
@@ -143,8 +199,17 @@ const Transactions = (props) => {
                   transaction.symbol === selectedCurrency.symbol || transaction.currency === selectedCurrency.symbol
                 )
               })
-              .map((transactionItem, index) => {
-                if (index < 11) return <TransactionItem transactionItem={transactionItem} key={transactionItem._id} />
+              .filter((transactionItem) => {
+                if (
+                  (filter != '') &
+                  (filter === 'Обмен валюты' || filter === 'Пополнение баланса' || filter === 'Вывод средств')
+                )
+                  return transactionItem.type === filter
+                else return transactionItem
+              })
+              .sort(sorting)
+              .map((el, index) => {
+                if (index < 11) return <TransactionItem transactionItem={el} key={el._id} />
               })}
           </div>
         ) : (
