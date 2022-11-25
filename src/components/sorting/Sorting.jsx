@@ -5,13 +5,9 @@ import './sorting.css'
 import { useState } from 'react'
 import ButtonSwith from '../../components/UI/buttons/ButtonSwitch'
 
-const StockListFilter = () => {
-  const [buttInc, setButtInc] = useState(
-    ' sorting__increase button button__sortPush'
-  )
-  const [buttDec, setButtDec] = useState(
-    'sorting__decrease button button__sortNormal'
-  )
+const StockListFilter = (props) => {
+  const [buttInc, setButtInc] = useState(' sorting__increase button button__sortPush')
+  const [buttDec, setButtDec] = useState('sorting__decrease button button__sortNormal')
 
   const [sortImg, setSortImg] = useState('decreaseSort')
   return (
@@ -22,6 +18,7 @@ const StockListFilter = () => {
           if (buttInc === 'sorting__increase button button__sortNormal') {
             setButtInc('sorting__increase button button__sortPush')
             setButtDec('sorting__decrease button button__sortNormal')
+            props.setFilter('name')
           }
         }}
       >
@@ -34,6 +31,7 @@ const StockListFilter = () => {
             setButtInc('sorting__increase button button__sortNormal')
             setButtDec('sorting__decrease button button__sortPush')
           }
+          props.setFilter('change')
         }}
       >
         изменение
@@ -41,8 +39,13 @@ const StockListFilter = () => {
       <button
         className="sorting__img"
         onClick={() => {
-          if (sortImg == 'decreaseSort') setSortImg('increaseSort')
-          else setSortImg('decreaseSort')
+          if (sortImg == 'decreaseSort') {
+            setSortImg('increaseSort')
+            props.setSort(true)
+          } else {
+            setSortImg('decreaseSort')
+            props.setSort(false)
+          }
         }}
       >
         <svg

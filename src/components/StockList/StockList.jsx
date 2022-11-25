@@ -14,6 +14,8 @@ const StockList = (props) => {
   const [run, setRun] = useState()
   const [isStocksLoading, setIsStocksLoading] = useState(false)
   const { search, setSearch } = useContext(SearchContext)
+  const [filter, setFilter] = useState('')
+  const [sort, setSort] = useState(false)
   // const [buttonText, setButtonText] = useState(0)
 
   document.addEventListener('keydown', function (event) {
@@ -56,25 +58,61 @@ const StockList = (props) => {
     }
   }
 
+  const sorting = (a, b) => {
+    const value = filter
+    if ((value != '') & (value === 'change')) {
+      if (sort) {
+        if (a.changes > b.changes) {
+          return 1
+        }
+        if (a.changes < b.changes) {
+          return -1
+        }
+        return 0
+      } else {
+        if (a.changes > b.changes) {
+          return -1
+        }
+        if (a.changes < b.changes) {
+          return 1
+        }
+        return 0
+      }
+    } else if ((value != '') & (value === 'name')) {
+      if (sort) {
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return 1
+        }
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return -1
+        }
+        return 0
+      } else {
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return -1
+        }
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return 1
+        }
+        return 0
+      }
+    }
+  }
+
   return (
     <div className="stockList">
       <div className="container2">
         <div className="title">{props.title}</div>
         <div className="list">
-          <Sorting />
+          <Sorting setFilter={setFilter} setSort={setSort} />
           <Panel className="panel" />
           {isStocksLoading ? (
             <Loader />
           ) : (
             stocks &&
-            stocks.map((stock) => (
-              <Stock
-                stock={stock}
-                function={buyStock}
-                key={stock.symbol}
-                buttonText="Купить"
-              />
-            ))
+            stocks
+              .sort(sorting)
+              .map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
           )}
         </div>
       </div>
