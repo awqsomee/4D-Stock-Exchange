@@ -62,18 +62,18 @@ const StockList = (props) => {
     const value = filter
     if ((value != '') & (value === 'change')) {
       if (sort) {
-        if (a.changes > b.changes) {
+        if (Number(a.changes) > Number(b.changes)) {
           return 1
         }
-        if (a.changes < b.changes) {
+        if (Number(a.changes) < Number(b.changes)) {
           return -1
         }
         return 0
       } else {
-        if (a.changes > b.changes) {
+        if (Number(a.changes) > Number(b.changes)) {
           return -1
         }
-        if (a.changes < b.changes) {
+        if (Number(a.changes) < Number(b.changes)) {
           return 1
         }
         return 0
