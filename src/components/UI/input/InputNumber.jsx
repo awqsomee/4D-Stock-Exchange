@@ -1,10 +1,11 @@
 import React from 'react'
 import './input.css'
 
-const InputNumber = (props) => {
+const InputNumber = React.forwardRef((props, ref) => {
   const changeHandler = (value, setValue) => {
     setValue(value.replaceAll(/\D/g, ''))
   }
+  console.log(props.onBlur)
 
   return (
     <input
@@ -14,9 +15,10 @@ const InputNumber = (props) => {
         changeHandler(event.target.value, props.setValue)
       }}
       value={props.value}
-      placeholder={'Сумма'}
+      placeholder={props.placeholder}
+      onBlur={props.onBlur}
     ></input>
   )
-}
+})
 
 export default InputNumber

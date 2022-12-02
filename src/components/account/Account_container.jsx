@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAccount, updateAccount } from '../../actions/user'
 import { store } from '../../redux'
 import { setAccountUser, setUser } from '../../redux/slice'
+import InputNumber from '../UI/input/InputNumber'
 import PageLoader from '../UI/loader/PageLoader'
 import Alert from '../UI/ModalBox/alert/Alert'
 import './account.css'
@@ -69,37 +70,6 @@ const Account_containerItem = (props) => {
     }
     setIsLoading(false)
   }
-  // window.onload = function () {
-  //   document.getElementById('acc_field').addEventListener('keydown', function (event) {
-  //     if (event.key === 13) {
-  //       event.preventDefault()
-  //       if (event.target.value != '') {
-  //         UpdateAccount({
-  //           ...account,
-  //           name:
-  //             `${fullname.get('surname')}` + ' ' + `${fullname.get('name')}` + ' ' + `${fullname.get('patronymic')}`,
-  //         })
-  //       } else fullname.set('name', account?.name.split(' ')[1])
-  //     }
-  //   })
-  // }
-
-  // document.getElementById('name').addEventListener('keyup', function (event) {
-  //   if (event.code === 'Enter') {
-  //     event.preventDefault()
-  //     document.querySelector('form').submit()
-  //   }
-  // })
-
-  // document.addEventListener('keydown', function (event) {
-  //   // if (event.key == 'Enter') {
-  //   if (event.target.value != '') {
-  //     sumName()
-  //     UpdateAccount(account)
-  //   } else fullname.set('name', account?.name.split(' ')[1])
-  //   // }
-  // })
-
   const rootClasses = ['account__avatar__img', 'upload']
   if (isOverTime) {
     rootClasses.push('account__avatar__img__hover')
@@ -207,8 +177,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputName(false)}>
                   <input
-                    id="acc_field"
-                    ref={nameInput}
+                    forwardedRef={nameInput}
                     className="search"
                     value={fullname.get('name')}
                     onBlur={(event) => {
@@ -240,14 +209,23 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputSurname(false)}>
                   <input
-                    id="acc_field"
                     className="search"
                     value={fullname.get('surname')}
-                    onBlur={(e) => {
-                      UpdateAccount(account)
+                    onBlur={(event) => {
+                      if (event.target.value != '') {
+                        const updatedAccount = {
+                          ...account,
+                          name:
+                            `${fullname.get('surname')}` +
+                            ' ' +
+                            `${fullname.get('name')}` +
+                            ' ' +
+                            `${fullname.get('patronymic')}`,
+                        }
+                        UpdateAccount(updatedAccount)
+                      } else setFullname(new Map([...fullname, ['surname', account?.name.split(' ')[0]]]))
                     }}
                     onChange={(event) => {
-                      event.stopPropagation()
                       fullname.set('surname', event.target.value)
                       sumName()
                     }}
@@ -261,11 +239,21 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputPatronymic(false)}>
                   <input
-                    id="acc_field"
                     className="search"
                     value={fullname.get('patronymic')}
-                    onBlur={(e) => {
-                      UpdateAccount(account)
+                    onBlur={(event) => {
+                      if (event.target.value != '') {
+                        const updatedAccount = {
+                          ...account,
+                          name:
+                            `${fullname.get('surname')}` +
+                            ' ' +
+                            `${fullname.get('name')}` +
+                            ' ' +
+                            `${fullname.get('patronymic')}`,
+                        }
+                        UpdateAccount(updatedAccount)
+                      } else setFullname(new Map([...fullname, ['patronymic', account?.name.split(' ')[2]]]))
                     }}
                     onChange={(event) => {
                       event.stopPropagation()
@@ -280,7 +268,13 @@ const Account_containerItem = (props) => {
             <div className="field field__input" onClick={() => setIsInputBirthday(true)}>
               {!isInputBirthday ? (
                 account?.birthday ? (
-                  <div>{account?.birthday}</div>
+                  <div>
+                    {new Date(Date.parse(account?.birthday)).toLocaleDateString('ru', {
+                      year: 'numeric',
+                      month: 'numeric',
+                      day: 'numeric',
+                    })}
+                  </div>
                 ) : (
                   <div style={{ opacity: '0.2' }}>Установите дату рождения</div>
                 )
@@ -336,10 +330,10 @@ const Account_containerItem = (props) => {
               {!isInputPhoneNumber ? (
                 <div>{account?.phoneNumber}</div>
               ) : (
+                /*не работает с числовым инпутом*/
                 <ClickAwayListener onClickAway={() => setIsInputPhoneNumber(false)}>
-                  <input
-                    id="acc_field"
-                    className="search"
+                  <InputNumber
+                    className="number_input"
                     value={account?.phoneNumber}
                     onBlur={(e) => {
                       UpdateAccount(account)
@@ -348,7 +342,7 @@ const Account_containerItem = (props) => {
                       event.stopPropagation()
                       setAccount({ ...account, phoneNumber: event.target.value })
                     }}
-                  ></input>
+                  ></InputNumber>
                 </ClickAwayListener>
               )}
             </div>
