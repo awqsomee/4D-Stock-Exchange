@@ -41,7 +41,6 @@ const Account_containerItem = (props) => {
     })
   }
 
-  console.log('account', account)
   useEffect(() => {
     setIsLoading(true)
     dispatch(getAccount())
@@ -62,7 +61,6 @@ const Account_containerItem = (props) => {
 
   const UpdateAccount = async (account) => {
     setIsLoading(true)
-    console.log('acc', account)
     await dispatch(updateAccount(account))
     if (store.getState().toolkit.alertStatus == 200) {
       props.setmodalBoxDepositTrue(true)
@@ -71,18 +69,20 @@ const Account_containerItem = (props) => {
     }
     setIsLoading(false)
   }
-  window.onload = function () {
-    document.getElementById('acc_field').addEventListener('keydown', function (event) {
-      if (event.key === 13) {
-        console.log('work')
-        event.preventDefault()
-        if (event.target.value != '') {
-          sumName()
-          UpdateAccount(account)
-        } else fullname.set('name', account?.name.split(' ')[1])
-      }
-    })
-  }
+  // window.onload = function () {
+  //   document.getElementById('acc_field').addEventListener('keydown', function (event) {
+  //     if (event.key === 13) {
+  //       event.preventDefault()
+  //       if (event.target.value != '') {
+  //         UpdateAccount({
+  //           ...account,
+  //           name:
+  //             `${fullname.get('surname')}` + ' ' + `${fullname.get('name')}` + ' ' + `${fullname.get('patronymic')}`,
+  //         })
+  //       } else fullname.set('name', account?.name.split(' ')[1])
+  //     }
+  //   })
+  // }
 
   // document.getElementById('name').addEventListener('keyup', function (event) {
   //   if (event.code === 'Enter') {
@@ -105,8 +105,28 @@ const Account_containerItem = (props) => {
     rootClasses.push('account__avatar__img__hover')
   }
 
+  const nameInput = useRef(null)
+  useEffect(() => {
+    console.log(nameInput?.current)
+    if (nameInput?.current) {
+      nameInput.current.addEventListener('keydown', function (event) {
+        if (event.key == 'Enter') {
+          nameInput.current.blur()
+        }
+      })
+      nameInput.current.focus()
+    }
+  }, [isInputName])
+
+  // nameInput.addEventListener('keydown', function (event) {
+  //   if (event.key == 'Enter') {
+  //     console.log('Enter')
+  //   }
+  // })
+
   return (
     <div className="account">
+      {/* {console.log(nameInput)} */}
       <Alert visible={alert} setVisible={setAlert}>
         <div>Изменения успешно сохранены</div>
       </Alert>
@@ -188,13 +208,21 @@ const Account_containerItem = (props) => {
                 <ClickAwayListener onClickAway={() => setIsInputName(false)}>
                   <input
                     id="acc_field"
+                    ref={nameInput}
                     className="search"
                     value={fullname.get('name')}
                     onBlur={(event) => {
-                      console.log('event.target.value ', event.target.value)
                       if (event.target.value != '') {
-                        sumName()
-                        UpdateAccount(account)
+                        const updatedAccount = {
+                          ...account,
+                          name:
+                            `${fullname.get('surname')}` +
+                            ' ' +
+                            `${fullname.get('name')}` +
+                            ' ' +
+                            `${fullname.get('patronymic')}`,
+                        }
+                        UpdateAccount(updatedAccount)
                       } else setFullname(new Map([...fullname, ['name', account?.name.split(' ')[1]]]))
                     }}
                     onChange={(event) => {
