@@ -92,7 +92,6 @@ const StockList = (props) => {
       //     data: result[1].data,
       //   },
       // ]
-      console.log('result', result)
       if (!ignore) setStocks([...result])
     }
     await getStocks()

@@ -15,17 +15,18 @@ const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
 const Stock = (props) => {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (!props.stock.quantity) setslashString('')
-    else setslashString(`/${props.stock.quantity}`)
-  }, [])
-
+  const [changes, setChanges] = useState()
   const [counter, setCounter] = useState(0)
   const [slashString, setslashString] = useState('')
   const [GP, setGP] = useState(false)
   const [mouse, setMouse] = useState(false)
   const [buttBuy, setButtBuy] = useState('button stock__button button__normal')
+
+  useEffect(() => {
+    if (!props.stock.quantity) setslashString('')
+    else setslashString(`/${props.stock.quantity}`)
+    countChange()
+  }, [])
 
   function less() {
     if (counter > 0) setCounter(counter - 1)
@@ -69,24 +70,22 @@ const Stock = (props) => {
     }
   }
 
+  const countChange = () => {
+    let count = (props.stock?.prices[0].high - props.stock?.prices[1].high) / 100
+    setChanges(count.toFixed(2))
+  }
   return (
     <div>
       <div className="stock">
         <div className="stock__index">{props.stock.secid}</div>
         <div className="stock__name">{props.stock.shortname}</div>
         <div className="stock__cost">
-          {props.stock?.data ? (
-            <div>
-              {props.stock.data[99].value.toFixed(2)} {props.stock.currency}
-            </div>
-          ) : (
-            <div>-</div>
-          )}
+          {props?.stock ? <div>{props.stock?.prices[1].close.toFixed(2)}</div> : <div>-</div>}
         </div>
-        {props.stock.changes < 0 ? (
-          <div className="stock__change stock__change__red">{props.stock.changes}%</div>
+        {changes < 0 ? (
+          <div className="stock__change stock__change__red">{changes}%</div>
         ) : (
-          <div className="stock__change stock__change__green">{props.stock.changes}%</div>
+          <div className="stock__change stock__change__green">{changes}%</div>
         )}
 
         {buttBuy === 'button stock__button button__process' ? (
