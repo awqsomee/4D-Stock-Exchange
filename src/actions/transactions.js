@@ -1,5 +1,5 @@
 import axios from 'axios'
-const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
+const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
 
 export const getTransactions = async () => {
   try {

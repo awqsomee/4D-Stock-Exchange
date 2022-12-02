@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { setSelectedCurrency, setUserBalance } from '../redux/slice'
-const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
+const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
 // const serverAddress = 'http://localhost:5000'
 
 export const changeBalance = (value) => {
