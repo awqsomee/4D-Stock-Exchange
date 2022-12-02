@@ -2,14 +2,11 @@ import axios from 'axios'
 
 async function getUserStocks() {
   try {
-    const response = await axios.get(
-      `https://gentle-sea-62964.herokuapp.com/api/auth/stock`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
-        },
-      }
-    )
+    const response = await axios.get(`https://stonksexchange.kaivr.amvera.io/api/auth/stock`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+      },
+    })
     const stocksInfo = response.data
     if (Array.isArray(stocksInfo)) {
       const stocksInfoWithPrice = await Promise.all(
@@ -33,33 +30,27 @@ async function getUserStocks() {
   }
 }
 
-async function getStocksSearch(symbol) {
+async function getStocksSearch(searchQuery) {
   try {
     let link
-    link = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=SAIC&apikey=demo`
+    link = `https://stonksexchange.kaivr.amvera.io/api/stock/search?q=${searchQuery}`
     const response = await axios.get(link)
-    const stocksInfo = response.data['bestMatches'].map((item, index) => {
-      return {
-        number: index + 1,
-        symbol: item['1. symbol'],
-        name: item['2. name'],
-        currency: item['8. currency'],
-        matchScore: item['9. matchScore'],
-      }
-    })
-
-    const stocksInfoWithPrice = await Promise.all(
-      stocksInfo.map(async (item) => {
-        let data = await getStockPrice(item.symbol)
-        let changes = await getStockChange(item.symbol)
-        return {
-          ...item,
-          data,
-          changes: Number(changes.slice(0, 4)),
-        }
-      })
-    )
-    return stocksInfoWithPrice
+    const stocksInfo = response.data.stock
+    // const result = stocksInfoWithPrice.map(
+    //   (el) => {
+    //     if (searchQuery != '' || el.symbol.toLowerCase().includes(searchQuery)) {
+    //       console.log('y', el)
+    //       return el
+    //     } else {
+    //       console.log('n', el)
+    //       return el
+    //     }
+    //   },
+    //   [searchQuery]
+    // )
+    // console.log('resultget', result)
+    return response.data.stock
+    // return stocksInfoWithPrice
   } catch (e) {
     // console.log(e)
   }
@@ -82,12 +73,11 @@ async function getStockPrice(symbol, apikey) {
     const response = await axios.get(
       // `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ACBVRHUCTP4LTHVX`
       'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo'
+      // https://gentle-sea-62964.herokuapp.com/api/stock?symbol=GAZP&from=2020-10-30&till=2021-11-30
     )
     let date = Object.keys(response.data['Time Series (Daily)'])
     date.reverse()
-    const value = date.map((item) =>
-      Number(response.data['Time Series (Daily)'][item]['4. close'])
-    )
+    const value = date.map((item) => Number(response.data['Time Series (Daily)'][item]['4. close']))
     const data = []
     for (let num = 99; num >= 0; num--)
       data.unshift({

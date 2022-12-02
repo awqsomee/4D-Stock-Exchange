@@ -3,26 +3,25 @@ import Sorting from '../sorting/Sorting.jsx'
 import Panel from '../panel/Panel.jsx'
 import './stocklist.css'
 import Stock from '../stocks/Stock.jsx'
-import { useContext } from 'react'
-import { SearchContext } from '../../context/index.js'
 import { buyStock } from '../../actions/user.js'
 import { getStocksSearch } from '../../actions/stocks.js'
 import Loader from '../UI/loader/Loader.jsx'
+import { useSelector } from 'react-redux'
 
 const StockList = (props) => {
   const [stocks, setStocks] = useState([])
-  const [run, setRun] = useState()
   const [isStocksLoading, setIsStocksLoading] = useState(false)
-  const { search, setSearch } = useContext(SearchContext)
   const [filter, setFilter] = useState('')
   const [sort, setSort] = useState(false)
+  const search = useSelector((state) => state.toolkit.searchQuery)
   // const [buttonText, setButtonText] = useState(0)
 
   document.addEventListener('keydown', function (event) {
     if (event.key == 'Enter') {
-      setRun(search.toString())
-      fetchData(run)
+      console.log(1)
+      fetchData(search)
     }
+    console.log(2)
   })
 
   // const switchButtonText=(()=>{
@@ -36,11 +35,15 @@ const StockList = (props) => {
     // }, 120000)
   }, [])
 
-  const fetchData = async () => {
+  const fetchData = async (searchQuery) => {
     setIsStocksLoading(true)
     let ignore = false
     async function getStocks() {
-      const result = await getStocksSearch(search)
+      let result
+      if (searchQuery) result = await getStocksSearch(searchQuery)
+      else result = await getStocksSearch('MGNT')
+
+      console.log('res', result)
       const fish = {
         currency: 'RUB',
         name: 'Специализированный Фонд Приватизации „Чековый инвестиционный фонд аграрно­-промышленного комплекса Республики Татарстан „Золотой Колос“',
@@ -49,6 +52,45 @@ const StockList = (props) => {
         data: [],
       }
       fish.data[99] = { value: 136800.59 }
+      // const salmon = [
+      //   {
+      //     changes: '-0.1',
+      //     currency: 'USD',
+      //     matchScore: '1.0000',
+      //     name: 'Science Applications International Corp',
+      //     number: 1,
+      //     symbol: 'SAIC1',
+      //     data: result[1].data,
+      //   },
+      //   {
+      //     changes: '-0.2',
+      //     currency: 'USD',
+      //     matchScore: '1.0000',
+      //     name: 'Science Applications International Corp',
+      //     number: 1,
+      //     symbol: 'SAIC2',
+      //     data: result[1].data,
+      //   },
+      //   {
+      //     changes: '4',
+      //     currency: 'USD',
+      //     matchScore: '1.0000',
+      //     name: 'Science Applications International Corp',
+      //     number: 1,
+      //     symbol: 'SAIC3',
+      //     data: result[1].data,
+      //   },
+      //   {
+      //     changes: '14',
+      //     currency: 'USD',
+      //     matchScore: '1.0000',
+      //     name: 'Science Applications International Corp',
+      //     number: 1,
+      //     symbol: 'SAIC4',
+      //     data: result[1].data,
+      //   },
+      // ]
+      console.log('result', result)
       if (!ignore) setStocks([...result, fish])
     }
     await getStocks()
@@ -101,6 +143,7 @@ const StockList = (props) => {
 
   return (
     <div className="stockList">
+      {console.log(stocks)}
       <div className="container2">
         <div className="title">{props.title}</div>
         <div className="list">
@@ -112,7 +155,7 @@ const StockList = (props) => {
             stocks &&
             stocks
               .sort(sorting)
-              .map((stock) => <Stock stock={stock} function={buyStock} key={stock.symbol} buttonText="Купить" />)
+              .map((stock) => <Stock stock={stock} function={buyStock} key={stock.isin} buttonText="Купить" />)
           )}
         </div>
       </div>

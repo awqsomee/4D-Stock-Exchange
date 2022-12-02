@@ -33,8 +33,7 @@ const Stock = (props) => {
   }
 
   function more() {
-    if (counter < props.stock.quantity || !props.stock.quantity)
-      setCounter(counter + 1)
+    if (counter < props.stock.quantity || !props.stock.quantity) setCounter(counter + 1)
   }
 
   const buyStock = async (symbol, quantity) => {
@@ -57,14 +56,11 @@ const Stock = (props) => {
   const sellStock = (id, quantity) => {
     return async (dispatch) => {
       try {
-        const response = await axios.delete(
-          `${serverAddress}/api/auth/stock/?id=${id}&quantity=${quantity}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
-            },
-          }
-        )
+        const response = await axios.delete(`${serverAddress}/api/auth/stock/?id=${id}&quantity=${quantity}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+          },
+        })
         dispatch(setUser(response.data.user))
         alert(response.data.message)
       } catch (e) {
@@ -76,8 +72,8 @@ const Stock = (props) => {
   return (
     <div>
       <div className="stock">
-        <div className="stock__index">{props.stock.symbol}</div>
-        <div className="stock__name">{props.stock.name}</div>
+        <div className="stock__index">{props.stock.secid}</div>
+        <div className="stock__name">{props.stock.shortname}</div>
         <div className="stock__cost">
           {props.stock?.data ? (
             <div>
@@ -88,28 +84,15 @@ const Stock = (props) => {
           )}
         </div>
         {props.stock.changes < 0 ? (
-          <div className="stock__change stock__change__red">
-            {props.stock.changes}%
-          </div>
+          <div className="stock__change stock__change__red">{props.stock.changes}%</div>
         ) : (
-          <div className="stock__change stock__change__green">
-            {props.stock.changes}%
-          </div>
+          <div className="stock__change stock__change__green">{props.stock.changes}%</div>
         )}
 
         {buttBuy === 'button stock__button button__process' ? (
           <div className="stock__counter">
-            <button
-              className="button__none stock__counter__less"
-              onClick={less}
-            >
-              <svg
-                width="23"
-                height="23"
-                viewBox="0 0 23 23"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <button className="button__none stock__counter__less" onClick={less}>
+              <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M5.75 11.5C5.75 11.3094 5.82573 11.1266 5.96052 10.9918C6.09531 10.857 6.27813 10.7812 6.46875 10.7812H16.5312C16.7219 10.7812 16.9047 10.857 17.0395 10.9918C17.1743 11.1266 17.25 11.3094 17.25 11.5C17.25 11.6906 17.1743 11.8734 17.0395 12.0082C16.9047 12.143 16.7219 12.2188 16.5312 12.2188H6.46875C6.27813 12.2188 6.09531 12.143 5.96052 12.0082C5.82573 11.8734 5.75 11.6906 5.75 11.5Z"
                   fill="white"
@@ -153,11 +136,7 @@ const Stock = (props) => {
               }
           }}
         >
-          {counter == 0
-            ? 'Купить'
-            : `${(props.stock.data[99].value * counter).toFixed(2)} ${
-                props.stock.currency
-              }`}
+          {counter == 0 ? 'Купить' : `${(props.stock.data[99].value * counter).toFixed(2)} ${props.stock.currency}`}
         </button>
         <button
           onClick={() => {
