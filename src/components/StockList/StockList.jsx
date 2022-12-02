@@ -14,6 +14,8 @@ const StockList = (props) => {
   const [filter, setFilter] = useState('')
   const [sort, setSort] = useState(false)
   const search = useSelector((state) => state.toolkit.searchQuery)
+  const [elementCount, setElementCount] = useState(5)
+  const [elementNumber, setElementNumber] = useState(0)
   // const [buttonText, setButtonText] = useState(0)
 
   document.addEventListener('keydown', function (event) {
@@ -44,14 +46,14 @@ const StockList = (props) => {
       else result = await getStocksSearch('MGNT')
 
       console.log('res', result)
-      const fish = {
-        currency: 'RUB',
-        name: 'Специализированный Фонд Приватизации „Чековый инвестиционный фонд аграрно­-промышленного комплекса Республики Татарстан „Золотой Колос“',
-        symbol: 'WWWWW',
-        changes: '531.43',
-        data: [],
-      }
-      fish.data[99] = { value: 136800.59 }
+      // const fish = {
+      //   currency: 'RUB',
+      //   name: 'Специализированный Фонд Приватизации „Чековый инвестиционный фонд аграрно­-промышленного комплекса Республики Татарстан „Золотой Колос“',
+      //   symbol: 'WWWWW',
+      //   changes: '531.43',
+      //   data: [],
+      // }
+      // fish.data[99] = { value: 136800.59 }
       // const salmon = [
       //   {
       //     changes: '-0.1',
@@ -91,7 +93,7 @@ const StockList = (props) => {
       //   },
       // ]
       console.log('result', result)
-      if (!ignore) setStocks([...result, fish])
+      if (!ignore) setStocks([...result])
     }
     await getStocks()
     setIsStocksLoading(false)
@@ -104,18 +106,18 @@ const StockList = (props) => {
     const value = filter
     if ((value != '') & (value === 'change')) {
       if (sort) {
-        if (Number(a.changes) > Number(b.changes)) {
+        if (Number((a.prices[0].high - a.prices[1].high) / 100) > Number((b.prices[0].high - b.prices[1].high) / 100)) {
           return 1
         }
-        if (Number(a.changes) < Number(b.changes)) {
+        if (Number((a.prices[0].high - a.prices[1].high) / 100) < Number((b.prices[0].high - b.prices[1].high) / 100)) {
           return -1
         }
         return 0
       } else {
-        if (Number(a.changes) > Number(b.changes)) {
+        if (Number((a.prices[0].high - a.prices[1].high) / 100) > Number((b.prices[0].high - b.prices[1].high) / 100)) {
           return -1
         }
-        if (Number(a.changes) < Number(b.changes)) {
+        if (Number((a.prices[0].high - a.prices[1].high) / 100) < Number((b.prices[0].high - b.prices[1].high) / 100)) {
           return 1
         }
         return 0
@@ -155,6 +157,7 @@ const StockList = (props) => {
             stocks &&
             stocks
               .sort(sorting)
+              // .slice(elementNumber, elementCount)
               .map((stock) => <Stock stock={stock} function={buyStock} key={stock.isin} buttonText="Купить" />)
           )}
         </div>
