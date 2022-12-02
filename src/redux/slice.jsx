@@ -5,7 +5,7 @@ const slice = createSlice({
     accountUser: {},
     currentUser: {},
     isAuth: false,
-    search: '',
+    searchQuery: '',
     currecncies: [],
     userCurrencies: [],
     selectedCurrency: {},
@@ -42,7 +42,7 @@ const slice = createSlice({
       state.userCurrencies = action.payload
     },
     setSearch(state, action) {
-      state.search = action.payload
+      state.searchQuery = action.payload
     },
     setUserBalance(state, action) {
       state.currentUser.balance = action.payload

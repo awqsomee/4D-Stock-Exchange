@@ -1,4 +1,3 @@
-import React, { useContext, useTransition } from 'react'
 //  import classes from './search_header.module.css'
 import '../../navbar/navbar.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,7 +13,7 @@ import Search from '../../../assets/Icons/search.svg'
 // }
 
 const SearchHeader = () => {
-  const search = useSelector((state) => state.toolkit.search)
+  const search = useSelector((state) => state.toolkit.searchQuery)
   const dispatch = useDispatch()
   return (
     <div className="navbar__search">
