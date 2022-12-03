@@ -24,8 +24,8 @@ const StockPortfolio = (props) => {
   const [buttBuy, setButtBuy] = useState('button stock__button button__normal')
 
   useEffect(() => {
-    if (!props.stock.quantity) setslashString('')
-    else setslashString(`/${props.stock.quantity}`)
+    if (!props.stock.amount) setslashString('')
+    else setslashString(`/${props.stock.amount}`)
     countChange()
   }, [])
 
@@ -35,7 +35,7 @@ const StockPortfolio = (props) => {
   }
 
   function more() {
-    if (counter < props.stock.quantity || !props.stock.quantity) setCounter(counter + 1)
+    if (counter < props.stock.amount || !props.stock.amount) setCounter(counter + 1)
   }
 
   const countChange = () => {
