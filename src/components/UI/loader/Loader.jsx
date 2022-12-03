@@ -6,12 +6,7 @@ import './loader.css'
 const Loader = () => {
   return (
     <div className="loader">
-      <Player
-        autoplay
-        loop
-        src={loader}
-        style={{ height: '50px', width: '50px' }}
-      ></Player>
+      <Player autoplay loop src={loader} style={{ height: '50px', width: '50px' }}></Player>
     </div>
   )
 }

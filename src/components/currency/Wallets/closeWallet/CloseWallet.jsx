@@ -5,6 +5,7 @@ import ModalBoxDeposit from '../../../UI/ModalBox/ModalBoxDeposit'
 import '../../../currency/сurrency.css'
 import { store } from '../../../../redux'
 import './closeWallet.css'
+import ButtonLoader from '../../../UI/loader/ButtonLoader'
 
 const CloseWallet = (props) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -57,7 +58,7 @@ const CloseWallet = (props) => {
             closeWallet(props.symbol)
           }}
         >
-          {isLoading ? 'Loading...' : 'Закрыть счет'}
+          {isLoading ? <ButtonLoader></ButtonLoader> : 'Закрыть счет'}
         </button>
       </div>
     </div>

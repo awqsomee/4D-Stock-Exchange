@@ -4,6 +4,7 @@ import { getAllCurrencies, openCurrencyAccount } from '../../../../actions/forex
 import { useTimeout } from '../../../../actions/timer'
 import { store } from '../../../../redux'
 import { setAlertStatus } from '../../../../redux/slice'
+import ButtonLoader from '../../../UI/loader/ButtonLoader'
 import './newWallet.css'
 
 const NewWallet = (props) => {
@@ -39,6 +40,7 @@ const NewWallet = (props) => {
       props.sVisible(false)
       props.setmodalBoxDepositTrue(true)
     } else {
+      props.sVisible(false)
       props.setmodalBoxDepositFalse(true)
     }
     setIsLoading(false)
@@ -89,7 +91,7 @@ const NewWallet = (props) => {
               CreateWallet(currency)
             }}
           >
-            Создать кошелек
+            {isLoading ? <ButtonLoader></ButtonLoader> : 'Создать кошелек'}
           </button>
         </div>
       </div>
