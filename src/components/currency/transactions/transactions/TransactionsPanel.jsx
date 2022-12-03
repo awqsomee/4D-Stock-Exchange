@@ -28,14 +28,14 @@ const TransactionsPanel = (props) => {
         style={{ cursor: 'pointer' }}
         onClick={() => props.setFilter('amount')}
       >
-        Количество денежных единиц
+        Количество
       </div>
       <div
         className="transactions__panel__price"
         style={{ cursor: 'pointer' }}
         onClick={() => props.setFilter('price')}
       >
-        Цена валюты
+        Цена
       </div>
 
       <div className="transactions__panel__cost" style={{ cursor: 'pointer' }} onClick={() => props.setFilter('cost')}>
