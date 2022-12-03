@@ -19,21 +19,40 @@
 
   &__privacy {
     // margin-left: 6.25%;
-    // left: 34%;
-    width: 53%;
+    left: 34%;
     text-align: center;
   }
 
   &__socnet {
     width: 33%;
     text-align: right;
+    justify-content: space-between;
   }
 }
 
 .container_footer {
-  width: 100%;
-  padding: 1rem 20rem;
+  margin: 0px auto;
+  max-width: 60.6%;
+  padding: 1rem 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   color: @--main-text-color;
+}
+
+.facebook:hover path {
+  fill: @--accent-color;
+}
+
+.twitter {
+  margin-left: 20px;
+  &:hover path {
+    fill: @--accent-color;
+  }
+}
+.youtube {
+  margin-left: 20px;
+  &:hover path {
+    fill: @--accent-color;
+  }
 }

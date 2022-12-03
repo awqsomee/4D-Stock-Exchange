@@ -46,17 +46,35 @@
   text-align: left;
 }
 .footer__privacy {
-  width: 53%;
+  left: 34%;
   text-align: center;
 }
 .footer__socnet {
   width: 33%;
   text-align: right;
+  justify-content: space-between;
 }
 .container_footer {
-  width: 100%;
-  padding: 1rem 20rem;
+  margin: 0px auto;
+  max-width: 60.6%;
+  padding: 1rem 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   color: #ffffff;
+}
+.facebook:hover path {
+  fill: #ee8100;
+}
+.twitter {
+  margin-left: 20px;
+}
+.twitter:hover path {
+  fill: #ee8100;
+}
+.youtube {
+  margin-left: 20px;
+}
+.youtube:hover path {
+  fill: #ee8100;
 }
