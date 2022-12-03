@@ -7,7 +7,7 @@ import ButtonSwith from '../../../UI/buttons/ButtonSwitch'
 import '../../../../components/balance/balance.css'
 import axios from 'axios'
 import ModalBoxDeposit from '../ModalBoxDeposit'
-const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
+const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
 
 const InputBox = ({ setVisible, ...props }) => {
   const currency = '$'

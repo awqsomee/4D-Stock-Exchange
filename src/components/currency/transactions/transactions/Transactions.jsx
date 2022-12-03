@@ -37,8 +37,8 @@ const Transactions = (props) => {
     const data = getTransactions()
     return data
   }
-  console.log('f', filter)
-  console.log('s', sort)
+  // console.log('f', filter)
+  // console.log('s', sort)
 
   const replenishHandler = async (dispatch, value, setValue) => {
     setIsReplenishing(true)

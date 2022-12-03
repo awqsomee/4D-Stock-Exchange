@@ -9,7 +9,7 @@ import Graph_panel from '../grahp-panel/Graph_panel'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../../redux/slice'
-const serverAddress = 'https://gentle-sea-62964.herokuapp.com'
+const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
 // const serverAddress = 'http://localhost:5000'
 
 const Stock = (props) => {

@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     setWidthPage()
 
-    console.log(window.innerWidth, document.documentElement.clientWidth, widthClient)
+    // console.log(window.innerWidth, document.documentElement.clientWidth, widthClient)
   }, [document.documentElement.clientWidth])
 
   return (

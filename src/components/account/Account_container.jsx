@@ -33,7 +33,7 @@ const Account_containerItem = (props) => {
   // const ref = useRef()
 
   const user = useSelector((state) => state.toolkit.currentUser)
-  const avatar = `https://gentle-sea-62964.herokuapp.com/${user.avatar}`
+  const avatar = `https://stonksexchange.kaivr.amvera.io/${user.avatar}`
 
   const sumName = () => {
     setAccount({
@@ -77,7 +77,7 @@ const Account_containerItem = (props) => {
 
   const nameInput = useRef(null)
   useEffect(() => {
-    console.log(nameInput?.current)
+    // console.log(nameInput?.current)
     if (nameInput?.current) {
       nameInput.current.addEventListener('keydown', function (event) {
         if (event.key == 'Enter') {

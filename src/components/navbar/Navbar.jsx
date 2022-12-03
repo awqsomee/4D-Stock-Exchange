@@ -20,7 +20,7 @@ const Navbar = () => {
   const [modalBoxReg, setModalBoxReg] = useState(false)
   const [modalBoxLog, setModalBoxLog] = useState(false)
   const [modalBoxAcc, setModalBoxAcc] = useState(false)
-  const avatar = `https://gentle-sea-62964.herokuapp.com/${user.avatar}`
+  const avatar = `https://stonksexchange.kaivr.amvera.io/${user.avatar}`
   // const avatar = `http://localhost:5000/${user.avatar}`
   const netRegistration = () => {
     setModalBoxReg(!modalBoxReg)
