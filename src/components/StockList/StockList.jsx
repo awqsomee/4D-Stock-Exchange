@@ -9,6 +9,7 @@ import Loader from '../UI/loader/Loader.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from '../../redux/index.js'
 import { setSearch } from '../../redux/slice.jsx'
+import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit.jsx'
 
 const StockList = (props) => {
   const dispatch = useDispatch()
@@ -19,6 +20,9 @@ const StockList = (props) => {
   const search = useSelector((state) => state.toolkit.searchQuery)
   const [elementCount, setElementCount] = useState(5)
   const [elementNumber, setElementNumber] = useState(0)
+  const [modalBoxDepositTrue, setmodalBoxDepositTrue] = useState(false)
+  const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
+  const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   // const [buttonText, setButtonText] = useState(0)
 
   // document.addEventListener('keyup', function (event) {
@@ -99,6 +103,14 @@ const StockList = (props) => {
 
   return (
     <div className="stockList">
+      <ModalBoxDeposit className="err" visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
+        <div>{alertMessage}</div>
+      </ModalBoxDeposit>
+
+      <ModalBoxDeposit className="ok" visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
+        <div>{alertMessage}</div>
+      </ModalBoxDeposit>
+
       <div className="container2">
         <div className="title">{props.title}</div>
         <div className="list">
@@ -111,7 +123,16 @@ const StockList = (props) => {
             <>
               {sortedStocks.length > 0 ? (
                 sortedStocks.map((stock) => (
-                  <Stock stock={stock} function={buyStock} key={stock.isin} buttonText="Купить" />
+                  <Stock
+                    stock={stock}
+                    function={buyStock}
+                    key={stock.isin}
+                    buttonText="Купить"
+                    modalBoxDepositFalse={modalBoxDepositFalse}
+                    modalBoxDepositTrue={modalBoxDepositTrue}
+                    setmodalBoxDepositFalse={setmodalBoxDepositFalse}
+                    setmodalBoxDepositTrue={setmodalBoxDepositTrue}
+                  />
                 ))
               ) : (
                 <div

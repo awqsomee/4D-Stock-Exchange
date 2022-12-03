@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Less from '../../assets/Icons/DashCircle.svg'
-import More from '../../assets/Icons/PlusCircle.svg'
-import ArrowDown from '../../assets/Icons/angle_down.svg'
-import ArrowUp from '../../assets/Icons/angle_up.svg'
 import './stock.css'
 import '../UI/buttons/buttons.css'
 import Graph_panel from '../grahp-panel/Graph_panel'
-import axios from 'axios'
+import { store } from '../../redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../../redux/slice'
 import { exchangeStocks } from '../../actions/stocks'
+import ButtonLoader from '../UI/loader/ButtonLoader'
 // const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
 const serverAddress = 'http://localhost:5000'
 
@@ -22,6 +19,7 @@ const Stock = (props) => {
   const [GP, setGP] = useState(false)
   const [mouse, setMouse] = useState(false)
   const [buttBuy, setButtBuy] = useState('button stock__button button__normal')
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     if (!props.stock.quantity) setslashString('')
@@ -43,6 +41,19 @@ const Stock = (props) => {
       let count = (props.stock?.prices[0].high - props.stock?.prices[1].high) / 100
       setChanges(count.toFixed(2))
     }
+  }
+
+  const buyStocks = async () => {
+    setIsLoading(true)
+    await dispatch(exchangeStocks(props.stock.symbol, counter))
+    if (store.getState().toolkit.alertStatus == 200) {
+      props.setmodalBoxDepositTrue(true)
+    } else {
+      props.setmodalBoxDepositFalse(true)
+    }
+    setCounter(0)
+    setButtBuy('button stock__button button__normal')
+    setIsLoading(false)
   }
   return (
     <div>
@@ -99,16 +110,20 @@ const Stock = (props) => {
             if (buttBuy === 'button stock__button button__normal') setCounter(1)
             setButtBuy('button stock__button button__process')
             if (isAuth && counter > 0) {
-              if (props.buttonText == 'Купить') dispatch(exchangeStocks(props.stock.symbol, counter))
+              if (props.buttonText == 'Купить') buyStocks()
               if (props.buttonText == 'Продать') dispatch(exchangeStocks(props.stock.symbol, -counter))
               setCounter(0)
               setButtBuy('button stock__button button__normal')
             }
           }}
         >
-          {counter == 0
-            ? props.buttonText
-            : `${(props.stock?.prices[0].close * counter).toFixed(2)} ${props.stock.currency}`}
+          {isLoading ? (
+            <ButtonLoader></ButtonLoader>
+          ) : counter == 0 ? (
+            props.buttonText
+          ) : (
+            `${(props.stock?.prices[0].close * counter).toFixed(2)} ${props.stock.currency}`
+          )}
         </button>
         <button
           onClick={() => {

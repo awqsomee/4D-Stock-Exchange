@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { store } from '../redux'
-import { setStocks, setUserBalance, setUserStocks } from '../redux/slice'
+import { setAlertMessage, setAlertStatus, setStocks, setUserBalance, setUserStocks } from '../redux/slice'
 
 function getUserStocks() {
   return async (dispatch) => {
@@ -120,9 +120,13 @@ function exchangeStocks(symbol, amount) {
                   .filter((stock) => stock.amount != 0)
               )
             )
+          dispatch(setAlertStatus(response.status))
+          dispatch(setAlertMessage(response.data.message))
         })
         .catch((error) => {
-          console.log(error.response.data.message)
+          dispatch(setAlertMessage(error.response.data.message))
+          dispatch(setAlertStatus(error.response.status))
+          throw error.response.data.message
         })
     } catch (e) {
       console.log(e)

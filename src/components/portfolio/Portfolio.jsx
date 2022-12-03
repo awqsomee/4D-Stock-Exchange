@@ -10,12 +10,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { store } from '../../redux/index.js'
 import PanelPortfolio from '../panel/PanelPortfolio.jsx'
 import StockPortfolio from '../stocks/StockPortfolio.jsx'
+import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit.jsx'
 
 const Portfolio = (props) => {
   const [isStocksLoading, setIsStocksLoading] = useState(false)
   const [filter, setFilter] = useState('')
   const [sort, setSort] = useState(false)
   const dispatch = useDispatch()
+  const [modalBoxDepositTrue, setmodalBoxDepositTrue] = useState(false)
+  const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
+  const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   let stocks = useSelector((state) => state.toolkit.userStocks)
   useEffect(() => {
     setIsStocksLoading(true)
@@ -70,6 +74,14 @@ const Portfolio = (props) => {
 
   return (
     <div className="stockList">
+      <ModalBoxDeposit className="err" visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
+        <div>{alertMessage}</div>
+      </ModalBoxDeposit>
+
+      <ModalBoxDeposit className="ok" visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
+        <div>{alertMessage}</div>
+      </ModalBoxDeposit>
+
       <div className="container2">
         <div className="title">{props.title}</div>
         <div className="list">
@@ -87,7 +99,16 @@ const Portfolio = (props) => {
             </div>
           ) : sortedStocks.length > 0 ? (
             sortedStocks.map((stock) => (
-              <StockPortfolio stock={stock} key={stock.symbol} changes={stock.changes} buttonText="Продать" />
+              <StockPortfolio
+                stock={stock}
+                key={stock.symbol}
+                changes={stock.changes}
+                buttonText="Продать"
+                modalBoxDepositFalse={modalBoxDepositFalse}
+                modalBoxDepositTrue={modalBoxDepositTrue}
+                setmodalBoxDepositFalse={setmodalBoxDepositFalse}
+                setmodalBoxDepositTrue={setmodalBoxDepositTrue}
+              />
             ))
           ) : (
             <div
