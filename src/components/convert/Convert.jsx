@@ -9,8 +9,8 @@ import ButtonSwith from '../UI/buttons/ButtonSwitch'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit'
 import { store } from '../../redux'
 import { setUser } from '../../redux/slice'
-const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
-// const serverAddress = 'http://localhost:5000'
+// const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
+const serverAddress = 'http://localhost:5000'
 
 const Balance = (props) => {
   const [modalBoxDepositTrue, setmodalBoxDepositTrue] = useState(false)

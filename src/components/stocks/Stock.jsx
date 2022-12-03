@@ -10,8 +10,8 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../../redux/slice'
 import { exchangeStocks } from '../../actions/stocks'
-const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
-// const serverAddress = 'http://localhost:5000'
+// const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
+const serverAddress = 'http://localhost:5000'
 
 const Stock = (props) => {
   const isAuth = useSelector((state) => state.toolkit.isAuth)

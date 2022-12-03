@@ -1,5 +1,6 @@
 import axios from 'axios'
-const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
+// const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
+const serverAddress = 'http://localhost:5000'
 
 export const getTransactions = async () => {
   try {

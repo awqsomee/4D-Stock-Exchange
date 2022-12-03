@@ -33,7 +33,8 @@ const Account_containerItem = (props) => {
   // const ref = useRef()
 
   const user = useSelector((state) => state.toolkit.currentUser)
-  const avatar = `https://stonksexchange.kaivr.amvera.io/${user.avatar}`
+  // const avatar = `https://stonksexchange.kaivr.amvera.io/${user.avatar}`
+  const avatar = `http://localhost:5000/${user.avatar}`
 
   const sumName = () => {
     setAccount({
