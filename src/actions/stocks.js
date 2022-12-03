@@ -41,6 +41,7 @@ function getStocksSearch(searchQuery) {
           })
           .catch((error) => {
             console.log(error.response.data.message)
+            if (error.response.data.message === 'Акции не найдены') dispatch(setStocks([]))
           })
       } else {
         const URI1 = `https://stonksexchange.kaivr.amvera.io/api/stocks/search?q=MGNT`

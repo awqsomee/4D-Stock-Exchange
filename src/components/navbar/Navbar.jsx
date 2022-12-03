@@ -11,7 +11,7 @@ import '../UI/buttons/buttons.css'
 import '../currency/balance/balance.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from '../../redux'
-import { logout, setUser } from '../../redux/slice'
+import { logout, setSearch, setUser } from '../../redux/slice'
 
 const Navbar = () => {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
@@ -64,7 +64,7 @@ const Navbar = () => {
 
       <div className="container">
         <div className="navbar__logo">
-          <NavLink to="/stocks">
+          <NavLink onClick={() => dispatch(setSearch(''))} to="/stocks">
             <img src={Logo} alt="navbar__logo__img" height={50} />
           </NavLink>
         </div>

@@ -70,6 +70,7 @@
   max-width: 25px;
   display: inline-block;
   z-index: 1;
+  cursor: pointer;
 }
 .navbar__buttons {
   display: flex;

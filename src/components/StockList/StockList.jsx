@@ -8,6 +8,7 @@ import { getStocksSearch } from '../../actions/stocks.js'
 import Loader from '../UI/loader/Loader.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from '../../redux/index.js'
+import { setSearch } from '../../redux/slice.jsx'
 
 const StockList = (props) => {
   const dispatch = useDispatch()
@@ -20,23 +21,31 @@ const StockList = (props) => {
   const [elementNumber, setElementNumber] = useState(0)
   // const [buttonText, setButtonText] = useState(0)
 
-  document.addEventListener('keyup', function (event) {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      // fetchData(search)
-      console.log('Enter')
-    }
-  })
+  // document.addEventListener('keyup', function (event) {
+  //   if (event.key === 'Enter') {
+  //     event.preventDefault()
+  //     // fetchData(search)
+  //     console.log('Enter')
+  //   }
+  // })
 
   // const switchButtonText=(()=>{
   //   setButtonText(props.count * props)
   // })
 
   useEffect(() => {
-    setIsStocksLoading(true)
-    dispatch(getStocksSearch('')).finally(() => {
-      setIsStocksLoading(false)
-    })
+    if (search.length < 2) {
+      setIsStocksLoading(true)
+      dispatch(setSearch(''))
+      dispatch(getStocksSearch()).finally(() => {
+        setIsStocksLoading(false)
+      })
+    } else {
+      setIsStocksLoading(true)
+      dispatch(getStocksSearch(search)).finally(() => {
+        setIsStocksLoading(false)
+      })
+    }
   }, [])
 
   const sorting = (a, b) => {
@@ -96,15 +105,20 @@ const StockList = (props) => {
         <div className="list">
           <Sorting setFilter={setFilter} setSort={setSort} />
           <Panel className="panel" />
-          {console.log(sortedStocks)}
 
           {isStocksLoading ? (
             <Loader />
           ) : (
             // .slice(elementNumber, elementCount)
-            sortedStocks.map((stock) => (
-              <Stock stock={stock} function={buyStock} key={stock.isin} buttonText="Купить" />
-            ))
+            <>
+              {sortedStocks.length > 0 ? (
+                sortedStocks.map((stock) => (
+                  <Stock stock={stock} function={buyStock} key={stock.isin} buttonText="Купить" />
+                ))
+              ) : (
+                <div>Акции не найдены</div>
+              )}
+            </>
           )}
         </div>
       </div>

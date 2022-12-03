@@ -50,14 +50,15 @@ const Stock = (props) => {
         <div className="stock__index">{props.stock.symbol}</div>
         <div className="stock__name">{props.stock.name}</div>
         <div className="stock__cost">
-          {console.log(props.stock)}
           {props.stock?.prices.length > 0 && props.stock.prices[0].close != null ? (
             <div>{props.stock?.prices[0].close.toFixed(2) + ' ' + props.stock?.currency}</div>
           ) : (
             <div>-</div>
           )}
         </div>
+
         {changes < 0 ? <div className="stock__change stock__change__red">{changes}%</div> : <></>}
+        {changes == 0 ? <div className="stock__change">{changes}%</div> : <></>}
         {changes > 0 ? <div className="stock__change stock__change__green">{changes}%</div> : <></>}
 
         {buttBuy === 'button stock__button button__process' ? (
