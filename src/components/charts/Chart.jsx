@@ -7,26 +7,43 @@ const Chart = (props) => {
   const [color, setColor] = useState('')
   const today = new Date()
   const dayOfWeek = today.getDay()
+  const Id = `gradient${props.stock.isin}`
+  const [prices, setPrices] = useState(props.stock.prices)
 
   useEffect(() => {
-    if (props.stock.prices[0].close < props.stock.prices[99].close) setColor('#A0E28D')
-    else setColor('#FF9180')
+    reverseData(prices)
+
+    //изменение цены берется из high, а не из close
+    //думаю, надо приравнять
+    if (props.stock.prices[0].high > props.stock.prices[1].high) {
+      setColor('#BBFFA7')
+    } else {
+      setColor('#fd2929')
+    }
   }, [])
+
+  const reverseData = () => {
+    let data = new Array()
+    for (let i = prices.length - 1; i >= 0; i--) {
+      data.push(prices[i])
+    }
+    setPrices(data)
+  }
 
   return (
     <div className="stockChart">
       <div className="chart">
         <ResponsiveContainer width={800} height={400} style={{ overflow: 'visible' }}>
-          <AreaChart data={props.stock.prices}>
+          <AreaChart data={prices}>
             <defs>
-              <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id={Id} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor={color} stopOpacity={1}></stop>
                 <stop offset="35%" stopColor={color} stopOpacity={0.8}></stop>
                 <stop offset="75%" stopColor={color} stopOpacity={0.1}></stop>
               </linearGradient>
             </defs>
 
-            <Area dataKey="close" stroke={color} fill="url(#color)" />
+            <Area type="monotone" dataKey="close" stroke={color} fill={`url(#${Id})`} />
 
             <XAxis
               dataKey="date"
