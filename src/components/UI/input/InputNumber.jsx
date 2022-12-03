@@ -5,7 +5,6 @@ const InputNumber = React.forwardRef((props, ref) => {
   const changeHandler = (value, setValue) => {
     setValue(value.replaceAll(/\D/g, ''))
   }
-  console.log(props.onBlur)
 
   return (
     <input

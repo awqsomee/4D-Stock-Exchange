@@ -71,22 +71,28 @@ const Stock = (props) => {
   }
 
   const countChange = () => {
-    let count = (props.stock?.prices[0].high - props.stock?.prices[1].high) / 100
-    setChanges(count.toFixed(2))
+    if (props.stock?.prices.length > 0 && props.stock?.prices[0].high != null) {
+      let count = (props.stock?.prices[0].high - props.stock?.prices[1].high) / 100
+      setChanges(count.toFixed(2))
+    }
   }
   return (
     <div>
       <div className="stock">
-        <div className="stock__index">{props.stock.secid}</div>
-        <div className="stock__name">{props.stock.shortname}</div>
+        <div className="stock__index">{props.stock.symbol}</div>
+        <div className="stock__name">{props.stock.name}</div>
         <div className="stock__cost">
-          {props?.stock ? <div>{props.stock?.prices[1].close.toFixed(2)}</div> : <div>-</div>}
+          {props.stock.prices.length > 0 && props.stock.prices[0].close != null ? (
+            <div>
+              {console.log(props.stock?.prices[0])}
+              {props.stock?.prices[0].close.toFixed(2) + ' ' + props.stock?.currency}
+            </div>
+          ) : (
+            <div>-</div>
+          )}
         </div>
-        {changes < 0 ? (
-          <div className="stock__change stock__change__red">{changes}%</div>
-        ) : (
-          <div className="stock__change stock__change__green">{changes}%</div>
-        )}
+        {changes < 0 ? <div className="stock__change stock__change__red">{changes}%</div> : <></>}
+        {changes > 0 ? <div className="stock__change stock__change__green">{changes}%</div> : <></>}
 
         {buttBuy === 'button stock__button button__process' ? (
           <div className="stock__counter">

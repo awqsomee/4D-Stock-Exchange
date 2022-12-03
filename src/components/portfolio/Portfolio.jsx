@@ -17,16 +17,9 @@ const Portfolio = (props) => {
 
   const fetchData = async () => {
     setIsStocksLoading(true)
-    let ignore = false
-    async function getStocks() {
-      const result = await getUserStocks()
-      if (!ignore) setStocks(result)
-    }
-    await getStocks()
+    const result = await getUserStocks()
+    setStocks(result)
     setIsStocksLoading(false)
-    return () => {
-      ignore = true
-    }
   }
 
   return (
@@ -36,6 +29,7 @@ const Portfolio = (props) => {
         <div className="list">
           <Sorting />
           <Panel className="panel" />
+          {console.log(stocks)}
           {isStocksLoading ? (
             <div
               style={{
@@ -48,12 +42,7 @@ const Portfolio = (props) => {
             </div>
           ) : stocks.length > 0 ? (
             stocks.map((stock) => (
-              <Stock
-                stock={stock}
-                key={stock.symbol}
-                changes={stock.changes}
-                buttonText="Продать"
-              />
+              <Stock stock={stock} key={stock.symbol} changes={stock.changes} buttonText="Продать" />
             ))
           ) : (
             <div

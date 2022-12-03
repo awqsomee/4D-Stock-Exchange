@@ -18,13 +18,11 @@ const StockList = (props) => {
   const [elementNumber, setElementNumber] = useState(0)
   // const [buttonText, setButtonText] = useState(0)
 
-  document.addEventListener('keydown', function (event) {
-    if (event.key == 'Enter') {
-      console.log(1)
-      fetchData(search)
-    }
-    console.log(2)
-  })
+  // document.addEventListener('keydown', function (event) {
+  //   if (event.key == 'Enter') {
+  //     fetchData(search)
+  //   }
+  // })
 
   // const switchButtonText=(()=>{
   //   setButtonText(props.count * props)
@@ -43,7 +41,13 @@ const StockList = (props) => {
     async function getStocks() {
       let result
       if (searchQuery) result = await getStocksSearch(searchQuery)
-      else result = await getStocksSearch('MGNT')
+      else {
+        const search1 = await getStocksSearch('MGNT')
+        const search2 = await getStocksSearch('GAZP')
+        const search3 = await getStocksSearch('GOOGLE')
+        console.log(search1)
+        result = [...search1, ...search2, ...search3]
+      }
 
       console.log('res', result)
       // const fish = {
@@ -144,7 +148,7 @@ const StockList = (props) => {
 
   return (
     <div className="stockList">
-      {console.log(stocks)}
+      {/* {console.log(stocks)} */}
       <div className="container2">
         <div className="title">{props.title}</div>
         <div className="list">
