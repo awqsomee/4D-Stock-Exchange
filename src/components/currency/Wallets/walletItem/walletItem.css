@@ -50,6 +50,7 @@
   background-color: #e9eef2;
   color: #000;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7), inset -8px -8px 5px #ffffff, inset 8px 8px 8px rgba(171, 171, 171, 0.7);
+  justify-content: end;
 }
 .walletItem__normal {
   background-color: #eaeaea0d;
@@ -73,6 +74,7 @@
   color: #000;
 }
 .walletItem__title {
+  min-width: 50px;
   font-size: 20px;
   color: #ee8100;
 }
