@@ -16,7 +16,6 @@ const Chart = (props) => {
   return (
     <div className="stockChart">
       <div className="chart">
-        {console.log(props.stock.prices)}
         <ResponsiveContainer width={800} height={400} style={{ overflow: 'visible' }}>
           <AreaChart data={props.stock.prices}>
             <defs>
