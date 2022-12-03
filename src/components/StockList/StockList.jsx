@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Sorting from '../sorting/Sorting.jsx'
 import Panel from '../panel/Panel.jsx'
 import './stocklist.css'
@@ -6,10 +6,12 @@ import Stock from '../stocks/Stock.jsx'
 import { buyStock } from '../../actions/user.js'
 import { getStocksSearch } from '../../actions/stocks.js'
 import Loader from '../UI/loader/Loader.jsx'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { store } from '../../redux/index.js'
 
 const StockList = (props) => {
-  const [stocks, setStocks] = useState([])
+  const dispatch = useDispatch()
+  const stocks = useSelector((state) => state.toolkit.stocks)
   const [isStocksLoading, setIsStocksLoading] = useState(false)
   const [filter, setFilter] = useState('')
   const [sort, setSort] = useState(false)
@@ -18,89 +20,24 @@ const StockList = (props) => {
   const [elementNumber, setElementNumber] = useState(0)
   // const [buttonText, setButtonText] = useState(0)
 
-  // document.addEventListener('keydown', function (event) {
-  //   if (event.key == 'Enter') {
-  //     fetchData(search)
-  //   }
-  // })
+  document.addEventListener('keyup', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      // fetchData(search)
+      console.log('Enter')
+    }
+  })
 
   // const switchButtonText=(()=>{
   //   setButtonText(props.count * props)
   // })
 
   useEffect(() => {
-    fetchData()
-    // setInterval(() => {
-    //   fetchData()
-    // }, 120000)
-  }, [])
-
-  const fetchData = async (searchQuery) => {
     setIsStocksLoading(true)
-    let ignore = false
-    async function getStocks() {
-      let result
-      if (searchQuery) result = await getStocksSearch(searchQuery)
-      else {
-        const search1 = await getStocksSearch('MGNT')
-        const search2 = await getStocksSearch('GAZP')
-        const search3 = await getStocksSearch('Yandex')
-        result = [...search1, ...search2, ...search3]
-      }
-      // const fish = {
-      //   currency: 'RUB',
-      //   name: 'Специализированный Фонд Приватизации „Чековый инвестиционный фонд аграрно­-промышленного комплекса Республики Татарстан „Золотой Колос“',
-      //   symbol: 'WWWWW',
-      //   changes: '531.43',
-      //   data: [],
-      // }
-      // fish.data[99] = { value: 136800.59 }
-      // const salmon = [
-      //   {
-      //     changes: '-0.1',
-      //     currency: 'USD',
-      //     matchScore: '1.0000',
-      //     name: 'Science Applications International Corp',
-      //     number: 1,
-      //     symbol: 'SAIC1',
-      //     data: result[1].data,
-      //   },
-      //   {
-      //     changes: '-0.2',
-      //     currency: 'USD',
-      //     matchScore: '1.0000',
-      //     name: 'Science Applications International Corp',
-      //     number: 1,
-      //     symbol: 'SAIC2',
-      //     data: result[1].data,
-      //   },
-      //   {
-      //     changes: '4',
-      //     currency: 'USD',
-      //     matchScore: '1.0000',
-      //     name: 'Science Applications International Corp',
-      //     number: 1,
-      //     symbol: 'SAIC3',
-      //     data: result[1].data,
-      //   },
-      //   {
-      //     changes: '14',
-      //     currency: 'USD',
-      //     matchScore: '1.0000',
-      //     name: 'Science Applications International Corp',
-      //     number: 1,
-      //     symbol: 'SAIC4',
-      //     data: result[1].data,
-      //   },
-      // ]
-      if (!ignore) setStocks([...result])
-    }
-    await getStocks()
-    setIsStocksLoading(false)
-    return () => {
-      ignore = true
-    }
-  }
+    dispatch(getStocksSearch('')).finally(() => {
+      setIsStocksLoading(false)
+    })
+  }, [])
 
   const sorting = (a, b) => {
     const value = filter
@@ -142,6 +79,14 @@ const StockList = (props) => {
       }
     }
   }
+  const sortedStocks = useMemo(() => {
+    return [...stocks].sort(sorting)
+  }, [filter, sort, stocks])
+
+  // Специализированный Фонд Приватизации „Чековый инвестиционный фонд аграрно­-промышленного комплекса Республики Татарстан „Золотой Колос“
+  // WWWWW
+  // 531.43%
+  // 136800.59
 
   return (
     <div className="stockList">
@@ -151,14 +96,15 @@ const StockList = (props) => {
         <div className="list">
           <Sorting setFilter={setFilter} setSort={setSort} />
           <Panel className="panel" />
+          {console.log(sortedStocks)}
+
           {isStocksLoading ? (
             <Loader />
           ) : (
-            stocks &&
-            stocks
-              .sort(sorting)
-              // .slice(elementNumber, elementCount)
-              .map((stock) => <Stock stock={stock} function={buyStock} key={stock.isin} buttonText="Купить" />)
+            // .slice(elementNumber, elementCount)
+            sortedStocks.map((stock) => (
+              <Stock stock={stock} function={buyStock} key={stock.isin} buttonText="Купить" />
+            ))
           )}
         </div>
       </div>

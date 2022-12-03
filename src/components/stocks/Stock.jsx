@@ -9,6 +9,7 @@ import Graph_panel from '../grahp-panel/Graph_panel'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../../redux/slice'
+import { exchangeStocks } from '../../actions/stocks'
 const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
 // const serverAddress = 'http://localhost:5000'
 
@@ -37,39 +38,6 @@ const Stock = (props) => {
     if (counter < props.stock.quantity || !props.stock.quantity) setCounter(counter + 1)
   }
 
-  const buyStock = async (symbol, quantity) => {
-    try {
-      const response = await axios.post(
-        `${serverAddress}/api/auth/stock`,
-        { symbol, quantity },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
-          },
-        }
-      )
-      alert(response.data.message)
-    } catch (e) {
-      alert(e.response.data.message)
-    }
-  }
-
-  const sellStock = (id, quantity) => {
-    return async (dispatch) => {
-      try {
-        const response = await axios.delete(`${serverAddress}/api/auth/stock/?id=${id}&quantity=${quantity}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
-          },
-        })
-        dispatch(setUser(response.data.user))
-        alert(response.data.message)
-      } catch (e) {
-        alert(e.response.data.message)
-      }
-    }
-  }
-
   const countChange = () => {
     if (props.stock?.prices.length > 0 && props.stock?.prices[0].high != null) {
       let count = (props.stock?.prices[0].high - props.stock?.prices[1].high) / 100
@@ -82,7 +50,8 @@ const Stock = (props) => {
         <div className="stock__index">{props.stock.symbol}</div>
         <div className="stock__name">{props.stock.name}</div>
         <div className="stock__cost">
-          {props.stock.prices.length > 0 && props.stock.prices[0].close != null ? (
+          {console.log(props.stock)}
+          {props.stock?.prices.length > 0 && props.stock.prices[0].close != null ? (
             <div>{props.stock?.prices[0].close.toFixed(2) + ' ' + props.stock?.currency}</div>
           ) : (
             <div>-</div>
@@ -127,18 +96,17 @@ const Stock = (props) => {
           onClick={() => {
             if (buttBuy === 'button stock__button button__normal') setCounter(1)
             setButtBuy('button stock__button button__process')
-            if (isAuth)
-              switch (props.buttonText) {
-                case 'Купить':
-                  // dispatch(buyStock(props.stock.symbol, counter))
-                  break
-                case 'Продать':
-                  // dispatch(sellStock(props.stock['_id'], counter))
-                  break
-              }
+            if (isAuth && counter > 0) {
+              if (props.buttonText == 'Купить') dispatch(exchangeStocks(props.stock.symbol, counter))
+              if (props.buttonText == 'Продать') dispatch(exchangeStocks(props.stock.symbol, -counter))
+              setCounter(0)
+              setButtBuy('button stock__button button__normal')
+            }
           }}
         >
-          {counter == 0 ? 'Купить' : `${(props.stock?.prices[0].close * counter).toFixed(2)} ${props.stock.currency}`}
+          {counter == 0
+            ? props.buttonText
+            : `${(props.stock?.prices[0].close * counter).toFixed(2)} ${props.stock.currency}`}
         </button>
         <button
           onClick={() => {

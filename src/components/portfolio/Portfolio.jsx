@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Sorting from '../sorting/Sorting.jsx'
 import Panel from '../panel/Panel.jsx'
 import '../StockList/stocklist.css'
@@ -6,30 +6,73 @@ import Stock from '../stocks/Stock.jsx'
 import { getUserStocks } from '../../actions/stocks.js'
 // import './portfolio.css'
 import Loader from '../UI/loader/Loader.jsx'
+import { useDispatch, useSelector } from 'react-redux'
+import { store } from '../../redux/index.js'
 
 const Portfolio = (props) => {
-  const [stocks, setStocks] = useState([])
   const [isStocksLoading, setIsStocksLoading] = useState(false)
-
+  const [filter, setFilter] = useState('')
+  const [sort, setSort] = useState(false)
+  const dispatch = useDispatch()
+  let stocks = useSelector((state) => state.toolkit.userStocks)
   useEffect(() => {
-    fetchData()
+    setIsStocksLoading(true)
+    dispatch(getUserStocks()).finally(() => {
+      setIsStocksLoading(false)
+    })
   }, [])
 
-  const fetchData = async () => {
-    setIsStocksLoading(true)
-    const result = await getUserStocks()
-    setStocks(result)
-    setIsStocksLoading(false)
+  const sorting = (a, b) => {
+    const value = filter
+    if ((value != '') & (value === 'change')) {
+      if (sort) {
+        if (Number((a.prices[0].high - a.prices[1].high) / 100) > Number((b.prices[0].high - b.prices[1].high) / 100)) {
+          return 1
+        }
+        if (Number((a.prices[0].high - a.prices[1].high) / 100) < Number((b.prices[0].high - b.prices[1].high) / 100)) {
+          return -1
+        }
+        return 0
+      } else {
+        if (Number((a.prices[0].high - a.prices[1].high) / 100) > Number((b.prices[0].high - b.prices[1].high) / 100)) {
+          return -1
+        }
+        if (Number((a.prices[0].high - a.prices[1].high) / 100) < Number((b.prices[0].high - b.prices[1].high) / 100)) {
+          return 1
+        }
+        return 0
+      }
+    } else if ((value != '') & (value === 'name')) {
+      if (sort) {
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return 1
+        }
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return -1
+        }
+        return 0
+      } else {
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return -1
+        }
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return 1
+        }
+        return 0
+      }
+    }
   }
+  const sortedStocks = useMemo(() => {
+    return [...stocks].sort(sorting)
+  }, [filter, sort, stocks])
 
   return (
     <div className="stockList">
       <div className="title">{props.title}</div>
       <div className="container2">
         <div className="list">
-          <Sorting />
+          <Sorting setFilter={setFilter} setSort={setSort} />
           <Panel className="panel" />
-          {console.log(stocks)}
           {isStocksLoading ? (
             <div
               style={{
@@ -40,8 +83,8 @@ const Portfolio = (props) => {
             >
               <Loader></Loader>
             </div>
-          ) : stocks.length > 0 ? (
-            stocks.map((stock) => (
+          ) : sortedStocks.length > 0 ? (
+            sortedStocks.map((stock) => (
               <Stock stock={stock} key={stock.symbol} changes={stock.changes} buttonText="Продать" />
             ))
           ) : (
