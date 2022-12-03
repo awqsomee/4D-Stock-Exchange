@@ -138,7 +138,7 @@ const Stock = (props) => {
               }
           }}
         >
-          {counter == 0 ? 'Купить' : `${(props.stock.data[99].value * counter).toFixed(2)} ${props.stock.currency}`}
+          {counter == 0 ? 'Купить' : `${(props.stock?.prices[0].close * counter).toFixed(2)} ${props.stock.currency}`}
         </button>
         <button
           onClick={() => {

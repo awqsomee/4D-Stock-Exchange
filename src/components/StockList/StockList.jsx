@@ -44,12 +44,9 @@ const StockList = (props) => {
       else {
         const search1 = await getStocksSearch('MGNT')
         const search2 = await getStocksSearch('GAZP')
-        const search3 = await getStocksSearch('GOOGLE')
-        console.log(search1)
+        const search3 = await getStocksSearch('Yandex')
         result = [...search1, ...search2, ...search3]
       }
-
-      console.log('res', result)
       // const fish = {
       //   currency: 'RUB',
       //   name: 'Специализированный Фонд Приватизации „Чековый инвестиционный фонд аграрно­-промышленного комплекса Республики Татарстан „Золотой Колос“',

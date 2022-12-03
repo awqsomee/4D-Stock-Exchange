@@ -1,12 +1,4 @@
-import {
-  ResponsiveContainer,
-  AreaChart,
-  XAxis,
-  YAxis,
-  Area,
-  Tooltip,
-  CartesianGrid,
-} from 'recharts'
+import { ResponsiveContainer, AreaChart, XAxis, YAxis, Area, Tooltip, CartesianGrid } from 'recharts'
 import { useEffect, useState } from 'react'
 import './chart.css'
 import { parseISO, format, isToday } from 'date-fns'
@@ -17,20 +9,16 @@ const Chart = (props) => {
   const dayOfWeek = today.getDay()
 
   useEffect(() => {
-    if (props.stock.data[0].value < props.stock.data[99].value)
-      setColor('#A0E28D')
+    if (props.stock.prices[0].close < props.stock.prices[99].close) setColor('#A0E28D')
     else setColor('#FF9180')
   }, [])
 
   return (
     <div className="stockChart">
       <div className="chart">
-        <ResponsiveContainer
-          width={800}
-          height={400}
-          style={{ overflow: 'visible' }}
-        >
-          <AreaChart data={props.stock.data}>
+        {console.log(props.stock.prices)}
+        <ResponsiveContainer width={800} height={400} style={{ overflow: 'visible' }}>
+          <AreaChart data={props.stock.prices}>
             <defs>
               <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor={color} stopOpacity={1}></stop>
@@ -39,7 +27,7 @@ const Chart = (props) => {
               </linearGradient>
             </defs>
 
-            <Area dataKey="value" stroke={color} fill="url(#color)" />
+            <Area dataKey="close" stroke={color} fill="url(#color)" />
 
             <XAxis
               dataKey="date"
@@ -56,7 +44,7 @@ const Chart = (props) => {
             />
 
             <YAxis
-              dataKey="value"
+              dataKey="close"
               stroke="white" // здесь может быть #fffff
               tickLine={false}
               tickCount={6}
@@ -78,7 +66,7 @@ function CustomTooltip({ active, payload, label }, currency) {
     return (
       <div className="tooltip" style={{ color: 'white' }}>
         <h4>{format(parseISO(label), 'eeee, d MMM')}</h4>
-        <p>{payload[0].value.toFixed(2)}</p>
+        <p>{payload[0]?.value.toFixed(2)}</p>
       </div>
     )
 
