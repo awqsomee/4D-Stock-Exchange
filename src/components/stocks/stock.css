@@ -83,6 +83,7 @@
 }
 .stock__counter {
   width: 10%;
+  margin-left: auto;
   display: flex;
   justify-content: space-around;
 }
