@@ -83,10 +83,7 @@ const Stock = (props) => {
         <div className="stock__name">{props.stock.name}</div>
         <div className="stock__cost">
           {props.stock.prices.length > 0 && props.stock.prices[0].close != null ? (
-            <div>
-              {console.log(props.stock?.prices[0])}
-              {props.stock?.prices[0].close.toFixed(2) + ' ' + props.stock?.currency}
-            </div>
+            <div>{props.stock?.prices[0].close.toFixed(2) + ' ' + props.stock?.currency}</div>
           ) : (
             <div>-</div>
           )}
