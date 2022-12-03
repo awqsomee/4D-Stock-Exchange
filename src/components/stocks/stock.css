@@ -52,25 +52,25 @@
   top: 50%;
 }
 .stock__name {
-  width: 44%;
+  width: 33%;
   padding-right: 1%;
 }
 .stock__name_portfolio {
-  width: 34%;
+  width: 26%;
   padding-right: 1%;
 }
 .stock__amount {
-  text-align: center;
-  width: 10%;
+  text-align: end;
+  width: 7%;
   padding-right: 1%;
 }
 .stock__cost {
-  text-align: center;
-  width: 12%;
+  text-align: end;
+  width: 17%;
   padding-right: 1%;
 }
 .stock__change {
-  text-align: center;
+  text-align: end;
   display: inline-block;
   width: 10%;
   padding-right: 1%;
@@ -82,7 +82,7 @@
   color: #fd2929;
 }
 .stock__counter {
-  width: 8%;
+  width: 10%;
   display: flex;
   justify-content: space-around;
 }

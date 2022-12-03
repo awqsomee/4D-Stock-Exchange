@@ -46,20 +46,23 @@
   width: 8%;
 }
 .name {
-  width: 44%;
+  width: 33%;
 }
 .name_portfolio {
-  width: 34%;
+  width: 26%;
 }
 .amount {
-  text-align: center;
-  width: 10%;
+  text-align: end;
+  width: 7%;
+  padding-right: 1%;
 }
 .cost {
-  text-align: center;
-  width: 12%;
+  text-align: end;
+  width: 17%;
+  padding-right: 1%;
 }
 .change {
-  text-align: center;
+  text-align: end;
   width: 10%;
+  padding-right: 1%;
 }
