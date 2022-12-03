@@ -88,7 +88,21 @@ const Graph_panel = (props) => {
           </ButtonSwith>
         </div>
         {props?.stock?.prices ? (
-          <div>{props.stock.prices.length > 0 ? <Chart stock={props?.stock} /> : <div>Акция не торгуется</div>}</div>
+          <div>
+            {props.stock.prices.length > 0 ? (
+              <Chart stock={props?.stock} />
+            ) : (
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: 40,
+                }}
+              >
+                Акция не торгуется
+              </div>
+            )}
+          </div>
         ) : (
           <Loader />
         )}

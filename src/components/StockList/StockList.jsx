@@ -99,7 +99,6 @@ const StockList = (props) => {
 
   return (
     <div className="stockList">
-      {/* {console.log(stocks)} */}
       <div className="container2">
         <div className="title">{props.title}</div>
         <div className="list">
@@ -109,14 +108,21 @@ const StockList = (props) => {
           {isStocksLoading ? (
             <Loader />
           ) : (
-            // .slice(elementNumber, elementCount)
             <>
               {sortedStocks.length > 0 ? (
                 sortedStocks.map((stock) => (
                   <Stock stock={stock} function={buyStock} key={stock.isin} buttonText="Купить" />
                 ))
               ) : (
-                <div>Акции не найдены</div>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: 40,
+                  }}
+                >
+                  Акции не найдены
+                </div>
               )}
             </>
           )}

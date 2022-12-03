@@ -8,6 +8,8 @@ import { getUserStocks } from '../../actions/stocks.js'
 import Loader from '../UI/loader/Loader.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from '../../redux/index.js'
+import PanelPortfolio from '../panel/PanelPortfolio.jsx'
+import StockPortfolio from '../stocks/StockPortfolio.jsx'
 
 const Portfolio = (props) => {
   const [isStocksLoading, setIsStocksLoading] = useState(false)
@@ -68,11 +70,11 @@ const Portfolio = (props) => {
 
   return (
     <div className="stockList">
-      <div className="title">{props.title}</div>
       <div className="container2">
+        <div className="title">{props.title}</div>
         <div className="list">
           <Sorting setFilter={setFilter} setSort={setSort} />
-          <Panel className="panel" />
+          <PanelPortfolio className="panel" />
           {isStocksLoading ? (
             <div
               style={{
@@ -85,7 +87,7 @@ const Portfolio = (props) => {
             </div>
           ) : sortedStocks.length > 0 ? (
             sortedStocks.map((stock) => (
-              <Stock stock={stock} key={stock.symbol} changes={stock.changes} buttonText="Продать" />
+              <StockPortfolio stock={stock} key={stock.symbol} changes={stock.changes} buttonText="Продать" />
             ))
           ) : (
             <div

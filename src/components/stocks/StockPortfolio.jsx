@@ -13,7 +13,7 @@ import { exchangeStocks } from '../../actions/stocks'
 // const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
 const serverAddress = 'http://localhost:5000'
 
-const Stock = (props) => {
+const StockPortfolio = (props) => {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
   const dispatch = useDispatch()
   const [changes, setChanges] = useState()
@@ -48,7 +48,8 @@ const Stock = (props) => {
     <div>
       <div className="stock">
         <div className="stock__index">{props.stock.symbol}</div>
-        <div className="stock__name">{props.stock.name}</div>
+        <div className="stock__name_portfolio">{props.stock.name}</div>
+        <div className="stock__amount">{props.stock.amount}</div>
 
         <div className="stock__cost">
           {props.stock?.prices.length > 0 && props.stock.prices[0].close != null ? (
@@ -154,4 +155,4 @@ const Stock = (props) => {
   )
 }
 
-export default Stock
+export default StockPortfolio

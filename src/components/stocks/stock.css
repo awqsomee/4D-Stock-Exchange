@@ -55,6 +55,15 @@
   width: 44%;
   padding-right: 1%;
 }
+.stock__name_portfolio {
+  width: 34%;
+  padding-right: 1%;
+}
+.stock__amount {
+  text-align: center;
+  width: 10%;
+  padding-right: 1%;
+}
 .stock__cost {
   text-align: center;
   width: 12%;
@@ -70,7 +79,7 @@
   color: #bbffa7;
 }
 .stock__change__red {
-  color: #ff2a51;
+  color: #fd2929;
 }
 .stock__counter {
   width: 8%;
