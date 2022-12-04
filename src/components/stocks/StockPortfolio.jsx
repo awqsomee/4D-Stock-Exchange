@@ -168,7 +168,7 @@ const StockPortfolio = (props) => {
           )}
         </button>
       </div>
-      {GP && <Graph_panel stock={props.stock} />}
+      {GP && <Graph_panel stock={props.stock} id={props?.stock.id} />}
     </div>
   )
 }

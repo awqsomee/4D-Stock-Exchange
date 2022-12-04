@@ -164,7 +164,7 @@ const Stock = (props) => {
           )}
         </button>
       </div>
-      {GP && <Graph_panel stock={props.stock} />}
+      {GP && <Graph_panel stock={props.stock} id={props.stock.isin} />}
     </div>
   )
 }

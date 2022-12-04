@@ -90,7 +90,7 @@ const Graph_panel = (props) => {
         {props?.stock?.prices ? (
           <div>
             {props.stock.prices.length > 0 ? (
-              <Chart stock={props?.stock} />
+              <Chart stock={props?.stock} id={props?.id} />
             ) : (
               <div
                 style={{

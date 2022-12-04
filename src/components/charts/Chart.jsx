@@ -7,9 +7,10 @@ const Chart = (props) => {
   const [color, setColor] = useState('')
   const today = new Date()
   const dayOfWeek = today.getDay()
-  const Id = `gradient${props.stock.isin}`
+  const Id = `gradient${props.id}`
   const [prices, setPrices] = useState(props.stock.prices)
-
+  console.log(Id)
+  console.log(props.id)
   useEffect(() => {
     reverseData(prices)
 
