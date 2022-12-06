@@ -13,7 +13,7 @@ const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
 const Stock = (props) => {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
   const dispatch = useDispatch()
-  const [changes, setChanges] = useState()
+  const [changes, setChanges] = useState(0)
   const [counter, setCounter] = useState(0)
   const [slashString, setslashString] = useState('')
   const [GP, setGP] = useState(false)
@@ -37,8 +37,9 @@ const Stock = (props) => {
   }
 
   const countChange = () => {
-    if (props.stock?.prices.length > 0 && props.stock?.prices[0].high != null) {
+    if (props.stock?.prices.length > 0 && props.stock?.prices[0].close != null) {
       let count = (props.stock?.prices[0].close - props.stock?.prices[1].close) / 100
+      console.log(count)
       setChanges(count)
     }
   }
@@ -68,7 +69,6 @@ const Stock = (props) => {
             <div>-</div>
           )}
         </div>
-
         {changes < 0 ? <div className="stock__change stock__change__red">{changes.toFixed(2)}%</div> : <></>}
         {changes == 0 ? <div className="stock__change">{changes.toFixed(2)}%</div> : <></>}
         {changes > 0 ? <div className="stock__change stock__change__green">{changes.toFixed(2)}%</div> : <></>}
