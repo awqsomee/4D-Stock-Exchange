@@ -10,13 +10,11 @@ const Chart = (props) => {
   const Id = `gradient${props.id}`
   const [prices, setPrices] = useState(props.stock.prices)
   console.log(Id)
-  console.log(props.id)
+  console.log(props.stock.prices.map((price) => price.close))
   useEffect(() => {
     reverseData(prices)
 
-    //изменение цены берется из high, а не из close
-    //думаю, надо приравнять
-    if (props.stock.prices[0].high > props.stock.prices[1].high) {
+    if (props.stock.prices[0].close > props.stock.prices[99].close) {
       setColor('#BBFFA7')
     } else {
       setColor('#fd2929')

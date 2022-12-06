@@ -1,13 +1,14 @@
 import axios from 'axios'
 import { store } from '../redux'
 import { setAlertMessage, setAlertStatus, setStocks, setUserBalance, setUserStocks } from '../redux/slice'
+const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
+// const serverAddress = 'http://localhost:5000'
 
 function getUserStocks() {
   return async (dispatch) => {
     try {
       await axios
-        // .get(`https://stonksexchange.kaivr.amvera.io/api/stocks/auth`, {
-        .get(`http://localhost:5000/api/stocks/auth`, {
+        .get(`${serverAddress}/api/stocks/auth`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
           },
@@ -30,8 +31,7 @@ function getStocksSearch(searchQuery) {
   return async (dispatch) => {
     try {
       if (searchQuery) {
-        // const URI = `https://stonksexchange.kaivr.amvera.io/api/stocks/search?q=${searchQuery}`
-        const URI = `http://localhost:5000/api/stocks/search?q=${searchQuery}`
+        const URI = `${serverAddress}/api/stocks/search?q=${searchQuery}`
         const encodedURI = encodeURI(URI)
         await axios
           .get(encodedURI)
@@ -44,12 +44,9 @@ function getStocksSearch(searchQuery) {
             if (error.response.data.message === 'Акции не найдены') dispatch(setStocks([]))
           })
       } else {
-        // const URI1 = `https://stonksexchange.kaivr.amvera.io/api/stocks/search?q=MGNT`
-        const URI1 = `http://localhost:5000/api/stocks/search?q=MGNT`
-        // const URI2 = `https://stonksexchange.kaivr.amvera.io/api/stocks/search?q=GAZP`
-        const URI2 = `http://localhost:5000/api/stocks/search?q=GAZP`
-        // const URI3 = `https://stonksexchange.kaivr.amvera.io/api/stocks/search?q=YANDEX`
-        const URI3 = `http://localhost:5000/api/stocks/search?q=YANDEX`
+        const URI1 = `${serverAddress}/api/stocks/search?q=MGNT`
+        const URI2 = `${serverAddress}/api/stocks/search?q=GAZP`
+        const URI3 = `${serverAddress}/api/stocks/search?q=YANDEX`
         const search1 = await axios
           .get(URI1)
           .then((response) => {
@@ -89,8 +86,7 @@ function getStocksSearch(searchQuery) {
 function exchangeStocks(symbol, amount) {
   return async (dispatch) => {
     try {
-      // const URI = `https://stonksexchange.kaivr.amvera.io/api/stock/auth`
-      const URI = `http://localhost:5000/api/stocks/auth`
+      const URI = `${serverAddress}/api/stocks/auth`
       const encodedURI = encodeURI(URI)
       await axios
         .post(

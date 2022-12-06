@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../../redux/slice'
 import { exchangeStocks } from '../../actions/stocks'
 import ButtonLoader from '../UI/loader/ButtonLoader'
-// const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
-const serverAddress = 'http://localhost:5000'
+const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
+// const serverAddress = 'http://localhost:5000'
 
 const Stock = (props) => {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
@@ -38,7 +38,7 @@ const Stock = (props) => {
 
   const countChange = () => {
     if (props.stock?.prices.length > 0 && props.stock?.prices[0].high != null) {
-      let count = (props.stock?.prices[0].high - props.stock?.prices[1].high) / 100
+      let count = (props.stock?.prices[0].close - props.stock?.prices[1].close) / 100
       setChanges(count.toFixed(2))
     }
   }

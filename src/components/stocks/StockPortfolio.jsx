@@ -8,8 +8,8 @@ import { setUser } from '../../redux/slice'
 import { exchangeStocks } from '../../actions/stocks'
 import Loader from '../UI/loader/Loader'
 import ButtonLoader from '../UI/loader/ButtonLoader'
-// const serverAddress = 'https://stonksexchange.kaivr.amvera.io'
-const serverAddress = 'http://localhost:5000'
+const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
+// const serverAddress = 'http://localhost:5000'
 
 const StockPortfolio = (props) => {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
@@ -121,7 +121,6 @@ const StockPortfolio = (props) => {
           }}
         >
           {isLoading ? (
-            // 'Loading...'
             <ButtonLoader></ButtonLoader>
           ) : counter == 0 ? (
             props.buttonText

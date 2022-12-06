@@ -5,6 +5,8 @@ import { registration } from '../../../actions/auth'
 import ModalBoxDeposit from '../../UI/ModalBox/ModalBoxDeposit'
 import { useDispatch } from 'react-redux'
 import Close from '../../../assets/Icons/close.svg'
+import Loader from '../../UI/loader/Loader'
+import ButtonLoader from '../../UI/loader/ButtonLoader'
 
 const Registration = (props) => {
   const dispatch = useDispatch()
@@ -106,7 +108,7 @@ const Registration = (props) => {
           } else setmodalBoxDeposit(true)
         }}
       >
-        {isLoading ? 'Loading...' : 'Зарегистрироваться'}
+        {isLoading ? <ButtonLoader /> : 'Зарегистрироваться'}
       </button>
     </div>
   )

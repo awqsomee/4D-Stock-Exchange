@@ -11,6 +11,7 @@ import ModalBox from '../../../UI/ModalBox/ModalBox'
 import InputNumber from '../../../UI/input/InputNumber'
 import Loader from '../../../UI/loader/Loader'
 import TransactionsPanel from './TransactionsPanel'
+import ButtonLoader from '../../../UI/loader/ButtonLoader'
 
 const Transactions = (props) => {
   const dispatch = useDispatch()
@@ -148,10 +149,10 @@ const Transactions = (props) => {
         <div className="transactions__actions">
           <InputNumber className="number_input" value={value} setValue={setValue} placeholder="Сумма"></InputNumber>
           <button className="button button__normal" onClick={() => replenishHandler(dispatch, value, setValue)}>
-            {isReplenishing ? 'Loading...' : 'Пополнить'}
+            {isReplenishing ? <ButtonLoader /> : 'Пополнить'}
           </button>
           <button className="button button__normal" onClick={() => withdrawHandler(dispatch, value, setValue)}>
-            {isWithdrawing ? 'Loading...' : 'Вывести'}
+            {isWithdrawing ? <ButtonLoader /> : 'Вывести'}
           </button>
         </div>
       </div>

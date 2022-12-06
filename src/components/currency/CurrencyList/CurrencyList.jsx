@@ -8,6 +8,7 @@ import { setSelectedCurrency } from '../../../redux/slice'
 import ModalBox from '../../UI/ModalBox/ModalBox'
 import NewWallet from '../Wallets/newWallet/NewWallet'
 import Loader from '../../UI/loader/Loader'
+import ButtonLoader from '../../UI/loader/ButtonLoader'
 
 const CurrencyList = (props) => {
   const dispatch = useDispatch()
@@ -56,7 +57,7 @@ const CurrencyList = (props) => {
           ))}
         </div>
       ) : (
-        <Loader />
+        <ButtonLoader />
       )}
 
       <ModalBox visible={visible} setVisible={setVisible}>
