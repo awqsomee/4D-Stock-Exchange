@@ -1,36 +1,46 @@
 import axios from 'axios'
-import { setUser } from '../redux/slice'
+import { setAlertMessage, setAlertStatus, setUser } from '../redux/slice'
 const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
 // const serverAddress = 'http://localhost:5000'
 
 export const registration = (name, email, password) => {
   return async (dispatch) => {
-    try {
-      const response = await axios.post(`${serverAddress}/api/auth/registration`, {
+    await axios
+      .post(`${serverAddress}/api/auth/registration`, {
         email,
         password,
         name,
       })
-      dispatch(setUser(response.data.user))
-      localStorage.setItem('stonksToken', response.data.token)
-    } catch (e) {
-      console.log(e)
-    }
+      .then((response) => {
+        dispatch(setUser(response.data.user))
+        dispatch(setAlertMessage(response.data.message))
+        dispatch(setAlertStatus(response.status))
+        localStorage.setItem('stonksToken', response.data.token)
+      })
+      .catch((error) => {
+        dispatch(setAlertMessage(error.response.data.message))
+        dispatch(setAlertStatus(error.response.status))
+      })
   }
 }
 
 export const login = (email, password) => {
   return async (dispatch) => {
-    try {
-      const response = await axios.post(`${serverAddress}/api/auth/login`, {
+    await axios
+      .post(`${serverAddress}/api/auth/login`, {
         email,
         password,
       })
-      dispatch(setUser(response.data.user))
-      localStorage.setItem('stonksToken', response.data.token)
-    } catch (e) {
-      console.log(e)
-    }
+      .then((response) => {
+        dispatch(setUser(response.data.user))
+        dispatch(setAlertMessage(response.data.message))
+        dispatch(setAlertStatus(response.status))
+        localStorage.setItem('stonksToken', response.data.token)
+      })
+      .catch((error) => {
+        dispatch(setAlertMessage(error.response.data.message))
+        dispatch(setAlertStatus(error.response.status))
+      })
   }
 }
 
