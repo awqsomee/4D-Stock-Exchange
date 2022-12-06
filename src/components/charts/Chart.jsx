@@ -5,29 +5,15 @@ import { parseISO, format, isToday } from 'date-fns'
 
 const Chart = (props) => {
   const [color, setColor] = useState('')
-  const today = new Date()
-  const dayOfWeek = today.getDay()
   const Id = `gradient${props.id}`
-  const [prices, setPrices] = useState(props.stock.prices)
-  console.log(Id)
-  console.log(props.stock.prices.map((price) => price.close))
+  const [prices, setPrices] = useState([...props.stock.prices].reverse())
   useEffect(() => {
-    reverseData(prices)
-
     if (props.stock.prices[0].close > props.stock.prices[99].close) {
       setColor('#BBFFA7')
     } else {
       setColor('#fd2929')
     }
   }, [])
-
-  const reverseData = () => {
-    let data = new Array()
-    for (let i = prices.length - 1; i >= 0; i--) {
-      data.push(prices[i])
-    }
-    setPrices(data)
-  }
 
   return (
     <div className="stockChart">
