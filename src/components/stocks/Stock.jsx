@@ -39,7 +39,7 @@ const Stock = (props) => {
   const countChange = () => {
     if (props.stock?.prices.length > 0 && props.stock?.prices[0].high != null) {
       let count = (props.stock?.prices[0].close - props.stock?.prices[1].close) / 100
-      setChanges(count.toFixed(2))
+      setChanges(count)
     }
   }
 
@@ -69,9 +69,9 @@ const Stock = (props) => {
           )}
         </div>
 
-        {changes < 0 ? <div className="stock__change stock__change__red">{changes}%</div> : <></>}
-        {changes == 0 ? <div className="stock__change">{changes}%</div> : <></>}
-        {changes > 0 ? <div className="stock__change stock__change__green">{changes}%</div> : <></>}
+        {changes < 0 ? <div className="stock__change stock__change__red">{changes.toFixed(2)}%</div> : <></>}
+        {changes == 0 ? <div className="stock__change">{changes.toFixed(2)}%</div> : <></>}
+        {changes > 0 ? <div className="stock__change stock__change__green">{changes.toFixed(2)}%</div> : <></>}
 
         {buttBuy === 'button stock__button button__process' ? (
           <div className="stock__counter">
