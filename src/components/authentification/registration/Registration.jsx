@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './registration.css'
 import { registration } from '../../../actions/auth'
 import ModalBoxDeposit from '../../UI/ModalBox/ModalBoxDeposit'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Close from '../../../assets/Icons/close.svg'
 import Loader from '../../UI/loader/Loader'
 import ButtonLoader from '../../UI/loader/ButtonLoader'
@@ -15,13 +15,12 @@ const Registration = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
-  const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
+  const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
+  const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   return (
     <div className="registration">
-      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
-        <div className="reg_pop_up">
-          <div>Не удалось зарегистрироваться. Проверьте корректность данных</div>
-        </div>
+      <ModalBoxDeposit className="err" visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
+        <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
       <div className="close_img" onClick={() => props.sVisible(false)}>
@@ -105,7 +104,7 @@ const Registration = (props) => {
             await dispatch(registration(name, email, password))
             setIsLoading(false)
             props.sVisible(false)
-          } else setmodalBoxDeposit(true)
+          } else setmodalBoxDepositFalse(true)
         }}
       >
         {isLoading ? <ButtonLoader /> : 'Зарегистрироваться'}

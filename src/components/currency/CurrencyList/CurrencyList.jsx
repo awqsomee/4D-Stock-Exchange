@@ -7,7 +7,6 @@ import WalletItem from '../Wallets/walletItem/WalletItem'
 import { setSelectedCurrency } from '../../../redux/slice'
 import ModalBox from '../../UI/ModalBox/ModalBox'
 import NewWallet from '../Wallets/newWallet/NewWallet'
-import Loader from '../../UI/loader/Loader'
 import ButtonLoader from '../../UI/loader/ButtonLoader'
 
 const CurrencyList = (props) => {
@@ -61,13 +60,7 @@ const CurrencyList = (props) => {
       )}
 
       <ModalBox visible={visible} setVisible={setVisible}>
-        <NewWallet
-          sVisible={setVisible}
-          modalBoxDepositFalse={props.modalBoxDepositFalse}
-          modalBoxDepositTrue={props.modalBoxDepositTrue}
-          setmodalBoxDepositFalse={props.setmodalBoxDepositFalse}
-          setmodalBoxDepositTrue={props.setmodalBoxDepositTrue}
-        />
+        <NewWallet sVisible={setVisible} setmodalBoxDeposit={props.setmodalBoxDeposit} />
       </ModalBox>
 
       <button className="button button__normal" style={{ fontSize: '32px' }} onClick={() => setVisible(true)}>

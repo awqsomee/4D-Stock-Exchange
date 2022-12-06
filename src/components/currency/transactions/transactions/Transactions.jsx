@@ -38,23 +38,31 @@ const Transactions = (props) => {
     const data = getTransactions()
     return data
   }
-  // console.log('f', filter)
-  // console.log('s', sort)
 
   const replenishHandler = async (dispatch, value, setValue) => {
     setIsReplenishing(true)
 
     // One LEG!!!
-    if (selectedCurrency?.symbol === 'RUB') await dispatch(changeBalance(value))
-    else await dispatch(exchangeCurrency(selectedCurrency?.symbol, value))
+    if (selectedCurrency?.symbol === 'RUB') {
+      await dispatch(changeBalance(value))
+      props.setmodalBoxDeposit(true)
+    } else {
+      await dispatch(exchangeCurrency(selectedCurrency?.symbol, value))
+      props.setmodalBoxDeposit(true)
+    }
     setValue('')
     setIsReplenishing(false)
   }
 
   const withdrawHandler = async (dispatch, value, setValue) => {
     setIsWithdrawing(true)
-    if (selectedCurrency?.symbol === 'RUB') await dispatch(changeBalance(-value))
-    else await dispatch(exchangeCurrency(selectedCurrency?.symbol, -value))
+    if (selectedCurrency?.symbol === 'RUB') {
+      await dispatch(changeBalance(-value))
+      props.setmodalBoxDeposit(true)
+    } else {
+      await dispatch(exchangeCurrency(selectedCurrency?.symbol, -value))
+      props.setmodalBoxDeposit(true)
+    }
     setValue('')
     setIsWithdrawing(false)
   }
@@ -90,10 +98,7 @@ const Transactions = (props) => {
         <CloseWallet
           symbol={selectedCurrency?.symbol}
           sVisible={setVisible}
-          modalBoxDepositFalse={props.modalBoxDepositFalse}
-          modalBoxDepositTrue={props.modalBoxDepositTrue}
-          setmodalBoxDepositFalse={props.setmodalBoxDepositFalse}
-          setmodalBoxDepositTrue={props.setmodalBoxDepositTrue}
+          setmodalBoxDeposit={props.setmodalBoxDeposit}
         />
       </ModalBox>
 

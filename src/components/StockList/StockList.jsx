@@ -18,10 +18,7 @@ const StockList = (props) => {
   const [filter, setFilter] = useState('')
   const [sort, setSort] = useState(false)
   const search = useSelector((state) => state.toolkit.searchQuery)
-  const [elementCount, setElementCount] = useState(5)
-  const [elementNumber, setElementNumber] = useState(0)
-  const [modalBoxDepositTrue, setmodalBoxDepositTrue] = useState(false)
-  const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
+  const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   // const [buttonText, setButtonText] = useState(0)
 
@@ -38,6 +35,7 @@ const StockList = (props) => {
   // })
 
   useEffect(() => {
+    document.title = 'STONKS – StockExchange'
     if (search.length < 2) {
       setIsStocksLoading(true)
       dispatch(setSearch(''))
@@ -103,11 +101,7 @@ const StockList = (props) => {
 
   return (
     <div className="stockList">
-      <ModalBoxDeposit className="err" visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
-        <div>{alertMessage}</div>
-      </ModalBoxDeposit>
-
-      <ModalBoxDeposit className="ok" visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
+      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
@@ -128,10 +122,10 @@ const StockList = (props) => {
                     function={buyStock}
                     key={stock.isin}
                     buttonText="Купить"
-                    modalBoxDepositFalse={modalBoxDepositFalse}
-                    modalBoxDepositTrue={modalBoxDepositTrue}
-                    setmodalBoxDepositFalse={setmodalBoxDepositFalse}
-                    setmodalBoxDepositTrue={setmodalBoxDepositTrue}
+                    modalBoxDeposit={modalBoxDeposit}
+                    setmodalBoxDeposit={setmodalBoxDeposit}
+                    modalBoxLog={props.modalBoxLog}
+                    setModalBoxLog={props.setModalBoxLog}
                   />
                 ))
               ) : (

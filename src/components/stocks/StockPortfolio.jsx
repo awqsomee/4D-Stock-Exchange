@@ -48,9 +48,9 @@ const StockPortfolio = (props) => {
     setIsLoading(true)
     await dispatch(exchangeStocks(props.stock.symbol, -counter))
     if (store.getState().toolkit.alertStatus == 200) {
-      props.setmodalBoxDepositTrue(true)
+      props.setmodalBoxDeposit(true)
     } else {
-      props.setmodalBoxDepositFalse(true)
+      props.setmodalBoxDeposit(true)
     }
     setCounter(0)
     setButtBuy('button stock__button button__normal')

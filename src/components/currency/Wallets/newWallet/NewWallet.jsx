@@ -38,23 +38,16 @@ const NewWallet = (props) => {
     // }
     if (store.getState().toolkit.alertStatus == 200) {
       props.sVisible(false)
-      props.setmodalBoxDepositTrue(true)
+      props.setmodalBoxDeposit(true)
     } else {
       props.sVisible(false)
-      props.setmodalBoxDepositFalse(true)
+      props.setmodalBoxDeposit(true)
     }
     setIsLoading(false)
   }
 
   return (
     <div>
-      {/* <ModalBoxDeposit visible={props.modalBoxDepositOpenFalse} setVisible={props.setmodalBoxDepositOpenFalse}>
-        <div>Не удалось открыть счет. Мы уже решаем проблему</div>
-      </ModalBoxDeposit>
-
-      <ModalBoxDeposit visible={props.modalBoxDepositOpenTrue} setVisible={props.setmodalBoxDepositOpenTrue}>
-        <div>Счет успешно открыт.</div>
-      </ModalBoxDeposit> */}
       <div className="close_img" onClick={() => props.sVisible(false)}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path

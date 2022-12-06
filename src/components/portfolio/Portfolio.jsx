@@ -17,11 +17,11 @@ const Portfolio = (props) => {
   const [filter, setFilter] = useState('')
   const [sort, setSort] = useState(false)
   const dispatch = useDispatch()
-  const [modalBoxDepositTrue, setmodalBoxDepositTrue] = useState(false)
-  const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
+  const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   let stocks = useSelector((state) => state.toolkit.userStocks)
   useEffect(() => {
+    document.title = 'STONKS: Портфолио'
     setIsStocksLoading(true)
     dispatch(getUserStocks()).finally(() => {
       setIsStocksLoading(false)
@@ -74,11 +74,7 @@ const Portfolio = (props) => {
 
   return (
     <div className="stockList">
-      <ModalBoxDeposit className="err" visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
-        <div>{alertMessage}</div>
-      </ModalBoxDeposit>
-
-      <ModalBoxDeposit className="ok" visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
+      <ModalBoxDeposit className="err" visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
@@ -104,10 +100,8 @@ const Portfolio = (props) => {
                 key={stock.symbol}
                 changes={stock.changes}
                 buttonText="Продать"
-                modalBoxDepositFalse={modalBoxDepositFalse}
-                modalBoxDepositTrue={modalBoxDepositTrue}
-                setmodalBoxDepositFalse={setmodalBoxDepositFalse}
-                setmodalBoxDepositTrue={setmodalBoxDepositTrue}
+                modalBoxDeposit={modalBoxDeposit}
+                setmodalBoxDeposit={setmodalBoxDeposit}
               />
             ))
           ) : (
