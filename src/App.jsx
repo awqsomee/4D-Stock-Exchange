@@ -15,6 +15,8 @@ function App() {
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(true)
   const [widthClient, setWidthClient] = useState()
+  const [modalBoxLog, setModalBoxLog] = useState(false)
+  // const [modalBoxDepositAuth, setmodalBoxDepositAuth] = useState(false)
   const isAuth = useSelector((state) => state.toolkit.isAuth)
 
   useEffect(() => {
@@ -46,11 +48,16 @@ function App() {
     <BrowserRouter basename="/4D-Stock-Exchange">
       {!isLoading ? (
         <div className="app">
-          <Navbar />
+          <Navbar modalBoxLog={modalBoxLog} setModalBoxLog={setModalBoxLog} />
           <div className="wrap">
             {!isAuth && (
               <Routes>
-                <Route path="/stocks" element={<StockList title="Каталог акций" />} />
+                <Route
+                  path="/stocks"
+                  element={
+                    <StockList title="Каталог акций" modalBoxLog={modalBoxLog} setModalBoxLog={setModalBoxLog} />
+                  }
+                />
                 <Route path="*" element={<Navigate to="/stocks" />} />
               </Routes>
             )}

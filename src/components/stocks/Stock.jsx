@@ -47,9 +47,9 @@ const Stock = (props) => {
     setIsLoading(true)
     await dispatch(exchangeStocks(props.stock.symbol, counter))
     if (store.getState().toolkit.alertStatus == 200) {
-      props.setmodalBoxDepositTrue(true)
+      props.setmodalBoxDeposit(true)
     } else {
-      props.setmodalBoxDepositFalse(true)
+      props.setmodalBoxDeposit(true)
     }
     setCounter(0)
     setButtBuy('button stock__button button__normal')
@@ -114,6 +114,9 @@ const Stock = (props) => {
               if (props.buttonText == 'Продать') dispatch(exchangeStocks(props.stock.symbol, -counter))
               setCounter(0)
               setButtBuy('button stock__button button__normal')
+            }
+            if (!isAuth && counter > 0) {
+              props.setModalBoxLog(true)
             }
           }}
         >
