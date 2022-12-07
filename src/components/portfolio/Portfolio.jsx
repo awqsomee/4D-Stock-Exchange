@@ -21,7 +21,7 @@ const Portfolio = (props) => {
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   let stocks = useSelector((state) => state.toolkit.userStocks)
   useEffect(() => {
-    document.title = 'STONKS: Портфолио'
+    document.title = 'STONKS: Портфель'
     setIsStocksLoading(true)
     dispatch(getUserStocks()).finally(() => {
       setIsStocksLoading(false)
