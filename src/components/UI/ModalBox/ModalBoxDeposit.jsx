@@ -20,7 +20,8 @@ const ModalBoxDeposit = ({ children, visible, setVisible, alertStatus }) => {
   return (
     <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
       <div className={cl.setmodalBoxDeposit} onClick={(e) => e.stopPropagation()}>
-        <StyledChildren />
+        {children}
+        {/* <StyledChildren /> */}
       </div>
     </div>
   )
