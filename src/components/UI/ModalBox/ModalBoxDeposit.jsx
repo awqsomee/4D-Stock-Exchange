@@ -8,20 +8,15 @@ const ModalBoxDeposit = ({ children, visible, setVisible, alertStatus }) => {
   }
 
   const StyledChildren = () => {
-    React.Children.map((children, child) => {
-      console.log('a', alertStatus)
-      console.log(children, child)
-      if (alertStatus != 200)
-        return React.cloneElement(child.props.children, { className: `${child.props.className} err` })
-      else return React.cloneElement(child, { className: `${child.props.className} ok` })
-    })
+    if (alertStatus != 200) return React.cloneElement(children, { className: `${children.props.className} err` })
+    else return React.cloneElement(children, { className: `${children.props.className} ok` })
   }
 
   return (
     <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
       <div className={cl.setmodalBoxDeposit} onClick={(e) => e.stopPropagation()}>
-        {children}
-        {/* <StyledChildren /> */}
+        {/* {children} */}
+        <StyledChildren />
       </div>
     </div>
   )
