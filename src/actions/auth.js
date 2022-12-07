@@ -13,8 +13,6 @@ export const registration = (name, email, password) => {
       })
       .then((response) => {
         dispatch(setUser(response.data.user))
-        dispatch(setAlertMessage(response.data.message))
-        dispatch(setAlertStatus(response.status))
         localStorage.setItem('stonksToken', response.data.token)
       })
       .catch((error) => {
@@ -33,8 +31,6 @@ export const login = (email, password) => {
       })
       .then((response) => {
         dispatch(setUser(response.data.user))
-        dispatch(setAlertMessage(response.data.message))
-        dispatch(setAlertStatus(response.status))
         localStorage.setItem('stonksToken', response.data.token)
       })
       .catch((error) => {
