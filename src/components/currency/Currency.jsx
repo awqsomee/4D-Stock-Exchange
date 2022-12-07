@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux'
 const Currency = (props) => {
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
+  const alertStatus = useSelector((state) => state.toolkit.alertStatus)
 
   useEffect(() => {
     document.title = 'STONKS: Кошелек'
@@ -16,7 +17,7 @@ const Currency = (props) => {
 
   return (
     <div className="container2">
-      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
+      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit} alertStatus={alertStatus}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
