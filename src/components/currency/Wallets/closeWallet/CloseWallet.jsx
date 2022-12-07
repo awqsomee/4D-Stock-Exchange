@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeCurrencyAccount } from '../../../../actions/forex'
-import ModalBoxDeposit from '../../../UI/ModalBox/ModalBoxDeposit'
 import '../../../currency/сurrency.css'
 import { store } from '../../../../redux'
 import './closeWallet.css'
@@ -17,10 +16,10 @@ const CloseWallet = (props) => {
     await dispatch(closeCurrencyAccount(userCurrencies, symbol))
     if (store.getState().toolkit.userCurrencies.some((item) => item.symbol === symbol)) {
       props.sVisible(false)
-      props.setmodalBoxDepositFalse(true)
+      props.setmodalBoxDeposit(true)
     } else {
       props.sVisible(false)
-      props.setmodalBoxDepositTrue(true)
+      props.setmodalBoxDeposit(true)
     }
     // if (store.getState().toolkit.alertStatus == 200) {
     //   alert(store.getState().toolkit.alertMessage)

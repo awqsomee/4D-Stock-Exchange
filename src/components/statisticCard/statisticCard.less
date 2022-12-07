@@ -1,0 +1,25 @@
+@import '../../styles/colors/colors.less';
+@import '../../styles/fonts/fonts.less';
+@import '../../styles/shadows/shadows.less';
+
+.statisticCard {
+  width: 190px;
+  // height: 180px;
+  // overflow: auto;
+  // height: auto;
+  padding: 20px 24px;
+  background-color: @--cards-background-color;
+  font-family: @font-family;
+  box-shadow: @shadow_transaction_item;
+
+  &__name {
+    font-size: @--mark-font-size;
+    color: @--main-text-color;
+    margin-bottom: 14px;
+  }
+  &__data {
+    font-size: @--paragraph-font-size;
+    color: @--main-text-color;
+    margin-bottom: 32px;
+  }
+}

@@ -13,24 +13,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { store } from '../../redux'
 import { logout, setSearch, setUser } from '../../redux/slice'
 
-const Navbar = () => {
+const Navbar = (props) => {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
   const user = useSelector((state) => state.toolkit.currentUser)
   const dispatch = useDispatch()
   const [modalBoxReg, setModalBoxReg] = useState(false)
-  const [modalBoxLog, setModalBoxLog] = useState(false)
   const [modalBoxAcc, setModalBoxAcc] = useState(false)
   const avatar = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
   // const avatar = `http://localhost:5000/${user.avatar}`
   const netRegistration = () => {
     setModalBoxReg(!modalBoxReg)
-    setModalBoxLog(!modalBoxLog)
+    props.setModalBoxLog(!props.modalBoxLog)
   }
 
   return (
     <div className="navbar">
-      <ModalBox visible={modalBoxLog} setVisible={setModalBoxLog}>
-        <Login toReg={netRegistration} sVisible={setModalBoxLog} />
+      <ModalBox visible={props.modalBoxLog} setVisible={props.setModalBoxLog}>
+        <Login toReg={netRegistration} sVisible={props.setModalBoxLog} />
       </ModalBox>
       <ModalBox visible={modalBoxReg} setVisible={setModalBoxReg}>
         <Registration toLog={netRegistration} sVisible={setModalBoxReg} />
@@ -73,7 +72,12 @@ const Navbar = () => {
 
           <div className="navbar__buttons">
             {!isAuth && (
-              <div className=" button button__normal " onClick={() => setModalBoxLog(true)}>
+              <div
+                className=" button button__normal "
+                onClick={() => {
+                  props.setModalBoxLog(true)
+                }}
+              >
                 Войти
               </div>
             )}

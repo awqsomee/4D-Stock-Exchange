@@ -5,35 +5,43 @@ const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
 
 export const buyStock = (symbol, quantity) => {
   return async (dispatch) => {
-    try {
-      const response = await axios.post(
+    await axios
+      .post(
         `${serverAddress}/api/auth/stock`,
         { symbol, quantity },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
         }
       )
-      alert(response.data)
-    } catch (e) {
-      alert(e.response.data.message)
-    }
+      .then((response) => {
+        dispatch(setAlertMessage(response.data.message))
+        dispatch(setAlertStatus(response.status))
+      })
+      .catch((error) => {
+        dispatch(setAlertMessage(error.response.data.message))
+        dispatch(setAlertStatus(error.response.status))
+      })
   }
 }
 
 export const sellStock = (symbol, quantity) => {
   return async (dispatch) => {
-    try {
-      const response = await axios.delete(
+    await axios
+      .delete(
         `${serverAddress}/api/auth/stock/`,
         { symbol, quantity },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem('stonksToken')}` },
         }
       )
-      alert(response.data)
-    } catch (e) {
-      alert(e.response.data.message)
-    }
+      .then((response) => {
+        dispatch(setAlertMessage(response.data.message))
+        dispatch(setAlertStatus(response.status))
+      })
+      .catch((error) => {
+        dispatch(setAlertMessage(error.response.data.message))
+        dispatch(setAlertStatus(error.response.status))
+      })
   }
 }
 

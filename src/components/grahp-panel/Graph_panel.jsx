@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Chart from '../charts/Chart'
 import './graph_panel.css'
 import { useState } from 'react'
 import ButtonSwith from '../../components/UI/buttons/ButtonSwitch'
 import Loader from '../UI/loader/Loader'
+import StatisticCard from '../statisticCard/StatisticCard'
 
 const Graph_panel = (props) => {
   const [buttDay, setButtDay] = useState('button button__sortPush')
@@ -11,6 +12,30 @@ const Graph_panel = (props) => {
   const [buttMonth, setButtbuttMonth] = useState('button button__sortNormal')
   const [buttYear, setButtbuttYear] = useState('button button__sortNormal')
   const [buttAll, setButtbuttAll] = useState('button button__sortNormal')
+  const [maxPrice, setMaxPrice] = useState(0)
+  const [minPrice, setMinPrice] = useState(1000000)
+
+  useEffect(() => {
+    statisticPrice()
+    console.log(maxPrice, minPrice)
+  }, [])
+
+  const statisticPrice = () => {
+    let prices = props.stock.prices
+    console.log(prices)
+    prices.map((el) => {
+      if (el.close != null) {
+        if (el.close > maxPrice) {
+          setMaxPrice(el.close)
+          console.log('max', maxPrice)
+        }
+        if (el.close < minPrice) {
+          setMinPrice(el.close)
+          console.log('min', minPrice)
+        }
+      }
+    })
+  }
 
   return (
     <div>
@@ -88,21 +113,24 @@ const Graph_panel = (props) => {
           </ButtonSwith>
         </div>
         {props?.stock?.prices ? (
-          <div>
-            {props.stock.prices.length > 0 ? (
+          props.stock.prices.length > 0 ? (
+            <div className="data">
               <Chart stock={props?.stock} id={props?.id} />
-            ) : (
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  marginTop: 40,
-                }}
-              >
-                Акция не торгуется
-              </div>
-            )}
-          </div>
+              <StatisticCard title1={'Max цена акции'} title2={'Min цена акции'} data1={maxPrice} data2={minPrice}>
+                {/* <button className="button button__normal">Купить</button> */}
+              </StatisticCard>
+            </div>
+          ) : (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: 40,
+              }}
+            >
+              Акция не торгуется
+            </div>
+          )
         ) : (
           <Loader />
         )}

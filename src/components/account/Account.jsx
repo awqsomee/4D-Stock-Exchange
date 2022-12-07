@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit'
 import './account.css'
@@ -9,13 +9,17 @@ const Account = (props) => {
   const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
 
+  useEffect(() => {
+    document.title = 'STONKS: Аккаунт'
+  }, [])
+
   return (
     <div className="container2">
-      <ModalBoxDeposit className="err" visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
+      <ModalBoxDeposit visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
-      <ModalBoxDeposit className="ok" visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
+      <ModalBoxDeposit visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 

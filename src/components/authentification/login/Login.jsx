@@ -3,13 +3,9 @@ import { useState } from 'react'
 import './login.css'
 import { login } from '../../../actions/auth'
 import { store } from '../../../redux'
-import ModalBox from '../../UI/ModalBox/ModalBox'
 import ModalBoxDeposit from '../../UI/ModalBox/ModalBoxDeposit'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../../../redux/slice'
-import Close from '../../../assets/Icons/close.svg'
-import Registration from '../registration/Registration'
-import Loader from '../../UI/loader/Loader'
 import ButtonLoader from '../../UI/loader/ButtonLoader'
 
 const Login = (props) => {
@@ -17,12 +13,13 @@ const Login = (props) => {
   const [email, setEmail] = useState('')
   const [password, setpassword] = useState('')
   const dispatch = useDispatch()
-  const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
+  const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
+  const alertMessage = useSelector((state) => state.toolkit.alertMessage)
 
   return (
     <div className="login">
-      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
-        Вход не выполнен. Проверьте правильность заполнения полей
+      <ModalBoxDeposit visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
+        <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
       <div className="close_img" onClick={() => props.sVisible(false)}>
@@ -77,7 +74,7 @@ const Login = (props) => {
           await dispatch(login(email, password))
           if (store.getState(setUser).toolkit.isAuth) {
             props.sVisible(false)
-          } else setmodalBoxDeposit(true)
+          } else setmodalBoxDepositFalse(true)
           setIsLoading(false)
         }}
       >

@@ -49,10 +49,10 @@ export const getUserCurrencies = () => {
 
 export const exchangeCurrency = (symbol, amount) => {
   return async (dispatch) => {
-    try {
-      symbol = String(symbol)
-      amount = Number(amount)
-      const response = await axios.post(
+    symbol = String(symbol)
+    amount = Number(amount)
+    await axios
+      .post(
         `${serverAddress}/api/forex/auth`,
         {
           symbol,
@@ -64,13 +64,17 @@ export const exchangeCurrency = (symbol, amount) => {
           },
         }
       )
-      dispatch(setUserBalance(response.data.user.balance))
-      dispatch(setUserCurrencies(response.data.user.currencies))
-      dispatch(setSelectedCurrency(response.data.user.currency))
-      alert(response.data.message)
-    } catch (e) {
-      console.log(e)
-    }
+      .then((response) => {
+        dispatch(setUserBalance(response.data.user.balance))
+        dispatch(setUserCurrencies(response.data.user.currencies))
+        dispatch(setSelectedCurrency(response.data.user.currency))
+        dispatch(setAlertMessage(response.data.message))
+        dispatch(setAlertStatus(response.status))
+      })
+      .catch((error) => {
+        dispatch(setAlertMessage(error.response.data.message))
+        dispatch(setAlertStatus(error.response.status))
+      })
   }
 }
 

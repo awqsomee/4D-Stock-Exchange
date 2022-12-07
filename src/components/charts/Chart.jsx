@@ -11,7 +11,7 @@ const Chart = (props) => {
     if (props.stock.prices[0].close > props.stock.prices[99].close) {
       setColor('#BBFFA7')
     } else {
-      setColor('#fd2929')
+      setColor('#F84550')
     }
   }, [])
 
