@@ -15,11 +15,11 @@ const Account = (props) => {
 
   return (
     <div className="container2">
-      <ModalBoxDeposit className="err" visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
+      <ModalBoxDeposit visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
-      <ModalBoxDeposit className="ok" visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
+      <ModalBoxDeposit visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 

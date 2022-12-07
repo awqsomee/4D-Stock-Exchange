@@ -86,3 +86,6 @@
 .ok {
   color: #bbffa7;
 }
+.err {
+  color: #fd2929;
+}

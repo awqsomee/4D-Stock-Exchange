@@ -19,7 +19,7 @@ const Registration = (props) => {
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   return (
     <div className="registration">
-      <ModalBoxDeposit className="err" visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
+      <ModalBoxDeposit visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 

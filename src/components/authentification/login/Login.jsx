@@ -18,7 +18,7 @@ const Login = (props) => {
 
   return (
     <div className="login">
-      <ModalBoxDeposit className="err" visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
+      <ModalBoxDeposit visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 

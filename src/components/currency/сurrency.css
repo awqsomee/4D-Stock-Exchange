@@ -52,3 +52,9 @@
   margin-top: 60px;
   justify-content: left;
 }
+.err {
+  color: #fd2929;
+}
+.ok {
+  color: #bbffa7;
+}

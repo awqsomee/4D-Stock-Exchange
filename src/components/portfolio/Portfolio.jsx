@@ -74,7 +74,7 @@ const Portfolio = (props) => {
 
   return (
     <div className="stockList">
-      <ModalBoxDeposit className="err" visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
+      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
