@@ -23,8 +23,9 @@ const Chart = (props) => {
             <defs>
               <linearGradient id={Id} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor={color} stopOpacity={1}></stop>
-                <stop offset="35%" stopColor={color} stopOpacity={0.8}></stop>
-                <stop offset="75%" stopColor={color} stopOpacity={0.1}></stop>
+                <stop offset="35%" stopColor={color} stopOpacity={0.7}></stop>
+                <stop offset="75%" stopColor={color} stopOpacity={0.3}></stop>
+                <stop offset="100%" stopColor={color} stopOpacity={0.1}></stop>
               </linearGradient>
             </defs>
 
@@ -54,7 +55,7 @@ const Chart = (props) => {
 
             <Tooltip content={<CustomTooltip />} />
 
-            <CartesianGrid opacity={0.3} vertical={false} stroke="#4d4d4d" />
+            <CartesianGrid opacity={0.05} vertical={false} stroke="#fff" />
           </AreaChart>
         </ResponsiveContainer>
       </div>
