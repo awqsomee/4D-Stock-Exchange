@@ -171,8 +171,6 @@ const Navbar = (props) => {
                     />
                   </svg>
                 )}
-
-                {/* <img src={UserProfile} alt="Аккаунт"  /> */}
               </div>
             )}
           </div>
