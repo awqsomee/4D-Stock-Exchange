@@ -16,7 +16,6 @@ const Account_containerItem = (props) => {
   const [isOverTime, setIsOverTime] = useState(false)
   const dispatch = useDispatch()
   const [alert, setAlert] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
   const [account, setAccount] = useState()
   const [isInputUsername, setIsInputUsername] = useState(false)
   const [isInputSurname, setIsInputSurname] = useState(false)
@@ -77,7 +76,7 @@ const Account_containerItem = (props) => {
   }
 
   useEffect(() => {
-    setIsLoading(true)
+    props.setIsLoading(true)
     dispatch(getAccount())
       .then((data) => {
         setAccount(data)
@@ -91,19 +90,20 @@ const Account_containerItem = (props) => {
         setAvatar(`https://stonksexchange-kaivr.amvera.io/${user.avatar}`)
       })
       .finally(() => {
-        setIsLoading(false)
+        props.setIsLoading(false)
       })
   }, [])
 
   const UpdateAccount = async (account) => {
-    setIsLoading(true)
+    props.setIsLoading(true)
+    props.setmodalBoxDeposit(true)
     await dispatch(updateAccount(account))
     if (store.getState().toolkit.alertStatus == 200) {
       props.setmodalBoxDeposit(true)
     } else {
       props.setmodalBoxDeposit(true)
     }
-    setIsLoading(false)
+    props.setIsLoading(false)
   }
   const rootClasses = ['account__avatar__img', 'upload']
   if (isOverTime) {
