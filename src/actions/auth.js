@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { setAlertMessage, setAlertStatus, setUser } from '../redux/slice'
+import { setAlertMessage, setAlertStatus, setAvatar, setUser } from '../redux/slice'
 const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
 // const serverAddress = 'http://localhost:5000'
 
@@ -31,6 +31,7 @@ export const login = (email, password) => {
       })
       .then((response) => {
         dispatch(setUser(response.data.user))
+        dispatch(setAvatar(response.data.user.avatar))
         localStorage.setItem('stonksToken', response.data.token)
       })
       .catch((error) => {
@@ -49,6 +50,7 @@ export const auth = () => {
         },
       })
       dispatch(setUser(response.data.user))
+      dispatch(setAvatar(response.data.user.avatar))
       localStorage.setItem('stonksToken', response.data.token)
     } catch (e) {
       localStorage.removeItem('stonksToken')

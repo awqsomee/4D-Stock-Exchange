@@ -13,6 +13,7 @@ const slice = createSlice({
     alertStatus: null,
     stocks: [],
     userStocks: [],
+    avatar: '',
   },
   reducers: {
     setAccountUser(state, action) {
@@ -64,6 +65,9 @@ const slice = createSlice({
     setUserStocks(state, action) {
       state.userStocks = action.payload
     },
+    setAvatar(state, action) {
+      state.avatar = action.payload
+    },
   },
 })
 
@@ -81,4 +85,5 @@ export const {
   setAccountUser,
   setStocks,
   setUserStocks,
+  setAvatar,
 } = slice.actions
