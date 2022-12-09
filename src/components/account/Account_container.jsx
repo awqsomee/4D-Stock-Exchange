@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ClickAwayListener from 'react-click-away-listener'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAccount, updateAccount } from '../../actions/user'
+import { getAccount, updateAccount, uploadAvatar } from '../../actions/user'
 import { store } from '../../redux'
 import { setAccountUser, setUser } from '../../redux/slice'
 import InputNumber from '../UI/input/InputNumber'
 import PageLoader from '../UI/loader/PageLoader'
 import Alert from '../UI/ModalBox/alert/Alert'
+import ModalBox from '../UI/ModalBox/ModalBox'
 import './account.css'
+import CropAvatar from './CropAvatar'
+// import { Avatar } from '@mui/material'
 
 const Account_containerItem = (props) => {
   const [isOverTime, setIsOverTime] = useState(false)
@@ -30,17 +33,47 @@ const Account_containerItem = (props) => {
       ['patronymic', ''],
     ])
   )
-  // const ref = useRef()
-
   const user = useSelector((state) => state.toolkit.currentUser)
-  const avatar = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
+  // const avatar = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
   // const avatar = `http://localhost:5000/${user.avatar}`
+  const avatarURL = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
+  const [avatar, setAvatar] = useState(avatarURL)
+  const [preview, setPreview] = useState(null)
+  const [visible, setVisible] = useState(false)
+  const inputFile = useRef(null)
+
+  function DataURIToBlob(dataURI) {
+    const splitDataURI = dataURI.split(',')
+    const byteString = splitDataURI[0].indexOf('base64') >= 0 ? atob(splitDataURI[1]) : decodeURI(splitDataURI[1])
+    const mimeString = splitDataURI[0].split(':')[1].split(';')[0]
+    const ia = new Uint8Array(byteString.length)
+    for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i)
+    return new Blob([ia], { type: mimeString })
+  }
+
+  const changeHandler = (e) => {
+    const file = e.target.files[0]
+    console.log(file)
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = function () {
+      setPreview(reader.result)
+      console.log(reader.result)
+    }
+    reader.onerror = function () {
+      console.log(reader.error)
+    }
+    setVisible(true)
+  }
 
   const sumName = () => {
     setAccount({
       ...account,
       name: `${fullname.get('surname')}` + ' ' + `${fullname.get('name')}` + ' ' + `${fullname.get('patronymic')}`,
     })
+  }
+  const onButtonClick = () => {
+    inputFile.current.click()
   }
 
   useEffect(() => {
@@ -55,6 +88,7 @@ const Account_containerItem = (props) => {
             ['patronymic', data?.name.split(' ')[2]],
           ])
         )
+        setAvatar(`https://stonksexchange-kaivr.amvera.io/${user.avatar}`)
       })
       .finally(() => {
         setIsLoading(false)
@@ -65,9 +99,9 @@ const Account_containerItem = (props) => {
     setIsLoading(true)
     await dispatch(updateAccount(account))
     if (store.getState().toolkit.alertStatus == 200) {
-      props.setmodalBoxDepositTrue(true)
+      props.setmodalBoxDeposit(true)
     } else {
-      props.setmodalBoxDepositFalse(true)
+      props.setmodalBoxDeposit(true)
     }
     setIsLoading(false)
   }
@@ -78,7 +112,6 @@ const Account_containerItem = (props) => {
 
   const nameInput = useRef(null)
   useEffect(() => {
-    // console.log(nameInput?.current)
     if (nameInput?.current) {
       nameInput.current.addEventListener('keydown', function (event) {
         if (event.key == 'Enter') {
@@ -89,18 +122,44 @@ const Account_containerItem = (props) => {
     }
   }, [isInputName])
 
-  // nameInput.addEventListener('keydown', function (event) {
-  //   if (event.key == 'Enter') {
-  //     console.log('Enter')
-  //   }
-  // })
-
   return (
     <div className="account">
-      {/* {console.log(nameInput)} */}
-      <Alert visible={alert} setVisible={setAlert}>
+      <ModalBox visible={visible} setVisible={setVisible}>
+        {preview ? (
+          <div style={{ alignItems: 'center' }}>
+            <CropAvatar file={preview} setAvatar={setAvatar} avatar={avatarURL} />
+            <div className="cropAvatar__actions">
+              <button
+                className="button button__normal"
+                onClick={async () => {
+                  setVisible(false)
+                  setPreview(null)
+                  setAvatar(avatarURL)
+                }}
+              >
+                Отмена
+              </button>
+              <button
+                className="button button__normal"
+                onClick={async () => {
+                  setVisible(false)
+                  setPreview(null)
+                  const file = DataURIToBlob(avatar)
+                  await dispatch(uploadAvatar(file))
+                }}
+              >
+                Сохранить
+              </button>
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+      </ModalBox>
+
+      {/* <Alert visible={alert} setVisible={setAlert}>
         <div>Изменения успешно сохранены</div>
-      </Alert>
+      </Alert> */}
       <div>
         <div className="account__item">
           <div className="account__item__first_column">
@@ -110,9 +169,14 @@ const Account_containerItem = (props) => {
               onMouseLeave={() => setIsOverTime(false)}
             >
               {account?.avatar ? (
-                <div className={rootClasses.join(' ') + ' wrapper account__avatar'}>
-                  <img src={avatar} alt="" />
-                </div>
+                <>
+                  {avatar && (
+                    <img src={avatar} alt="Preview" className={rootClasses.join(' ') + ' wrapper account__avatar'} />
+                  )}
+                  {/* <div className={rootClasses.join(' ') + ' wrapper account__avatar'}>
+                    <img src={avatar} alt="" />
+                  </div> */}
+                </>
               ) : (
                 <div className={rootClasses.join(' ')}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140" fill="none">
@@ -131,9 +195,22 @@ const Account_containerItem = (props) => {
                 </div>
               )}
               {isOverTime ? (
-                <div className="upload" onMouseEnter={(e) => e.stopPropagation()}>
-                  Загрузить фото
-                </div>
+                <>
+                  <div className="upload" onMouseEnter={(e) => e.stopPropagation()} onClick={() => onButtonClick()}>
+                    Загрузить фото
+                  </div>
+                  <input
+                    type="file"
+                    id="file"
+                    ref={inputFile}
+                    style={{ display: 'none' }}
+                    placeholder="Загрузить фото"
+                    className="upload"
+                    onChange={(e) => changeHandler(e)}
+                    accept="image/*"
+                    onMouseEnter={(e) => e.stopPropagation()}
+                  />
+                </>
               ) : (
                 ''
               )}
