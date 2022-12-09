@@ -5,9 +5,9 @@ import './account.css'
 import Account_container from './Account_container.jsx'
 
 const Account = (props) => {
-  const [modalBoxDepositTrue, setmodalBoxDepositTrue] = useState(false)
-  const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
+  const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
+  const alertStatus = useSelector((state) => state.toolkit.alertStatus)
 
   useEffect(() => {
     document.title = 'STONKS: Аккаунт'
@@ -15,21 +15,12 @@ const Account = (props) => {
 
   return (
     <div className="container2">
-      <ModalBoxDeposit visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
-        <div>{alertMessage}</div>
-      </ModalBoxDeposit>
-
-      <ModalBoxDeposit visible={modalBoxDepositTrue} setVisible={setmodalBoxDepositTrue}>
+      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit} alertStatus={alertStatus}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
       <div className="title">{props.title}</div>
-      <Account_container
-        modalBoxDepositFalse={modalBoxDepositFalse}
-        modalBoxDepositTrue={modalBoxDepositTrue}
-        setmodalBoxDepositFalse={setmodalBoxDepositFalse}
-        setmodalBoxDepositTrue={setmodalBoxDepositTrue}
-      />
+      <Account_container modalBoxDeposit={modalBoxDeposit} setmodalBoxDeposit={setmodalBoxDeposit} />
     </div>
   )
 }
