@@ -127,8 +127,7 @@ const Transactions = (props) => {
                   </div>
                 ) : (
                   <div className="transactions__difference_amount__amount_dec">
-                    <div>-</div>
-                    <div>{selectedCurrency?.difference}</div>
+                    <div>{new Intl.NumberFormat('ru-RU').format(selectedCurrency?.difference)}</div>
                   </div>
                 )}
               </div>
