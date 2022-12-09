@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { setAccountUser, setAlertMessage, setAlertStatus } from '../redux/slice'
+import { store } from '../redux'
+import { setAccountUser, setAlertMessage, setAlertStatus, setUser } from '../redux/slice'
 const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
 // const serverAddress = 'http://localhost:5000'
 
@@ -77,6 +78,29 @@ export const updateAccount = (account) => {
       )
       .then((response) => {
         dispatch(setAccountUser(response.data.user))
+        dispatch(setAlertMessage(response.data.message))
+        dispatch(setAlertStatus(response.status))
+      })
+      .catch((error) => {
+        dispatch(setAlertMessage(error.response.data.message))
+        dispatch(setAlertStatus(error.response.status))
+      })
+  }
+}
+
+export const uploadAvatar = (file) => {
+  return async (dispatch) => {
+    const formData = new FormData()
+    formData.append('file', file)
+    console.log(formData)
+    await axios
+      .post(`${serverAddress}/api/auth/user/avatar`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+        },
+      })
+      .then((response) => {
+        dispatch(setUser({ ...store.getState().toolkit.currentUser, ...response.data.user }))
         dispatch(setAlertMessage(response.data.message))
         dispatch(setAlertStatus(response.status))
       })
