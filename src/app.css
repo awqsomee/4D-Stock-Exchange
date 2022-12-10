@@ -57,6 +57,7 @@ body {
 }
 .wrap {
   flex: 1;
+  padding: 0 calc(15px - (100vw - 100%)) 0 0;
 }
 .loading {
   align-items: center;

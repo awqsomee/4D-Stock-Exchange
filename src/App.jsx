@@ -40,8 +40,6 @@ function App() {
   //классу тоже не назначается значение
   useEffect(() => {
     setWidthPage()
-
-    // console.log(window.innerWidth, document.documentElement.clientWidth, widthClient)
   }, [document.documentElement.clientWidth])
 
   return (
