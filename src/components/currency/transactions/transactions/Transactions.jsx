@@ -24,6 +24,8 @@ const Transactions = (props) => {
   const [sortImg, setSortImg] = useState('decreaseSort')
   const [filter, setFilter] = useState('')
   const [sort, setSort] = useState(false)
+  const [ceiling, setCeiling] = useState(10)
+  const count = 10
   useEffect(() => {
     setIsLoading(true)
     fetchData()
@@ -90,6 +92,10 @@ const Transactions = (props) => {
         return 0
       }
     }
+  }
+
+  const showMore = () => {
+    setCeiling(ceiling + count)
   }
 
   return (
@@ -214,8 +220,11 @@ const Transactions = (props) => {
               })
               .sort(sorting)
               .map((el, index) => {
-                if (index < 11) return <TransactionItem transactionItem={el} key={el._id} />
+                if (index < ceiling) return <TransactionItem transactionItem={el} key={el._id} />
               })}
+            <div className="showMore" onClick={() => showMore()}>
+              Показать больше
+            </div>
           </div>
         ) : (
           <Loader />
