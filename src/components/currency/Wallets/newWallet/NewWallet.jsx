@@ -12,6 +12,7 @@ const NewWallet = (props) => {
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
   const allCurrencies = useSelector((state) => state.toolkit.currecncies)
+  const transactions = useSelector((state) => state.toolkit.transactions)
   const userCurrencies = useSelector((state) => state.toolkit.userCurrencies)
   const currecncies = Object.keys(allCurrencies)
 
@@ -24,7 +25,7 @@ const NewWallet = (props) => {
 
   const CreateWallet = async (currency) => {
     setIsLoading(true)
-    await dispatch(openCurrencyAccount(userCurrencies, currency))
+    await dispatch(openCurrencyAccount(userCurrencies,transactions, currency))
     setCurrency('')
     // console.log('uc', store.getState().toolkit.userCurrencies)
     // console.log('c', currency)

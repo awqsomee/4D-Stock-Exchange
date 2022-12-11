@@ -4,7 +4,6 @@ import './transactionItem.css'
 const TransactionItem = (props) => {
   const [isOverTime, setIsOverTime] = useState(false)
   const transactionItem = props.transactionItem
-  const cost = transactionItem?.symbol ? transactionItem?.price * transactionItem?.amount : null
   return (
     <div className="transactionItem">
       <div className="transactionItem__type">{transactionItem?.type}</div>
@@ -21,7 +20,7 @@ const TransactionItem = (props) => {
         <div className="transactionItem__price"> </div>
       )}
       {transactionItem?.cost ? (
-        <div className="transactionItem__cost">{new Intl.NumberFormat('ru-RU').format(cost)} RUB</div>
+        <div className="transactionItem__cost">{new Intl.NumberFormat('ru-RU').format(transactionItem.cost)} RUB</div>
       ) : (
         <div className="transactionItem__cost"> </div>
       )}

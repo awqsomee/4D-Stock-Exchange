@@ -14,6 +14,7 @@ const slice = createSlice({
     stocks: [],
     userStocks: [],
     avatar: '',
+    transactions: []
   },
   reducers: {
     setAccountUser(state, action) {
@@ -68,6 +69,9 @@ const slice = createSlice({
     setAvatar(state, action) {
       state.avatar = action.payload
     },
+    setTransactions(state, action) {
+      state.transactions = action.payload
+    },
   },
 })
 
@@ -86,4 +90,5 @@ export const {
   setStocks,
   setUserStocks,
   setAvatar,
+  setTransactions
 } = slice.actions

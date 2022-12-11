@@ -19,24 +19,22 @@ const Transactions = (props) => {
   const [isReplenishing, setIsReplenishing] = useState(false)
   const [isWithdrawing, setIsWithdrawing] = useState(false)
   const [value, setValue] = useState('')
-  const [transactions, setTransactions] = useState()
+  const transactions = useSelector((state) => state.toolkit.transactions)
+  // const [transactions, setTransactions] = useState()
   const [visible, setVisible] = useState(false)
   const [sortImg, setSortImg] = useState('decreaseSort')
   const [filter, setFilter] = useState('')
   const [sort, setSort] = useState(false)
   useEffect(() => {
     setIsLoading(true)
-    fetchData()
-      .then((data) => setTransactions(data))
-      .finally(() => {
-        setIsLoading(false)
-      })
+    fetchData().finally(() => {
+      setIsLoading(false)
+    })
   }, [])
 
-  const fetchData = () => {
+  const fetchData = async () => {
     dispatch(getUserCurrencies())
-    const data = getTransactions()
-    return data
+    dispatch(getTransactions())
   }
 
   const replenishHandler = async (dispatch, value, setValue) => {
@@ -44,10 +42,10 @@ const Transactions = (props) => {
 
     // One LEG!!!
     if (selectedCurrency?.symbol === 'RUB') {
-      await dispatch(changeBalance(value))
+      await dispatch(changeBalance(transactions, value))
       props.setmodalBoxDeposit(true)
     } else {
-      await dispatch(exchangeCurrency(selectedCurrency?.symbol, value))
+      await dispatch(exchangeCurrency(selectedCurrency?.symbol, transactions, value))
       props.setmodalBoxDeposit(true)
     }
     setValue('')
@@ -57,10 +55,10 @@ const Transactions = (props) => {
   const withdrawHandler = async (dispatch, value, setValue) => {
     setIsWithdrawing(true)
     if (selectedCurrency?.symbol === 'RUB') {
-      await dispatch(changeBalance(-value))
+      await dispatch(changeBalance(transactions, -value))
       props.setmodalBoxDeposit(true)
     } else {
-      await dispatch(exchangeCurrency(selectedCurrency?.symbol, -value))
+      await dispatch(exchangeCurrency(selectedCurrency?.symbol, transactions, -value))
       props.setmodalBoxDeposit(true)
     }
     setValue('')

@@ -4,6 +4,7 @@ import {
   setAlertStatus,
   setCurrencies,
   setSelectedCurrency,
+  setTransactions,
   setUserBalance,
   setUserCurrencies,
 } from '../redux/slice'
@@ -47,7 +48,7 @@ export const getUserCurrencies = () => {
   }
 }
 
-export const exchangeCurrency = (symbol, amount) => {
+export const exchangeCurrency = (symbol, transactions, amount) => {
   return async (dispatch) => {
     symbol = String(symbol)
     amount = Number(amount)
@@ -66,8 +67,8 @@ export const exchangeCurrency = (symbol, amount) => {
       )
       .then((response) => {
         dispatch(setUserBalance(response.data.user.balance))
-        dispatch(setUserCurrencies(response.data.user.currencies))
-        dispatch(setSelectedCurrency(response.data.user.currency))
+        dispatch(setSelectedCurrency({ ...response.data.currency, difference: 0 }))
+        dispatch(setTransactions([response.data.transaction, ...transactions]))
         dispatch(setAlertMessage(response.data.message))
         dispatch(setAlertStatus(response.status))
       })
@@ -78,7 +79,7 @@ export const exchangeCurrency = (symbol, amount) => {
   }
 }
 
-export const openCurrencyAccount = (userCurrencies, symbol) => {
+export const openCurrencyAccount = (userCurrencies, transactions, symbol) => {
   return async (dispatch) => {
     await axios
       .post(
@@ -91,8 +92,9 @@ export const openCurrencyAccount = (userCurrencies, symbol) => {
         }
       )
       .then((response) => {
+        dispatch(setTransactions([response.data.transaction, ...transactions]))
         dispatch(setUserCurrencies([...userCurrencies, response.data.currency]))
-        dispatch(setSelectedCurrency(response.data.currency))
+        dispatch(setSelectedCurrency({ ...response.data.currency, difference: 0 }))
         dispatch(setAlertMessage(response.data.message))
         dispatch(setAlertStatus(response.status))
       })
