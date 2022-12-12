@@ -131,12 +131,24 @@
 .transactions__panel__amount:hover {
   color: #ffffff;
 }
+.transactions__panel__amountActive {
+  display: flex;
+  min-width: 20%;
+  justify-content: flex-end;
+  color: #ffffff;
+}
 .transactions__panel__price {
   display: flex;
   min-width: 20%;
   justify-content: flex-end;
 }
 .transactions__panel__price:hover {
+  color: #ffffff;
+}
+.transactions__panel__priceActive {
+  display: flex;
+  min-width: 20%;
+  justify-content: flex-end;
   color: #ffffff;
 }
 .transactions__panel__cost {
@@ -147,12 +159,24 @@
 .transactions__panel__cost:hover {
   color: #ffffff;
 }
+.transactions__panel__costActive {
+  display: flex;
+  min-width: 22%;
+  justify-content: flex-end;
+  color: #ffffff;
+}
 .transactions__panel__date {
   display: flex;
   min-width: 18%;
   justify-content: flex-end;
 }
 .transactions__panel__date:hover {
+  color: #ffffff;
+}
+.transactions__panel__dateActive {
+  display: flex;
+  min-width: 18%;
+  justify-content: flex-end;
   color: #ffffff;
 }
 .transactions__history {
