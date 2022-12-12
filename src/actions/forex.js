@@ -48,7 +48,7 @@ export const getUserCurrencies = () => {
   }
 }
 
-export const exchangeCurrency = (symbol, transactions, amount) => {
+export const exchangeCurrency = (symbol, userCurrencies, transactions, amount) => {
   return async (dispatch) => {
     symbol = String(symbol)
     amount = Number(amount)
@@ -67,6 +67,7 @@ export const exchangeCurrency = (symbol, transactions, amount) => {
       )
       .then((response) => {
         dispatch(setUserBalance(response.data.user.balance))
+        dispatch(setUserCurrencies([...userCurrencies, response.data.currency]))
         dispatch(setSelectedCurrency({ ...response.data.currency, difference: 0 }))
         dispatch(setTransactions([response.data.transaction, ...transactions]))
         dispatch(setAlertMessage(response.data.message))
