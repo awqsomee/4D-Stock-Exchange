@@ -11,7 +11,7 @@ import { store } from '../../redux/index.js'
 import PanelPortfolio from '../panel/PanelPortfolio.jsx'
 import StockPortfolio from '../stocks/StockPortfolio.jsx'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit.jsx'
-import InfoCard from './InfoCard.jsx'
+// import InfoCard from './InfoCard.jsx'
 import { setAccountUser } from '../../redux/slice.jsx'
 
 const Portfolio = (props) => {
@@ -100,7 +100,7 @@ const Portfolio = (props) => {
       <div className="container2">
         <div className="stockList__info">
           {console.log(income)}
-          <InfoCard title={'Прибыль'} info={income}></InfoCard>
+          {/* <InfoCard title={'Прибыль'} info={income}></InfoCard> */}
         </div>
         <div className="title">{props.title}</div>
         <div className="list">
