@@ -67,7 +67,19 @@ export const exchangeCurrency = (symbol, userCurrencies, transactions, amount) =
       )
       .then((response) => {
         dispatch(setUserBalance(response.data.user.balance))
-        dispatch(setUserCurrencies([...userCurrencies, response.data.currency]))
+        dispatch(
+          setUserCurrencies(
+            userCurrencies.map((currency) => {
+              if (currency.id !== response.data.currency.id) return currency
+              else
+                return {
+                  ...currency,
+                  latestPrice: response.data.currency.latestPrice,
+                  amount: response.data.currency.amount,
+                }
+            })
+          )
+        )
         dispatch(setSelectedCurrency({ ...response.data.currency, difference: 0 }))
         dispatch(setTransactions([response.data.transaction, ...transactions]))
         dispatch(setAlertMessage(response.data.message))

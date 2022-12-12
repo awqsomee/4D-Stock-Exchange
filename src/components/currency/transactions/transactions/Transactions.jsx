@@ -20,7 +20,7 @@ const Transactions = (props) => {
   const [isWithdrawing, setIsWithdrawing] = useState(false)
   const [value, setValue] = useState('')
   const transactions = useSelector((state) => state.toolkit.transactions)
-  // const [transactions, setTransactions] = useState()
+  const userCurrencies = useSelector((state) => state.toolkit.userCurrencies)
   const [visible, setVisible] = useState(false)
   const [sortImg, setSortImg] = useState('decreaseSort')
   const [filter, setFilter] = useState('')
@@ -46,7 +46,7 @@ const Transactions = (props) => {
       await dispatch(changeBalance(transactions, value))
       props.setmodalBoxDeposit(true)
     } else {
-      await dispatch(exchangeCurrency(selectedCurrency?.symbol, transactions, value))
+      await dispatch(exchangeCurrency(selectedCurrency?.symbol, userCurrencies, transactions, value))
       props.setmodalBoxDeposit(true)
     }
     setValue('')
@@ -59,7 +59,7 @@ const Transactions = (props) => {
       await dispatch(changeBalance(transactions, -value))
       props.setmodalBoxDeposit(true)
     } else {
-      await dispatch(exchangeCurrency(selectedCurrency?.symbol, transactions, -value))
+      await dispatch(exchangeCurrency(selectedCurrency?.symbol, userCurrencies, transactions, -value))
       props.setmodalBoxDeposit(true)
     }
     setValue('')
