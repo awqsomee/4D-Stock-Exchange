@@ -3,8 +3,13 @@
 @import '../../styles/shadows/shadows.less';
 
 .infoCard {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
   width: 380px;
   border-radius: 5px;
+  padding: 40px;
+  gap: 60px;
   background-color: @--cards-background-color;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5), 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: @font-family;
@@ -15,6 +20,6 @@
   }
 
   &__info {
-    font-size: @--mark-font-size;
+    font-size: @--paragraph-font-size;
   }
 }

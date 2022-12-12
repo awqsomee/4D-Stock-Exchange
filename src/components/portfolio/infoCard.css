@@ -34,8 +34,13 @@
   src: url(https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtI.ttf) format('truetype');
 }
 .infoCard {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
   width: 380px;
   border-radius: 5px;
+  padding: 40px;
+  gap: 60px;
   background-color: #eaeaea0d;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5), 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: 'Exo 2', 'Arial';
@@ -45,5 +50,5 @@
   font-size: 20px;
 }
 .infoCard__info {
-  font-size: 14px;
+  font-size: 20px;
 }
