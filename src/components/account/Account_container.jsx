@@ -114,6 +114,7 @@ const Account_containerItem = (props) => {
   useEffect(() => {
     if (nameInput?.current) {
       nameInput.current.addEventListener('keydown', function (event) {
+        console.log('entr')
         if (event.key == 'Enter') {
           nameInput.current.blur()
         }
@@ -255,7 +256,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputName(false)}>
                   <input
-                    forwardedRef={nameInput}
+                    ref={nameInput}
                     className="search"
                     value={fullname.get('name')}
                     onBlur={(event) => {
