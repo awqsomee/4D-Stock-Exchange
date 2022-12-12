@@ -11,6 +11,8 @@ import { store } from '../../redux/index.js'
 import PanelPortfolio from '../panel/PanelPortfolio.jsx'
 import StockPortfolio from '../stocks/StockPortfolio.jsx'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit.jsx'
+import InfoCard from './InfoCard.jsx'
+import { setAccountUser } from '../../redux/slice.jsx'
 
 const Portfolio = (props) => {
   const [isStocksLoading, setIsStocksLoading] = useState(false)
@@ -20,13 +22,20 @@ const Portfolio = (props) => {
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   let stocks = useSelector((state) => state.toolkit.userStocks)
+  const [income, setIncome] = useState(0)
+
   useEffect(() => {
+    setIncome(0)
     document.title = 'STONKS: Портфель'
     setIsStocksLoading(true)
     dispatch(getUserStocks()).finally(() => {
       setIsStocksLoading(false)
     })
   }, [])
+
+  useEffect(() => {
+    countChanges()
+  }, [stocks])
 
   const sorting = (a, b) => {
     const value = filter
@@ -72,6 +81,16 @@ const Portfolio = (props) => {
     return [...stocks].sort(sorting)
   }, [filter, sort, stocks])
 
+  const countChanges = () => {
+    let summ = 0
+    stocks.map((stock) => {
+      if (stock.prices[0].close != null) {
+        summ = summ + stock.amount * stock.prices[0].close * ((stock?.prices[0].close - stock?.latestPrice) / 100)
+      }
+    })
+    setIncome(summ)
+  }
+
   return (
     <div className="stockList">
       <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
@@ -79,6 +98,10 @@ const Portfolio = (props) => {
       </ModalBoxDeposit>
 
       <div className="container2">
+        <div className="stockList__info">
+          {console.log(income)}
+          <InfoCard title={'Прибыль'} info={income}></InfoCard>
+        </div>
         <div className="title">{props.title}</div>
         <div className="list">
           <Sorting setFilter={setFilter} setSort={setSort} />
