@@ -101,27 +101,35 @@ const Registration = (props) => {
       <button
         className="button button__normal registration__button"
         onClick={async () => {
-          if (password != '')
-            if (password === repeatPassword) {
-              setIsLoading(true)
-              await dispatch(registration(name, email, password))
-              if (store.getState().toolkit.isAuth) {
-                setName('')
-                setEmail('')
-                setPassword('')
-                setRepeatPassword('')
-                props.sVisible(false)
-              } else setmodalBoxDepositFalse(true)
-              setIsLoading(false)
-            } else {
-              dispatch(setAlertMessage('Пароли не совпадают'))
-              dispatch(setAlertStatus(400))
-              setmodalBoxDepositFalse(true)
-            }
-          else {
+          if (email === '') {
+            dispatch(setAlertMessage('Введите Email'))
+            dispatch(setAlertStatus(400))
+            setmodalBoxDepositFalse(true)
+          } else if (name === '') {
+            dispatch(setAlertMessage('Введите ФИО'))
+            dispatch(setAlertStatus(400))
+            setmodalBoxDepositFalse(true)
+          } else if (password === '') {
             dispatch(setAlertMessage('Придумайте пароль'))
             dispatch(setAlertStatus(400))
             setmodalBoxDepositFalse(true)
+          } else if (password !== repeatPassword) {
+            dispatch(setAlertMessage('Пароли не совпадают'))
+            dispatch(setAlertStatus(400))
+            setmodalBoxDepositFalse(true)
+          } else {
+            setIsLoading(true)
+            await dispatch(registration(name, email, password))
+            if (!store.getState().toolkit.isAuth) {
+              setmodalBoxDepositFalse(true)
+            } else {
+              setName('')
+              setEmail('')
+              setPassword('')
+              setRepeatPassword('')
+              props.sVisible(false)
+            }
+            setIsLoading(false)
           }
         }}
       >
