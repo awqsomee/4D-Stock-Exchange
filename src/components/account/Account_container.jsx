@@ -255,7 +255,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputName(false)}>
                   <input
-                    forwardedRef={nameInput}
+                    ref={nameInput}
                     className="search"
                     value={fullname.get('name')}
                     onBlur={(event) => {
