@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Avatar from 'react-avatar-edit'
+import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit'
 
 const CropAvatar = (props) => {
   function onClose() {
@@ -10,7 +11,7 @@ const CropAvatar = (props) => {
   }
   function onBeforeFileLoad(elem) {
     if (elem.target.files[0].size > 2000000) {
-      alert('File is too big!')
+      alert('Файл слишком большой')
       elem.target.value = ''
     }
   }
@@ -19,11 +20,15 @@ const CropAvatar = (props) => {
       <Avatar
         height={600}
         width="auto"
+        label="Выберите фото"
+        labelStyle={{ color: '#fff', fontFamily: 'Play' }}
+        imageHeight={600}
         onCrop={onCrop}
         onClose={onClose}
         onBeforeFileLoad={onBeforeFileLoad}
         src={props.file}
-        cropRadius={296}
+        exportQuality={1.0}
+        cropRadius={100}
       />
     </div>
   )
