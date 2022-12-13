@@ -17,11 +17,12 @@ import InfoBlock from './InfoBlock.jsx'
 
 const Portfolio = (props) => {
   const [isStocksLoading, setIsStocksLoading] = useState(false)
-  const [filter, setFilter] = useState('')
+  const [filter, setFilter] = useState('change')
   const [sort, setSort] = useState(false)
   const dispatch = useDispatch()
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
+  const alertStatus = useSelector((state) => state.toolkit.alertStatus)
   let stocks = useSelector((state) => state.toolkit.userStocks)
   const [income, setIncome] = useState(0)
 
@@ -49,18 +50,26 @@ const Portfolio = (props) => {
     const value = filter
     if ((value != '') & (value === 'change')) {
       if (sort) {
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) > Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) > Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return 1
         }
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) < Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) < Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return -1
         }
         return 0
       } else {
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) > Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) > Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return -1
         }
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) < Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) < Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return 1
         }
         return 0
@@ -91,7 +100,7 @@ const Portfolio = (props) => {
 
   return (
     <div className="stockList">
-      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
+      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit} alertStatus={alertStatus}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
