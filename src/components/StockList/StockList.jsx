@@ -50,6 +50,17 @@ const StockList = (props) => {
     }
   }, [])
 
+  useEffect(() => {
+    if (modalBoxDeposit) {
+      const timeId = setTimeout(() => {
+        setmodalBoxDeposit(false)
+      }, 1500)
+      return () => {
+        clearTimeout(timeId)
+      }
+    }
+  }, [modalBoxDeposit])
+
   const sorting = (a, b) => {
     const value = filter
     if ((value != '') & (value === 'change')) {

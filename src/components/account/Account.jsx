@@ -15,6 +15,17 @@ const Account = (props) => {
     document.title = 'STONKS: Аккаунт'
   }, [])
 
+  useEffect(() => {
+    if (modalBoxDeposit) {
+      const timeId = setTimeout(() => {
+        setmodalBoxDeposit(false)
+      }, 1500)
+      return () => {
+        clearTimeout(timeId)
+      }
+    }
+  }, [modalBoxDeposit])
+
   return (
     <div className="container2">
       <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit} alertStatus={alertStatus}>

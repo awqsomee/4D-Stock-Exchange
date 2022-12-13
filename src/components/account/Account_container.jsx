@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ClickAwayListener from 'react-click-away-listener'
 import { useDispatch, useSelector } from 'react-redux'
+import { setTimeout } from '../../actions/timer'
 import { getAccount, updateAccount, uploadAvatar } from '../../actions/user'
 import { store } from '../../redux'
 import { setAccountUser, setUser } from '../../redux/slice'
@@ -121,10 +122,21 @@ const Account_containerItem = (props) => {
       nameInput.current.focus()
     }
   }, [isInputName])
+  const surnameInput = useRef(null)
+  useEffect(() => {
+    if (surnameInput?.current) {
+      surnameInput.current.addEventListener('keydown', function (event) {
+        if (event.key == 'Enter') {
+          surnameInput.current.blur()
+        }
+      })
+      surnameInput.current.focus()
+    }
+  }, [isInputSurname])
 
   return (
     <div className="account">
-      <ModalBox visible={visible} setVisible={setVisible}>
+      <ModalBox visible={visible} setVisible={setVisible} setAvatar={setAvatar} avatar={avatarURL}>
         {preview ? (
           <div style={{ alignItems: 'center' }}>
             <CropAvatar file={preview} setAvatar={setAvatar} avatar={avatarURL} />
@@ -281,12 +293,19 @@ const Account_containerItem = (props) => {
               )}
             </div>
 
-            <div className="field field__input" onClick={() => setIsInputSurname(true)}>
+            <div
+              className="field field__input"
+              onClick={() => {
+                setIsInputSurname(true)
+                // focus()
+              }}
+            >
               {!isInputSurname ? (
                 <div>{fullname.get('surname')}</div>
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputSurname(false)}>
                   <input
+                    ref={surnameInput}
                     className="search"
                     value={fullname.get('surname')}
                     onBlur={(event) => {

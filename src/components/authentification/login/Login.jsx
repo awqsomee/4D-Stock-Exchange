@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import './login.css'
 import { login } from '../../../actions/auth'
@@ -15,6 +15,17 @@ const Login = (props) => {
   const dispatch = useDispatch()
   const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
+
+  useEffect(() => {
+    if (modalBoxDepositFalse) {
+      const timeId = setTimeout(() => {
+        setmodalBoxDepositFalse(false)
+      }, 1500)
+      return () => {
+        clearTimeout(timeId)
+      }
+    }
+  }, [modalBoxDepositFalse])
 
   return (
     <div className="login">
