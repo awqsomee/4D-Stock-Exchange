@@ -6,6 +6,7 @@ const slice = createSlice({
     currentUser: {},
     isAuth: false,
     searchQuery: '',
+    isSearching: false,
     currecncies: [],
     userCurrencies: [],
     selectedCurrency: {},
@@ -14,7 +15,7 @@ const slice = createSlice({
     stocks: [],
     userStocks: [],
     avatar: '',
-    transactions: []
+    transactions: [],
   },
   reducers: {
     setAccountUser(state, action) {
@@ -47,6 +48,9 @@ const slice = createSlice({
     },
     setSearch(state, action) {
       state.searchQuery = action.payload
+    },
+    setIsSearching(state, action) {
+      state.isSearching = action.payload
     },
     setUserBalance(state, action) {
       state.currentUser.balance = action.payload
@@ -82,6 +86,7 @@ export const {
   setCurrencies,
   setUserCurrencies,
   setSearch,
+  setIsSearching,
   setUserBalance,
   setSelectedCurrency,
   setAlertMessage,
@@ -90,5 +95,5 @@ export const {
   setStocks,
   setUserStocks,
   setAvatar,
-  setTransactions
+  setTransactions,
 } = slice.actions

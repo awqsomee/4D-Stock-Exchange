@@ -8,12 +8,13 @@ import { getStocksSearch } from '../../actions/stocks.js'
 import Loader from '../UI/loader/Loader.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from '../../redux/index.js'
-import { setSearch } from '../../redux/slice.jsx'
+import { setIsSearching, setSearch } from '../../redux/slice.jsx'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit.jsx'
 
 const StockList = (props) => {
   const dispatch = useDispatch()
   const stocks = useSelector((state) => state.toolkit.stocks)
+  const isSearching = useSelector((state) => state.toolkit.isSearching)
   const [isStocksLoading, setIsStocksLoading] = useState(false)
   const [filter, setFilter] = useState('')
   const [sort, setSort] = useState(false)
@@ -36,19 +37,12 @@ const StockList = (props) => {
 
   useEffect(() => {
     document.title = 'STONKS – StockExchange'
-    if (search.length < 2) {
-      setIsStocksLoading(true)
-      dispatch(setSearch(''))
-      dispatch(getStocksSearch()).finally(() => {
-        setIsStocksLoading(false)
-      })
-    } else {
-      setIsStocksLoading(true)
-      dispatch(getStocksSearch(search)).finally(() => {
-        setIsStocksLoading(false)
-      })
-    }
-  }, [])
+    setIsStocksLoading(true)
+    dispatch(getStocksSearch(search)).finally(() => {
+      dispatch(setIsSearching(false))
+      setIsStocksLoading(false)
+    })
+  }, [isSearching])
 
   const sorting = (a, b) => {
     const value = filter

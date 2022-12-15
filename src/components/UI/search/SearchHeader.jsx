@@ -1,7 +1,7 @@
 //  import classes from './search_header.module.css'
 import '../../navbar/navbar.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { setSearch } from '../../../redux/slice'
+import { setIsSearching, setSearch } from '../../../redux/slice'
 import Search from '../../../assets/Icons/search.svg'
 import { useNavigate } from 'react-router-dom'
 import { getStocksSearch } from '../../../actions/stocks'
@@ -18,15 +18,20 @@ const SearchHeader = () => {
   const search = useSelector((state) => state.toolkit.searchQuery)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const SearchHandler = () => {
+    if (search.length > 1) {
+      dispatch(setIsSearching(true))
+      navigate('/stocks')
+    }
+  }
+
   return (
     <div className="navbar__search">
       <form
         onSubmit={(event) => {
           event.preventDefault()
-          navigate('/stocks')
-          if (search.length > 1) {
-            dispatch(getStocksSearch(search))
-          }
+          SearchHandler()
         }}
       >
         <input
@@ -38,7 +43,7 @@ const SearchHeader = () => {
         />
       </form>
       <div className="navbar__search__img">
-        <img onClick={() => navigate('/stocks')} src={Search} width={25} />
+        <img onClick={() => SearchHandler()} src={Search} width={25} />
       </div>
     </div>
   )
