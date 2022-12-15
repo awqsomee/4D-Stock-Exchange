@@ -70,7 +70,7 @@ export const exchangeCurrency = (symbol, userCurrencies, transactions, amount) =
         dispatch(
           setUserCurrencies(
             userCurrencies.map((currency) => {
-              if (currency.id !== response.data.currency.id) return currency
+              if (currency._id !== response.data.currency._id) return currency
               else
                 return {
                   ...currency,
