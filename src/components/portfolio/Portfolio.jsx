@@ -105,10 +105,6 @@ const Portfolio = (props) => {
       </ModalBoxDeposit>
 
       <div className="container2">
-        <div className="stockList__info">
-          {console.log(income)}
-          {/* <InfoCard title={'Прибыль'} info={income}></InfoCard> */}
-        </div>
         <div className="title">{props.title}</div>
         <InfoBlock stocks={stocks} income={income} setIncome={setIncome}></InfoBlock>
         <div className="list">
