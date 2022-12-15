@@ -9,11 +9,12 @@ import ButtonLoader from '../../../UI/loader/ButtonLoader'
 const CloseWallet = (props) => {
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
+  const transactions = useSelector((state) => state.toolkit.transactions)
   const userCurrencies = useSelector((state) => state.toolkit.userCurrencies)
 
   const closeWallet = async (symbol) => {
     setIsLoading(true)
-    await dispatch(closeCurrencyAccount(userCurrencies, symbol))
+    await dispatch(closeCurrencyAccount(userCurrencies, transactions, symbol))
     if (store.getState().toolkit.userCurrencies.some((item) => item.symbol === symbol)) {
       props.sVisible(false)
       props.setmodalBoxDeposit(true)

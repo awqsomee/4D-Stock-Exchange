@@ -118,7 +118,7 @@ export const openCurrencyAccount = (userCurrencies, transactions, symbol) => {
   }
 }
 
-export const closeCurrencyAccount = (userCurrencies, symbol) => {
+export const closeCurrencyAccount = (userCurrencies, transactions, symbol) => {
   return async (dispatch) => {
     await axios
       .post(
@@ -131,6 +131,7 @@ export const closeCurrencyAccount = (userCurrencies, symbol) => {
         }
       )
       .then((response) => {
+        dispatch(setTransactions([response.data.user.transactionExchange, ...transactions]))
         dispatch(setUserBalance(response.data.user.balance))
         dispatch(setUserCurrencies(userCurrencies.filter((currency) => currency.symbol != symbol)))
         dispatch(

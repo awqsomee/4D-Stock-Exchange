@@ -217,7 +217,7 @@ const Transactions = (props) => {
             {transactions
               ?.filter((transaction) => {
                 return (
-                  transaction.symbol === selectedCurrency.symbol || transaction.currency === selectedCurrency.symbol
+                  transaction?.symbol === selectedCurrency?.symbol || transaction?.currency === selectedCurrency?.symbol
                 )
               })
               .filter((transactionItem) => {
