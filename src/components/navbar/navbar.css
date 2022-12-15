@@ -73,6 +73,14 @@
   z-index: 1;
   cursor: pointer;
 }
+.navbar__close__img {
+  position: absolute;
+  right: 50px;
+  max-width: 25px;
+  display: inline-block;
+  z-index: 1;
+  cursor: pointer;
+}
 .navbar__buttons {
   display: flex;
   padding-left: 24px;
