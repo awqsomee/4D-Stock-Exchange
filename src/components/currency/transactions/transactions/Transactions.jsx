@@ -19,7 +19,8 @@ const Transactions = (props) => {
   const [isReplenishing, setIsReplenishing] = useState(false)
   const [isWithdrawing, setIsWithdrawing] = useState(false)
   const [value, setValue] = useState('')
-  const [transactions, setTransactions] = useState()
+  const transactions = useSelector((state) => state.toolkit.transactions)
+  const userCurrencies = useSelector((state) => state.toolkit.userCurrencies)
   const [visible, setVisible] = useState(false)
   const [sortImg, setSortImg] = useState('decreaseSort')
   const [filter, setFilter] = useState('')
@@ -28,17 +29,13 @@ const Transactions = (props) => {
   const count = 10
   useEffect(() => {
     setIsLoading(true)
-    fetchData()
-      .then((data) => setTransactions(data))
-      .finally(() => {
-        setIsLoading(false)
-      })
+    fetchData().finally(() => {
+      setIsLoading(false)
+    })
   }, [])
 
-  const fetchData = () => {
-    dispatch(getUserCurrencies())
-    const data = getTransactions()
-    return data
+  const fetchData = async () => {
+    await Promise.all([dispatch(getUserCurrencies()), dispatch(getTransactions())])
   }
 
   const replenishHandler = async (dispatch, value, setValue) => {
@@ -46,10 +43,10 @@ const Transactions = (props) => {
 
     // One LEG!!!
     if (selectedCurrency?.symbol === 'RUB') {
-      await dispatch(changeBalance(value))
+      await dispatch(changeBalance(transactions, value))
       props.setmodalBoxDeposit(true)
     } else {
-      await dispatch(exchangeCurrency(selectedCurrency?.symbol, value))
+      await dispatch(exchangeCurrency(selectedCurrency?.symbol, userCurrencies, transactions, value))
       props.setmodalBoxDeposit(true)
     }
     setValue('')
@@ -59,10 +56,10 @@ const Transactions = (props) => {
   const withdrawHandler = async (dispatch, value, setValue) => {
     setIsWithdrawing(true)
     if (selectedCurrency?.symbol === 'RUB') {
-      await dispatch(changeBalance(-value))
+      await dispatch(changeBalance(transactions, -value))
       props.setmodalBoxDeposit(true)
     } else {
-      await dispatch(exchangeCurrency(selectedCurrency?.symbol, -value))
+      await dispatch(exchangeCurrency(selectedCurrency?.symbol, userCurrencies, transactions, -value))
       props.setmodalBoxDeposit(true)
     }
     setValue('')
@@ -220,7 +217,7 @@ const Transactions = (props) => {
             {transactions
               ?.filter((transaction) => {
                 return (
-                  transaction.symbol === selectedCurrency.symbol || transaction.currency === selectedCurrency.symbol
+                  transaction?.symbol === selectedCurrency?.symbol || transaction?.currency === selectedCurrency?.symbol
                 )
               })
               .filter((transactionItem) => {

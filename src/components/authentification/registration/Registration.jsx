@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Close from '../../../assets/Icons/close.svg'
 import Loader from '../../UI/loader/Loader'
 import ButtonLoader from '../../UI/loader/ButtonLoader'
+import { setAlertMessage, setAlertStatus } from '../../../redux/slice'
+import { store } from '../../../redux'
 
 const Registration = (props) => {
   const dispatch = useDispatch()
@@ -111,12 +113,36 @@ const Registration = (props) => {
       <button
         className="button button__normal registration__button"
         onClick={async () => {
-          if (password === repeatPassword && password != '') {
+          if (email === '') {
+            dispatch(setAlertMessage('Введите Email'))
+            dispatch(setAlertStatus(400))
+            setmodalBoxDepositFalse(true)
+          } else if (name === '') {
+            dispatch(setAlertMessage('Введите ФИО'))
+            dispatch(setAlertStatus(400))
+            setmodalBoxDepositFalse(true)
+          } else if (password === '') {
+            dispatch(setAlertMessage('Придумайте пароль'))
+            dispatch(setAlertStatus(400))
+            setmodalBoxDepositFalse(true)
+          } else if (password !== repeatPassword) {
+            dispatch(setAlertMessage('Пароли не совпадают'))
+            dispatch(setAlertStatus(400))
+            setmodalBoxDepositFalse(true)
+          } else {
             setIsLoading(true)
             await dispatch(registration(name, email, password))
+            if (!store.getState().toolkit.isAuth) {
+              setmodalBoxDepositFalse(true)
+            } else {
+              setName('')
+              setEmail('')
+              setPassword('')
+              setRepeatPassword('')
+              props.sVisible(false)
+            }
             setIsLoading(false)
-            props.sVisible(false)
-          } else setmodalBoxDepositFalse(true)
+          }
         }}
       >
         {isLoading ? <ButtonLoader /> : 'Зарегистрироваться'}

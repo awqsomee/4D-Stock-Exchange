@@ -115,6 +115,7 @@ const Account_containerItem = (props) => {
   useEffect(() => {
     if (nameInput?.current) {
       nameInput.current.addEventListener('keydown', function (event) {
+        console.log('entr')
         if (event.key == 'Enter') {
           nameInput.current.blur()
         }
