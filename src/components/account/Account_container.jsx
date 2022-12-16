@@ -271,11 +271,14 @@ const Account_containerItem = (props) => {
               className="field field__input"
               onClick={() => {
                 setIsInputSurname(true)
-                // focus()
               }}
             >
               {!isInputSurname ? (
-                <div>{fullname.get('surname')}</div>
+                fullname.get('surname') ? (
+                  <div>{fullname.get('surname')}</div>
+                ) : (
+                  <div style={{ opacity: '0.2' }}>Введите фамилию</div>
+                )
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputSurname(false)}>
                   <input
@@ -307,7 +310,11 @@ const Account_containerItem = (props) => {
 
             <div className="field field__input" onClick={() => setIsInputName(true)}>
               {!isInputName ? (
-                <div>{fullname.get('name')}</div>
+                fullname.get('name') ? (
+                  <div>{fullname.get('name')}</div>
+                ) : (
+                  <div style={{ opacity: '0.2' }}>Введите имя</div>
+                )
               ) : (
                 // <InputAccount
                 //   setIsInput={setIsInput}
@@ -349,7 +356,11 @@ const Account_containerItem = (props) => {
 
             <div className="field field__input" onClick={() => setIsInputPatronymic(true)}>
               {!isInputPatronymic ? (
-                <div>{fullname.get('patronymic')}</div>
+                fullname.get('patronymic') ? (
+                  <div>{fullname.get('patronymic')}</div>
+                ) : (
+                  <div style={{ opacity: '0.2' }}>Введите отчество</div>
+                )
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputPatronymic(false)}>
                   <input
@@ -428,7 +439,11 @@ const Account_containerItem = (props) => {
           <div className="account__item__column">
             <div className="field field__input" onClick={() => setIsInputEmail(true)}>
               {!isInputEmail ? (
-                <div>{account?.email}</div>
+                account?.email ? (
+                  <div>{account?.email}</div>
+                ) : (
+                  <div style={{ opacity: '0.2' }}>Введите e-mail</div>
+                )
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputEmail(false)}>
                   <input
@@ -448,7 +463,11 @@ const Account_containerItem = (props) => {
             </div>
             <div className="field field__input" onClick={() => setIsInputPhoneNumber(true)}>
               {!isInputPhoneNumber ? (
-                <div>{account?.phoneNumber}</div>
+                account?.phoneNumber ? (
+                  <div>{account?.phoneNumber}</div>
+                ) : (
+                  <div style={{ opacity: '0.2' }}>Введите номер телефона</div>
+                )
               ) : (
                 /*не работает с числовым инпутом*/
                 <ClickAwayListener onClickAway={() => setIsInputPhoneNumber(false)}>
@@ -468,7 +487,11 @@ const Account_containerItem = (props) => {
             </div>
             <div className="field field__input" onClick={() => setIsInputPassport(true)}>
               {!isInputPassport ? (
-                <div>{account?.passportNumber}</div>
+                account?.passportNumber ? (
+                  <div>{account?.passportNumber}</div>
+                ) : (
+                  <div style={{ opacity: '0.2' }}>Укажите паспортные данные</div>
+                )
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputPassport(false)}>
                   <input
@@ -496,9 +519,15 @@ const Account_containerItem = (props) => {
             <div className="field">Срок действия карты</div>
           </div>
           <div className="account__item__column">
-            <div id="acc_field">В разработке</div>
-            <div id="acc_field">0000 0000 0000 0000</div>
-            <div id="acc_field">--/--</div>
+            <div id="acc_field" style={{ opacity: '0.2' }}>
+              В разработке
+            </div>
+            <div id="acc_field" style={{ opacity: '0.2' }}>
+              0000 0000 0000 0000
+            </div>
+            <div id="acc_field" style={{ opacity: '0.2' }}>
+              --/--
+            </div>
           </div>
         </div>
         {/* <button className="button button__danger">Удалить аккаунт</button> */}
