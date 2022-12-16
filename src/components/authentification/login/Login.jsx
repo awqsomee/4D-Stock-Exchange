@@ -42,7 +42,7 @@ const Login = (props) => {
         </svg>
       </div>
       <div className="login__header">Вход</div>
-      <div className="login__input_name">Электронная почта или имя пользователя</div>
+      <div className="login__input_name">Почта / Псевдоним</div>
       <div className="login__input">
         <input
           className="auth"
