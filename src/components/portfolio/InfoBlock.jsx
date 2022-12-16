@@ -20,11 +20,9 @@ const InfoBlock = ({ stocks, isLoading }) => {
     let summ = 0
     let balance = store.getState().toolkit.currentUser.balance
     userCurrencies.map((currency) => {
-      console.log(currency)
       summ = summ + currency.amount * currency.price
     })
     stocks.map((stock) => {
-      console.log(stock)
       if (stock.prices[0].close != null) {
         summ = summ + stock.amount * stock.prices[0].close
       }

@@ -27,8 +27,6 @@ const NewWallet = (props) => {
     setIsLoading(true)
     await dispatch(openCurrencyAccount(userCurrencies, transactions, currency))
     setCurrency('')
-    // console.log('uc', store.getState().toolkit.userCurrencies)
-    // console.log('c', currency)
     // if (store.getState().toolkit.userCurrencies.some((item) => item.symbol === currency)) {
     //   props.sVisible(false)
     //   props.setmodalBoxDepositTrue(true)

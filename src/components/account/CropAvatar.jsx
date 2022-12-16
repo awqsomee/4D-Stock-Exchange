@@ -24,7 +24,6 @@ const CropAvatar = (props) => {
   }
   function onBeforeFileLoad(elem) {
     if (elem.target.files[0].size > 2000000) {
-      console.log(elem.target.files[0].size)
       props.setAvatar(props.avatar)
       elem.target.value = ''
       setModalBoxBigFile(true)

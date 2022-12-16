@@ -17,7 +17,6 @@ const Graph_panel = (props) => {
 
   useEffect(() => {
     statisticPrice()
-    console.log(maxPrice, minPrice)
   }, [])
 
   const statisticPrice = () => {
