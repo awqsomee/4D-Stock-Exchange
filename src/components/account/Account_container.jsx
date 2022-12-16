@@ -1,17 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ClickAwayListener from 'react-click-away-listener'
 import { useDispatch, useSelector } from 'react-redux'
-import { setTimeout } from '../../actions/timer'
 import { getAccount, updateAccount, uploadAvatar } from '../../actions/user'
 import { store } from '../../redux'
-import { setAccountUser, setUser } from '../../redux/slice'
-import InputNumber from '../UI/input/InputNumber'
-import PageLoader from '../UI/loader/PageLoader'
-import Alert from '../UI/ModalBox/alert/Alert'
 import ModalBox from '../UI/ModalBox/ModalBox'
 import './account.css'
 import CropAvatar from './CropAvatar'
-// import { Avatar } from '@mui/material'
 import CloseAccount from './CloseAccount'
 
 const Account_containerItem = (props) => {
@@ -36,7 +30,7 @@ const Account_containerItem = (props) => {
   )
   const user = useSelector((state) => state.toolkit.currentUser)
   // const avatar = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
-  // const avatar = `http://localhost:5000/${user.avatar}`
+  // const avatar = `http://localhost:80/${user.avatar}`
   const avatarURL = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
   const [avatar, setAvatar] = useState(avatarURL)
   const [preview, setPreview] = useState(null)
@@ -55,12 +49,10 @@ const Account_containerItem = (props) => {
 
   const changeHandler = (e) => {
     const file = e.target.files[0]
-    console.log(file)
     let reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onload = function () {
       setPreview(reader.result)
-      console.log(reader.result)
     }
     reader.onerror = function () {
       console.log(reader.error)
@@ -82,8 +74,6 @@ const Account_containerItem = (props) => {
     props.setIsLoading(true)
     dispatch(getAccount())
       .then((data) => {
-        console.log(data)
-        console.log(user)
         setAccount(data)
         setFullname(
           new Map([
@@ -271,12 +261,50 @@ const Account_containerItem = (props) => {
 
         <div className="account__item">
           <div className="account__item__column">
-            <div className="field">Имя</div>
             <div className="field">Фамилия</div>
+            <div className="field">Имя</div>
             <div className="field">Отчество</div>
             <div className="field">Дата рождения</div>
           </div>
           <div className="account__item__column">
+            <div
+              className="field field__input"
+              onClick={() => {
+                setIsInputSurname(true)
+                // focus()
+              }}
+            >
+              {!isInputSurname ? (
+                <div>{fullname.get('surname')}</div>
+              ) : (
+                <ClickAwayListener onClickAway={() => setIsInputSurname(false)}>
+                  <input
+                    ref={surnameInput}
+                    className="search"
+                    value={fullname.get('surname')}
+                    onBlur={(event) => {
+                      if (event.target.value != '') {
+                        const updatedAccount = {
+                          ...account,
+                          name:
+                            `${fullname.get('surname')}` +
+                            ' ' +
+                            `${fullname.get('name')}` +
+                            ' ' +
+                            `${fullname.get('patronymic')}`,
+                        }
+                        UpdateAccount(updatedAccount)
+                      } else setFullname(new Map([...fullname, ['surname', account?.name.split(' ')[0]]]))
+                    }}
+                    onChange={(event) => {
+                      fullname.set('surname', event.target.value)
+                      sumName()
+                    }}
+                  ></input>
+                </ClickAwayListener>
+              )}
+            </div>
+
             <div className="field field__input" onClick={() => setIsInputName(true)}>
               {!isInputName ? (
                 <div>{fullname.get('name')}</div>
@@ -319,43 +347,6 @@ const Account_containerItem = (props) => {
               )}
             </div>
 
-            <div
-              className="field field__input"
-              onClick={() => {
-                setIsInputSurname(true)
-                // focus()
-              }}
-            >
-              {!isInputSurname ? (
-                <div>{fullname.get('surname')}</div>
-              ) : (
-                <ClickAwayListener onClickAway={() => setIsInputSurname(false)}>
-                  <input
-                    // ref={surnameInput}
-                    className="search"
-                    value={fullname.get('surname')}
-                    onBlur={(event) => {
-                      if (event.target.value != '') {
-                        const updatedAccount = {
-                          ...account,
-                          name:
-                            `${fullname.get('surname')}` +
-                            ' ' +
-                            `${fullname.get('name')}` +
-                            ' ' +
-                            `${fullname.get('patronymic')}`,
-                        }
-                        UpdateAccount(updatedAccount)
-                      } else setFullname(new Map([...fullname, ['surname', account?.name.split(' ')[0]]]))
-                    }}
-                    onChange={(event) => {
-                      fullname.set('surname', event.target.value)
-                      sumName()
-                    }}
-                  ></input>
-                </ClickAwayListener>
-              )}
-            </div>
             <div className="field field__input" onClick={() => setIsInputPatronymic(true)}>
               {!isInputPatronymic ? (
                 <div>{fullname.get('patronymic')}</div>
@@ -461,7 +452,7 @@ const Account_containerItem = (props) => {
               ) : (
                 /*не работает с числовым инпутом*/
                 <ClickAwayListener onClickAway={() => setIsInputPhoneNumber(false)}>
-                  <InputNumber
+                  <input
                     className="number_input"
                     value={account?.phoneNumber}
                     onBlur={(e) => {
@@ -471,7 +462,7 @@ const Account_containerItem = (props) => {
                       event.stopPropagation()
                       setAccount({ ...account, phoneNumber: event.target.value })
                     }}
-                  ></InputNumber>
+                  ></input>
                 </ClickAwayListener>
               )}
             </div>
