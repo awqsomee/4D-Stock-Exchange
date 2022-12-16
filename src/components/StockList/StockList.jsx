@@ -7,7 +7,6 @@ import { buyStock } from '../../actions/user.js'
 import { getStocksSearch } from '../../actions/stocks.js'
 import Loader from '../UI/loader/Loader.jsx'
 import { useDispatch, useSelector } from 'react-redux'
-import { store } from '../../redux/index.js'
 import { setIsSearching, setSearch } from '../../redux/slice.jsx'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit.jsx'
 
@@ -22,20 +21,6 @@ const StockList = (props) => {
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   const alertStatus = useSelector((state) => state.toolkit.alertStatus)
-  const [changes, setChanges] = useState(0)
-  // const [buttonText, setButtonText] = useState(0)
-
-  // document.addEventListener('keyup', function (event) {
-  //   if (event.key === 'Enter') {
-  //     event.preventDefault()
-  //     // fetchData(search)
-  //     console.log('Enter')
-  //   }
-  // })
-
-  // const switchButtonText=(()=>{
-  //   setButtonText(props.count * props)
-  // })
 
   useEffect(() => {
     document.title = 'STONKS – StockExchange'
@@ -56,14 +41,6 @@ const StockList = (props) => {
       }
     }
   }, [modalBoxDeposit])
-
-  const countChange = () => {
-    if (props.stock?.prices.length > 0 && props.stock?.prices[0].close != null) {
-      let count = (props.stock?.prices[0].close - props.stock?.prices[1].close) / 100
-      console.log(count)
-      setChanges(count)
-    }
-  }
 
   const sorting = (a, b) => {
     const value = filter
@@ -116,11 +93,6 @@ const StockList = (props) => {
   const sortedStocks = useMemo(() => {
     return [...stocks].sort(sorting)
   }, [filter, sort, stocks])
-
-  // Специализированный Фонд Приватизации „Чековый инвестиционный фонд аграрно­-промышленного комплекса Республики Татарстан „Золотой Колос“
-  // WWWWW
-  // 531.43%
-  // 136800.59
 
   return (
     <div className="stockList">
