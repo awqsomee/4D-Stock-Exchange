@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react'
+import { React, useEffect, useMemo, useState } from 'react'
 import TransactionItem from '../transactionItem/TransactionItem'
 import { store } from '../../../../redux'
 import { useDispatch, useSelector } from 'react-redux'
@@ -26,6 +26,7 @@ const Transactions = (props) => {
   const [filter, setFilter] = useState('')
   const [sort, setSort] = useState(false)
   const [ceiling, setCeiling] = useState(10)
+  const [transactionAmount, setTransactionAmount] = useState(0)
   const count = 10
   useEffect(() => {
     setIsLoading(true)
@@ -94,6 +95,22 @@ const Transactions = (props) => {
   const showMore = () => {
     setCeiling(ceiling + count)
   }
+
+  const sortedTransactions = useMemo(() => {
+    return [...transactions]
+      ?.filter((transaction) => {
+        return transaction?.symbol === selectedCurrency?.symbol || transaction?.currency === selectedCurrency?.symbol
+      })
+      .filter((transactionItem) => {
+        if (
+          (filter != '') &
+          (filter === 'Обмен валюты' || filter === 'Пополнение баланса' || filter === 'Вывод средств')
+        )
+          return transactionItem.type === filter
+        else return transactionItem
+      })
+      .sort(sorting)
+  }, [filter, sort, transactions])
 
   return (
     <div className="transactions">
@@ -219,27 +236,16 @@ const Transactions = (props) => {
 
         {!isLoading ? (
           <div className="transactions__list">
-            {transactions
-              ?.filter((transaction) => {
-                return (
-                  transaction?.symbol === selectedCurrency?.symbol || transaction?.currency === selectedCurrency?.symbol
-                )
-              })
-              .filter((transactionItem) => {
-                if (
-                  (filter != '') &
-                  (filter === 'Обмен валюты' || filter === 'Пополнение баланса' || filter === 'Вывод средств')
-                )
-                  return transactionItem.type === filter
-                else return transactionItem
-              })
-              .sort(sorting)
-              .map((el, index) => {
-                if (index < ceiling) return <TransactionItem transactionItem={el} key={el._id} />
-              })}
-            <div className="showMore" onClick={() => showMore()}>
-              Показать больше
-            </div>
+            {sortedTransactions.map((el, index) => {
+              if (index < ceiling) return <TransactionItem transactionItem={el} key={el._id} />
+            })}
+            {sortedTransactions.length > ceiling ? (
+              <div className="showMore" onClick={() => showMore()}>
+                Показать больше
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
         ) : (
           <Loader />
