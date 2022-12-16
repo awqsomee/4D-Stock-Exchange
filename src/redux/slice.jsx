@@ -14,7 +14,7 @@ const slice = createSlice({
     stocks: [],
     userStocks: [],
     avatar: '',
-    transactions: []
+    transactions: [],
   },
   reducers: {
     setAccountUser(state, action) {
@@ -34,8 +34,14 @@ const slice = createSlice({
     },
     logout(state) {
       localStorage.removeItem('stonksToken')
+      state.accountUser = {}
+      state.searchQuery = ''
+      state.currecncies = {}
+      state.userStocks = []
       state.currentUser = {}
       state.isAuth = false
+      state.avatar = ''
+      state.transactions = []
       state.selectedCurrency = {}
       state.userCurrencies = []
     },
@@ -90,5 +96,5 @@ export const {
   setStocks,
   setUserStocks,
   setAvatar,
-  setTransactions
+  setTransactions,
 } = slice.actions

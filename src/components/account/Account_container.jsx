@@ -12,6 +12,8 @@ import ModalBox from '../UI/ModalBox/ModalBox'
 import './account.css'
 import CropAvatar from './CropAvatar'
 // import { Avatar } from '@mui/material'
+import InputAccount from '../UI/input/InputAccount'
+import CloseAccount from './CloseAccount'
 
 const Account_containerItem = (props) => {
   const [isOverTime, setIsOverTime] = useState(false)
@@ -40,6 +42,7 @@ const Account_containerItem = (props) => {
   const [avatar, setAvatar] = useState(avatarURL)
   const [preview, setPreview] = useState(null)
   const [visible, setVisible] = useState(false)
+  const [visibleClose, setVisibleClose] = useState(false)
   const inputFile = useRef(null)
 
   function DataURIToBlob(dataURI) {
@@ -80,6 +83,8 @@ const Account_containerItem = (props) => {
     props.setIsLoading(true)
     dispatch(getAccount())
       .then((data) => {
+        console.log(data)
+        console.log(user)
         setAccount(data)
         setFullname(
           new Map([
@@ -115,7 +120,6 @@ const Account_containerItem = (props) => {
   useEffect(() => {
     if (nameInput?.current) {
       nameInput.current.addEventListener('keydown', function (event) {
-        console.log('entr')
         if (event.key == 'Enter') {
           nameInput.current.blur()
         }
@@ -123,6 +127,7 @@ const Account_containerItem = (props) => {
       nameInput.current.focus()
     }
   }, [isInputName])
+
   const surnameInput = useRef(null)
   useEffect(() => {
     if (surnameInput?.current) {
@@ -168,6 +173,10 @@ const Account_containerItem = (props) => {
         ) : (
           <></>
         )}
+      </ModalBox>
+
+      <ModalBox visible={visibleClose} setVisible={setVisibleClose}>
+        <CloseAccount user={user} sVisible={setVisibleClose} setmodalBoxDeposit={props.setmodalBoxDeposit} />
       </ModalBox>
 
       {/* <Alert visible={alert} setVisible={setAlert}>
@@ -235,6 +244,13 @@ const Account_containerItem = (props) => {
               {!isInputUsername ? (
                 <div>{account?.username}</div>
               ) : (
+                // <InputAccount
+                //   setIsInput={setIsInput}
+                //   account={account}
+                //   UpdateAccount={UpdateAccount}
+                //   setAccount={setAccount}
+                //   value={account?.username}
+                // ></InputAccount>
                 <ClickAwayListener onClickAway={() => setIsInputUsername(false)}>
                   <input
                     className="search"
@@ -266,6 +282,16 @@ const Account_containerItem = (props) => {
               {!isInputName ? (
                 <div>{fullname.get('name')}</div>
               ) : (
+                // <InputAccount
+                //   setIsInput={setIsInput}
+                //   account={account}
+                //   UpdateAccount={UpdateAccount}
+                //   setAccount={setAccount}
+                //   value={fullname.get('name')}
+                //   fullname={fullname}
+                //   setFullname={setFullname}
+                //   sumName={sumName}
+                // ></InputAccount>
                 <ClickAwayListener onClickAway={() => setIsInputName(false)}>
                   <input
                     ref={nameInput}
@@ -306,7 +332,7 @@ const Account_containerItem = (props) => {
               ) : (
                 <ClickAwayListener onClickAway={() => setIsInputSurname(false)}>
                   <input
-                    ref={surnameInput}
+                    // ref={surnameInput}
                     className="search"
                     value={fullname.get('surname')}
                     onBlur={(event) => {
@@ -377,6 +403,12 @@ const Account_containerItem = (props) => {
                   <div style={{ opacity: '0.2' }}>Установите дату рождения</div>
                 )
               ) : (
+                // <InputAccount
+                //   setIsInputUsername={setIsInputUsername}
+                //   account={account}
+                //   UpdateAccount={UpdateAccount}
+                //   setAccount={setAccount}
+                // ></InputAccount>
                 <ClickAwayListener onClickAway={() => setIsInputBirthday(false)}>
                   <input
                     id="acc_field"
@@ -484,6 +516,10 @@ const Account_containerItem = (props) => {
               {account?.validity}
             </div>
           </div>
+        </div>
+        {/* <button className="button button__danger">Удалить аккаунт</button> */}
+        <div className="account__delete" onClick={() => setVisibleClose(true)}>
+          Удалить аккаунт
         </div>
       </div>
     </div>
