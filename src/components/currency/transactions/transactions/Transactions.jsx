@@ -71,6 +71,42 @@ const Transactions = (props) => {
   const sorting = (a, b) => {
     const value = filter
     if ((value != '') & (value != 'Обмен валюты' || value != 'Пополнение баланса' || value != 'Вывод средств')) {
+      if (a[value] == null)
+        if (sort) {
+          if (0 > b[value]) {
+            return 1
+          }
+          if (0 < b[value]) {
+            return -1
+          }
+          return 0
+        } else {
+          if (0 > b[value]) {
+            return -1
+          }
+          if (0 < b[value]) {
+            return 1
+          }
+          return 0
+        }
+      if (b[value] == null)
+        if (sort) {
+          if (a[value] > 0) {
+            return 1
+          }
+          if (a[value] < 0) {
+            return -1
+          }
+          return 0
+        } else {
+          if (a[value] > 0) {
+            return -1
+          }
+          if (a[value] < 0) {
+            return 1
+          }
+          return 0
+        }
       if (sort) {
         if (a[value] > b[value]) {
           return 1

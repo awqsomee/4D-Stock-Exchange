@@ -43,29 +43,60 @@ const StockList = (props) => {
   }, [modalBoxDeposit])
 
   const sorting = (a, b) => {
+    const countChange = (a) => {
+      return Number((a.prices[0].close - a.prices[1].close) / a.prices[0].close)
+    }
     const value = filter
     if ((value != '') & (value === 'change')) {
+      if (a.prices[0].close === null)
+        if (sort) {
+          if (0 > countChange(b)) {
+            return 1
+          }
+          if (0 < countChange(b)) {
+            return -1
+          }
+          return 0
+        } else {
+          if (0 > countChange(b)) {
+            return -1
+          }
+          if (0 < countChange(b)) {
+            return 1
+          }
+          return 0
+        }
+      if (b.prices[0].close === null)
+        if (sort) {
+          if (countChange(a) > 0) {
+            return 1
+          }
+          if (countChange(a) < 0) {
+            return -1
+          }
+          return 0
+        } else {
+          if (countChange(a) > 0) {
+            return -1
+          }
+          if (countChange(a) < 0) {
+            return 1
+          }
+          return 0
+        }
       if (sort) {
-        if (
-          Number((a.prices[0].close - a.prices[1].close) / 100) > Number((b.prices[0].close - b.prices[1].close) / 100)
-        ) {
+        if (countChange(a) > countChange(b)) {
           return 1
         }
-        if (
-          Number((a.prices[0].close - a.prices[1].close) / 100) < Number((b.prices[0].close - b.prices[1].close) / 100)
-        ) {
+        if (countChange(a) < countChange(b)) {
           return -1
         }
         return 0
       } else {
-        if (
-          Number((a.prices[0].close - a.prices[1].close) / 100) > Number((b.prices[0].close - b.prices[1].close) / 100)
-        ) {
+        if (countChange(a) > countChange(b)) {
           return -1
         }
-        if (
-          Number((a.prices[0].close - a.prices[1].close) / 100) < Number((b.prices[0].close - b.prices[1].close) / 100)
-        ) {
+        if (countChange(a) < countChange(b)) {
           return 1
         }
         return 0
