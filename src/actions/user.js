@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { store } from '../redux'
-import { setAccountUser, setAlertMessage, setAlertStatus, setUser } from '../redux/slice'
+import { logout, setAccountUser, setAlertMessage, setAlertStatus, setUser } from '../redux/slice'
 const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
 // const serverAddress = 'http://localhost:5000'
 
@@ -101,6 +101,27 @@ export const uploadAvatar = (file) => {
       })
       .then((response) => {
         dispatch(setUser({ ...store.getState().toolkit.currentUser, ...response.data.user }))
+        dispatch(setAlertMessage(response.data.message))
+        dispatch(setAlertStatus(response.status))
+      })
+      .catch((error) => {
+        dispatch(setAlertMessage(error.response.data.message))
+        dispatch(setAlertStatus(error.response.status))
+      })
+  }
+}
+
+export const deleteAccount = () => {
+  return async (dispatch) => {
+    console.log(localStorage.getItem('stonksToken'))
+    const response = await axios
+      .delete(`${serverAddress}/api/auth/user`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('stonksToken')}`,
+        },
+      })
+      .then((response) => {
+        // dispatch(logout())
         dispatch(setAlertMessage(response.data.message))
         dispatch(setAlertStatus(response.status))
       })
