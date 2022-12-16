@@ -11,7 +11,10 @@ const TransactionsPanel = (props) => {
         <select
           className="select__filter"
           style={
-            props.filter === 'Обмен валюты' || props.filter === 'Пополнение баланса' || props.filter === 'Вывод средств'
+            props.filter === 'Обмен валюты' ||
+            props.filter === 'Обмен акций' ||
+            props.filter === 'Пополнение баланса' ||
+            props.filter === 'Вывод средств'
               ? { color: '#fff' }
               : { color: 'initial' }
           }
@@ -24,10 +27,13 @@ const TransactionsPanel = (props) => {
           <option key={1} value={'Обмен валюты'}>
             Обмен валюты
           </option>
-          <option key={2} value={'Пополнение баланса'}>
+          <option key={2} value={'Обмен акций'}>
+            Обмен акций
+          </option>
+          <option key={3} value={'Пополнение баланса'}>
             Пополнение
           </option>
-          <option key={3} value={'Вывод средств'}>
+          <option key={4} value={'Вывод средств'}>
             Вывод средств
           </option>
         </select>
