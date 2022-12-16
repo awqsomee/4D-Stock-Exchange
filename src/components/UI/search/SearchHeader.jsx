@@ -20,7 +20,7 @@ const SearchHeader = () => {
   const navigate = useNavigate()
 
   const SearchHandler = () => {
-    if (search.length > 1) {
+    if (search.length != 1) {
       dispatch(setIsSearching(true))
       navigate('/stocks')
     }
