@@ -13,46 +13,66 @@ import StockPortfolio from '../stocks/StockPortfolio.jsx'
 import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit.jsx'
 // import InfoCard from './InfoCard.jsx'
 import { setAccountUser } from '../../redux/slice.jsx'
+import InfoBlock from './InfoBlock.jsx'
+import { getUserCurrencies } from '../../actions/forex.js'
 
 const Portfolio = (props) => {
   const [isStocksLoading, setIsStocksLoading] = useState(false)
-  const [filter, setFilter] = useState('')
+  const [filter, setFilter] = useState('change')
   const [sort, setSort] = useState(false)
   const dispatch = useDispatch()
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
+  const alertStatus = useSelector((state) => state.toolkit.alertStatus)
   let stocks = useSelector((state) => state.toolkit.userStocks)
-  const [income, setIncome] = useState(0)
 
   useEffect(() => {
-    setIncome(0)
     document.title = 'STONKS: Портфель'
     setIsStocksLoading(true)
-    dispatch(getUserStocks()).finally(() => {
+    fetchData().finally(() => {
       setIsStocksLoading(false)
     })
   }, [])
 
   useEffect(() => {
-    countChanges()
-  }, [stocks])
+    if (modalBoxDeposit) {
+      const timeId = setTimeout(() => {
+        setmodalBoxDeposit(false)
+      }, 1500)
+      return () => {
+        clearTimeout(timeId)
+      }
+    }
+  }, [modalBoxDeposit])
+
+  const fetchData = async () => {
+    await Promise.all([dispatch(getUserCurrencies()), dispatch(getUserStocks())])
+  }
 
   const sorting = (a, b) => {
     const value = filter
     if ((value != '') & (value === 'change')) {
       if (sort) {
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) > Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) > Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return 1
         }
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) < Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) < Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return -1
         }
         return 0
       } else {
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) > Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) > Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return -1
         }
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) < Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) < Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return 1
         }
         return 0
@@ -81,28 +101,15 @@ const Portfolio = (props) => {
     return [...stocks].sort(sorting)
   }, [filter, sort, stocks])
 
-  const countChanges = () => {
-    let summ = 0
-    stocks.map((stock) => {
-      if (stock.prices[0].close != null) {
-        summ = summ + stock.amount * stock.prices[0].close * ((stock?.prices[0].close - stock?.latestPrice) / 100)
-      }
-    })
-    setIncome(summ)
-  }
-
   return (
     <div className="stockList">
-      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
+      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit} alertStatus={alertStatus}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 
       <div className="container2">
-        <div className="stockList__info">
-          {console.log(income)}
-          {/* <InfoCard title={'Прибыль'} info={income}></InfoCard> */}
-        </div>
         <div className="title">{props.title}</div>
+        <InfoBlock stocks={stocks} isLoading={isStocksLoading}></InfoBlock>
         <div className="list">
           <Sorting setFilter={setFilter} setSort={setSort} />
           <PanelPortfolio className="panel" />

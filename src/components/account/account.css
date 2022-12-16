@@ -81,6 +81,13 @@
 .account__avatar__img__hover {
   filter: brightness(40%);
 }
+.account__delete {
+  margin-top: 24px;
+  font-family: 'Exo 2', 'Arial';
+  color: #fd2929;
+  font-size: 16px;
+  cursor: pointer;
+}
 .upload {
   cursor: pointer;
   position: absolute;

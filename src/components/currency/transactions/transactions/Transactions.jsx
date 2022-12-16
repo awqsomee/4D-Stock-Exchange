@@ -158,7 +158,12 @@ const Transactions = (props) => {
           <button className="button button__normal" onClick={() => replenishHandler(dispatch, value, setValue)}>
             {isReplenishing ? <ButtonLoader /> : 'Пополнить'}
           </button>
-          <button className="button button__normal" onClick={() => withdrawHandler(dispatch, value, setValue)}>
+          <button
+            className="button button__normal"
+            onClick={() => {
+              withdrawHandler(dispatch, value, setValue)
+            }}
+          >
             {isWithdrawing ? <ButtonLoader /> : 'Вывести'}
           </button>
         </div>

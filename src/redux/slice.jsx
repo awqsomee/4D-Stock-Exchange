@@ -35,8 +35,14 @@ const slice = createSlice({
     },
     logout(state) {
       localStorage.removeItem('stonksToken')
+      state.accountUser = {}
+      state.searchQuery = ''
+      state.currecncies = {}
+      state.userStocks = []
       state.currentUser = {}
       state.isAuth = false
+      state.avatar = ''
+      state.transactions = []
       state.selectedCurrency = {}
       state.userCurrencies = []
     },

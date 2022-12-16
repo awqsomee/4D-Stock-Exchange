@@ -45,6 +45,7 @@
   margin-right: 66px;
 }
 .message {
+  font-family: 'Exo 2', 'Arial';
   font-size: 16px;
 }
 .close_actions {
@@ -56,6 +57,5 @@
   color: #fd2929;
 }
 .ok {
-  color: #bbffa7;
   color: black;
 }

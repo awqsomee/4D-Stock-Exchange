@@ -21,6 +21,24 @@ const Balance = (props) => {
   //   else setButtonText(`${inputText}${currency}`)
   // }, [inputText])
 
+  // useEffect(() => {
+  //   if (modalBoxDepositFalse) {
+  //     const timeId = setTimeout(() => {
+  //       setmodalBoxDepositFalse(false)
+  //     }, 1500)
+  //     return () => {
+  //       clearTimeout(timeId)
+  //     }
+  //   } else if (modalBoxDepositTrue) {
+  //     const timeId = setTimeout(() => {
+  //       setmodalBoxDepositTrue(false)
+  //     }, 1500)
+  //     return () => {
+  //       clearTimeout(timeId)
+  //     }
+  //   }
+  // }, [modalBoxDepositFalse, modalBoxDepositTrue])
+
   const convert = async (fromCurrency, toCurrency, quantity) => {
     try {
       const response = await axios.post(

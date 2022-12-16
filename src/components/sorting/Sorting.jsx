@@ -6,8 +6,8 @@ import { useState } from 'react'
 import ButtonSwith from '../../components/UI/buttons/ButtonSwitch'
 
 const StockListFilter = (props) => {
-  const [buttInc, setButtInc] = useState(' sorting__increase button button__sortPush')
-  const [buttDec, setButtDec] = useState('sorting__decrease button button__sortNormal')
+  const [buttInc, setButtInc] = useState('sorting__increase button button__sortNormal')
+  const [buttDec, setButtDec] = useState('sorting__decrease button button__sortPush')
 
   const [sortImg, setSortImg] = useState('decreaseSort')
   return (
@@ -16,6 +16,7 @@ const StockListFilter = (props) => {
         className={buttInc}
         onClick={() => {
           if (buttInc === 'sorting__increase button button__sortNormal') {
+            console.log(1)
             setButtInc('sorting__increase button button__sortPush')
             setButtDec('sorting__decrease button button__sortNormal')
             props.setFilter('name')
@@ -28,6 +29,7 @@ const StockListFilter = (props) => {
         className={buttDec}
         onClick={() => {
           if (buttDec === 'sorting__decrease button button__sortNormal') {
+            console.log(2)
             setButtInc('sorting__increase button button__sortNormal')
             setButtDec('sorting__decrease button button__sortPush')
           }

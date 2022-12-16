@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import './registration.css'
 import { registration } from '../../../actions/auth'
@@ -19,6 +19,18 @@ const Registration = (props) => {
   const [repeatPassword, setRepeatPassword] = useState('')
   const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
+
+  useEffect(() => {
+    if (modalBoxDepositFalse) {
+      const timeId = setTimeout(() => {
+        setmodalBoxDepositFalse(false)
+      }, 1500)
+      return () => {
+        clearTimeout(timeId)
+      }
+    }
+  }, [modalBoxDepositFalse])
+
   return (
     <div className="registration">
       <ModalBoxDeposit visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>

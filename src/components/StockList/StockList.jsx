@@ -16,11 +16,13 @@ const StockList = (props) => {
   const stocks = useSelector((state) => state.toolkit.stocks)
   const isSearching = useSelector((state) => state.toolkit.isSearching)
   const [isStocksLoading, setIsStocksLoading] = useState(false)
-  const [filter, setFilter] = useState('')
+  const [filter, setFilter] = useState('change')
   const [sort, setSort] = useState(false)
   const search = useSelector((state) => state.toolkit.searchQuery)
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
+  const alertStatus = useSelector((state) => state.toolkit.alertStatus)
+  const [changes, setChanges] = useState(0)
   // const [buttonText, setButtonText] = useState(0)
 
   // document.addEventListener('keyup', function (event) {
@@ -44,22 +46,49 @@ const StockList = (props) => {
     })
   }, [isSearching])
 
+  useEffect(() => {
+    if (modalBoxDeposit) {
+      const timeId = setTimeout(() => {
+        setmodalBoxDeposit(false)
+      }, 1500)
+      return () => {
+        clearTimeout(timeId)
+      }
+    }
+  }, [modalBoxDeposit])
+
+  const countChange = () => {
+    if (props.stock?.prices.length > 0 && props.stock?.prices[0].close != null) {
+      let count = (props.stock?.prices[0].close - props.stock?.prices[1].close) / 100
+      console.log(count)
+      setChanges(count)
+    }
+  }
+
   const sorting = (a, b) => {
     const value = filter
     if ((value != '') & (value === 'change')) {
       if (sort) {
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) > Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) > Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return 1
         }
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) < Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) < Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return -1
         }
         return 0
       } else {
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) > Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) > Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return -1
         }
-        if (Number((a.prices[0].high - a.prices[1].high) / 100) < Number((b.prices[0].high - b.prices[1].high) / 100)) {
+        if (
+          Number((a.prices[0].close - a.prices[1].close) / 100) < Number((b.prices[0].close - b.prices[1].close) / 100)
+        ) {
           return 1
         }
         return 0
@@ -95,7 +124,7 @@ const StockList = (props) => {
 
   return (
     <div className="stockList">
-      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit}>
+      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit} alertStatus={alertStatus}>
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 

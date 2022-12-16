@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import './login.css'
 import { login } from '../../../actions/auth'
@@ -16,6 +16,17 @@ const Login = (props) => {
   const [modalBoxDepositFalse, setmodalBoxDepositFalse] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
 
+  useEffect(() => {
+    if (modalBoxDepositFalse) {
+      const timeId = setTimeout(() => {
+        setmodalBoxDepositFalse(false)
+      }, 1500)
+      return () => {
+        clearTimeout(timeId)
+      }
+    }
+  }, [modalBoxDepositFalse])
+
   return (
     <div className="login">
       <ModalBoxDeposit visible={modalBoxDepositFalse} setVisible={setmodalBoxDepositFalse}>
@@ -31,7 +42,7 @@ const Login = (props) => {
         </svg>
       </div>
       <div className="login__header">Вход</div>
-      <div className="login__input_name">Электронная почта</div>
+      <div className="login__input_name">Электронная почта или имя пользователя</div>
       <div className="login__input">
         <input
           className="auth"

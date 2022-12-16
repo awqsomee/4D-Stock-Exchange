@@ -37,6 +37,11 @@
   width: 100%;
   font-family: 'Exo 2', 'Arial';
 }
+.stockList__info {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 72px;
+}
 .container2 {
   margin: 72px auto;
   max-width: 60.6%;
