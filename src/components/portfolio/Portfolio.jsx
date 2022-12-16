@@ -14,6 +14,7 @@ import ModalBoxDeposit from '../UI/ModalBox/ModalBoxDeposit.jsx'
 // import InfoCard from './InfoCard.jsx'
 import { setAccountUser } from '../../redux/slice.jsx'
 import InfoBlock from './InfoBlock.jsx'
+import { getUserCurrencies } from '../../actions/forex.js'
 
 const Portfolio = (props) => {
   const [isStocksLoading, setIsStocksLoading] = useState(false)
@@ -24,13 +25,11 @@ const Portfolio = (props) => {
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   const alertStatus = useSelector((state) => state.toolkit.alertStatus)
   let stocks = useSelector((state) => state.toolkit.userStocks)
-  const [income, setIncome] = useState(0)
 
   useEffect(() => {
-    setIncome(0)
     document.title = 'STONKS: Портфель'
     setIsStocksLoading(true)
-    dispatch(getUserStocks()).finally(() => {
+    fetchData().finally(() => {
       setIsStocksLoading(false)
     })
   }, [])
@@ -45,6 +44,10 @@ const Portfolio = (props) => {
       }
     }
   }, [modalBoxDeposit])
+
+  const fetchData = async () => {
+    await Promise.all([dispatch(getUserCurrencies()), dispatch(getUserStocks())])
+  }
 
   const sorting = (a, b) => {
     const value = filter
@@ -106,7 +109,7 @@ const Portfolio = (props) => {
 
       <div className="container2">
         <div className="title">{props.title}</div>
-        <InfoBlock stocks={stocks} income={income} setIncome={setIncome}></InfoBlock>
+        <InfoBlock stocks={stocks} isLoading={isStocksLoading}></InfoBlock>
         <div className="list">
           <Sorting setFilter={setFilter} setSort={setSort} />
           <PanelPortfolio className="panel" />
