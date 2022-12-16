@@ -92,7 +92,6 @@ export const uploadAvatar = (file) => {
   return async (dispatch) => {
     const formData = new FormData()
     formData.append('file', file)
-    console.log(formData)
     await axios
       .post(`${serverAddress}/api/auth/user/avatar`, formData, {
         headers: {
@@ -113,7 +112,6 @@ export const uploadAvatar = (file) => {
 
 export const deleteAccount = () => {
   return async (dispatch) => {
-    console.log(localStorage.getItem('stonksToken'))
     const response = await axios
       .delete(`${serverAddress}/api/auth/user`, {
         headers: {

@@ -505,15 +505,9 @@ const Account_containerItem = (props) => {
             <div className="field">Срок действия карты</div>
           </div>
           <div className="account__item__column">
-            <div id="acc_field" className="field field__input">
-              {account?.paySystem}
-            </div>
-            <div id="acc_field" className="field field__input">
-              {account?.cardsNumber}
-            </div>
-            <div id="acc_field" className="field field__input">
-              {account?.validity}
-            </div>
+            <div id="acc_field">В разработке</div>
+            <div id="acc_field">0000 0000 0000 0000</div>
+            <div id="acc_field">--/--</div>
           </div>
         </div>
         {/* <button className="button button__danger">Удалить аккаунт</button> */}

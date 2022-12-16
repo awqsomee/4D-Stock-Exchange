@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Balance from './balance/Balance'
 import './сurrency.css'
 import Transactions from './transactions/transactions/Transactions'
 import CurrencyList from './CurrencyList/CurrencyList'

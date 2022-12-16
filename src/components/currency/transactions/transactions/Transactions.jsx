@@ -66,7 +66,6 @@ const Transactions = (props) => {
     setValue('')
     setIsWithdrawing(false)
   }
-  // const balance = useSelector((state) => state.toolkit.currentUser.balance)
   const selectedCurrency = useSelector((state) => state.toolkit.selectedCurrency)
 
   const sorting = (a, b) => {
@@ -110,7 +109,7 @@ const Transactions = (props) => {
         else return transactionItem
       })
       .sort(sorting)
-  }, [filter, sort, transactions])
+  }, [filter, sort, transactions, selectedCurrency])
 
   return (
     <div className="transactions">
@@ -125,29 +124,29 @@ const Transactions = (props) => {
       <div className="transactions__info">
         <div className="transactions__head">
           <div className="transactions__summ">
-            <div>
-              {new Intl.NumberFormat('ru-RU').format(selectedCurrency?.amount) + ' ' + selectedCurrency?.symbol}
-            </div>
+            {selectedCurrency.symbol === 'RUB' ? (
+              <div>{selectedCurrency?.amount.toFixed(2) + ' ' + selectedCurrency?.symbol}</div>
+            ) : (
+              <div>{selectedCurrency?.amount + ' ' + selectedCurrency?.symbol}</div>
+            )}
           </div>
 
           {selectedCurrency?.symbol != 'RUB' ? (
             <div className="transactions__difference">
               <div className="transactions__last_price">
                 <div>Прежняя цена</div>
-                <div className="transactions__last_price__price">
-                  {new Intl.NumberFormat('ru-RU').format(selectedCurrency?.latestPrice)}
-                </div>
+                <div className="transactions__last_price__price">{selectedCurrency?.latestPrice.toFixed(2)}</div>
               </div>
               <div className="transactions__difference_amount">
                 <div>Изменение</div>
                 {selectedCurrency?.difference >= 0 ? (
                   <div className="transactions__difference_amount__amount_inc">
                     <div>+</div>
-                    <div>{new Intl.NumberFormat('ru-RU').format(selectedCurrency?.difference)}</div>
+                    <div>{selectedCurrency?.difference.toFixed(2)}</div>
                   </div>
                 ) : (
                   <div className="transactions__difference_amount__amount_dec">
-                    <div>{new Intl.NumberFormat('ru-RU').format(selectedCurrency?.difference)}</div>
+                    <div>{selectedCurrency?.difference.toFixed(2)}</div>
                   </div>
                 )}
               </div>
@@ -173,7 +172,17 @@ const Transactions = (props) => {
         <div className="transactions__actions">
           <InputNumber className="number_input" value={value} setValue={setValue} placeholder="Сумма"></InputNumber>
           <button className="button button__normal" onClick={() => replenishHandler(dispatch, value, setValue)}>
-            {isReplenishing ? <ButtonLoader /> : 'Пополнить'}
+            {selectedCurrency.symbol === 'RUB' ? (
+              isReplenishing ? (
+                <ButtonLoader />
+              ) : (
+                'Пополнить'
+              )
+            ) : isReplenishing ? (
+              <ButtonLoader />
+            ) : (
+              'Купить'
+            )}
           </button>
           <button
             className="button button__normal"
@@ -181,7 +190,17 @@ const Transactions = (props) => {
               withdrawHandler(dispatch, value, setValue)
             }}
           >
-            {isWithdrawing ? <ButtonLoader /> : 'Вывести'}
+            {selectedCurrency.symbol === 'RUB' ? (
+              isWithdrawing ? (
+                <ButtonLoader />
+              ) : (
+                'Вывести'
+              )
+            ) : isWithdrawing ? (
+              <ButtonLoader />
+            ) : (
+              'Продать'
+            )}
           </button>
         </div>
       </div>

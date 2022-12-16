@@ -15,12 +15,12 @@ const TransactionItem = (props) => {
         <div className="transactionItem__amount"> </div>
       )}
       {transactionItem?.price ? (
-        <div className="transactionItem__price">{new Intl.NumberFormat('ru-RU').format(transactionItem.price)} RUB</div>
+        <div className="transactionItem__price">{transactionItem.price.toFixed(2)} RUB</div>
       ) : (
         <div className="transactionItem__price"> </div>
       )}
       {transactionItem?.cost ? (
-        <div className="transactionItem__cost">{new Intl.NumberFormat('ru-RU').format(transactionItem.cost)} RUB</div>
+        <div className="transactionItem__cost">{transactionItem.cost.toFixed(2)} RUB</div>
       ) : (
         <div className="transactionItem__cost"> </div>
       )}
