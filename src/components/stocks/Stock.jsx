@@ -38,7 +38,7 @@ const Stock = (props) => {
 
   const countChange = () => {
     if (props.stock?.prices.length > 0 && props.stock?.prices[0].close != null) {
-      let count = (props.stock?.prices[0].close - props.stock?.prices[1].close) / 100
+      let count = ((props.stock?.prices[0].close - props.stock?.prices[1].close) / props.stock?.prices[0].close) * 100
       setChanges(count)
     }
   }

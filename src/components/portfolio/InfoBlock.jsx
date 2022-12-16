@@ -42,7 +42,7 @@ const InfoBlock = ({ stocks, isLoading }) => {
     })
     dif = dif.toFixed(2)
     setDifference(dif)
-    setdifferenceInPersentage(((dif * 100) / summ).toFixed(2))
+    setdifferenceInPersentage(((dif / summ) * 100).toFixed(2))
   }
 
   return (
