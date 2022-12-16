@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/4D-Stock-Exchange/static/css/main.fb0b48cc.css",
-    "main.js": "/4D-Stock-Exchange/static/js/main.363b3d8f.js",
+    "main.css": "/4D-Stock-Exchange/static/css/main.82b839f9.css",
+    "main.js": "/4D-Stock-Exchange/static/js/main.ce65db5b.js",
     "static/media/logo.svg": "/4D-Stock-Exchange/static/media/logo.f202b9d8df85dc9ad71560e649783b92.svg",
     "static/media/fb.svg": "/4D-Stock-Exchange/static/media/fb.a38a3da8ed1968c9f03b55c369419614.svg",
     "static/media/close.svg": "/4D-Stock-Exchange/static/media/close.5510aa9bacd71fd5ae552a73e4bb9278.svg",
@@ -11,11 +11,11 @@
     "static/media/openSelect.svg": "/4D-Stock-Exchange/static/media/openSelect.cb179ccbbfdb0f28d83c.svg",
     "index.html": "/4D-Stock-Exchange/index.html",
     "static/media/search.svg": "/4D-Stock-Exchange/static/media/search.425cf63fe46ad7abff9805fde58f49a0.svg",
-    "main.fb0b48cc.css.map": "/4D-Stock-Exchange/static/css/main.fb0b48cc.css.map",
-    "main.363b3d8f.js.map": "/4D-Stock-Exchange/static/js/main.363b3d8f.js.map"
+    "main.82b839f9.css.map": "/4D-Stock-Exchange/static/css/main.82b839f9.css.map",
+    "main.ce65db5b.js.map": "/4D-Stock-Exchange/static/js/main.ce65db5b.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb0b48cc.css",
-    "static/js/main.363b3d8f.js"
+    "static/css/main.82b839f9.css",
+    "static/js/main.ce65db5b.js"
   ]
 }
