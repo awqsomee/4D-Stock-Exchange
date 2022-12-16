@@ -22,16 +22,13 @@ const Graph_panel = (props) => {
 
   const statisticPrice = () => {
     let prices = props.stock.prices
-    console.log(prices)
     prices.map((el) => {
       if (el.close != null) {
         if (el.close > maxPrice) {
           setMaxPrice(el.close)
-          console.log('max', maxPrice)
         }
         if (el.close < minPrice) {
           setMinPrice(el.close)
-          console.log('min', minPrice)
         }
       }
     })
@@ -117,7 +114,7 @@ const Graph_panel = (props) => {
             <div className="data">
               <Chart stock={props?.stock} id={props?.id} />
               <StatisticCard title1={'Max цена акции'} title2={'Min цена акции'} data1={maxPrice} data2={minPrice}>
-                {/* <button className="button button__normal">Купить</button> */}
+                <button className="button button__normal">Купить</button>
               </StatisticCard>
             </div>
           ) : (
