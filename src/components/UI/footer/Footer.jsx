@@ -9,7 +9,9 @@ const Footer = () => {
     <div className="footer">
       <div className="container_footer">
         <div className="footer__name"> © 2022 STONKS </div>
-        <div className="footer__privacy">Политика конфиденциальности</div>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" className="link">
+          <div className="footer__privacy">Политика конфиденциальности</div>
+        </a>
         <div className="footer__socnet">
           <a href="https://t.me/nerpyshkaa" target="_blank" className="youtube">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="21" viewBox="0 0 25 21" fill="none">
