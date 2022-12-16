@@ -25,7 +25,7 @@ const NewWallet = (props) => {
 
   const CreateWallet = async (currency) => {
     setIsLoading(true)
-    await dispatch(openCurrencyAccount(userCurrencies,transactions, currency))
+    await dispatch(openCurrencyAccount(userCurrencies, transactions, currency))
     setCurrency('')
     // console.log('uc', store.getState().toolkit.userCurrencies)
     // console.log('c', currency)
@@ -68,7 +68,7 @@ const NewWallet = (props) => {
         >
           <option value={''}>Выберите валюту</option>
           {currecncies.map((currency) => (
-            <option key={currency.name} value={currency}>
+            <option value={currency} key={currency}>
               {allCurrencies[currency].name}
             </option>
           ))}
