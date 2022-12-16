@@ -12,7 +12,6 @@ import ModalBox from '../UI/ModalBox/ModalBox'
 import './account.css'
 import CropAvatar from './CropAvatar'
 // import { Avatar } from '@mui/material'
-import InputAccount from '../UI/input/InputAccount'
 import CloseAccount from './CloseAccount'
 
 const Account_containerItem = (props) => {
