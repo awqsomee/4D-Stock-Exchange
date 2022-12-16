@@ -113,9 +113,9 @@ const Graph_panel = (props) => {
           props.stock.prices.length > 0 ? (
             <div className="data">
               <Chart stock={props?.stock} id={props?.id} />
-              <StatisticCard title1={'Max цена акции'} title2={'Min цена акции'} data1={maxPrice} data2={minPrice}>
+              {/* <StatisticCard title1={'Max цена акции'} title2={'Min цена акции'} data1={maxPrice} data2={minPrice}>
                 <button className="button button__normal">Купить</button>
-              </StatisticCard>
+              </StatisticCard> */}
             </div>
           ) : (
             <div
