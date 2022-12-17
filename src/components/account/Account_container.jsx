@@ -31,7 +31,8 @@ const Account_containerItem = (props) => {
   const user = useSelector((state) => state.toolkit.currentUser)
   // const avatar = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
   // const avatar = `http://localhost:80/${user.avatar}`
-  const avatarURL = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
+  // const avatarURL = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
+  const avatarURL = `http://localhost:80/${user.avatar}`
   const [avatar, setAvatar] = useState(avatarURL)
   const [preview, setPreview] = useState(null)
   const [visible, setVisible] = useState(false)
@@ -82,7 +83,8 @@ const Account_containerItem = (props) => {
             ['patronymic', data?.name.split(' ')[2]],
           ])
         )
-        setAvatar(`https://stonksexchange-kaivr.amvera.io/${user.avatar}`)
+        // setAvatar(`https://stonksexchange-kaivr.amvera.io/${user.avatar}`)
+        setAvatar(`http://localhost:80/${user.avatar}`)
       })
       .finally(() => {
         props.setIsLoading(false)

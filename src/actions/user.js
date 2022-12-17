@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { store } from '../redux'
 import { logout, setAccountUser, setAlertMessage, setAlertStatus, setUser } from '../redux/slice'
-const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
-// const serverAddress = 'http://localhost:5000'
+// const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
+const serverAddress = 'http://localhost:80'
 
 export const buyStock = (symbol, quantity) => {
   return async (dispatch) => {

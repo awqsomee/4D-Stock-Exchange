@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { setAlertMessage, setAlertStatus, setSelectedCurrency, setTransactions, setUserBalance } from '../redux/slice'
-const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
-// const serverAddress = 'http://localhost:5000'
+// const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
+const serverAddress = 'http://localhost:80'
 
 export const changeBalance = (transactions, value) => {
   return async (dispatch) => {
@@ -30,7 +30,7 @@ export const changeBalance = (transactions, value) => {
             __v: 0,
           })
         )
-        dispatch(setTransactions([response.data.transaction, ...transactions ]))
+        dispatch(setTransactions([response.data.transaction, ...transactions]))
         dispatch(setAlertMessage(response.data.message))
         dispatch(setAlertStatus(response.status))
       })

@@ -19,8 +19,8 @@ const Navbar = (props) => {
   const dispatch = useDispatch()
   const [modalBoxReg, setModalBoxReg] = useState(false)
   const [modalBoxAcc, setModalBoxAcc] = useState(false)
-  const avatar = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
-  // const avatar = `http://localhost:5000/${user.avatar}`
+  // const avatar = `https://stonksexchange-kaivr.amvera.io/${user.avatar}`
+  const avatar = `http://localhost:80/${user.avatar}`
   const netRegistration = () => {
     setModalBoxReg(!modalBoxReg)
     props.setModalBoxLog(!props.modalBoxLog)

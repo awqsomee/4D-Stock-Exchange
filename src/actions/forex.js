@@ -8,8 +8,8 @@ import {
   setUserBalance,
   setUserCurrencies,
 } from '../redux/slice'
-const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
-// const serverAddress = 'http://localhost:5000'
+// const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
+const serverAddress = 'http://localhost:80'
 
 export const getAllCurrencies = () => {
   return async (dispatch) => {

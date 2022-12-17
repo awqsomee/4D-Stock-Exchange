@@ -7,8 +7,8 @@ import ButtonSwith from '../../../UI/buttons/ButtonSwitch'
 import '../../../../components/balance/balance.css'
 import axios from 'axios'
 import ModalBoxDeposit from '../ModalBoxDeposit'
-const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
-// const serverAddress = 'http://localhost:5000'
+// const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
+const serverAddress = 'http://localhost:80'
 
 const InputBox = ({ setVisible, ...props }) => {
   const currency = '$'
