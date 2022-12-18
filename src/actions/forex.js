@@ -131,7 +131,7 @@ export const closeCurrencyAccount = (userCurrencies, transactions, symbol) => {
         }
       )
       .then((response) => {
-        dispatch(setTransactions([response.data.user.transactionExchange, ...transactions]))
+        dispatch(setTransactions([response.data.transactionExchange, ...transactions]))
         dispatch(setUserBalance(response.data.user.balance))
         dispatch(setUserCurrencies(userCurrencies.filter((currency) => currency.symbol != symbol)))
         dispatch(
