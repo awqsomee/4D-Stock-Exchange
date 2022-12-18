@@ -51,7 +51,8 @@ const Portfolio = (props) => {
 
   const sorting = (a, b) => {
     const countChange = (a) => {
-      return Number((a.prices[0].close - a.prices[1].close) / a.prices[0].close)
+      console.log(Number((a.prices[0].close - a.latestPrice) / a.prices[0].close))
+      return Number((a.prices[0].close - a.latestPrice) / a.prices[0].close)
     }
     const value = filter
     if ((value != '') & (value === 'change')) {
