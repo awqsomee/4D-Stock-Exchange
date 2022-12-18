@@ -251,9 +251,11 @@ const Transactions = (props) => {
           </button>
         </div>
         {value && selectedCurrency.symbol !== 'RUB' ? (
-          <div className="transactions__history" style={{ marginTop: '20px' }}>{` = ${(
-            value * selectedCurrency.price
-          ).toFixed(2)} RUB`}</div>
+          <div className="transactions__history" style={{ marginTop: '20px' }}>
+            {selectedCurrency.price
+              ? ` = ${(value * selectedCurrency.price).toFixed(2)} RUB`
+              : ` = ${(value * selectedCurrency.latestPrice).toFixed(2)} RUB`}
+          </div>
         ) : (
           <></>
         )}
