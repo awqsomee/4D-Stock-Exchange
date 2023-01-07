@@ -7,7 +7,7 @@ const slice = createSlice({
     isAuth: false,
     searchQuery: '',
     isSearching: false,
-    currecncies: [],
+    currecncies: {},
     userCurrencies: [],
     selectedCurrency: {},
     alertMessage: null,

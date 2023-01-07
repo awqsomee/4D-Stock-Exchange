@@ -36,7 +36,7 @@ const Transactions = (props) => {
   }, [])
 
   const fetchData = async () => {
-    await Promise.all([dispatch(getUserCurrencies()), dispatch(getTransactions())])
+    await Promise.all([dispatch(getTransactions())])
   }
 
   const replenishHandler = async (dispatch, value, setValue) => {
