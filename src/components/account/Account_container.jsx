@@ -89,7 +89,7 @@ const Account_containerItem = (props) => {
                         ['patronymic', data?.name.split(' ')[2]],
                     ])
                 )
-                setAvatar(`https://stonksexchange-kaivr.amvera.io/${user.avatar}`)
+                setAvatar(`${serverAddress}/${user.avatar}`)
             })
             .finally(() => {
                 props.setIsLoading(false)

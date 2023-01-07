@@ -1,2 +1,2 @@
-export default serverAddress = 'http://localhost:5000'
-// export default serverAddress = 'https://stonksexchange-kaivr.amvera.io'
+export default 'http://localhost:80'
+// export default 'https://stonksexchange-kaivr.amvera.io'
