@@ -25,13 +25,16 @@ const Portfolio = (props) => {
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   const alertStatus = useSelector((state) => state.toolkit.alertStatus)
   let stocks = useSelector((state) => state.toolkit.userStocks)
+  const isServiceUnavailable = useSelector((state) => state.toolkit.isServiceUnavailable)
 
   useEffect(() => {
     document.title = 'STONKS: Портфель'
-    setIsStocksLoading(true)
-    fetchData().finally(() => {
-      setIsStocksLoading(false)
-    })
+    if (!isServiceUnavailable) {
+      setIsStocksLoading(true)
+      fetchData().finally(() => {
+        setIsStocksLoading(false)
+      })
+    }
   }, [])
 
   useEffect(() => {
@@ -51,7 +54,6 @@ const Portfolio = (props) => {
 
   const sorting = (a, b) => {
     const countChange = (a) => {
-      console.log(Number((a.prices[0].close - a.latestPrice) / a.prices[0].close))
       return Number((a.prices[0].close - a.latestPrice) / a.prices[0].close)
     }
     const value = filter
@@ -135,7 +137,11 @@ const Portfolio = (props) => {
 
   return (
     <div className="stockList">
-      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit} alertStatus={alertStatus}>
+      <ModalBoxDeposit
+        visible={modalBoxDeposit}
+        setVisible={setmodalBoxDeposit}
+        alertStatus={alertStatus}
+      >
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 

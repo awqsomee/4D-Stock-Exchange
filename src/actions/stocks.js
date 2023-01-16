@@ -55,13 +55,14 @@ function getStocksSearch(searchQuery) {
       const search1 = await axios
         .get(URI1)
         .then((response) => {
-          console.log('r', response)
           const data = response.data.stock
           return data
         })
         .catch((error) => {
-          if (error.response === undefined) dispatch(setIsServiceUnavailable(true))
-          else console.log(error.response.data.message)
+          if (error.response === undefined) {
+            dispatch(setIsServiceUnavailable(true))
+            throw 'Service Unavailable'
+          } else console.log(error.response.data.message)
         })
       const search2 = await axios
         .get(URI2)

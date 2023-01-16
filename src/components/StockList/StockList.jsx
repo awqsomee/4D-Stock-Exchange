@@ -21,14 +21,17 @@ const StockList = (props) => {
   const [modalBoxDeposit, setmodalBoxDeposit] = useState(false)
   const alertMessage = useSelector((state) => state.toolkit.alertMessage)
   const alertStatus = useSelector((state) => state.toolkit.alertStatus)
+  const isServiceUnavailable = useSelector((state) => state.toolkit.isServiceUnavailable)
 
   useEffect(() => {
     document.title = 'STONKS – StockExchange'
-    setIsStocksLoading(true)
-    dispatch(getStocksSearch(search)).finally(() => {
-      dispatch(setIsSearching(false))
-      setIsStocksLoading(false)
-    })
+    if (!isServiceUnavailable) {
+      setIsStocksLoading(true)
+      dispatch(getStocksSearch(search)).finally(() => {
+        dispatch(setIsSearching(false))
+        setIsStocksLoading(false)
+      })
+    }
   }, [isSearching])
 
   useEffect(() => {
@@ -127,7 +130,11 @@ const StockList = (props) => {
 
   return (
     <div className="stockList">
-      <ModalBoxDeposit visible={modalBoxDeposit} setVisible={setmodalBoxDeposit} alertStatus={alertStatus}>
+      <ModalBoxDeposit
+        visible={modalBoxDeposit}
+        setVisible={setmodalBoxDeposit}
+        alertStatus={alertStatus}
+      >
         <div>{alertMessage}</div>
       </ModalBoxDeposit>
 

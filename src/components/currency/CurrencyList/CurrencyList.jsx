@@ -13,12 +13,15 @@ const CurrencyList = (props) => {
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
   const [visible, setVisible] = useState(false)
+  const isServiceUnavailable = useSelector((state) => state.toolkit.isServiceUnavailable)
 
   useEffect(() => {
-    setIsLoading(true)
-    dispatch(getUserCurrencies()).finally(() => {
-      setIsLoading(false)
-    })
+    if (!isServiceUnavailable) {
+      setIsLoading(true)
+      dispatch(getUserCurrencies()).finally(() => {
+        setIsLoading(false)
+      })
+    }
   }, [])
 
   const rubCurrency = {
@@ -63,7 +66,11 @@ const CurrencyList = (props) => {
         <NewWallet sVisible={setVisible} setmodalBoxDeposit={props.setmodalBoxDeposit} />
       </ModalBox>
 
-      <button className="button button__normal" style={{ fontSize: '32px' }} onClick={() => setVisible(true)}>
+      <button
+        className="button button__normal"
+        style={{ fontSize: '32px' }}
+        onClick={() => setVisible(true)}
+      >
         +
       </button>
     </div>
