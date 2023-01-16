@@ -18,6 +18,7 @@ function App() {
   const [modalBoxLog, setModalBoxLog] = useState(false)
   // const [modalBoxDepositAuth, setmodalBoxDepositAuth] = useState(false)
   const isAuth = useSelector((state) => state.toolkit.isAuth)
+  const isServiceUnavailable = useSelector((state) => state.toolkit.isServiceUnavailable)
 
   useEffect(() => {
     if (localStorage.getItem('stonksToken')) {
@@ -42,6 +43,47 @@ function App() {
     setWidthPage()
   }, [document.documentElement.clientWidth])
 
+  if (isServiceUnavailable)
+    return (
+      <BrowserRouter basename="/4D-Stock-Exchange">
+        {!isLoading ? (
+          <div className="app">
+            <Navbar modalBoxLog={modalBoxLog} setModalBoxLog={setModalBoxLog} />
+            <div
+              style={{
+                backgroundColor: '#202020',
+                boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: '75px',
+                zIndex: -15,
+                fontSize: '16px',
+                fontFamily: "'Exo 2', 'Arial'",
+              }}
+            >
+              Сервер не отвечает, но вы можете посмотреть, как бы это примерно выглядело при
+              работающем сервере
+            </div>
+            <div className="wrap">
+              <Routes>
+                <Route path="/stocks" element={<StockList title="Каталог акций" />} />
+                <Route path="/account" element={<Account title="Профиль" />} />
+                <Route path="/wallet" element={<Currency title="Кошелек" />} />
+                <Route path="/portfolio" element={<Portfolio title="Ваши инвестиции" />} />
+                <Route path="*" element={<Navigate to="/stocks" />} />
+              </Routes>
+            </div>
+            <Footer />
+          </div>
+        ) : (
+          <div className="app loading">
+            <PageLoader />
+          </div>
+        )}
+      </BrowserRouter>
+    )
+
   return (
     <BrowserRouter basename="/4D-Stock-Exchange">
       {!isLoading ? (
@@ -53,7 +95,11 @@ function App() {
                 <Route
                   path="/stocks"
                   element={
-                    <StockList title="Каталог акций" modalBoxLog={modalBoxLog} setModalBoxLog={setModalBoxLog} />
+                    <StockList
+                      title="Каталог акций"
+                      modalBoxLog={modalBoxLog}
+                      setModalBoxLog={setModalBoxLog}
+                    />
                   }
                 />
                 <Route path="*" element={<Navigate to="/stocks" />} />
