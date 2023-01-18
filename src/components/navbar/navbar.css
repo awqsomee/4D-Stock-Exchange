@@ -73,14 +73,6 @@
   z-index: 1;
   cursor: pointer;
 }
-.navbar__close__img {
-  position: absolute;
-  right: 50px;
-  max-width: 25px;
-  display: inline-block;
-  z-index: 1;
-  cursor: pointer;
-}
 .navbar__buttons {
   display: flex;
   padding-left: 24px;
@@ -140,4 +132,20 @@
   height: 100%;
   border-radius: 50%;
   width: auto;
+}
+@media screen and (max-width: 1280px) {
+  .container {
+    max-width: none;
+    justify-content: space-around;
+  }
+}
+@media screen and (max-width: 960px) {
+  .navbar__logo {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .button.button__normal.navbar__registration {
+    display: none;
+  }
 }

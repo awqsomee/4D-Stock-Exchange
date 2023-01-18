@@ -43,7 +43,7 @@ function App() {
     setWidthPage()
   }, [document.documentElement.clientWidth])
 
-  if (isServiceUnavailable)
+  if (false)
     return (
       <BrowserRouter basename="/4D-Stock-Exchange">
         {!isLoading ? (
@@ -60,6 +60,7 @@ function App() {
                 zIndex: -15,
                 fontSize: '16px',
                 fontFamily: "'Exo 2', 'Arial'",
+                padding: '30px',
               }}
             >
               Сервер не отвечает, но вы можете посмотреть, как бы это примерно выглядело при
