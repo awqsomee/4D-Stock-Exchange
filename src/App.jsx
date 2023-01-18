@@ -43,7 +43,7 @@ function App() {
     setWidthPage()
   }, [document.documentElement.clientWidth])
 
-  if (false)
+  if (isServiceUnavailable)
     return (
       <BrowserRouter basename="/4D-Stock-Exchange">
         {!isLoading ? (
