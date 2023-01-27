@@ -141,3 +141,19 @@
   border-radius: 50%;
   width: auto;
 }
+@media screen and (max-width: 1280px) {
+  .container {
+    max-width: none;
+    justify-content: space-around;
+  }
+}
+@media screen and (max-width: 960px) {
+  .navbar__logo {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .button.button__normal.navbar__registration {
+    display: none;
+  }
+}
