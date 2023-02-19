@@ -9,6 +9,9 @@
 Проект написан с помощью React + Redux Toolkit. Графики сделаны с помощью Recharts.
 
 ## Инструкция по установке и запуску
+1. Перейдите по ссылке [https://awqsomee.github.io/4D-Stock-Exchange/stocks](https://awqsomee.github.io/4D-Stock-Exchange/stocks) 
+
+ИЛИ
 
 1. Клонируйте репозиторий на устройство
 2. Откройте расположение папки с проектом
