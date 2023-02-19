@@ -1,6 +1,6 @@
 import axios from 'axios'
+import { serverAddress } from '../config'
 import { setAlertMessage, setAlertStatus, setAvatar, setUser } from '../redux/slice'
-import serverAddress from '../utils/serverAddress'
 
 export const registration = (name, email, password) => {
   return async (dispatch) => {

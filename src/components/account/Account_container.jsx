@@ -7,7 +7,7 @@ import ModalBox from '../UI/ModalBox/ModalBox'
 import './account.css'
 import CropAvatar from './CropAvatar'
 import CloseAccount from './CloseAccount'
-import serverAddress from '../../utils/serverAddress'
+import { serverAddress } from '../../config'
 
 const Account_containerItem = (props) => {
     const [isOverTime, setIsOverTime] = useState(false)

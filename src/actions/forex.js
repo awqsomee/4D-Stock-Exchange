@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { serverAddress } from '../config'
 import {
   setAlertMessage,
   setAlertStatus,
@@ -8,7 +9,6 @@ import {
   setUserBalance,
   setUserCurrencies,
 } from '../redux/slice'
-import serverAddress from '../utils/serverAddress'
 
 export const getAllCurrencies = () => {
   return async (dispatch) => {

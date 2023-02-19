@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { serverAddress } from '../config'
 import { store } from '../redux'
 import {
   setAlertMessage,
@@ -8,7 +9,6 @@ import {
   setUserBalance,
   setUserStocks,
 } from '../redux/slice'
-import serverAddress from '../utils/serverAddress'
 
 function getUserStocks() {
   return async (dispatch) => {

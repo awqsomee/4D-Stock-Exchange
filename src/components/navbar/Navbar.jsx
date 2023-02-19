@@ -12,7 +12,7 @@ import '../currency/balance/balance.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from '../../redux'
 import { logout, setSearch, setUser } from '../../redux/slice'
-import serverAddress from '../../utils/serverAddress'
+import { serverAddress } from '../../config'
 
 const Navbar = (props) => {
   const isAuth = useSelector((state) => state.toolkit.isAuth)
