@@ -1,2 +1,2 @@
-// export const serverAddress = 'https://stonksexchange-kaivr.amvera.io'
-export const serverAddress = 'http://localhost:80'
+export const serverAddress = 'https://stonks-kaivr.amvera.io'
+// export const serverAddress = 'http://localhost:80'
